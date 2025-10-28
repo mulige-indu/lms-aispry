@@ -521,11 +521,17 @@ body.dark-theme .centers-cta p {
   }
 }
 
-/* Mobile (768px and below) */
+/* Mobile (768px and below) - Convert to Slider */
 @media (max-width: 768px) {
   .training-centers-section {
     padding: 50px 0;
     margin: 0;
+    position: relative;
+  }
+
+  .centers-container {
+    position: relative;
+    overflow: visible;
   }
 
   .centers-header {
@@ -540,13 +546,21 @@ body.dark-theme .centers-cta p {
     font-size: 1rem;
   }
 
+  /* Convert grid to slider */
   .centers-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    border-radius: 12px;
+    padding-bottom: 60px;
+    transition: transform 0.3s ease-in-out;
   }
 
   .center-card {
+    min-width: 100%;
+    flex-shrink: 0;
     padding: 25px;
+    transition: transform 0.3s ease;
   }
 
   .center-icon {
@@ -582,6 +596,78 @@ body.dark-theme .centers-cta p {
   .explore-btn {
     padding: 14px 32px;
     font-size: 1rem;
+  }
+
+  /* Slider Navigation Arrows */
+  .training-centers-section .slider-nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+    transition: all 0.3s ease;
+  }
+
+  .training-centers-section .slider-nav-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .training-centers-section .slider-nav-btn.prev {
+    left: -15px;
+  }
+
+  .training-centers-section .slider-nav-btn.next {
+    right: -15px;
+  }
+
+  /* Slider Dots */
+  .training-centers-section .slider-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .training-centers-section .slider-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.2);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+
+  .training-centers-section .slider-dot.active {
+    background: linear-gradient(135deg, #0a9ec7, #d5842e);
+    width: 12px;
+    height: 12px;
+    box-shadow: 0 2px 8px rgba(10, 158, 199, 0.4);
+  }
+
+  .training-centers-section .slider-dot:hover {
+    background: rgba(0, 0, 0, 0.4);
+    transform: scale(1.2);
   }
 }
 

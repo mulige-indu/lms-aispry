@@ -19,6 +19,8 @@ const Home = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentFeatureSlide, setCurrentFeatureSlide] = useState(0);
+  const [currentCenterSlide, setCurrentCenterSlide] = useState(0);
   const navigate = useNavigate();
 
   // Course data
@@ -192,7 +194,7 @@ We're excited to have you on this journey!
     navigate("/courses");
   };
 
-  // Slider navigation
+  // Course slider navigation
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % courses.length);
   };
@@ -203,6 +205,32 @@ We're excited to have you on this journey!
 
   const goToSlide = (index) => {
     setCurrentSlide(index);
+  };
+
+  // Features slider navigation
+  const nextFeatureSlide = () => {
+    setCurrentFeatureSlide((prev) => (prev + 1) % 8); // 8 feature cards
+  };
+
+  const prevFeatureSlide = () => {
+    setCurrentFeatureSlide((prev) => (prev - 1 + 8) % 8);
+  };
+
+  const goToFeatureSlide = (index) => {
+    setCurrentFeatureSlide(index);
+  };
+
+  // Training centers slider navigation
+  const nextCenterSlide = () => {
+    setCurrentCenterSlide((prev) => (prev + 1) % 4); // 4 training center cards
+  };
+
+  const prevCenterSlide = () => {
+    setCurrentCenterSlide((prev) => (prev - 1 + 4) % 4);
+  };
+
+  const goToCenterSlide = (index) => {
+    setCurrentCenterSlide(index);
   };
 
   return (
@@ -629,7 +657,11 @@ We're excited to have you on this journey!
               <p className="features-subtitle">Everything You Need to Succeed in One Place</p>
             </div>
 
-            <div className="features-grid">
+            <button className="slider-nav-btn prev" onClick={prevFeatureSlide} aria-label="Previous feature">
+              ‹
+            </button>
+
+            <div className="features-grid" style={{ transform: `translateX(-${currentFeatureSlide * 100}%)` }}>
               <div className="feature-card">
                 <div className="feature-icon"><img src="https://img.icons8.com/fluency/48/graduation-cap.png" alt="expert trainers" /></div>
                 <h3 className="feature-title">Expert Trainers</h3>
@@ -678,6 +710,21 @@ We're excited to have you on this journey!
                 <p className="feature-description">Get continuous support and access to updated materials even after course completion</p>
               </div>
             </div>
+
+            <button className="slider-nav-btn next" onClick={nextFeatureSlide} aria-label="Next feature">
+              ›
+            </button>
+
+            <div className="slider-dots">
+              {[0, 1, 2, 3, 4, 5, 6, 7].map((index) => (
+                <button
+                  key={index}
+                  className={`slider-dot ${index === currentFeatureSlide ? 'active' : ''}`}
+                  onClick={() => goToFeatureSlide(index)}
+                  aria-label={`Go to feature ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </section>
 
@@ -688,7 +735,11 @@ We're excited to have you on this journey!
               <p className="centers-subtitle">World-class facilities across India's leading tech hubs with state-of-the-art infrastructure</p>
             </div>
 
-            <div className="centers-grid" role="list">
+            <button className="slider-nav-btn prev" onClick={prevCenterSlide} aria-label="Previous training center">
+              ‹
+            </button>
+
+            <div className="centers-grid" role="list" style={{ transform: `translateX(-${currentCenterSlide * 100}%)` }}>
               <article className="center-card" role="listitem">
                 <div className="center-icon" aria-hidden="true">
                   <img src={require('../../assets/images/Charminar.jpg')} alt="Charminar, Hyderabad" />
@@ -772,6 +823,21 @@ We're excited to have you on this journey!
                   </div>
                 </div>
               </article>
+            </div>
+
+            <button className="slider-nav-btn next" onClick={nextCenterSlide} aria-label="Next training center">
+              ›
+            </button>
+
+            <div className="slider-dots">
+              {[0, 1, 2, 3].map((index) => (
+                <button
+                  key={index}
+                  className={`slider-dot ${index === currentCenterSlide ? 'active' : ''}`}
+                  onClick={() => goToCenterSlide(index)}
+                  aria-label={`Go to training center ${index + 1}`}
+                />
+              ))}
             </div>
 
             <div className="centers-cta" role="region" aria-label="Online learning option">
