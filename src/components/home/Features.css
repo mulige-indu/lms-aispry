@@ -39,6 +39,12 @@
   margin-top: 50px;
 }
 
+/* Hide slider controls on desktop */
+.features-section .slider-nav-btn,
+.features-section .slider-dots {
+  display: none;
+}
+
 .feature-card {
   background: white;
   border-radius: 15px;

@@ -79,6 +79,12 @@
   margin-bottom: 30px;
 }
 
+/* Hide slider controls on desktop */
+.training-centers-section .slider-nav-btn,
+.training-centers-section .slider-dots {
+  display: none;
+}
+
 /* ==================== CENTER CARD ==================== */
 
 .center-card {
