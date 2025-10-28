@@ -5,6 +5,7 @@ import './MainNavbar.css';
 const MainNavbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [student, setStudent] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -60,6 +61,14 @@ const MainNavbar = () => {
     navigate('/apply');
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <nav className="main-navbar">
       <div className="navbar-container">
@@ -71,19 +80,26 @@ const MainNavbar = () => {
           />
         </div>
 
-        <div className="navbar-menu">
+        {/* Hamburger Menu Button for Mobile */}
+        <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+        </button>
+
+        <div className={`navbar-menu ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
           <ul className="menu-list">
             <li className="menu-item">
-              <button onClick={handleProgramsClick} className="menu-link">Programs</button>
+              <button onClick={() => { handleProgramsClick(); closeMobileMenu(); }} className="menu-link">Programs</button>
             </li>
             <li className="menu-item">
-              <button onClick={handleMasterclassClick} className="menu-link">Masterclass</button>
+              <button onClick={() => { handleMasterclassClick(); closeMobileMenu(); }} className="menu-link">Masterclass</button>
             </li>
             <li className="menu-item">
-              <button onClick={handleAlumniClick} className="menu-link">Alumni</button>
+              <button onClick={() => { handleAlumniClick(); closeMobileMenu(); }} className="menu-link">Alumni</button>
             </li>
             <li className="menu-item">
-              <button onClick={handleResourcesClick} className="menu-link">Resources</button>
+              <button onClick={() => { handleResourcesClick(); closeMobileMenu(); }} className="menu-link">Resources</button>
             </li>
           </ul>
         </div>

@@ -705,3 +705,121 @@ body.dark-theme .content-section p {
     display: none;
   }
 }
+
+/* ==================== MOBILE HAMBURGER MENU ==================== */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 3px;
+  background: white;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Show hamburger on mobile */
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .navbar-menu {
+    position: fixed;
+    top: 90px;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, rgba(10, 158, 199, 0.98) 15%, rgba(82, 152, 149, 0.98) 50%, rgba(213, 132, 46, 0.98) 70%);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    margin: 0;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    display: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+  }
+
+  .navbar-menu.mobile-menu-open {
+    display: block;
+    max-height: 500px;
+    animation: slideDown 0.3s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .menu-list {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .menu-item {
+    width: 100%;
+  }
+
+  .menu-link {
+    width: 100%;
+    text-align: center;
+    padding: 14px 20px;
+    font-size: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    min-width: auto;
+  }
+
+  .menu-link:active {
+    transform: scale(0.98);
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-menu-toggle {
+    width: 28px;
+    height: 28px;
+  }
+
+  .hamburger-line {
+    height: 2.5px;
+  }
+
+  .navbar-menu {
+    top: 75px;
+    padding: 15px;
+  }
+
+  .menu-link {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar-menu {
+    top: 65px;
+  }
+}
