@@ -21,6 +21,13 @@ const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentFeatureSlide, setCurrentFeatureSlide] = useState(0);
   const [currentCenterSlide, setCurrentCenterSlide] = useState(0);
+
+  // Touch gesture states
+  const [featureTouchStart, setFeatureTouchStart] = useState(0);
+  const [featureTouchEnd, setFeatureTouchEnd] = useState(0);
+  const [centerTouchStart, setCenterTouchStart] = useState(0);
+  const [centerTouchEnd, setCenterTouchEnd] = useState(0);
+
   const navigate = useNavigate();
 
   // Course data
@@ -231,6 +238,58 @@ We're excited to have you on this journey!
 
   const goToCenterSlide = (index) => {
     setCurrentCenterSlide(index);
+  };
+
+  // Touch gesture handlers for features slider
+  const handleFeatureTouchStart = (e) => {
+    setFeatureTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleFeatureTouchMove = (e) => {
+    setFeatureTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleFeatureTouchEnd = () => {
+    if (!featureTouchStart || !featureTouchEnd) return;
+    const distance = featureTouchStart - featureTouchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe && currentFeatureSlide < 7) {
+      nextFeatureSlide();
+    }
+    if (isRightSwipe && currentFeatureSlide > 0) {
+      prevFeatureSlide();
+    }
+
+    setFeatureTouchStart(0);
+    setFeatureTouchEnd(0);
+  };
+
+  // Touch gesture handlers for centers slider
+  const handleCenterTouchStart = (e) => {
+    setCenterTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleCenterTouchMove = (e) => {
+    setCenterTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleCenterTouchEnd = () => {
+    if (!centerTouchStart || !centerTouchEnd) return;
+    const distance = centerTouchStart - centerTouchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe && currentCenterSlide < 3) {
+      nextCenterSlide();
+    }
+    if (isRightSwipe && currentCenterSlide > 0) {
+      prevCenterSlide();
+    }
+
+    setCenterTouchStart(0);
+    setCenterTouchEnd(0);
   };
 
   return (
@@ -657,11 +716,18 @@ We're excited to have you on this journey!
               <p className="features-subtitle">Everything You Need to Succeed in One Place</p>
             </div>
 
-            <button className="slider-nav-btn prev" onClick={prevFeatureSlide} aria-label="Previous feature">
-              ‹
-            </button>
+            <div className="features-slider-wrapper">
+              <button className="slider-nav-btn prev" onClick={prevFeatureSlide} aria-label="Previous feature">
+                ‹
+              </button>
 
-            <div className="features-grid" style={{ transform: `translateX(-${currentFeatureSlide * 100}%)` }}>
+              <div
+                className="features-grid"
+                style={{ transform: `translateX(-${currentFeatureSlide * 100}%)` }}
+                onTouchStart={handleFeatureTouchStart}
+                onTouchMove={handleFeatureTouchMove}
+                onTouchEnd={handleFeatureTouchEnd}
+              >
               <div className="feature-card">
                 <div className="feature-icon"><img src="https://img.icons8.com/fluency/48/graduation-cap.png" alt="expert trainers" /></div>
                 <h3 className="feature-title">Expert Trainers</h3>
@@ -709,21 +775,22 @@ We're excited to have you on this journey!
                 <h3 className="feature-title">Lifetime Support</h3>
                 <p className="feature-description">Get continuous support and access to updated materials even after course completion</p>
               </div>
-            </div>
+              </div>
 
-            <button className="slider-nav-btn next" onClick={nextFeatureSlide} aria-label="Next feature">
-              ›
-            </button>
+              <button className="slider-nav-btn next" onClick={nextFeatureSlide} aria-label="Next feature">
+                ›
+              </button>
 
-            <div className="slider-dots">
-              {[0, 1, 2, 3, 4, 5, 6, 7].map((index) => (
-                <button
-                  key={index}
-                  className={`slider-dot ${index === currentFeatureSlide ? 'active' : ''}`}
-                  onClick={() => goToFeatureSlide(index)}
-                  aria-label={`Go to feature ${index + 1}`}
-                />
-              ))}
+              <div className="slider-dots">
+                {[0, 1, 2, 3, 4, 5, 6, 7].map((index) => (
+                  <button
+                    key={index}
+                    className={`slider-dot ${index === currentFeatureSlide ? 'active' : ''}`}
+                    onClick={() => goToFeatureSlide(index)}
+                    aria-label={`Go to feature ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -735,11 +802,19 @@ We're excited to have you on this journey!
               <p className="centers-subtitle">World-class facilities across India's leading tech hubs with state-of-the-art infrastructure</p>
             </div>
 
-            <button className="slider-nav-btn prev" onClick={prevCenterSlide} aria-label="Previous training center">
-              ‹
-            </button>
+            <div className="centers-slider-wrapper">
+              <button className="slider-nav-btn prev" onClick={prevCenterSlide} aria-label="Previous training center">
+                ‹
+              </button>
 
-            <div className="centers-grid" role="list" style={{ transform: `translateX(-${currentCenterSlide * 100}%)` }}>
+              <div
+                className="centers-grid"
+                role="list"
+                style={{ transform: `translateX(-${currentCenterSlide * 100}%)` }}
+                onTouchStart={handleCenterTouchStart}
+                onTouchMove={handleCenterTouchMove}
+                onTouchEnd={handleCenterTouchEnd}
+              >
               <article className="center-card" role="listitem">
                 <div className="center-icon" aria-hidden="true">
                   <img src={require('../../assets/images/Charminar.jpg')} alt="Charminar, Hyderabad" />
@@ -823,21 +898,22 @@ We're excited to have you on this journey!
                   </div>
                 </div>
               </article>
-            </div>
+              </div>
 
-            <button className="slider-nav-btn next" onClick={nextCenterSlide} aria-label="Next training center">
-              ›
-            </button>
+              <button className="slider-nav-btn next" onClick={nextCenterSlide} aria-label="Next training center">
+                ›
+              </button>
 
-            <div className="slider-dots">
-              {[0, 1, 2, 3].map((index) => (
-                <button
-                  key={index}
-                  className={`slider-dot ${index === currentCenterSlide ? 'active' : ''}`}
-                  onClick={() => goToCenterSlide(index)}
-                  aria-label={`Go to training center ${index + 1}`}
-                />
-              ))}
+              <div className="slider-dots">
+                {[0, 1, 2, 3].map((index) => (
+                  <button
+                    key={index}
+                    className={`slider-dot ${index === currentCenterSlide ? 'active' : ''}`}
+                    onClick={() => goToCenterSlide(index)}
+                    aria-label={`Go to training center ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
 
             <div className="centers-cta" role="region" aria-label="Online learning option">
