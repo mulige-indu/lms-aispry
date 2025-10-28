@@ -13,25 +13,33 @@ const CourseCard = ({
   actionText
 }) => {
 
-  // Slider variant - Used in Home page
+  // Slider variant - Used in Home page with hover expand effect
   if (variant === 'slider') {
     return (
-      <div className="course-card course-card--slider">
-        <div className="course-card__icon-wrapper">
-          {course.icon}
-        </div>
-        <h3 className="course-card__title">{course.name}</h3>
-        <p className="course-card__description">{course.description}</p>
-        {course.features && (
-          <div className="course-card__features">
-            {course.features.map((feature, idx) => (
-              <span key={idx} className="feature-tag">{feature}</span>
-            ))}
+      <div className="course-card course-card--slider slider-card">
+        <div className="course-icon-container">
+          <div className="course-card__icon-wrapper">
+            {course.icon}
           </div>
-        )}
-        <button className="course-card__btn" onClick={onAction}>
-          {actionText || 'Learn More'}
-        </button>
+        </div>
+        <div className="course-content">
+          <div className="course-content-top">
+            <h3 className="course-card__title">{course.name}</h3>
+            <p className="course-card__description">{course.description}</p>
+          </div>
+          <div className="course-content-bottom">
+            {course.features && (
+              <div className="course-card__features">
+                {course.features.map((feature, idx) => (
+                  <span key={idx} className="feature-tag">{feature}</span>
+                ))}
+              </div>
+            )}
+            <button className="course-card__btn" onClick={onAction}>
+              {actionText || 'Learn More'}
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
