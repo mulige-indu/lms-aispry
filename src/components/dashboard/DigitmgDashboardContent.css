@@ -1,0 +1,535 @@
+/* ==================== 360DIGITMG MENTEE DASHBOARD CONTENT ==================== */
+
+.mentee-content__dashboard {
+  background: #ffffff;
+  padding: 2rem;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
+
+.mentee-content__dashboard--free-product {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ==================== PROGRAM SELECTOR ==================== */
+.dashboard-program-selector {
+  margin-bottom: 1.75rem;
+}
+
+.program-selector-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(30, 136, 229, 0.2);
+}
+
+.program-selector-wrapper:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(30, 136, 229, 0.3);
+}
+
+.program-icon {
+  font-size: 1.5rem;
+}
+
+.program-name {
+  flex: 1;
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.dropdown-chevron {
+  color: white;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+/* ==================== NAVIGATION TABS ==================== */
+.dashboard-tabs {
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.tabs-wrapper {
+  display: flex;
+  gap: 2.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.tabs-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.dashboard-tab {
+  background: none;
+  border: none;
+  padding: 0.875rem 0.25rem;
+  font-size: 0.95rem;
+  color: #9ca3af;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-weight: 500;
+  position: relative;
+  margin-bottom: -2px;
+  font-family: inherit;
+}
+
+.dashboard-tab:hover {
+  color: #4b5563;
+}
+
+.dashboard-tab--active {
+  color: #1f2937;
+  border-bottom-color: #1e88e5;
+  font-weight: 600;
+}
+
+/* ==================== FEATURE CARDS ==================== */
+.dashboard-features {
+  margin-bottom: 2.5rem;
+}
+
+.features-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.dashboard-feature-card {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.85rem 1.25rem;
+  background: #ffffff;
+  border: 3px solid #e5e7eb;
+  border-radius: 10px;
+  cursor: default;
+  position: relative;
+  height: 50.8px;
+  width: 218.91px;
+}
+
+.dashboard-feature-card--highlighted {
+  border: 2px solid #2196f3;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.15);
+}
+
+.feature-card-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.feature-card-title {
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #374151;
+  line-height: 1.3;
+}
+
+.feature-card-badge {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+  color: white;
+  font-size: 0.65rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 4px rgba(33, 150, 243, 0.2);
+}
+
+/* ==================== PREMIUM UNLOCK SECTION ==================== */
+.dashboard-premium-unlock {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.premium-unlock-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1565c0;
+  margin-bottom: 1.75rem;
+  letter-spacing: -0.01em;
+}
+
+/* Premium Step */
+.premium-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.premium-step-indicator {
+  flex-shrink: 0;
+}
+
+.step-number {
+  width: 42px;
+  height: 42px;
+  background: white;
+  border: 2px solid #2196f3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #2196f3;
+  box-shadow: 0 2px 6px rgba(33, 150, 243, 0.15);
+}
+
+.premium-step-content {
+  flex: 1;
+  padding-top: 0.5rem;
+}
+
+.step-heading {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+/* ==================== FREE CLASS REGISTRATION ==================== */
+.free-class-registration {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+}
+
+/* Video Container */
+.class-video-container {
+  position: relative;
+}
+
+.video-thumbnail-wrapper {
+  position: relative;
+  background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%);
+  border-radius: 10px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.video-play-button {
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #9c27b0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding-left: 4px;
+}
+
+.video-play-button:hover {
+  transform: scale(1.1);
+  background: white;
+}
+
+.video-attendance-badge {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  backdrop-filter: blur(8px);
+}
+
+.attendance-icon {
+  font-size: 1rem;
+}
+
+.attendance-count {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Registration Details */
+.class-registration-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.class-registration-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.class-registration-meta {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.meta-info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.meta-icon {
+  font-size: 1rem;
+}
+
+.meta-text {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.meta-info-item--timer .meta-text {
+  color: #e91e63;
+  font-weight: 700;
+}
+
+.class-registration-button {
+  width: 100%;
+  background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
+  color: white;
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(233, 30, 99, 0.25);
+  font-family: inherit;
+}
+
+.class-registration-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(233, 30, 99, 0.35);
+}
+
+.class-registration-button:active {
+  transform: translateY(0);
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 1024px) {
+  .features-grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .dashboard-feature-card {
+    width: 100%;
+    min-width: 200px;
+  }
+
+  .free-class-registration {
+    grid-template-columns: 1fr;
+  }
+
+  .video-thumbnail-wrapper {
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mentee-content__dashboard {
+    padding: 1rem;
+  }
+
+  .features-grid-container {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .dashboard-feature-card {
+    width: 100%;
+    height: auto;
+    min-height: 50.8px;
+    padding: 0.75rem 1rem;
+  }
+
+  .tabs-wrapper {
+    gap: 1.5rem;
+  }
+
+  .dashboard-tab {
+    font-size: 0.875rem;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .dashboard-premium-unlock {
+    padding: 1.5rem;
+  }
+
+  .premium-unlock-title {
+    font-size: 1.15rem;
+  }
+
+  .premium-step {
+    gap: 0.75rem;
+  }
+
+  .step-number {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .free-class-registration {
+    gap: 1.5rem;
+    padding: 1.25rem;
+  }
+
+  .class-registration-meta {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mentee-content__dashboard {
+    padding: 0.75rem;
+  }
+
+  .program-selector-wrapper {
+    padding: 0.75rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .program-icon {
+    font-size: 1.1rem;
+  }
+
+  .program-name {
+    font-size: 0.85rem;
+  }
+
+  .tabs-wrapper {
+    gap: 1rem;
+  }
+
+  .dashboard-tab {
+    font-size: 0.8rem;
+    padding: 0.65rem 0.4rem;
+  }
+
+  .features-grid-container {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .dashboard-feature-card {
+    width: 100%;
+    height: auto;
+    min-height: 45px;
+    padding: 0.65rem 0.875rem;
+    gap: 0.65rem;
+  }
+
+  .feature-card-icon {
+    font-size: 1rem;
+  }
+
+  .feature-card-title {
+    font-size: 0.8rem;
+    line-height: 1.2;
+  }
+
+  .feature-card-badge {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .dashboard-premium-unlock {
+    padding: 1rem;
+  }
+
+  .premium-unlock-title {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .premium-step {
+    gap: 0.65rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .step-number {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+
+  .step-heading {
+    font-size: 0.9rem;
+  }
+
+  .free-class-registration {
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .video-thumbnail-wrapper {
+    height: 180px;
+  }
+
+  .video-play-button {
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+  }
+
+  .class-registration-title {
+    font-size: 0.95rem;
+  }
+
+  .class-registration-meta {
+    gap: 0.75rem;
+  }
+
+  .meta-text {
+    font-size: 0.8rem;
+  }
+
+  .class-registration-button {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+}

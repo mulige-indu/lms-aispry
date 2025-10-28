@@ -1,0 +1,169 @@
+/* Simple Alumni Section */
+.alumni-section {
+  padding: 40px 40px 60px 40px;
+  margin: 0;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.alumni-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Header */
+.alumni-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.alumni-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.3;
+  margin: 0;
+}
+
+/* Logo Container */
+.alumni-logos {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.logo-row {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.logo-row:last-child {
+  margin-bottom: 0;
+}
+
+.logo-track {
+  display: flex;
+  gap: 70px;
+  align-items: center;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.scroll-right .logo-track {
+  animation-name: scrollRight;
+  animation-duration: 40s;
+}
+
+.scroll-left .logo-track {
+  animation-name: scrollLeft;
+  animation-duration: 40s;
+}
+
+/* AI-Generated Logos - Clean Style */
+.company-logo-ai {
+  height: 60px;
+  width: auto;
+  min-width: 150px;
+  max-width: 200px;
+  object-fit: contain;
+  opacity: 0.85;
+  transition: all 0.4s ease;
+  flex-shrink: 0;
+  padding: 12px;
+  margin: 0;
+  background: #ffffff;
+  border: none;
+  border-radius: 0;
+  position: relative;
+  cursor: default;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  filter: grayscale(20%);
+}
+
+.company-logo-ai:hover {
+  opacity: 1;
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  filter: grayscale(0%);
+}
+
+/* Animations */
+@keyframes scrollRight {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scrollLeft {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.logo-row:hover .logo-track {
+  animation-play-state: paused;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .alumni-section {
+    padding: 60px 20px;
+  }
+
+  .alumni-title {
+    font-size: 2rem;
+  }
+
+  .alumni-header {
+    margin-bottom: 40px;
+  }
+
+  .logo-row {
+    margin-bottom: 30px;
+  }
+
+  .company-logo {
+    height: 50px;
+    min-width: 110px;
+    max-width: 150px;
+  }
+
+  .logo-track {
+    gap: 50px;
+  }
+
+  .scroll-right .logo-track,
+  .scroll-left .logo-track {
+    animation-duration: 30s;
+  }
+}
+
+@media (max-width: 480px) {
+  .alumni-section {
+    padding: 50px 15px;
+  }
+
+  .alumni-title {
+    font-size: 1.5rem;
+  }
+
+  .logo-row {
+    margin-bottom: 25px;
+  }
+
+  .company-logo {
+    height: 45px;
+    min-width: 90px;
+    max-width: 130px;
+  }
+
+  .logo-track {
+    gap: 40px;
+  }
+
+  .scroll-right .logo-track,
+  .scroll-left .logo-track {
+    animation-duration: 25s;
+  }
+}

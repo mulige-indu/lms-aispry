@@ -1,0 +1,242 @@
+.ai-career-compact {
+  display: flex;
+  /* justify-content: center; */
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  align-items: center;
+  /* border: 2px solid; */
+  justify-content: center;
+  align-items: center;
+}
+
+.ai-career-card {
+  width: 400px;
+  min-height: 450px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden; /* Keeps the ::before pseudo-element contained */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.ai-career-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 15px;
+  background: linear-gradient(135deg, #d5842e 25%, #529895 50%, #0a9ec7 100%);
+}
+
+.ai-career-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+}
+
+.ai-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ai-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #d5842e 25%, #529895 50%, #0a9ec7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.ai-icon {
+  font-size: 2rem;
+  animation: bounce 2s ease-in-out infinite;
+  margin-bottom: 10px;
+}
+
+.ai-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  overflow-y: auto; /* Allows content to scroll if it overflows */
+  padding: 10px 0; /* Adds some space for scrolling */
+}
+
+.ai-stats-mini {
+  display: flex;
+  gap: 20px;
+}
+
+.mini-stat {
+  flex: 1;
+  text-align: center;
+  background: rgba(213, 132, 46, 0.05);
+  padding: 15px 10px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.mini-stat:hover {
+  background: rgba(213, 132, 46, 0.1);
+  transform: scale(1.05);
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #d5842e;
+  margin-bottom: 5px;
+}
+
+.stat-text {
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* .ai-features-list {
+} */
+
+.mini-feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.mini-feature:hover {
+  color: #d5842e;
+  transform: translateX(5px);
+}
+
+.feature-dot {
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, #d5842e, #529895);
+  border-radius: 50%;
+}
+
+.ai-btn-compact {
+  background: linear-gradient(135deg, #d5842e 25%, #529895 50%, #0a9ec7 100%);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  width: 100%;
+}
+
+.ai-btn-compact:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(213, 132, 46, 0.3);
+}
+
+/* Animations */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+@keyframes flow {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Dark theme styles */
+body.dark-theme .ai-career-compact {
+  background: #1e1e1e;
+}
+
+body.dark-theme .ai-career-card {
+  background: linear-gradient(135deg, #2d2d2d 0%, #3d3d3d 100%);
+  color: #e0e0e0;
+}
+
+body.dark-theme .stat-text {
+  color: #b0b0b0;
+}
+
+body.dark-theme .mini-feature {
+  color: #e0e0e0;
+}
+
+body.dark-theme .mini-feature:hover {
+  color: #d5842e;
+}
+
+body.dark-theme .mini-stat {
+  background: rgba(213, 132, 46, 0.1);
+}
+
+body.dark-theme .mini-stat:hover {
+  background: rgba(213, 132, 46, 0.15);
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .ai-career-card {
+    width: 350px;
+    min-height: 430px;
+    padding: 25px;
+  }
+
+  .ai-title {
+    font-size: 1.5rem;
+  }
+
+  .ai-icon {
+    font-size: 1.5rem;
+  }
+
+  .stat-value {
+    font-size: 1.3rem;
+  }
+
+  .mini-feature {
+    font-size: 0.85rem;
+  }
+
+  .ai-btn-compact {
+    font-size: 0.85rem;
+    padding: 10px 20px;
+  }
+}

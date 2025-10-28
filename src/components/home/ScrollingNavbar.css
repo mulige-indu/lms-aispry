@@ -1,0 +1,472 @@
+.scrolling-navbar {
+  background: linear-gradient(135deg, #d5842e 25%, rgba(82, 152, 149, 0.95) 50%, #0a9ec7 100%);
+  padding: 15px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  height: 2px;
+}
+
+.scrolling-content {
+  overflow: hidden;
+  width: 100%;
+}
+
+.scroll-track {
+  display: inline-flex;
+  animation: scroll 30s linear infinite;
+  gap: 40px;
+}
+
+.nav-item {
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 10px 20px;
+  /* border-radius: 25px; */
+  /* background: rgba(255, 255, 255, 0.1); */
+  backdrop-filter: blur(10px);
+  /* border: 1px solid rgba(255, 255, 255, 0.2); */
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.star-separator {
+  color: white;
+  font-size: 16px;
+  display: inline-block;
+  margin: 0 10px;
+  align-self: center;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes navbar-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.main-content {
+  margin-top: 140px;
+  padding: 20px 0;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.main-content > section {
+  position: relative;
+  z-index: 1;
+  display: block;
+  clear: both;
+}
+
+.main-content .video-booking-section {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.hero-heading {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px 20px 30px 20px;
+}
+
+.hero-heading h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0;
+  /* background: linear-gradient(135deg, #d5842e 25%, rgba(82, 152, 149, 0.95) 70%, #0a9ec7 100%); */
+  background-color: #d5842e;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  line-height: 1.2;
+}
+
+body.dark-theme .hero-heading h1 {
+  /* background: linear-gradient(135deg, #FF6B9D, #B30058); */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (max-width: 768px) {
+  .hero-heading h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-heading h1 {
+    font-size: 2rem;
+  }
+}
+
+.video-booking-section {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  margin: 0 auto;
+  align-items: stretch;
+  background: transparent;
+  max-width: 1200px;
+  padding: 40px 20px 40px 20px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.video-aside {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 400px;
+  flex: 2;
+  box-sizing: border-box;
+}
+
+.video-aside:hover {
+  transform: translateY(-5px);
+}
+
+.video-container {
+  width: 100%;
+}
+
+.course-video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.booking-aside {
+  /* background: linear-gradient(135deg, #8B0045, #B30058); */
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  color: #333;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 400px;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.booking-aside::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  outline: none;
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 18px 30px;
+  background: white;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background: #f8f9fa;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark theme styles */
+body.dark-theme .video-aside {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
+
+body.dark-theme .booking-aside {
+  background: linear-gradient(135deg, #8B0045, #B30058);
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .main-content {
+    margin-top: 110px;
+  }
+
+  .video-booking-section {
+    gap: 25px;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .scrolling-navbar {
+    position: relative;
+    top: 0;
+  }
+
+  .main-content {
+    margin-top: 0;
+    padding: 15px 0;
+  }
+
+  .hero-heading {
+    padding: 15px 10px 40px 10px;
+    margin-bottom: 30px;
+  }
+
+  .video-booking-section {
+    flex-direction: column !important;
+    gap: 20px;
+    padding: 0 10px;
+    margin: 0 auto;
+  }
+
+  .video-aside,
+  .booking-aside {
+    flex: 1;
+    width: 100%;
+    min-height: auto;
+  }
+
+  .video-aside {
+    padding: 20px;
+  }
+
+  .booking-aside {
+    padding: 25px;
+  }
+
+  .booking-heading {
+    font-size: 1.5rem;
+  }
+
+  .course-video {
+    max-height: 300px;
+    object-fit: cover;
+  }
+
+  .nav-item {
+    font-size: 13px;
+    padding: 8px 15px;
+  }
+
+  .scroll-track {
+    gap: 30px;
+  }
+
+  .content-section {
+    padding: 25px 15px;
+    margin: 15px 0;
+  }
+
+  .content-section h2 {
+    font-size: 22px;
+  }
+
+  .content-section p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-heading {
+    padding: 10px 5px 30px 5px;
+    margin-bottom: 20px;
+  }
+
+  .video-booking-section {
+    gap: 15px;
+    padding: 0 5px;
+    margin-bottom: 0;
+  }
+
+  .video-aside,
+  .booking-aside {
+    padding: 15px;
+    border-radius: 12px;
+  }
+
+  .booking-heading {
+    font-size: 1.25rem;
+  }
+
+  .form-input {
+    padding: 12px 15px;
+    font-size: 16px; /* Prevent iOS zoom */
+  }
+
+  .submit-btn {
+    padding: 14px 20px;
+    font-size: 16px;
+  }
+
+  .nav-item {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .scroll-track {
+    gap: 20px;
+  }
+
+  .star-separator {
+    font-size: 14px;
+    margin: 0 5px;
+  }
+
+  .course-video {
+    max-height: 250px;
+  }
+
+  .content-section {
+    padding: 20px 12px;
+    margin: 10px 0;
+    border-radius: 12px;
+  }
+
+  .content-section h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .content-section p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 320px) {
+  .video-aside,
+  .booking-aside {
+    padding: 12px;
+  }
+
+  .booking-heading {
+    font-size: 1.1rem;
+  }
+
+  .form-input {
+    padding: 10px 12px;
+  }
+
+  .submit-btn {
+    padding: 12px 18px;
+    font-size: 14px;
+  }
+
+  .course-video {
+    max-height: 200px;
+  }
+
+  .content-section {
+    padding: 15px 10px;
+  }
+}
+
+.content-section {
+  background: white;
+  margin: 20px 0;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.content-section h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.content-section p {
+  color: #666;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: white;
+  min-height: 100vh;
+}
