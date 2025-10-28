@@ -2,9 +2,9 @@
 // Automatically uses production URL when deployed, localhost when developing
 
 const getApiBaseUrl = () => {
-  // If running in production (on Vercel/Netlify), use environment variable
-  if (process.env.REACT_APP_API_URL) {
-    return process.env.REACT_APP_API_URL;
+  // Check if we're in a browser environment
+  if (typeof window === 'undefined') {
+    return 'http://localhost:8080/api';
   }
 
   // If deployed but no env var set, try to detect production

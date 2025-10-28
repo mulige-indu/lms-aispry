@@ -161,12 +161,13 @@ We're excited to have you on this journey!
 
       if (data.success) {
         // Send SMS message to the student (optional)
-        try {
-          await sendSMS(formData.phone, formData.name);
-        } catch (smsError) {
-          console.log('SMS sending failed:', smsError);
-          // Continue even if SMS fails
-        }
+        // Note: SMS is now handled by backend, not frontend
+        // try {
+        //   await sendSMS(formData.phone, formData.name);
+        // } catch (smsError) {
+        //   console.log('SMS sending failed:', smsError);
+        //   // Continue even if SMS fails
+        // }
 
         setIsSubmitting(false);
         setSubmitSuccess(true);
