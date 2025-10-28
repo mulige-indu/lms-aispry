@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../../config';
 import ScrollingNavbar from '../home/ScrollingNavbar';
 import MainNavbar from '../home/MainNavbar';
 import CourseCard from '../common/CourseCard';
@@ -54,7 +55,7 @@ const Courses = () => {
   const fetchCourses = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/courses');
+      const response = await fetch(`${API_BASE_URL}/courses`);
       const data = await response.json();
 
       if (data.success) {
@@ -82,7 +83,7 @@ const Courses = () => {
     try {
       const student = JSON.parse(studentData);
 
-      const response = await fetch(`/api/courses/enroll/${courseId}`, {
+      const response = await fetch(`${API_BASE_URL}/courses/enroll/${courseId}`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

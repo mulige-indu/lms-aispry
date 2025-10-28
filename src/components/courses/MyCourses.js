@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../../config';
 import CourseCard from '../common/CourseCard';
 import './Courses.css';
 
@@ -59,7 +60,7 @@ const MyCourses = () => {
       setError(null); // Clear any previous errors
       const token = localStorage.getItem('token');
 
-      const response = await fetch(`/api/courses/my-courses/${user.id}`, {
+      const response = await fetch(`${API_BASE_URL}/courses/my-courses/${user.id}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

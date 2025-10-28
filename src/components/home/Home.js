@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from '../../config';
 import ScrollingNavbar from './ScrollingNavbar';
 import MainNavbar from './MainNavbar';
 import CourseCard from '../common/CourseCard';
@@ -144,7 +145,7 @@ We're excited to have you on this journey!
 
     try {
       // Call the reserve-seat API
-      const response = await fetch('http://localhost:8080/api/reserve-seat', {
+      const response = await fetch(`${API_BASE_URL}/reserve-seat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
