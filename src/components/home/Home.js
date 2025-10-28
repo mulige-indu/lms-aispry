@@ -677,7 +677,7 @@ We're excited to have you on this journey!
               <div className="course-slider-wrapper">
                 <div
                   className="course-slider-track"
-                  style={{ transform: `translateX(calc(-${currentSlide * 100}% - ${currentSlide * 20}px))` }}
+                  data-current-slide={currentSlide}
                 >
                   {courses.map((course, index) => (
                     <CourseCard

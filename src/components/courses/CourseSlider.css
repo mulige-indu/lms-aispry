@@ -377,6 +377,14 @@
     transition: transform 0.5s ease-in-out;
   }
 
+  /* Use data attribute to calculate transform */
+  .course-slider-track[data-current-slide="0"] { transform: translateX(0); }
+  .course-slider-track[data-current-slide="1"] { transform: translateX(-100%); }
+  .course-slider-track[data-current-slide="2"] { transform: translateX(-200%); }
+  .course-slider-track[data-current-slide="3"] { transform: translateX(-300%); }
+  .course-slider-track[data-current-slide="4"] { transform: translateX(-400%); }
+  .course-slider-track[data-current-slide="5"] { transform: translateX(-500%); }
+
   .course-slider-track .slider-card {
     min-width: 100%;
     flex-shrink: 0;
