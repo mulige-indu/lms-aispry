@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { API_BASE_URL } from '../../config';
-import ScrollingNavbar from '../home/ScrollingNavbar';
-import MainNavbar from '../home/MainNavbar';
 import CourseCard from '../common/CourseCard';
 import './Courses.css';
 
@@ -158,8 +156,8 @@ const Courses = () => {
         <div className="navbar-container">
           <div className="navbar-logo">
             <img
-              src="https://aispry.com/pluginfile.php/1/theme_university/logo/1760548222/AiTutor-Logo-w.png"
-              alt="AiTutor Logo"
+              src="/images/logo-06.png"
+              alt="360DigiTMG Logo"
               className="logo-image"
             />
           </div>
@@ -171,7 +169,7 @@ const Courses = () => {
             <button className="nav-btn active" onClick={() => navigate('/courses')}>
               🔍 Browse Courses
             </button>
-            <button className="nav-btn" onClick={() => alert('Discussion Forum coming soon!')}>
+            <button className="nav-btn" onClick={() => navigate('/forum')}>
               💬 Discussion Forum
             </button>
             <button className="nav-btn" onClick={() => alert('Support coming soon!')}>

@@ -1,6 +1,6 @@
 .scrolling-navbar {
   background: linear-gradient(135deg, #d5842e 25%, rgba(82, 152, 149, 0.95) 50%, #0a9ec7 100%);
-  padding: 15px 0;
+  padding: 4px 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
@@ -11,7 +11,8 @@
   white-space: nowrap;
   display: flex;
   align-items: center;
-  height: 2px;
+  height: auto;
+  min-height: 32px;
 }
 
 .scrolling-content {
@@ -27,10 +28,10 @@
 
 .nav-item {
   color: white;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   text-decoration: none;
-  padding: 10px 20px;
+  padding: 4px 16px;
   /* border-radius: 25px; */
   /* background: rgba(255, 255, 255, 0.1); */
   backdrop-filter: blur(10px);
@@ -49,9 +50,9 @@
 
 .star-separator {
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   display: inline-block;
-  margin: 0 10px;
+  margin: 0 8px;
   align-self: center;
 }
 
@@ -281,8 +282,18 @@ body.dark-theme .booking-aside {
 
 @media (max-width: 768px) {
   .scrolling-navbar {
-    position: relative;
+    position: fixed !important;
     top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 10px 0;
+    min-height: 45px;
+  }
+
+  .nav-item {
+    font-size: 13px;
   }
 
   .main-content {
@@ -350,6 +361,17 @@ body.dark-theme .booking-aside {
 }
 
 @media (max-width: 480px) {
+  .scrolling-navbar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 8px 0;
+    min-height: 40px;
+  }
+
   .hero-heading {
     padding: 10px 5px 30px 5px;
     margin-bottom: 20px;
@@ -417,6 +439,22 @@ body.dark-theme .booking-aside {
 }
 
 @media (max-width: 320px) {
+  .scrolling-navbar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 6px 0;
+    min-height: 35px;
+  }
+
+  .nav-item {
+    font-size: 10px;
+    padding: 5px 10px;
+  }
+
   .video-aside,
   .booking-aside {
     padding: 12px;

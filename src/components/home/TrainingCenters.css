@@ -34,8 +34,8 @@
 
 .centers-container {
   max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 20px 0 20px;
+  margin: 0 80px;
+  padding: 0 80px;
   position: relative;
   z-index: 1;
 }

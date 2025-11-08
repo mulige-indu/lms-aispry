@@ -156,7 +156,7 @@ const Signup = () => {
           </button>
           <div className="signup-logo">
             <img
-              src="https://aispry.com/pluginfile.php/1/theme_university/logo/1760548222/AiTutor-Logo-w.png"
+              src="/images/logo-06.png"
               alt="AiTutor Logo"
               className="signup-logo-image"
             />

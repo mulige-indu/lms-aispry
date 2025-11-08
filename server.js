@@ -576,6 +576,602 @@ app.post('/api/reserve-seat', async (req, res) => {
   }
 });
 
+// ==================== FORUM API ENDPOINTS ====================
+
+// Get all forum categories
+app.get('/api/forum/categories', async (req, res) => {
+  try {
+    const [categories] = await pool.query(
+      `SELECT c.*,
+        (SELECT COUNT(*) FROM forum_threads WHERE category_id = c.id) as thread_count
+       FROM forum_categories c
+       WHERE c.is_active = true
+       ORDER BY c.display_order`
+    );
+
+    res.json({
+      success: true,
+      data: categories
+    });
+  } catch (error) {
+    console.error('Get categories error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch categories'
+    });
+  }
+});
+
+// Get threads by category
+app.get('/api/forum/category/:id', async (req, res) => {
+  try {
+    const { page = 1, limit = 20, sort = 'recent' } = req.query;
+    const offset = (page - 1) * limit;
+
+    let orderBy = 't.last_activity_at DESC';
+    if (sort === 'popular') orderBy = 't.view_count DESC';
+    if (sort === 'replies') orderBy = 't.reply_count DESC';
+
+    const [threads] = await pool.query(
+      `SELECT t.*, s.firstName, s.lastName, s.email, c.name as category_name, c.color as category_color,
+        (SELECT COUNT(*) FROM forum_likes WHERE thread_id = t.id) as like_count
+       FROM forum_threads t
+       JOIN students s ON t.user_id = s.id
+       JOIN forum_categories c ON t.category_id = c.id
+       WHERE t.category_id = ?
+       ORDER BY t.is_pinned DESC, ${orderBy}
+       LIMIT ? OFFSET ?`,
+      [req.params.id, parseInt(limit), offset]
+    );
+
+    const [countResult] = await pool.query(
+      'SELECT COUNT(*) as total FROM forum_threads WHERE category_id = ?',
+      [req.params.id]
+    );
+
+    res.json({
+      success: true,
+      data: {
+        threads,
+        pagination: {
+          page: parseInt(page),
+          limit: parseInt(limit),
+          total: countResult[0].total
+        }
+      }
+    });
+  } catch (error) {
+    console.error('Get category threads error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch threads'
+    });
+  }
+});
+
+// Get all threads (for forum overview)
+app.get('/api/forum/threads', async (req, res) => {
+  try {
+    const { page = 1, limit = 20, sort = 'recent', search = '', filter = 'all', categoryId = '' } = req.query;
+    const offset = (page - 1) * limit;
+
+    let orderBy = 't.last_activity_at DESC';
+    if (sort === 'popular') orderBy = 't.view_count DESC';
+    if (sort === 'replies') orderBy = 't.reply_count DESC';
+
+    let whereConditions = ['t.status = "approved"'];
+    let params = [];
+
+    // Filter by status
+    if (filter === 'unanswered') {
+      whereConditions.push('t.is_answered = FALSE');
+    } else if (filter === 'pending') {
+      whereConditions[0] = 't.status = "pending"';
+    }
+
+    // Filter by category
+    if (categoryId) {
+      whereConditions.push('t.category_id = ?');
+      params.push(categoryId);
+    }
+
+    // Search filter
+    if (search) {
+      whereConditions.push('(t.title LIKE ? OR t.content LIKE ?)');
+      params.push(`%${search}%`, `%${search}%`);
+    }
+
+    const whereClause = whereConditions.join(' AND ');
+
+    const [threads] = await pool.query(
+      `SELECT t.*, s.firstName, s.lastName, s.email, c.name as category_name, c.color as category_color,
+        (SELECT COUNT(*) FROM forum_likes WHERE thread_id = t.id) as like_count,
+        (SELECT COUNT(*) FROM forum_posts WHERE thread_id = t.id) as actual_reply_count
+       FROM forum_threads t
+       JOIN students s ON t.user_id = s.id
+       JOIN forum_categories c ON t.category_id = c.id
+       WHERE ${whereClause}
+       ORDER BY t.is_pinned DESC, ${orderBy}
+       LIMIT ? OFFSET ?`,
+      [...params, parseInt(limit), offset]
+    );
+
+    res.json({
+      success: true,
+      data: threads
+    });
+  } catch (error) {
+    console.error('Get threads error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch threads'
+    });
+  }
+});
+
+// Get single thread with posts
+app.get('/api/forum/thread/:id', async (req, res) => {
+  try {
+    // Get thread details
+    const [threads] = await pool.query(
+      `SELECT t.*, s.firstName, s.lastName, s.email, c.name as category_name, c.color as category_color,
+        (SELECT COUNT(*) FROM forum_likes WHERE thread_id = t.id) as like_count
+       FROM forum_threads t
+       JOIN students s ON t.user_id = s.id
+       JOIN forum_categories c ON t.category_id = c.id
+       WHERE t.id = ?`,
+      [req.params.id]
+    );
+
+    if (threads.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'Thread not found'
+      });
+    }
+
+    // Get all posts for this thread
+    const [posts] = await pool.query(
+      `SELECT p.*, s.firstName, s.lastName, s.email,
+        (SELECT COUNT(*) FROM forum_likes WHERE post_id = p.id) as like_count
+       FROM forum_posts p
+       JOIN students s ON p.user_id = s.id
+       WHERE p.thread_id = ?
+       ORDER BY p.created_at ASC`,
+      [req.params.id]
+    );
+
+    // Increment view count
+    await pool.query(
+      'UPDATE forum_threads SET view_count = view_count + 1 WHERE id = ?',
+      [req.params.id]
+    );
+
+    res.json({
+      success: true,
+      data: {
+        thread: threads[0],
+        posts: posts
+      }
+    });
+  } catch (error) {
+    console.error('Get thread error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch thread'
+    });
+  }
+});
+
+// Create new thread
+app.post('/api/forum/thread', async (req, res) => {
+  try {
+    const { userId, categoryId, courseId, title, content, questionType, attachmentUrl, attachmentName } = req.body;
+
+    if (!userId || !categoryId || !title || !content) {
+      return res.status(400).json({
+        success: false,
+        message: 'User ID, category ID, title, and content are required'
+      });
+    }
+
+    const [result] = await pool.query(
+      `INSERT INTO forum_threads (user_id, category_id, course_id, title, content, question_type, attachment_url, attachment_name, status)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'approved')`,
+      [userId, categoryId, courseId || null, title, content, questionType || 'general', attachmentUrl || null, attachmentName || null]
+    );
+
+    // Fetch the created thread
+    const [thread] = await pool.query(
+      `SELECT t.*, s.firstName, s.lastName, c.name as category_name, c.color as category_color
+       FROM forum_threads t
+       JOIN students s ON t.user_id = s.id
+       JOIN forum_categories c ON t.category_id = c.id
+       WHERE t.id = ?`,
+      [result.insertId]
+    );
+
+    res.json({
+      success: true,
+      message: 'Thread created successfully',
+      data: thread[0]
+    });
+  } catch (error) {
+    console.error('Create thread error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to create thread'
+    });
+  }
+});
+
+// Create new post/reply
+app.post('/api/forum/post', async (req, res) => {
+  try {
+    const { userId, threadId, content, parentPostId } = req.body;
+
+    if (!userId || !threadId || !content) {
+      return res.status(400).json({
+        success: false,
+        message: 'User ID, thread ID, and content are required'
+      });
+    }
+
+    const [result] = await pool.query(
+      `INSERT INTO forum_posts (thread_id, user_id, parent_post_id, content)
+       VALUES (?, ?, ?, ?)`,
+      [threadId, userId, parentPostId || null, content]
+    );
+
+    // Fetch the created post
+    const [post] = await pool.query(
+      `SELECT p.*, s.firstName, s.lastName, s.email
+       FROM forum_posts p
+       JOIN students s ON p.user_id = s.id
+       WHERE p.id = ?`,
+      [result.insertId]
+    );
+
+    res.json({
+      success: true,
+      message: 'Reply posted successfully',
+      data: post[0]
+    });
+  } catch (error) {
+    console.error('Create post error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to create post'
+    });
+  }
+});
+
+// Update post/reply
+app.put('/api/forum/post/:id', async (req, res) => {
+  try {
+    const { userId, content } = req.body;
+
+    if (!userId || !content) {
+      return res.status(400).json({
+        success: false,
+        message: 'User ID and content are required'
+      });
+    }
+
+    // Verify ownership
+    const [post] = await pool.query(
+      'SELECT user_id FROM forum_posts WHERE id = ?',
+      [req.params.id]
+    );
+
+    if (post.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'Post not found'
+      });
+    }
+
+    if (post[0].user_id !== userId) {
+      return res.status(403).json({
+        success: false,
+        message: 'You can only edit your own posts'
+      });
+    }
+
+    await pool.query(
+      `UPDATE forum_posts
+       SET content = ?, is_edited = true, edited_at = CURRENT_TIMESTAMP
+       WHERE id = ?`,
+      [content, req.params.id]
+    );
+
+    res.json({
+      success: true,
+      message: 'Post updated successfully'
+    });
+  } catch (error) {
+    console.error('Update post error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to update post'
+    });
+  }
+});
+
+// Delete post
+app.delete('/api/forum/post/:id', async (req, res) => {
+  try {
+    const { userId } = req.body;
+
+    if (!userId) {
+      return res.status(400).json({
+        success: false,
+        message: 'User ID is required'
+      });
+    }
+
+    // Verify ownership
+    const [post] = await pool.query(
+      'SELECT user_id FROM forum_posts WHERE id = ?',
+      [req.params.id]
+    );
+
+    if (post.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'Post not found'
+      });
+    }
+
+    if (post[0].user_id !== userId) {
+      return res.status(403).json({
+        success: false,
+        message: 'You can only delete your own posts'
+      });
+    }
+
+    await pool.query('DELETE FROM forum_posts WHERE id = ?', [req.params.id]);
+
+    res.json({
+      success: true,
+      message: 'Post deleted successfully'
+    });
+  } catch (error) {
+    console.error('Delete post error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to delete post'
+    });
+  }
+});
+
+// Like/Unlike thread
+app.post('/api/forum/thread/:id/like', async (req, res) => {
+  try {
+    const { userId } = req.body;
+
+    if (!userId) {
+      return res.status(400).json({
+        success: false,
+        message: 'User ID is required'
+      });
+    }
+
+    // Check if already liked
+    const [existing] = await pool.query(
+      'SELECT id FROM forum_likes WHERE user_id = ? AND thread_id = ?',
+      [userId, req.params.id]
+    );
+
+    if (existing.length > 0) {
+      // Unlike
+      await pool.query(
+        'DELETE FROM forum_likes WHERE user_id = ? AND thread_id = ?',
+        [userId, req.params.id]
+      );
+      res.json({
+        success: true,
+        message: 'Thread unliked',
+        liked: false
+      });
+    } else {
+      // Like
+      await pool.query(
+        'INSERT INTO forum_likes (user_id, thread_id) VALUES (?, ?)',
+        [userId, req.params.id]
+      );
+      res.json({
+        success: true,
+        message: 'Thread liked',
+        liked: true
+      });
+    }
+  } catch (error) {
+    console.error('Like thread error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to like thread'
+    });
+  }
+});
+
+// Like/Unlike post
+app.post('/api/forum/post/:id/like', async (req, res) => {
+  try {
+    const { userId } = req.body;
+
+    if (!userId) {
+      return res.status(400).json({
+        success: false,
+        message: 'User ID is required'
+      });
+    }
+
+    // Check if already liked
+    const [existing] = await pool.query(
+      'SELECT id FROM forum_likes WHERE user_id = ? AND post_id = ?',
+      [userId, req.params.id]
+    );
+
+    if (existing.length > 0) {
+      // Unlike
+      await pool.query(
+        'DELETE FROM forum_likes WHERE user_id = ? AND post_id = ?',
+        [userId, req.params.id]
+      );
+      res.json({
+        success: true,
+        message: 'Post unliked',
+        liked: false
+      });
+    } else {
+      // Like
+      await pool.query(
+        'INSERT INTO forum_likes (user_id, post_id) VALUES (?, ?)',
+        [userId, req.params.id]
+      );
+      res.json({
+        success: true,
+        message: 'Post liked',
+        liked: true
+      });
+    }
+  } catch (error) {
+    console.error('Like post error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to like post'
+    });
+  }
+});
+
+// Get user's forum activity
+app.get('/api/forum/user/:userId/activity', async (req, res) => {
+  try {
+    // Get user's threads
+    const [threads] = await pool.query(
+      `SELECT t.*, c.name as category_name, c.color as category_color,
+        (SELECT COUNT(*) FROM forum_posts WHERE thread_id = t.id) as reply_count
+       FROM forum_threads t
+       JOIN forum_categories c ON t.category_id = c.id
+       WHERE t.user_id = ?
+       ORDER BY t.created_at DESC
+       LIMIT 10`,
+      [req.params.userId]
+    );
+
+    // Get user's posts
+    const [posts] = await pool.query(
+      `SELECT p.*, t.title as thread_title, t.id as thread_id
+       FROM forum_posts p
+       JOIN forum_threads t ON p.thread_id = t.id
+       WHERE p.user_id = ?
+       ORDER BY p.created_at DESC
+       LIMIT 10`,
+      [req.params.userId]
+    );
+
+    // Get user's badges
+    const [badges] = await pool.query(
+      'SELECT * FROM forum_badges WHERE user_id = ?',
+      [req.params.userId]
+    );
+
+    res.json({
+      success: true,
+      data: {
+        threads,
+        posts,
+        badges
+      }
+    });
+  } catch (error) {
+    console.error('Get user activity error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch user activity'
+    });
+  }
+});
+
+// Bookmark/Unbookmark thread
+app.post('/api/forum/thread/:id/bookmark', async (req, res) => {
+  try {
+    const { userId } = req.body;
+
+    if (!userId) {
+      return res.status(400).json({
+        success: false,
+        message: 'User ID is required'
+      });
+    }
+
+    // Check if already bookmarked
+    const [existing] = await pool.query(
+      'SELECT id FROM forum_bookmarks WHERE user_id = ? AND thread_id = ?',
+      [userId, req.params.id]
+    );
+
+    if (existing.length > 0) {
+      // Remove bookmark
+      await pool.query(
+        'DELETE FROM forum_bookmarks WHERE user_id = ? AND thread_id = ?',
+        [userId, req.params.id]
+      );
+      res.json({
+        success: true,
+        message: 'Bookmark removed',
+        bookmarked: false
+      });
+    } else {
+      // Add bookmark
+      await pool.query(
+        'INSERT INTO forum_bookmarks (user_id, thread_id) VALUES (?, ?)',
+        [userId, req.params.id]
+      );
+      res.json({
+        success: true,
+        message: 'Thread bookmarked',
+        bookmarked: true
+      });
+    }
+  } catch (error) {
+    console.error('Bookmark thread error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to bookmark thread'
+    });
+  }
+});
+
+// Get user's bookmarked threads
+app.get('/api/forum/user/:userId/bookmarks', async (req, res) => {
+  try {
+    const [threads] = await pool.query(
+      `SELECT t.*, s.firstName, s.lastName, c.name as category_name, c.color as category_color,
+        b.created_at as bookmarked_at
+       FROM forum_bookmarks b
+       JOIN forum_threads t ON b.thread_id = t.id
+       JOIN students s ON t.user_id = s.id
+       JOIN forum_categories c ON t.category_id = c.id
+       WHERE b.user_id = ?
+       ORDER BY b.created_at DESC`,
+      [req.params.userId]
+    );
+
+    res.json({
+      success: true,
+      data: threads
+    });
+  } catch (error) {
+    console.error('Get bookmarks error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch bookmarks'
+    });
+  }
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({

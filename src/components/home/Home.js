@@ -8,6 +8,13 @@ import '../courses/CourseSlider.css';
 import './AboutLeadership.css';
 import './TrainingCenters.css';
 import './AlumniSection.css';
+import {
+  FaChartBar, FaRobot, FaBrain, FaPython, FaGraduationCap,
+  FaBriefcase, FaTrophy, FaBook, FaComments, FaPhone,
+  FaMapMarkerAlt, FaUsers, FaLightbulb, FaBullseye,
+  FaRocket, FaHandshake, FaGlobe, FaChartLine, FaLaptop,
+  FaBolt, FaSync, FaEnvelope
+} from 'react-icons/fa';
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -28,47 +35,337 @@ const Home = () => {
   const [centerTouchStart, setCenterTouchStart] = useState(0);
   const [centerTouchEnd, setCenterTouchEnd] = useState(0);
 
+  // Career calculator states
+  const [selectedRole, setSelectedRole] = useState('');
+  const [selectedExperience, setSelectedExperience] = useState('0-2 Years');
+  const [salaryData, setSalaryData] = useState({
+    current: '₹3-5 LPA',
+    projected: '₹8-12 LPA',
+    growth: '+180%'
+  });
+  const [careerTracks, setCareerTracks] = useState([
+    {
+      icon: <FaChartBar />,
+      title: 'Data Analyst',
+          icon: <FaChartBar />,
+      salary: '₹4-8 LPA',
+      timeline: '3-4 Months',
+      skills: ['Python', 'SQL', 'Tableau'],
+      demand: 'High Demand'
+    },
+    {
+      icon: <FaRobot />,
+      title: 'Data Scientist',
+      salary: '₹8-15 LPA',
+      timeline: '6-8 Months',
+      skills: ['Machine Learning', 'Python', 'Statistics'],
+      demand: 'Very High'
+    },
+    {
+      icon: <FaBrain />,
+      title: 'ML Engineer',
+      salary: '₹12-25 LPA',
+      timeline: '8-10 Months',
+      skills: ['Deep Learning', 'MLOps', 'Cloud'],
+      demand: 'Extreme'
+    }
+  ]);
+  const [salaryUpdateKey, setSalaryUpdateKey] = useState(0);
+
   const navigate = useNavigate();
 
   // Course data
   const courses = [
     {
-      icon: <img src="https://img.icons8.com/fluency/48/bar-chart.png" alt="data science" />,
+      icon: <FaChartBar size={48} />,
       name: 'Data Science',
       description: 'Master Python, Machine Learning, and Statistical Analysis',
       features: ['6 Months', 'Live Projects', 'Job Assistance']
     },
     {
-      icon: <img src="https://img.icons8.com/fluency/48/robot.png" alt="AI" />,
+      icon: <FaRobot size={48} />,
       name: 'Artificial Intelligence',
       description: 'Deep Learning, Neural Networks, and AI Applications',
       features: ['8 Months', 'Industry Projects', 'Certifications']
     },
     {
-      icon: <img src="https://img.icons8.com/fluency/48/up-graph.png" alt="analytics" />,
+      icon: <FaChartLine size={48} />,
       name: 'Business Analytics',
       description: 'Excel, Tableau, Power BI, and Business Intelligence',
       features: ['4 Months', 'Case Studies', 'Global Certification']
     },
     {
-      icon: <img src="https://img.icons8.com/fluency/48/cloud.png" alt="cloud" />,
+      icon: <FaGlobe size={48} />,
       name: 'Cloud Computing',
       description: 'AWS, Azure, Google Cloud Platform and DevOps',
       features: ['5 Months', 'Hands-on Labs', 'Cloud Certifications']
     },
     {
-      icon: <img src="https://img.icons8.com/fluency/48/python.png" alt="python" />,
+      icon: <FaPython size={48} />,
       name: 'Python Programming',
       description: 'Full Stack Python Development and Web Applications',
       features: ['3 Months', 'Portfolio Projects', 'Mentorship']
     },
     {
-      icon: <img src="https://img.icons8.com/fluency/48/security-lock.png" alt="security" />,
+      icon: <FaBullseye size={48} />,
       name: 'Cyber Security',
       description: 'Ethical Hacking, Network Security, and Digital Forensics',
       features: ['7 Months', 'Lab Simulations', 'Security Certifications']
     }
   ];
+
+  // Career calculator handlers
+  const handleRoleChange = (e) => {
+    const role = e.target.value;
+    setSelectedRole(role);
+    updateSalaryProjection(role, selectedExperience);
+  };
+
+  const handleExperienceChange = (experience) => {
+    setSelectedExperience(experience);
+    updateSalaryProjection(selectedRole, experience);
+  };
+
+  const updateSalaryProjection = (role, experience) => {
+    // Realistic salary data based on Indian market (2024-2025)
+    const salaryMatrix = {
+      'Student/Fresher': {
+        '0-2 Years': { current: '₹2.5-4 LPA', projected: '₹6-9 LPA', growth: '+140%' },
+        '3-5 Years': { current: '₹4-6 LPA', projected: '₹9-14 LPA', growth: '+133%' },
+        '5+ Years': { current: '₹6-9 LPA', projected: '₹14-20 LPA', growth: '+140%' }
+      },
+      'Software Developer': {
+        '0-2 Years': { current: '₹4-7 LPA', projected: '₹8-12 LPA', growth: '+80%' },
+        '3-5 Years': { current: '₹7-12 LPA', projected: '₹15-22 LPA', growth: '+100%' },
+        '5+ Years': { current: '₹12-18 LPA', projected: '₹20-30 LPA', growth: '+75%' }
+      },
+      'Business Analyst': {
+        '0-2 Years': { current: '₹3.5-6 LPA', projected: '₹7-11 LPA', growth: '+90%' },
+        '3-5 Years': { current: '₹6-10 LPA', projected: '₹12-18 LPA', growth: '+85%' },
+        '5+ Years': { current: '₹10-15 LPA', projected: '₹18-25 LPA', growth: '+75%' }
+      },
+      'Marketing Executive': {
+        '0-2 Years': { current: '₹3-5 LPA', projected: '₹8-12 LPA', growth: '+150%' },
+        '3-5 Years': { current: '₹5-8 LPA', projected: '₹12-18 LPA', growth: '+133%' },
+        '5+ Years': { current: '₹8-12 LPA', projected: '₹16-24 LPA', growth: '+110%' }
+      },
+      'Sales Representative': {
+        '0-2 Years': { current: '₹2.5-5 LPA', projected: '₹8-13 LPA', growth: '+160%' },
+        '3-5 Years': { current: '₹5-9 LPA', projected: '₹13-20 LPA', growth: '+133%' },
+        '5+ Years': { current: '₹9-14 LPA', projected: '₹18-28 LPA', growth: '+110%' }
+      },
+      'Teacher': {
+        '0-2 Years': { current: '₹2.5-4 LPA', projected: '₹7-11 LPA', growth: '+170%' },
+        '3-5 Years': { current: '₹4-6 LPA', projected: '₹11-16 LPA', growth: '+150%' },
+        '5+ Years': { current: '₹6-9 LPA', projected: '₹16-22 LPA', growth: '+140%' }
+      },
+      'Other': {
+        '0-2 Years': { current: '₹3-5 LPA', projected: '₹8-12 LPA', growth: '+150%' },
+        '3-5 Years': { current: '₹5-9 LPA', projected: '₹12-18 LPA', growth: '+120%' },
+        '5+ Years': { current: '₹9-14 LPA', projected: '₹18-26 LPA', growth: '+100%' }
+      }
+    };
+
+    // Career track recommendations based on role and experience
+    const careerTrackMatrix = {
+      'Student/Fresher': [
+        {
+          icon: <FaChartBar />,
+          title: 'Data Analyst',
+          icon: <FaChartBar />,
+          salary: '₹4-8 LPA',
+          timeline: '3-4 Months',
+          skills: ['Excel', 'SQL', 'Power BI'],
+          demand: 'High Demand'
+        },
+        {
+          icon: <FaPython />,
+          title: 'Python Developer',
+          salary: '₹5-10 LPA',
+          timeline: '4-5 Months',
+          skills: ['Python', 'Django', 'APIs'],
+          demand: 'Very High'
+        },
+        {
+          icon: <FaBriefcase />,
+          title: 'Business Analyst',
+          salary: '₹6-11 LPA',
+          timeline: '3-4 Months',
+          skills: ['Analytics', 'SQL', 'Tableau'],
+          demand: 'High Demand'
+        }
+      ],
+      'Software Developer': [
+        {
+          icon: <FaRobot />,
+          title: 'Data Scientist',
+          salary: '₹10-18 LPA',
+          timeline: '5-6 Months',
+          skills: ['ML', 'Python', 'Statistics'],
+          demand: 'Very High'
+        },
+        {
+          icon: <FaBrain />,
+          title: 'ML Engineer',
+          salary: '₹15-28 LPA',
+          timeline: '6-8 Months',
+          skills: ['Deep Learning', 'TensorFlow', 'Cloud'],
+          demand: 'Extreme'
+        },
+        {
+          icon: <FaBrain />,
+          title: 'AI Engineer',
+          salary: '₹18-35 LPA',
+          timeline: '8-10 Months',
+          skills: ['NLP', 'Computer Vision', 'LLMs'],
+          demand: 'Extreme'
+        }
+      ],
+      'Business Analyst': [
+        {
+          icon: <FaChartBar />,
+          title: 'Data Analyst',
+          icon: <FaChartBar />,
+          salary: '₹6-12 LPA',
+          timeline: '3-4 Months',
+          skills: ['Python', 'SQL', 'Tableau'],
+          demand: 'High Demand'
+        },
+        {
+          icon: <FaChartLine />,
+          title: 'Business Intelligence Analyst',
+          salary: '₹8-15 LPA',
+          timeline: '4-5 Months',
+          skills: ['Power BI', 'SQL', 'Data Modeling'],
+          demand: 'Very High'
+        },
+        {
+          icon: <FaChartLine />,
+          title: 'Analytics Manager',
+          salary: '₹12-22 LPA',
+          timeline: '5-6 Months',
+          skills: ['Strategy', 'ML', 'Leadership'],
+          demand: 'High Demand'
+        }
+      ],
+      'Marketing Executive': [
+        {
+          icon: <FaChartBar />,
+          title: 'Marketing Data Analyst',
+          salary: '₹6-12 LPA',
+          timeline: '3-4 Months',
+          skills: ['Analytics', 'SQL', 'Google Analytics'],
+          demand: 'High Demand'
+        },
+        {
+          icon: <FaRocket />,
+          title: 'Growth Analyst',
+          salary: '₹8-16 LPA',
+          timeline: '4-5 Months',
+          skills: ['Python', 'A/B Testing', 'SQL'],
+          demand: 'Very High'
+        },
+        {
+          icon: <FaLightbulb />,
+          title: 'Marketing Science Analyst',
+          salary: '₹12-20 LPA',
+          timeline: '5-6 Months',
+          skills: ['ML', 'Statistics', 'Marketing'],
+          demand: 'Very High'
+        }
+      ],
+      'Sales Representative': [
+        {
+          icon: <FaChartBar />,
+          title: 'Sales Data Analyst',
+          salary: '₹6-13 LPA',
+          timeline: '3-4 Months',
+          skills: ['Excel', 'SQL', 'Salesforce'],
+          demand: 'High Demand'
+        },
+        {
+          icon: <FaBriefcase />,
+          title: 'Business Analyst',
+          salary: '₹8-16 LPA',
+          timeline: '4-5 Months',
+          skills: ['Analytics', 'CRM', 'Forecasting'],
+          demand: 'Very High'
+        },
+        {
+          icon: <FaChartLine />,
+          title: 'Sales Intelligence Analyst',
+          salary: '₹12-22 LPA',
+          timeline: '5-6 Months',
+          skills: ['ML', 'Predictive Analytics', 'Python'],
+          demand: 'Very High'
+        }
+      ],
+      'Teacher': [
+        {
+          icon: <FaChartBar />,
+          title: 'Data Analyst',
+          icon: <FaChartBar />,
+          salary: '₹5-10 LPA',
+          timeline: '3-4 Months',
+          skills: ['Python', 'SQL', 'Visualization'],
+          demand: 'High Demand'
+        },
+        {
+          icon: <FaRobot />,
+          title: 'EdTech Data Scientist',
+          salary: '₹8-15 LPA',
+          timeline: '5-6 Months',
+          skills: ['ML', 'Learning Analytics', 'Python'],
+          demand: 'Very High'
+        },
+        {
+          icon: <FaBook />,
+          title: 'Technical Content Creator',
+          salary: '₹6-12 LPA',
+          timeline: '3-4 Months',
+          skills: ['Programming', 'Teaching', 'Content'],
+          demand: 'High Demand'
+        }
+      ],
+      'Other': [
+        {
+          icon: <FaChartBar />,
+          title: 'Data Analyst',
+          icon: <FaChartBar />,
+          salary: '₹5-10 LPA',
+          timeline: '3-4 Months',
+          skills: ['Python', 'SQL', 'Excel'],
+          demand: 'High Demand'
+        },
+        {
+          icon: <FaRobot />,
+          title: 'Data Scientist',
+          salary: '₹10-18 LPA',
+          timeline: '6-8 Months',
+          skills: ['ML', 'Statistics', 'Python'],
+          demand: 'Very High'
+        },
+        {
+          icon: <FaBriefcase />,
+          title: 'Business Analyst',
+          salary: '₹7-13 LPA',
+          timeline: '4-5 Months',
+          skills: ['Analytics', 'SQL', 'Business'],
+          demand: 'High Demand'
+        }
+      ]
+    };
+
+    if (role && salaryMatrix[role] && salaryMatrix[role][experience]) {
+      setSalaryData(salaryMatrix[role][experience]);
+      setSalaryUpdateKey(prev => prev + 1);
+
+      // Update career tracks based on role
+      if (careerTrackMatrix[role]) {
+        setCareerTracks(careerTrackMatrix[role]);
+      }
+    }
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -307,7 +604,7 @@ We're excited to have you on this journey!
             <div className="video-container">
               <video id="background-video" controls loading="lazy" className="course-video">
 					<source src="https://360digit.b-cdn.net/assets/video/thankyou.mp4" type="video/mp4"/>
-					<source src="https://360digit.b-cdn.net/assets/video/thankyou.webm" type="video/webm"/>  
+					<source src="https://360digit.b-cdn.net/assets/video/thankyou.webm" type="video/webm"/>
 				          </video>
             </div>
 
@@ -327,7 +624,7 @@ We're excited to have you on this journey!
           <aside className="booking-aside">
             <div className="booking-form-container">
               <div className="form-header compact">
-                <h2 className="booking-heading">Book Your Free Live Class</h2>
+                <h2 className="booking-heading">Book Your <br />Free Live Class</h2>
               </div>
 
               {submitSuccess ? (
@@ -377,7 +674,7 @@ We're excited to have you on this journey!
                   </div>
 
                   <button type="submit" className="submit-btn modern" disabled={isSubmitting}>
-                    {isSubmitting ? 'Reserving...' : 'Reserve Your Seat'}
+                    <h2>{isSubmitting ? 'Reserving...' : 'Reserve Your Seat'}</h2>
                   </button>
 
                   <div className="form-footer compact">
@@ -388,11 +685,11 @@ We're excited to have you on this journey!
 
               <div className="form-highlights">
                 <div className="form-highlight-item">
-                  <span className="highlight-icon"><img src="https://img.icons8.com/fluency/24/book.png" alt="book" /></span>
+                  <span className="highlight-icon"><FaBook size={24} /></span>
                   <span>Preview our industry-vetted curriculum</span>
                 </div>
                 <div className="form-highlight-item">
-                  <span className="highlight-icon"><img src="https://img.icons8.com/fluency/24/chat.png" alt="chat" /></span>
+                  <span className="highlight-icon"><FaComments size={24} /></span>
                   <span>Live Q&A with an industry expert</span>
                 </div>
               </div>
@@ -417,41 +714,56 @@ We're excited to have you on this journey!
                   <div className="calculator-content">
                     <div className="current-role">
                       <label>Current Role</label>
-                      <select className="role-select">
-                        <option>Select your current role</option>
-                        <option>Student/Fresher</option>
-                        <option>Software Developer</option>
-                        <option>Business Analyst</option>
-                        <option>Marketing Executive</option>
-                        <option>Sales Representative</option>
-                        <option>Teacher</option>
-                        <option>Other</option>
+                      <select className="role-select" value={selectedRole} onChange={handleRoleChange}>
+                        <option value="">Select your current role</option>
+                        <option value="Student/Fresher">Student/Fresher</option>
+                        <option value="Software Developer">Software Developer</option>
+                        <option value="Business Analyst">Business Analyst</option>
+                        <option value="Marketing Executive">Marketing Executive</option>
+                        <option value="Sales Representative">Sales Representative</option>
+                        <option value="Teacher">Teacher</option>
+                        <option value="Other">Other</option>
                       </select>
                     </div>
                     <div className="experience-level">
                       <label>Experience Level</label>
                       <div className="experience-buttons">
-                        <button className="exp-btn active">0-2 Years</button>
-                        <button className="exp-btn">3-5 Years</button>
-                        <button className="exp-btn">5+ Years</button>
+                        <button
+                          className={`exp-btn ${selectedExperience === '0-2 Years' ? 'active' : ''}`}
+                          onClick={() => handleExperienceChange('0-2 Years')}
+                        >
+                          0-2 Years
+                        </button>
+                        <button
+                          className={`exp-btn ${selectedExperience === '3-5 Years' ? 'active' : ''}`}
+                          onClick={() => handleExperienceChange('3-5 Years')}
+                        >
+                          3-5 Years
+                        </button>
+                        <button
+                          className={`exp-btn ${selectedExperience === '5+ Years' ? 'active' : ''}`}
+                          onClick={() => handleExperienceChange('5+ Years')}
+                        >
+                          5+ Years
+                        </button>
                       </div>
                     </div>
-                    <div className="potential-result">
+                    <div className="potential-result" key={salaryUpdateKey}>
                       <div className="result-card">
                         <div className="result-header">Your Potential Salary Growth</div>
                         <div className="salary-projection">
                           <div className="current-salary">
                             <span className="label">Current Range</span>
-                            <span className="amount">₹2-5 LPA</span>
+                            <span className="amount">{salaryData.current}</span>
                           </div>
                           <div className="arrow-transform">→</div>
                           <div className="projected-salary">
                             <span className="label">After Program</span>
-                            <span className="amount highlight">₹8-15 LPA</span>
+                            <span className="amount highlight">{salaryData.projected}</span>
                           </div>
                         </div>
                         <div className="growth-indicator">
-                          <div className="growth-percentage">+200% Growth Potential</div>
+                          <div className="growth-percentage">{salaryData.growth} Growth Potential</div>
                         </div>
                       </div>
                     </div>
@@ -461,58 +773,28 @@ We're excited to have you on this journey!
 
               <div className="dashboard-right">
                 <div className="career-tracks">
-                  <h3>Popular Career Tracks</h3>
+                  <h3>Recommended Career Tracks</h3>
 
-                  <div className="track-card">
-                    <div className="track-icon"><img src="https://img.icons8.com/fluency/32/bar-chart.png" alt="analytics" /></div>
-                    <div className="track-info">
-                      <h4>Data Analyst</h4>
-                      <div className="track-details">
-                        <span className="salary">₹4-8 LPA</span>
-                        <span className="timeline">3-4 Months</span>
+                  {careerTracks.map((track, index) => (
+                    <div className="track-card" key={index}>
+                      <div className="track-icon">
+                        <img src={track.icon} alt={track.title} />
                       </div>
-                      <div className="track-skills">
-                        <span>Python</span>
-                        <span>SQL</span>
-                        <span>Tableau</span>
+                      <div className="track-info">
+                        <h4>{track.title}</h4>
+                        <div className="track-details">
+                          <span className="salary">{track.salary}</span>
+                          <span className="timeline">{track.timeline}</span>
+                        </div>
+                        <div className="track-skills">
+                          {track.skills.map((skill, idx) => (
+                            <span key={idx}>{skill}</span>
+                          ))}
+                        </div>
                       </div>
+                      <div className="track-demand">{track.demand}</div>
                     </div>
-                    <div className="track-demand">High Demand</div>
-                  </div>
-
-                  <div className="track-card">
-                    <div className="track-icon"><img src="https://img.icons8.com/fluency/32/robot.png" alt="AI" /></div>
-                    <div className="track-info">
-                      <h4>Data Scientist</h4>
-                      <div className="track-details">
-                        <span className="salary">₹8-15 LPA</span>
-                        <span className="timeline">6-8 Months</span>
-                      </div>
-                      <div className="track-skills">
-                        <span>Machine Learning</span>
-                        <span>Python</span>
-                        <span>Statistics</span>
-                      </div>
-                    </div>
-                    <div className="track-demand">Very High</div>
-                  </div>
-
-                  <div className="track-card">
-                    <div className="track-icon"><img src="https://img.icons8.com/fluency/32/brain.png" alt="ML" /></div>
-                    <div className="track-info">
-                      <h4>ML Engineer</h4>
-                      <div className="track-details">
-                        <span className="salary">₹12-25 LPA</span>
-                        <span className="timeline">8-10 Months</span>
-                      </div>
-                      <div className="track-skills">
-                        <span>Deep Learning</span>
-                        <span>MLOps</span>
-                        <span>Cloud</span>
-                      </div>
-                    </div>
-                    <div className="track-demand">Extreme</div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -540,71 +822,137 @@ We're excited to have you on this journey!
 
         <section className="download-brochure">
           <div className="brochure-container">
-            <div className="brochure-hero">
-              <div className="hero-left">
-                <div className="brochure-title-section">
-                  <h2 className="brochure-main-title">Transform Your Career with AI & Data Science</h2>
-                  <p className="brochure-tagline">Get our comprehensive program guide - packed with curriculum details, real-world projects, industry insights, and career transformation roadmaps.</p>
+            <div className="brochure-content-wrapper">
+              {/* Left Side - Main Content */}
+              <div className="brochure-left">
+                <div className="brochure-badge">
+                  <span className="badge-icon">🎓</span>
+                  <span className="badge-text">Free Career Guide</span>
                 </div>
 
-                <div className="stats-showcase">
-                  <div className="stat-box">
-                    <span className="stat-value">50+</span>
-                    <span className="stat-desc">Pages of Insights</span>
+                <h2 className="brochure-headline">
+                  Ready to Launch Your <span className="highlight-text">AI & Data Science</span> Career?
+                </h2>
+
+                <p className="brochure-description">
+                  Get instant access to our comprehensive program brochure and discover how you can master in-demand skills, work on real-world projects, and land your dream job in tech.
+                </p>
+
+                {/* Key Benefits */}
+                <div className="brochure-benefits">
+                  <div className="benefit-item">
+                    <div className="benefit-icon">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                    <div className="benefit-text">
+                      <h4>Industry-Aligned Curriculum</h4>
+                      <p>Learn from experts with real-world experience</p>
+                    </div>
                   </div>
-                  <div className="stat-box">
-                    <span className="stat-value">100%</span>
-                    <span className="stat-desc">Job Assistance</span>
+
+                  <div className="benefit-item">
+                    <div className="benefit-icon">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                    <div className="benefit-text">
+                      <h4>Hands-On Projects Portfolio</h4>
+                      <p>Build 12+ projects to showcase your skills</p>
+                    </div>
                   </div>
-                  <div className="stat-box">
-                    <span className="stat-value">20K+</span>
-                    <span className="stat-desc">Alumni Placed</span>
+
+                  <div className="benefit-item">
+                    <div className="benefit-icon">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                    <div className="benefit-text">
+                      <h4>100% Job Assistance</h4>
+                      <p>Dedicated placement support until you succeed</p>
+                    </div>
                   </div>
                 </div>
 
-                <div className="content-highlights">
-                  <div className="highlight-row">
-                    <span className="highlight-icon"><img src="https://img.icons8.com/fluency/24/books.png" alt="books" /></span>
-                    <span className="highlight-desc">Master AI, ML & Data Science with expert-designed curriculum</span>
+                {/* Trust Indicators */}
+                <div className="trust-indicators">
+                  <div className="trust-item">
+                    <span className="trust-number">25,000+</span>
+                    <span className="trust-label">Alumni Network</span>
                   </div>
-                  <div className="highlight-row">
-                    <span className="highlight-icon"><img src="https://img.icons8.com/fluency/24/briefcase.png" alt="briefcase" /></span>
-                    <span className="highlight-desc">Build 10+ real-world projects for your portfolio</span>
+                  <div className="trust-item">
+                    <span className="trust-number">4.8/5</span>
+                    <span className="trust-label">Student Rating</span>
                   </div>
-                  <div className="highlight-row">
-                    <span className="highlight-icon"><img src="https://img.icons8.com/fluency/24/rocket.png" alt="growth" /></span>
-                    <span className="highlight-desc">Career paths with 300%+ salary growth potential</span>
+                  <div className="trust-item">
+                    <span className="trust-number">500+</span>
+                    <span className="trust-label">Hiring Partners</span>
                   </div>
                 </div>
               </div>
 
-              <div className="hero-right">
-                <div className="download-showcase">
-                  <div className="brochure-preview">
-                    <div className="preview-container">
-                      <div className="page-stack">
-                        <div className="page page-3">
-                          <img src="https://picsum.photos/140/180?random=1" alt="Data Analytics" className="page-image" />
-                        </div>
-                        <div className="page page-2">
-                          <img src="https://picsum.photos/140/180?random=2" alt="Machine Learning" className="page-image" />
-                        </div>
-                      </div>
+              {/* Right Side - Download Card */}
+              <div className="brochure-right">
+                <div className="download-card">
+                  <div className="card-header">
+                    <div className="document-icon">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 18H17V16H7V18Z" fill="currentColor"/>
+                        <path d="M17 14H7V12H17V14Z" fill="currentColor"/>
+                        <path d="M7 10H11V8H7V10Z" fill="currentColor"/>
+                        <path fillRule="evenodd" clipRule="evenodd" d="M6 2C4.34315 2 3 3.34315 3 5V19C3 20.6569 4.34315 22 6 22H18C19.6569 22 21 20.6569 21 19V9C21 5.13401 17.866 2 14 2H6ZM6 4H13V9H19V19C19 19.5523 18.5523 20 18 20H6C5.44772 20 5 19.5523 5 19V5C5 4.44772 5.44772 4 6 4ZM15 4.10002C16.6113 4.4271 17.9413 5.52906 18.584 7H15V4.10002Z" fill="currentColor"/>
+                      </svg>
                     </div>
+                    <h3 className="card-title">Download Program Brochure</h3>
+                    <p className="card-subtitle">Complete guide with curriculum details, fee structure, and placement statistics</p>
                   </div>
 
-                  <div className="download-action">
-                    <div className="download-info">
-                      <h3 className="info-title">Get Complete Program Details</h3>
-                      <p className="info-description">Comprehensive guide with curriculum, projects, and career insights</p>
+                  <div className="card-body">
+                    <div className="brochure-features">
+                      <div className="feature-tag">
+                        <span className="tag-icon">📋</span>
+                        <span>Course Modules</span>
+                      </div>
+                      <div className="feature-tag">
+                        <span className="tag-icon">💼</span>
+                        <span>Career Paths</span>
+                      </div>
+                      <div className="feature-tag">
+                        <span className="tag-icon">💰</span>
+                        <span>Fee Structure</span>
+                      </div>
+                      <div className="feature-tag">
+                        <span className="tag-icon">🎯</span>
+                        <span>Success Stories</span>
+                      </div>
                     </div>
 
-                    <button className="download-main-btn">
-                      <span className="btn-icon">⬇</span>
-                      <div className="btn-content">
-                        <span className="btn-primary">Download Brochure</span>
-                      </div>
+                    <button className="download-btn">
+                      <span className="btn-text">Download Free Brochure</span>
+                      <span className="btn-icon-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 4V20M12 20L8 16M12 20L16 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </span>
                     </button>
+
+                    <p className="download-note">
+                      <svg className="lock-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 15V17M6 21H18C19.1046 21 20 20.1046 20 19V13C20 11.8954 19.1046 11 18 11H6C4.89543 11 4 11.8954 4 13V19C4 20.1046 4.89543 21 6 21ZM16 11V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V11H16Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                      </svg>
+                      Your information is safe with us. No spam, ever.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Bonus Badge */}
+                <div className="bonus-badge">
+                  <span className="bonus-icon">🎁</span>
+                  <div className="bonus-text">
+                    <strong>Free Bonus:</strong> Career Roadmap Guide included!
                   </div>
                 </div>
               </div>
@@ -729,49 +1077,49 @@ We're excited to have you on this journey!
                 onTouchEnd={handleFeatureTouchEnd}
               >
               <div className="feature-card">
-                <div className="feature-icon"><img src="https://img.icons8.com/fluency/48/graduation-cap.png" alt="expert trainers" /></div>
+                <div className="feature-icon"><FaGraduationCap size={48} /></div>
                 <h3 className="feature-title">Expert Trainers</h3>
                 <p className="feature-description">Learn from industry professionals with 10+ years of experience in Data Science and AI</p>
               </div>
 
               <div className="feature-card">
-                <div className="feature-icon"><img src="https://img.icons8.com/fluency/48/briefcase.png" alt="job assistance" /></div>
+                <div className="feature-icon"><FaBriefcase size={48} /></div>
                 <h3 className="feature-title">100% Job Assistance</h3>
                 <p className="feature-description">Dedicated placement support with 15,000+ successful placements across top companies</p>
               </div>
 
               <div className="feature-card">
-                <div className="feature-icon"><img src="https://img.icons8.com/fluency/48/trophy.png" alt="certification" /></div>
+                <div className="feature-icon"><FaTrophy size={48} /></div>
                 <h3 className="feature-title">Global Certifications</h3>
                 <p className="feature-description">Earn internationally recognized certifications from Microsoft, IBM, and other tech giants</p>
               </div>
 
               <div className="feature-card">
-                <div className="feature-icon"><img src="https://img.icons8.com/fluency/48/synchronize.png" alt="live classes" /></div>
+                <div className="feature-icon"><FaLaptop size={48} /></div>
                 <h3 className="feature-title">Live Interactive Classes</h3>
                 <p className="feature-description">Real-time learning with live projects, doubt clearing sessions, and peer collaboration</p>
               </div>
 
               <div className="feature-card">
-                <div className="feature-icon"><img src="https://img.icons8.com/fluency/48/lightning-bolt.png" alt="hands-on" /></div>
+                <div className="feature-icon"><FaRocket size={48} /></div>
                 <h3 className="feature-title">Hands-on Projects</h3>
                 <p className="feature-description">Build real-world projects and create an impressive portfolio that stands out to employers</p>
               </div>
 
               <div className="feature-card">
-                <div className="feature-icon"><img src="https://img.icons8.com/fluency/48/globe.png" alt="flexible learning" /></div>
+                <div className="feature-icon"><FaGlobe size={48} /></div>
                 <h3 className="feature-title">Flexible Learning</h3>
                 <p className="feature-description">Choose from weekday, weekend, or self-paced learning options that fit your schedule</p>
               </div>
 
               <div className="feature-card">
-                <div className="feature-icon"><img src="https://img.icons8.com/fluency/48/books.png" alt="curriculum" /></div>
+                <div className="feature-icon"><FaBook size={48} /></div>
                 <h3 className="feature-title">Comprehensive Curriculum</h3>
                 <p className="feature-description">Updated syllabus covering latest tools and technologies used by industry leaders</p>
               </div>
 
               <div className="feature-card">
-                <div className="feature-icon"><img src="https://img.icons8.com/fluency/48/handshake.png" alt="lifetime support" /></div>
+                <div className="feature-icon"><FaHandshake size={48} /></div>
                 <h3 className="feature-title">Lifetime Support</h3>
                 <p className="feature-description">Get continuous support and access to updated materials even after course completion</p>
               </div>
@@ -838,20 +1186,20 @@ We're excited to have you on this journey!
 
               <article className="center-card" role="listitem">
                 <div className="center-icon" aria-hidden="true">
-                  <img src="https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=600&h=400&fit=crop&auto=format&q=80" alt="" />
+                  <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&h=400&fit=crop&auto=format&q=80&sat=10" alt="" />
                 </div>
                 <h3 className="center-city">Bangalore</h3>
                 <div className="center-details">
                   <div className="detail-item">
-                    <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" className=""/>
+                    <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
                     <span>Koramangala, BTM Layout</span>
                   </div>
                   <div className="detail-item">
-                    <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" className=""/>
+                    <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
                     <span><a href="tel:+918045678901">+91 80 4567 8901</a></span>
                   </div>
                   <div className="detail-item">
-                    <img src="https://img.icons8.com/fluency/20/students.png" alt="" aria-hidden="true" className=""/>
+                    <img src="https://img.icons8.com/fluency/20/students.png" alt="" aria-hidden="true" />
                     <span>4,500+ Students Trained</span>
                   </div>
                 </div>
@@ -859,7 +1207,7 @@ We're excited to have you on this journey!
 
               <article className="center-card" role="listitem">
                 <div className="center-icon" aria-hidden="true">
-                  <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&h=400&fit=crop&auto=format&q=80&sat=10" alt="" />
+                  
                 </div>
                 <h3 className="center-city">Chennai</h3>
                 <div className="center-details">
@@ -977,7 +1325,7 @@ We're excited to have you on this journey!
               <div className="footer-section">
                 <div className="footer-logo">
                   <img
-                    src="https://aispry.com/pluginfile.php/1/theme_university/logo/1760548222/AiTutor-Logo-w.png"
+                    src="/images/logo-06.png"
                     alt="AiTutor Logo"
                     className="footer-logo-image"
                   />
@@ -987,10 +1335,10 @@ We're excited to have you on this journey!
                   Join thousands of successful alumni working at top companies worldwide.
                 </p>
                 <div className="social-links">
-                  <a href="#" className="social-link"><img src="https://img.icons8.com/fluency/24/facebook.png" alt="facebook" /></a>
-                  <a href="#" className="social-link"><img src="https://img.icons8.com/fluency/24/twitter.png" alt="twitter" /></a>
-                  <a href="#" className="social-link"><img src="https://img.icons8.com/fluency/24/linkedin.png" alt="linkedin" /></a>
-                  <a href="#" className="social-link"><img src="https://img.icons8.com/fluency/24/youtube.png" alt="youtube" /></a>
+                  <a href="#" className="social-link"></a>
+                  <a href="#" className="social-link"></a>
+                  <a href="#" className="social-link"></a>
+                  <a href="#" className="social-link"></a>
                 </div>
               </div>
 
@@ -1030,10 +1378,10 @@ We're excited to have you on this journey!
               <div className="footer-section">
                 <h3 className="footer-title">Contact Info</h3>
                 <div className="contact-info">
-                  <p className="contact-item"><img src="https://img.icons8.com/fluency/20/marker.png" alt="location" /> Hyderabad, Bangalore, Chennai</p>
-                  <p className="contact-item"><img src="https://img.icons8.com/fluency/20/phone.png" alt="phone" /> +91-40-23456789</p>
-                  <p className="contact-item"><img src="https://img.icons8.com/fluency/20/email.png" alt="email" /> info@360digitmg.com</p>
-                  <p className="contact-item"><img src="https://img.icons8.com/fluency/20/clock.png" alt="hours" /> Mon-Fri 9AM-6PM</p>
+                  <p className="contact-item"> Hyderabad, Bangalore, Chennai</p>
+                  <p className="contact-item"> +91-40-23456789</p>
+                  <p className="contact-item"> info@360digitmg.com</p>
+                  <p className="contact-item"> Mon-Fri 9AM-6PM</p>
                 </div>
               </div>
             </div>

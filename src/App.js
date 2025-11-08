@@ -6,9 +6,11 @@ import Signup from './pages/auth/Signup';
 import Dashboard from './components/courses/CoursePageModern';
 import Courses from './components/courses/Courses';
 import MyCourses from './components/courses/MyCourses';
-import DigitmgDashboardContent from './components/dashboard/DigitmgDashboardContent';
 import Apply from './components/home/Apply';
 import Loader from './pages/auth/Loader';
+import ForumOverview from './components/forum/ForumOverview';
+import DiscussionThread from './components/forum/DiscussionThread';
+import CreateThread from './components/forum/CreateThread';
 
 import './styles/GlobalResponsive.css'; // Import responsive styles first
 import './styles/VideoInfo.css';
@@ -47,6 +49,10 @@ const App = () => {
         <Route path="/courses" element={<Courses />} />
         <Route path="/my-courses" element={<MyCourses />} />
         <Route path="/apply" element={<Apply />} />
+        <Route path="/forum" element={<ForumOverview />} />
+        <Route path="/forum/category/:id" element={<ForumOverview />} />
+        <Route path="/forum/thread/:threadId" element={<DiscussionThread />} />
+        <Route path="/forum/create" element={<CreateThread />} />
       </Routes>
     </Router>
   );

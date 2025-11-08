@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CoursePageModern.css';
+import {
+  FaLaptop, FaCalendarAlt, FaMicrophone, FaStar, FaCompass,
+  FaBook, FaChalkboardTeacher, FaHandshake, FaChartBar,
+  FaGraduationCap, FaTrophy, FaFileAlt, FaBullseye, FaGlobe,
+  FaComments, FaClock, FaEdit, FaQuestionCircle, FaPython,
+  FaChartLine, FaRobot, FaLightbulb, FaBrain, FaUsers,
+  FaRocket, FaCheck, FaExclamation, FaExclamationTriangle,
+  FaSeedling, FaBriefcase, FaMapMarkerAlt, FaPhone, FaUserGraduate,
+  FaBolt, FaSync
+} from 'react-icons/fa';
 
 const CoursePageModern = ({ userName }) => {
   const [selectedTab, setSelectedTab] = useState('All Free Offerings');
@@ -171,7 +181,7 @@ const CoursePageModern = ({ userName }) => {
           <div data-testid="sidebar" data-cy="mentee_sidebar" className="sidebar mentee-sidebar mentee-sidebar--free-product mentee-sidebar--fp-revamped sidebar__open">
           {/* Sidebar Logo */}
           <div className="sidebar__logo-container">
-            <img src="https://aispry.com/pluginfile.php/1/theme_university/logo/1760548222/AiTutor-Logo-w.png" alt="AiTutor" className="sidebar__logo" />
+            <img src="/images/logo-06.png" alt="AiTutor" className="sidebar__logo" />
           </div>
 
           <div className="sidebar__content scroll-bar-hidden sidebar__content--free-product">
@@ -184,7 +194,7 @@ const CoursePageModern = ({ userName }) => {
               </div>
               <div>
                 <div className="sidebar__item sidebar__item" style={{cursor: 'default'}}>
-                  <dotlottie-player autoplay="true" loop="" mode="normal" src="https://assets-v2.360digitmg.com/packs/files/sidebar-mc.a3339a.lottie" classname="sidebar__lottie" style={{width: '40px', height: '40px'}} background="transparent"></dotlottie-player>
+                  <dotlottie-player autoplay="true" loop="" mode="normal" src="" classname="sidebar__lottie" style={{width: '40px', height: '40px'}} background="transparent"></dotlottie-player>
                   <div className="p-v-10 sidebar__item-compact">
                     <span className="sidebar__item-text sidebar__item-text--without-icon">Free LIVE Masterclasses</span>
                   </div>
@@ -433,69 +443,69 @@ const CoursePageModern = ({ userName }) => {
             <div className="features-grid-container">
               {/* Row 1 */}
               <div className="dashboard-feature-card">
-                <span className="feature-card-icon"><img src="https://img.icons8.com/fluency/48/laptop.png" alt="live class" /></span>
+                <span className="feature-card-icon">{/* TODO: Replace with <FaLaptop /> */}<span>⚠️</span></span>
                 <span className="feature-card-title">Free Live Class</span>
               </div>
 
               <div className="dashboard-feature-card">
-                <span className="feature-card-icon"><img src="https://img.icons8.com/fluency/48/calendar.png" alt="masterclass" /></span>
+                <span className="feature-card-icon">{/* TODO: Replace with <FaCalendar /> */}<span>⚠️</span></span>
                 <span className="feature-card-title">Live Masterclass</span>
               </div>
 
               <div className="dashboard-feature-card dashboard-feature-card--highlighted">
-                <span className="feature-card-icon"><img src="https://img.icons8.com/fluency/48/microphone.png" alt="mock interview" /></span>
+                <span className="feature-card-icon">{/* TODO: Replace with <FaMicrophone /> */}<span>⚠️</span></span>
                 <span className="feature-card-title">AI-Mock Interviews</span>
                 <span className="feature-card-badge">
-                  <img src="https://img.icons8.com/fluency/16/star.png" alt="new" style={{verticalAlign: 'middle', marginRight: '4px'}} />
+                  {/* TODO: Replace with <FaStar /> */}<span>⚠️</span>
                   NEW
                 </span>
               </div>
 
               {/* Row 2 */}
               <div className="dashboard-feature-card">
-                <span className="feature-card-icon"><img src="https://img.icons8.com/fluency/48/compass.png" alt="roadmap" /></span>
+                <span className="feature-card-icon">{/* TODO: Replace with <FaCompass /> */}<span>⚠️</span></span>
                 <span className="feature-card-title">Career Roadmap</span>
               </div>
 
               <div className="dashboard-feature-card">
-                <span className="feature-card-icon"><img src="https://img.icons8.com/fluency/48/books.png" alt="curriculum" /></span>
+                <span className="feature-card-icon">{/* TODO: Replace with <FaBook /> */}<span>⚠️</span></span>
                 <span className="feature-card-title">Curriculum</span>
               </div>
 
               <div className="dashboard-feature-card">
-                <span className="feature-card-icon"><img src="https://img.icons8.com/fluency/48/teacher.png" alt="instructors" /></span>
+                <span className="feature-card-icon">{/* TODO: Replace with <FaChalkboardTeacher /> */}<span>⚠️</span></span>
                 <span className="feature-card-title">Instructors</span>
               </div>
 
               {/* Row 3 */}
               <div className="dashboard-feature-card">
-                <span className="feature-card-icon"><img src="https://img.icons8.com/fluency/48/star.png" alt="benefits" /></span>
+                <span className="feature-card-icon">{/* TODO: Replace with <FaStar /> */}<span>⚠️</span></span>
                 <span className="feature-card-title">360DigiTMG Benefits</span>
               </div>
 
               <div className="dashboard-feature-card">
-                <span className="feature-card-icon"><img src="https://img.icons8.com/fluency/48/handshake.png" alt="expert connect" /></span>
+                <span className="feature-card-icon">{/* TODO: Replace with <FaHandshake /> */}<span>⚠️</span></span>
                 <span className="feature-card-title">1:1 Expert Connect</span>
               </div>
 
               <div className="dashboard-feature-card">
-                <span className="feature-card-icon"><img src="https://img.icons8.com/fluency/48/bar-chart.png" alt="placement" /></span>
+                <span className="feature-card-icon">{/* TODO: Replace with <FaChartBar /> */}<span>⚠️</span></span>
                 <span className="feature-card-title">Placement Report</span>
               </div>
 
               {/* Row 4 */}
               <div className="dashboard-feature-card">
-                <span className="feature-card-icon"><img src="https://img.icons8.com/fluency/48/graduation-cap.png" alt="scholarship" /></span>
+                <span className="feature-card-icon">{/* TODO: Replace with <FaGraduationCap /> */}<span>⚠️</span></span>
                 <span className="feature-card-title">Scholarship Test</span>
               </div>
 
               <div className="dashboard-feature-card">
-                <span className="feature-card-icon"><img src="https://img.icons8.com/fluency/48/trophy.png" alt="certification" /></span>
+                <span className="feature-card-icon">{/* TODO: Replace with <FaTrophy /> */}<span>⚠️</span></span>
                 <span className="feature-card-title">IIT-R Certification</span>
               </div>
 
               <div className="dashboard-feature-card">
-                <span className="feature-card-icon"><img src="https://img.icons8.com/fluency/48/resume.png" alt="resume" /></span>
+                <span className="feature-card-icon">{/* TODO: Replace with <FaFileAlt /> */}<span>⚠️</span></span>
                 <span className="feature-card-title">AI Resume Review</span>
               </div>
             </div>
@@ -517,7 +527,7 @@ const CoursePageModern = ({ userName }) => {
               </div>
 
               <div className="resource-card" style={{padding: '1.5rem', border: '1px solid #e5e7eb', borderRadius: '12px', background: '#ffffff', cursor: 'pointer', transition: 'all 0.3s ease'}}>
-                <div style={{marginBottom: '1rem'}}><img src="https://img.icons8.com/fluency/48/books.png" alt="books" /></div>
+                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaBook /> */}<span>⚠️</span></div>
                 <h3 style={{fontSize: '1.1rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.75rem'}}>Study Materials</h3>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6', marginBottom: '1rem'}}>Download comprehensive PDFs, cheat sheets, and study guides for all data science topics.</p>
                 <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#2196f3', fontWeight: '600', fontSize: '0.9rem'}}>
@@ -526,7 +536,7 @@ const CoursePageModern = ({ userName }) => {
               </div>
 
               <div className="resource-card" style={{padding: '1.5rem', border: '1px solid #e5e7eb', borderRadius: '12px', background: '#ffffff', cursor: 'pointer', transition: 'all 0.3s ease'}}>
-                <div style={{marginBottom: '1rem'}}><img src="https://img.icons8.com/fluency/48/graduation-cap.png" alt="graduation" /></div>
+                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaGraduationCap /> */}<span>⚠️</span></div>
                 <h3 style={{fontSize: '1.1rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.75rem'}}>Free Courses</h3>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6', marginBottom: '1rem'}}>Enroll in beginner-friendly courses on Statistics, Python Programming, and SQL fundamentals.</p>
                 <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#2196f3', fontWeight: '600', fontSize: '0.9rem'}}>
@@ -535,7 +545,7 @@ const CoursePageModern = ({ userName }) => {
               </div>
 
               <div className="resource-card" style={{padding: '1.5rem', border: '1px solid #e5e7eb', borderRadius: '12px', background: '#ffffff', cursor: 'pointer', transition: 'all 0.3s ease'}}>
-                <div style={{marginBottom: '1rem'}}><img src="https://img.icons8.com/fluency/48/laptop.png" alt="laptop" /></div>
+                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaLaptop /> */}<span>⚠️</span></div>
                 <h3 style={{fontSize: '1.1rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.75rem'}}>Practice Labs</h3>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6', marginBottom: '1rem'}}>Hands-on coding environments with Jupyter notebooks for practical learning experience.</p>
                 <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#2196f3', fontWeight: '600', fontSize: '0.9rem'}}>
@@ -544,7 +554,7 @@ const CoursePageModern = ({ userName }) => {
               </div>
 
               <div className="resource-card" style={{padding: '1.5rem', border: '1px solid #e5e7eb', borderRadius: '12px', background: '#ffffff', cursor: 'pointer', transition: 'all 0.3s ease'}}>
-                <div style={{marginBottom: '1rem'}}><img src="https://img.icons8.com/fluency/48/bullseye.png" alt="target" /></div>
+                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaBullseye /> */}<span>⚠️</span></div>
                 <h3 style={{fontSize: '1.1rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.75rem'}}>Skill Assessments</h3>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6', marginBottom: '1rem'}}>Test your knowledge with free quizzes and assessments to track your progress.</p>
                 <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#2196f3', fontWeight: '600', fontSize: '0.9rem'}}>
@@ -553,7 +563,7 @@ const CoursePageModern = ({ userName }) => {
               </div>
 
               <div className="resource-card" style={{padding: '1.5rem', border: '1px solid #e5e7eb', borderRadius: '12px', background: '#ffffff', cursor: 'pointer', transition: 'all 0.3s ease'}}>
-                <div style={{marginBottom: '1rem'}}><img src="https://img.icons8.com/fluency/48/globe.png" alt="globe" /></div>
+                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaGlobe /> */}<span>⚠️</span></div>
                 <h3 style={{fontSize: '1.1rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.75rem'}}>Community Forums</h3>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6', marginBottom: '1rem'}}>Join 50,000+ learners in our community to discuss, learn, and grow together.</p>
                 <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#2196f3', fontWeight: '600', fontSize: '0.9rem'}}>
@@ -676,31 +686,31 @@ const CoursePageModern = ({ userName }) => {
                     Start Practice Interview
                   </button>
                 </div>
-                <div style={{textAlign: 'center'}}><img src="https://img.icons8.com/fluency/96/bullseye.png" alt="target" style={{width: '128px', height: '128px'}} /></div>
+                <div style={{textAlign: 'center'}}>{/* TODO: Replace with <FaBullseye /> */}<span>⚠️</span></div>
               </div>
             </div>
 
             <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginTop: '2rem'}}>
               <div style={{padding: '1.5rem', background: '#f9fafb', borderRadius: '10px', border: '1px solid #e5e7eb'}}>
-                <div style={{marginBottom: '1rem'}}><img src="https://img.icons8.com/fluency/48/speech-bubble-with-dots.png" alt="conversation" /></div>
+                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaComments /> */}<span>⚠️</span></div>
                 <h4 style={{fontSize: '1.05rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.5rem'}}>Natural Conversations</h4>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6'}}>Experience realistic interview conversations with our advanced AI that adapts to your responses.</p>
               </div>
 
               <div style={{padding: '1.5rem', background: '#f9fafb', borderRadius: '10px', border: '1px solid #e5e7eb'}}>
-                <div style={{marginBottom: '1rem'}}><img src="https://img.icons8.com/fluency/48/bar-chart.png" alt="analytics" /></div>
+                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaChartBar /> */}<span>⚠️</span></div>
                 <h4 style={{fontSize: '1.05rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.5rem'}}>Detailed Analytics</h4>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6'}}>Get comprehensive reports on your communication, technical knowledge, and problem-solving skills.</p>
               </div>
 
               <div style={{padding: '1.5rem', background: '#f9fafb', borderRadius: '10px', border: '1px solid #e5e7eb'}}>
-                <div style={{marginBottom: '1rem'}}><img src="https://img.icons8.com/fluency/48/graduation-cap.png" alt="learn" /></div>
+                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaGraduationCap /> */}<span>⚠️</span></div>
                 <h4 style={{fontSize: '1.05rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.5rem'}}>Learn & Improve</h4>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6'}}>Receive personalized suggestions and resources to improve your weak areas after each session.</p>
               </div>
 
               <div style={{padding: '1.5rem', background: '#f9fafb', borderRadius: '10px', border: '1px solid #e5e7eb'}}>
-                <div style={{marginBottom: '1rem'}}><img src="https://img.icons8.com/fluency/48/timer.png" alt="time" /></div>
+                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaClock /> */}<span>⚠️</span></div>
                 <h4 style={{fontSize: '1.05rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.5rem'}}>Practice Anytime</h4>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6'}}>Available 24/7 for unlimited practice sessions. No scheduling required, start whenever you want.</p>
               </div>
@@ -719,7 +729,7 @@ const CoursePageModern = ({ userName }) => {
                 {/* Beginner Path */}
                 <div style={{padding: '2rem', background: 'linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)', borderRadius: '12px', border: '2px solid #2196f3'}}>
                   <div style={{display: 'flex', alignItems: 'flex-start', gap: '1.5rem'}}>
-                    <div><img src="https://img.icons8.com/fluency/48/potted-plant.png" alt="beginner" style={{width: '48px', height: '48px'}} /></div>
+                    <div>{/* TODO: Replace with <FaSeedling /> */}<span>⚠️</span></div>
                     <div style={{flex: 1}}>
                       <div style={{display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem'}}>
                         <h4 style={{fontSize: '1.2rem', fontWeight: '700', color: '#1565c0', margin: 0}}>Beginner Path</h4>
@@ -741,7 +751,7 @@ const CoursePageModern = ({ userName }) => {
                 {/* Intermediate Path */}
                 <div style={{padding: '2rem', background: 'linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%)', borderRadius: '12px', border: '2px solid #9c27b0'}}>
                   <div style={{display: 'flex', alignItems: 'flex-start', gap: '1.5rem'}}>
-                    <div><img src="https://img.icons8.com/fluency/48/grow-graph.png" alt="intermediate" style={{width: '48px', height: '48px'}} /></div>
+                    <div>{/* TODO: Replace with <FaChartLine /> */}<span>⚠️</span></div>
                     <div style={{flex: 1}}>
                       <div style={{display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem'}}>
                         <h4 style={{fontSize: '1.2rem', fontWeight: '700', color: '#7b1fa2', margin: 0}}>Intermediate Path</h4>
@@ -763,7 +773,7 @@ const CoursePageModern = ({ userName }) => {
                 {/* Advanced Path */}
                 <div style={{padding: '2rem', background: 'linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%)', borderRadius: '12px', border: '2px solid #ff9800'}}>
                   <div style={{display: 'flex', alignItems: 'flex-start', gap: '1.5rem'}}>
-                    <div><img src="https://img.icons8.com/fluency/48/rocket.png" alt="advanced" style={{width: '48px', height: '48px'}} /></div>
+                    <div>{/* TODO: Replace with <FaRocket /> */}<span>⚠️</span></div>
                     <div style={{flex: 1}}>
                       <div style={{display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem'}}>
                         <h4 style={{fontSize: '1.2rem', fontWeight: '700', color: '#e65100', margin: 0}}>Advanced Path</h4>
@@ -788,7 +798,7 @@ const CoursePageModern = ({ userName }) => {
           {/* Alumni Profiles Section - New Stack Slider */}
           <section id="alumni-profiles-last" className="content-section" style={{background: 'linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%)', padding: '4rem 2rem', marginBottom: '0'}}>
             <div style={{textAlign: 'center', marginBottom: '3rem'}}>
-              <h2 className="section-title" style={{marginBottom: '1rem'}}><img src="https://img.icons8.com/fluency/32/star.png" alt="star" style={{display: 'inline', verticalAlign: 'middle', marginRight: '8px'}} /> Alumni Profiles</h2>
+              <h2 className="section-title" style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaStar /> */}<span>⚠️</span> Alumni Profiles</h2>
               <p className="section-description" style={{maxWidth: '700px', margin: '0 auto'}}>
                 Real transformations. Real results. See how our alumni achieved their dream careers.
               </p>
@@ -888,7 +898,7 @@ const CoursePageModern = ({ userName }) => {
                                 fontWeight: '700',
                                 backdropFilter: 'blur(10px)'
                               }}>
-                                Featured Story <img src="https://img.icons8.com/fluency/16/star.png" alt="star" style={{display: 'inline', verticalAlign: 'middle'}} />
+                                Featured Story {/* TODO: Replace with <FaStar /> */}<span>⚠️</span>
                               </div>
 
                               <div style={{display: 'flex', gap: '1.25rem', alignItems: 'center', color: 'white'}}>
@@ -940,7 +950,7 @@ const CoursePageModern = ({ userName }) => {
                                     Growth
                                   </div>
                                   <div style={{fontSize: '0.95rem', fontWeight: '700', color: '#059669'}}>
-                                    <img src="https://img.icons8.com/fluency/16/bar-chart.png" alt="growth" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> {alumni.salaryJump}
+                                    {/* TODO: Replace with <FaChartBar /> */}<span>⚠️</span> {alumni.salaryJump}
                                   </div>
                                 </div>
                               </div>
@@ -958,7 +968,7 @@ const CoursePageModern = ({ userName }) => {
                                   left: '0.85rem',
                                   opacity: '0.2'
                                 }}>
-                                  <img src="https://img.icons8.com/fluency/32/speech-bubble-with-dots.png" alt="quote" style={{filter: 'sepia(100%) saturate(300%) hue-rotate(10deg)'}} />
+                                  {/* TODO: Replace with <FaComments /> */}<span>⚠️</span>
                                 </div>
                                 <p style={{
                                   fontSize: '0.9rem',
@@ -1054,7 +1064,7 @@ const CoursePageModern = ({ userName }) => {
 
             <div style={{background: 'linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)', padding: '2.5rem', borderRadius: '12px', marginTop: '2rem', border: '2px solid #2196f3'}}>
               <div style={{textAlign: 'center', marginBottom: '2rem'}}>
-                <div style={{marginBottom: '1rem'}}><img src="https://img.icons8.com/fluency/96/edit.png" alt="test" /></div>
+                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaEdit /> */}<span>⚠️</span></div>
                 <h3 style={{fontSize: '1.5rem', fontWeight: '700', color: '#1565c0', marginBottom: '0.75rem'}}>Free Eligibility Assessment</h3>
                 <p style={{fontSize: '1rem', color: '#424242', lineHeight: '1.6', maxWidth: '600px', margin: '0 auto'}}>
                   Evaluate your skills and discover which program suits you best. Get personalized learning path recommendations.
@@ -1063,17 +1073,17 @@ const CoursePageModern = ({ userName }) => {
 
               <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', marginBottom: '2rem'}}>
                 <div style={{textAlign: 'center', padding: '1.5rem', background: 'white', borderRadius: '10px'}}>
-                  <div style={{marginBottom: '0.5rem'}}><img src="https://img.icons8.com/fluency/48/timer.png" alt="duration" /></div>
+                  <div style={{marginBottom: '0.5rem'}}>{/* TODO: Replace with <FaClock /> */}<span>⚠️</span></div>
                   <div style={{fontSize: '1.5rem', fontWeight: '700', color: '#1976d2', marginBottom: '0.25rem'}}>30 mins</div>
                   <div style={{fontSize: '0.85rem', color: '#6b7280'}}>Duration</div>
                 </div>
                 <div style={{textAlign: 'center', padding: '1.5rem', background: 'white', borderRadius: '10px'}}>
-                  <div style={{marginBottom: '0.5rem'}}><img src="https://img.icons8.com/fluency/48/help.png" alt="questions" /></div>
+                  <div style={{marginBottom: '0.5rem'}}>{/* TODO: Replace with <FaQuestionCircle /> */}<span>⚠️</span></div>
                   <div style={{fontSize: '1.5rem', fontWeight: '700', color: '#1976d2', marginBottom: '0.25rem'}}>50 Questions</div>
                   <div style={{fontSize: '0.85rem', color: '#6b7280'}}>MCQ Format</div>
                 </div>
                 <div style={{textAlign: 'center', padding: '1.5rem', background: 'white', borderRadius: '10px'}}>
-                  <div style={{marginBottom: '0.5rem'}}><img src="https://img.icons8.com/fluency/48/bar-chart.png" alt="report" /></div>
+                  <div style={{marginBottom: '0.5rem'}}>{/* TODO: Replace with <FaChartBar /> */}<span>⚠️</span></div>
                   <div style={{fontSize: '1.5rem', fontWeight: '700', color: '#1976d2', marginBottom: '0.25rem'}}>Instant Report</div>
                   <div style={{fontSize: '0.85rem', color: '#6b7280'}}>Get Results</div>
                 </div>
@@ -1083,19 +1093,19 @@ const CoursePageModern = ({ userName }) => {
                 <h4 style={{fontSize: '1.1rem', fontWeight: '700', color: '#1f2937', marginBottom: '1rem'}}>Test Sections:</h4>
                 <div style={{display: 'grid', gap: '0.75rem'}}>
                   <div style={{display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.75rem', background: 'white', borderRadius: '8px'}}>
-                    <span><img src="https://img.icons8.com/fluency/32/python.png" alt="python" /></span>
+                    <span>{/* TODO: Replace with <FaPython /> */}<span>⚠️</span></span>
                     <span style={{fontSize: '0.95rem', fontWeight: '500', color: '#1f2937'}}>Python Programming Basics</span>
                   </div>
                   <div style={{display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.75rem', background: 'white', borderRadius: '8px'}}>
-                    <span><img src="https://img.icons8.com/fluency/32/grow-graph.png" alt="statistics" /></span>
+                    <span>{/* TODO: Replace with <FaChartLine /> */}<span>⚠️</span></span>
                     <span style={{fontSize: '0.95rem', fontWeight: '500', color: '#1f2937'}}>Statistics & Mathematics</span>
                   </div>
                   <div style={{display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.75rem', background: 'white', borderRadius: '8px'}}>
-                    <span><img src="https://img.icons8.com/fluency/32/bot.png" alt="ai" /></span>
+                    <span>{/* TODO: Replace with <FaRobot /> */}<span>⚠️</span></span>
                     <span style={{fontSize: '0.95rem', fontWeight: '500', color: '#1f2937'}}>Machine Learning Concepts</span>
                   </div>
                   <div style={{display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.75rem', background: 'white', borderRadius: '8px'}}>
-                    <span><img src="https://img.icons8.com/fluency/32/light.png" alt="reasoning" /></span>
+                    <span>{/* TODO: Replace with <FaLightbulb /> */}<span>⚠️</span></span>
                     <span style={{fontSize: '0.95rem', fontWeight: '500', color: '#1f2937'}}>Logical Reasoning & Aptitude</span>
                   </div>
                 </div>
@@ -1119,15 +1129,15 @@ const CoursePageModern = ({ userName }) => {
               {/* Masterclass 1 */}
               <div style={{display: 'grid', gridTemplateColumns: '200px 1fr auto', gap: '1.5rem', padding: '1.5rem', background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', alignItems: 'center'}}>
                 <div style={{background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', borderRadius: '10px', height: '120px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white'}}>
-                  <img src="https://img.icons8.com/fluency/96/brain.png" alt="deep learning" />
+                  {/* TODO: Replace with <FaBrain /> */}<span>⚠️</span>
                 </div>
                 <div>
                   <h3 style={{fontSize: '1.15rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.5rem'}}>Deep Learning Fundamentals with PyTorch</h3>
                   <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6', marginBottom: '0.75rem'}}>Learn neural networks, CNNs, and RNNs from scratch with hands-on coding sessions.</p>
                   <div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap', fontSize: '0.85rem', color: '#6b7280'}}>
-                    <span><img src="https://img.icons8.com/fluency/16/calendar.png" alt="date" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> Oct 18, 2025</span>
-                    <span><img src="https://img.icons8.com/fluency/16/clock.png" alt="time" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> 7:00 PM IST</span>
-                    <span style={{color: '#059669', fontWeight: '600'}}><img src="https://img.icons8.com/fluency/16/groups.png" alt="people" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> 2.5k registered</span>
+                    <span>{/* TODO: Replace with <FaCalendar /> */}<span>⚠️</span> Oct 18, 2025</span>
+                    <span>{/* TODO: Replace with <FaClock /> */}<span>⚠️</span> 7:00 PM IST</span>
+                    <span style={{color: '#059669', fontWeight: '600'}}>{/* TODO: Replace with <FaUsers /> */}<span>⚠️</span> 2.5k registered</span>
                   </div>
                 </div>
                 <button style={{padding: '0.75rem 1.5rem', background: '#2196f3', color: 'white', border: 'none', borderRadius: '8px', fontWeight: '600', cursor: 'pointer', whiteSpace: 'nowrap'}}>
@@ -1138,15 +1148,15 @@ const CoursePageModern = ({ userName }) => {
               {/* Masterclass 2 */}
               <div style={{display: 'grid', gridTemplateColumns: '200px 1fr auto', gap: '1.5rem', padding: '1.5rem', background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', alignItems: 'center'}}>
                 <div style={{background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)', borderRadius: '10px', height: '120px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white'}}>
-                  <img src="https://img.icons8.com/fluency/96/bar-chart.png" alt="data visualization" />
+                  {/* TODO: Replace with <FaChartBar /> */}<span>⚠️</span>
                 </div>
                 <div>
                   <h3 style={{fontSize: '1.15rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.5rem'}}>Advanced Data Visualization Techniques</h3>
                   <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6', marginBottom: '0.75rem'}}>Master matplotlib, seaborn, and plotly to create stunning interactive visualizations.</p>
                   <div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap', fontSize: '0.85rem', color: '#6b7280'}}>
-                    <span><img src="https://img.icons8.com/fluency/16/calendar.png" alt="date" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> Oct 20, 2025</span>
-                    <span><img src="https://img.icons8.com/fluency/16/clock.png" alt="time" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> 6:30 PM IST</span>
-                    <span style={{color: '#059669', fontWeight: '600'}}><img src="https://img.icons8.com/fluency/16/groups.png" alt="people" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> 1.8k registered</span>
+                    <span>{/* TODO: Replace with <FaCalendar /> */}<span>⚠️</span> Oct 20, 2025</span>
+                    <span>{/* TODO: Replace with <FaClock /> */}<span>⚠️</span> 6:30 PM IST</span>
+                    <span style={{color: '#059669', fontWeight: '600'}}>{/* TODO: Replace with <FaUsers /> */}<span>⚠️</span> 1.8k registered</span>
                   </div>
                 </div>
                 <button style={{padding: '0.75rem 1.5rem', background: '#2196f3', color: 'white', border: 'none', borderRadius: '8px', fontWeight: '600', cursor: 'pointer', whiteSpace: 'nowrap'}}>
@@ -1157,15 +1167,15 @@ const CoursePageModern = ({ userName }) => {
               {/* Masterclass 3 */}
               <div style={{display: 'grid', gridTemplateColumns: '200px 1fr auto', gap: '1.5rem', padding: '1.5rem', background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', alignItems: 'center'}}>
                 <div style={{background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)', borderRadius: '10px', height: '120px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white'}}>
-                  <img src="https://img.icons8.com/fluency/96/speech-bubble-with-dots.png" alt="nlp" />
+                  {/* TODO: Replace with <FaComments /> */}<span>⚠️</span>
                 </div>
                 <div>
                   <h3 style={{fontSize: '1.15rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.5rem'}}>Natural Language Processing with Transformers</h3>
                   <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6', marginBottom: '0.75rem'}}>Explore BERT, GPT, and state-of-the-art NLP models for text processing.</p>
                   <div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap', fontSize: '0.85rem', color: '#6b7280'}}>
-                    <span><img src="https://img.icons8.com/fluency/16/calendar.png" alt="date" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> Oct 22, 2025</span>
-                    <span><img src="https://img.icons8.com/fluency/16/clock.png" alt="time" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> 8:00 PM IST</span>
-                    <span style={{color: '#059669', fontWeight: '600'}}><img src="https://img.icons8.com/fluency/16/groups.png" alt="people" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> 3.2k registered</span>
+                    <span>{/* TODO: Replace with <FaCalendar /> */}<span>⚠️</span> Oct 22, 2025</span>
+                    <span>{/* TODO: Replace with <FaClock /> */}<span>⚠️</span> 8:00 PM IST</span>
+                    <span style={{color: '#059669', fontWeight: '600'}}>{/* TODO: Replace with <FaUsers /> */}<span>⚠️</span> 3.2k registered</span>
                   </div>
                 </div>
                 <button style={{padding: '0.75rem 1.5rem', background: '#2196f3', color: 'white', border: 'none', borderRadius: '8px', fontWeight: '600', cursor: 'pointer', whiteSpace: 'nowrap'}}>
@@ -1176,15 +1186,15 @@ const CoursePageModern = ({ userName }) => {
               {/* Masterclass 4 */}
               <div style={{display: 'grid', gridTemplateColumns: '200px 1fr auto', gap: '1.5rem', padding: '1.5rem', background: 'white', border: '1px solid #e5e7eb', borderRadius: '12px', alignItems: 'center'}}>
                 <div style={{background: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)', borderRadius: '10px', height: '120px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white'}}>
-                  <img src="https://img.icons8.com/fluency/96/rocket.png" alt="mlops" />
+                  {/* TODO: Replace with <FaRocket /> */}<span>⚠️</span>
                 </div>
                 <div>
                   <h3 style={{fontSize: '1.15rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.5rem'}}>MLOps: Deploying ML Models to Production</h3>
                   <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6', marginBottom: '0.75rem'}}>Learn Docker, Kubernetes, and cloud deployment strategies for ML systems.</p>
                   <div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap', fontSize: '0.85rem', color: '#6b7280'}}>
-                    <span><img src="https://img.icons8.com/fluency/16/calendar.png" alt="date" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> Oct 25, 2025</span>
-                    <span><img src="https://img.icons8.com/fluency/16/clock.png" alt="time" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> 7:30 PM IST</span>
-                    <span style={{color: '#059669', fontWeight: '600'}}><img src="https://img.icons8.com/fluency/16/groups.png" alt="people" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> 2.1k registered</span>
+                    <span>{/* TODO: Replace with <FaCalendar /> */}<span>⚠️</span> Oct 25, 2025</span>
+                    <span>{/* TODO: Replace with <FaClock /> */}<span>⚠️</span> 7:30 PM IST</span>
+                    <span style={{color: '#059669', fontWeight: '600'}}>{/* TODO: Replace with <FaUsers /> */}<span>⚠️</span> 2.1k registered</span>
                   </div>
                 </div>
                 <button style={{padding: '0.75rem 1.5rem', background: '#2196f3', color: 'white', border: 'none', borderRadius: '8px', fontWeight: '600', cursor: 'pointer', whiteSpace: 'nowrap'}}>
@@ -1203,7 +1213,7 @@ const CoursePageModern = ({ userName }) => {
               {/* Easy Problems */}
               <div style={{padding: '2rem', background: 'linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%)', borderRadius: '12px', border: '2px solid #4caf50'}}>
                 <div style={{textAlign: 'center', marginBottom: '1.5rem'}}>
-                  <div style={{marginBottom: '0.5rem'}}><img src="https://img.icons8.com/fluency/48/ok.png" alt="easy" /></div>
+                  <div style={{marginBottom: '0.5rem'}}>{/* TODO: Replace with <FaCheck /> */}<span>⚠️</span></div>
                   <h3 style={{fontSize: '1.3rem', fontWeight: '700', color: '#2e7d32', marginBottom: '0.5rem'}}>Easy Problems</h3>
                   <p style={{fontSize: '0.9rem', color: '#1b5e20'}}>Perfect for beginners</p>
                 </div>
@@ -1221,7 +1231,7 @@ const CoursePageModern = ({ userName }) => {
               {/* Medium Problems */}
               <div style={{padding: '2rem', background: 'linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%)', borderRadius: '12px', border: '2px solid #ff9800'}}>
                 <div style={{textAlign: 'center', marginBottom: '1.5rem'}}>
-                  <div style={{marginBottom: '0.5rem'}}><img src="https://img.icons8.com/fluency/48/medium-priority.png" alt="medium" /></div>
+                  <div style={{marginBottom: '0.5rem'}}>{/* TODO: Replace with <FaExclamation /> */}<span>⚠️</span></div>
                   <h3 style={{fontSize: '1.3rem', fontWeight: '700', color: '#e65100', marginBottom: '0.5rem'}}>Medium Problems</h3>
                   <p style={{fontSize: '0.9rem', color: '#e65100'}}>Intermediate challenge</p>
                 </div>
@@ -1239,7 +1249,7 @@ const CoursePageModern = ({ userName }) => {
               {/* Hard Problems */}
               <div style={{padding: '2rem', background: 'linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)', borderRadius: '12px', border: '2px solid #f44336'}}>
                 <div style={{textAlign: 'center', marginBottom: '1.5rem'}}>
-                  <div style={{marginBottom: '0.5rem'}}><img src="https://img.icons8.com/fluency/48/high-priority.png" alt="hard" /></div>
+                  <div style={{marginBottom: '0.5rem'}}>{/* TODO: Replace with <FaExclamationTriangle /> */}<span>⚠️</span></div>
                   <h3 style={{fontSize: '1.3rem', fontWeight: '700', color: '#c62828', marginBottom: '0.5rem'}}>Hard Problems</h3>
                   <p style={{fontSize: '0.9rem', color: '#c62828'}}>Expert level</p>
                 </div>
@@ -1263,26 +1273,26 @@ const CoursePageModern = ({ userName }) => {
 
             <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginTop: '2rem'}}>
               <div style={{padding: '2rem', background: 'white', border: '2px solid #2196f3', borderRadius: '12px'}}>
-                <div style={{marginBottom: '1rem'}}><img src="https://img.icons8.com/fluency/48/bullseye.png" alt="career" /></div>
+                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaBullseye /> */}<span>⚠️</span></div>
                 <h3 style={{fontSize: '1.2rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.75rem'}}>Career Counseling</h3>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6', marginBottom: '1rem'}}>Get expert advice on career transitions, skill development, and industry trends.</p>
-                <div style={{fontSize: '0.85rem', color: '#2196f3', fontWeight: '600', marginBottom: '1rem'}}><img src="https://img.icons8.com/fluency/16/timer.png" alt="time" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> 45 min session • Free</div>
+                <div style={{fontSize: '0.85rem', color: '#2196f3', fontWeight: '600', marginBottom: '1rem'}}>{/* TODO: Replace with <FaClock /> */}<span>⚠️</span> 45 min session • Free</div>
                 <button style={{width: '100%', padding: '0.75rem', background: '#2196f3', color: 'white', border: 'none', borderRadius: '8px', fontWeight: '600', cursor: 'pointer'}}>Book Now</button>
               </div>
 
               <div style={{padding: '2rem', background: 'white', border: '2px solid #9c27b0', borderRadius: '12px'}}>
-                <div style={{marginBottom: '1rem'}}><img src="https://img.icons8.com/fluency/48/edit.png" alt="resume" /></div>
+                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaEdit /> */}<span>⚠️</span></div>
                 <h3 style={{fontSize: '1.2rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.75rem'}}>Resume Review</h3>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6', marginBottom: '1rem'}}>Professional feedback on your resume with actionable improvement suggestions.</p>
-                <div style={{fontSize: '0.85rem', color: '#9c27b0', fontWeight: '600', marginBottom: '1rem'}}><img src="https://img.icons8.com/fluency/16/timer.png" alt="time" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> 30 min session • Free</div>
+                <div style={{fontSize: '0.85rem', color: '#9c27b0', fontWeight: '600', marginBottom: '1rem'}}>{/* TODO: Replace with <FaClock /> */}<span>⚠️</span> 30 min session • Free</div>
                 <button style={{width: '100%', padding: '0.75rem', background: '#9c27b0', color: 'white', border: 'none', borderRadius: '8px', fontWeight: '600', cursor: 'pointer'}}>Book Now</button>
               </div>
 
               <div style={{padding: '2rem', background: 'white', border: '2px solid #ff9800', borderRadius: '12px'}}>
-                <div style={{marginBottom: '1rem'}}><img src="https://img.icons8.com/fluency/48/briefcase.png" alt="portfolio" /></div>
+                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaBriefcase /> */}<span>⚠️</span></div>
                 <h3 style={{fontSize: '1.2rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.75rem'}}>Portfolio Review</h3>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6', marginBottom: '1rem'}}>Showcase your projects effectively with expert portfolio guidance.</p>
-                <div style={{fontSize: '0.85rem', color: '#ff9800', fontWeight: '600', marginBottom: '1rem'}}><img src="https://img.icons8.com/fluency/16/timer.png" alt="time" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> 45 min session • Premium</div>
+                <div style={{fontSize: '0.85rem', color: '#ff9800', fontWeight: '600', marginBottom: '1rem'}}>{/* TODO: Replace with <FaClock /> */}<span>⚠️</span> 45 min session • Premium</div>
                 <button style={{width: '100%', padding: '0.75rem', background: '#ff9800', color: 'white', border: 'none', borderRadius: '8px', fontWeight: '600', cursor: 'pointer'}}>Book Now</button>
               </div>
             </div>
@@ -1299,13 +1309,13 @@ const CoursePageModern = ({ userName }) => {
                   <h3 style={{fontSize: '1.5rem', fontWeight: '700', marginBottom: '0.75rem'}}>Data Science Masterclass</h3>
                   <p style={{fontSize: '1rem', marginBottom: '1rem', opacity: '0.95'}}>Complete end-to-end program covering statistics, ML, deep learning, and deployment.</p>
                   <div style={{display: 'flex', gap: '1.5rem', fontSize: '0.9rem', marginBottom: '1.5rem'}}>
-                    <span><img src="https://img.icons8.com/fluency/16/calendar.png" alt="duration" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> 12 months</span>
-                    <span><img src="https://img.icons8.com/fluency/16/graduation-cap.png" alt="certified" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> IIT-R certified</span>
-                    <span><img src="https://img.icons8.com/fluency/16/briefcase.png" alt="placement" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> Placement support</span>
+                    <span>{/* TODO: Replace with <FaCalendar /> */}<span>⚠️</span> 12 months</span>
+                    <span>{/* TODO: Replace with <FaGraduationCap /> */}<span>⚠️</span> IIT-R certified</span>
+                    <span>{/* TODO: Replace with <FaBriefcase /> */}<span>⚠️</span> Placement support</span>
                   </div>
                   <button style={{padding: '0.75rem 2rem', background: 'white', color: '#667eea', border: 'none', borderRadius: '8px', fontWeight: '700', cursor: 'pointer'}}>Enroll Now</button>
                 </div>
-                <div><img src="https://img.icons8.com/fluency/96/graduation-cap.png" alt="education" /></div>
+                <div>{/* TODO: Replace with <FaGraduationCap /> */}<span>⚠️</span></div>
               </div>
 
               <div style={{display: 'flex', gap: '2rem', padding: '2rem', background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)', borderRadius: '12px', color: 'white', alignItems: 'center'}}>
@@ -1313,13 +1323,13 @@ const CoursePageModern = ({ userName }) => {
                   <h3 style={{fontSize: '1.5rem', fontWeight: '700', marginBottom: '0.75rem'}}>AI & ML Specialization</h3>
                   <p style={{fontSize: '1rem', marginBottom: '1rem', opacity: '0.95'}}>Advanced program focusing on neural networks, NLP, computer vision, and reinforcement learning.</p>
                   <div style={{display: 'flex', gap: '1.5rem', fontSize: '0.9rem', marginBottom: '1.5rem'}}>
-                    <span><img src="https://img.icons8.com/fluency/16/calendar.png" alt="duration" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> 10 months</span>
-                    <span><img src="https://img.icons8.com/fluency/16/graduation-cap.png" alt="certified" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> Industry certified</span>
-                    <span><img src="https://img.icons8.com/fluency/16/briefcase.png" alt="job" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> Job guarantee</span>
+                    <span>{/* TODO: Replace with <FaCalendar /> */}<span>⚠️</span> 10 months</span>
+                    <span>{/* TODO: Replace with <FaGraduationCap /> */}<span>⚠️</span> Industry certified</span>
+                    <span>{/* TODO: Replace with <FaBriefcase /> */}<span>⚠️</span> Job guarantee</span>
                   </div>
                   <button style={{padding: '0.75rem 2rem', background: 'white', color: '#f5576c', border: 'none', borderRadius: '8px', fontWeight: '700', cursor: 'pointer'}}>Enroll Now</button>
                 </div>
-                <div><img src="https://img.icons8.com/fluency/96/bot.png" alt="ai" /></div>
+                <div>{/* TODO: Replace with <FaRobot /> */}<span>⚠️</span></div>
               </div>
             </div>
           </section>
@@ -1332,7 +1342,7 @@ const CoursePageModern = ({ userName }) => {
             <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', marginTop: '2rem'}}>
               <div style={{background: 'white', borderRadius: '12px', border: '1px solid #e5e7eb', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.1)'}}>
                 <div style={{background: '#667eea', padding: '1.5rem', textAlign: 'center'}}>
-                  <div style={{width: '80px', height: '80px', background: 'white', borderRadius: '50%', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center'}}><img src="https://i.pravatar.cc/80?img=12" alt="mentor" style={{borderRadius: '50%', width: '80px', height: '80px'}} /></div>
+                  <div style={{width: '80px', height: '80px', background: 'white', borderRadius: '50%', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center'}}><img src="https://i.pravatar.cc/80?img=20" alt="mentor" style={{borderRadius: '50%', width: '80px', height: '80px'}} /></div>
                 </div>
                 <div style={{padding: '1.5rem'}}>
                   <h3 style={{fontSize: '1.1rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.5rem'}}>Dr. Suresh Reddy</h3>
@@ -1344,7 +1354,7 @@ const CoursePageModern = ({ userName }) => {
 
               <div style={{background: 'white', borderRadius: '12px', border: '1px solid #e5e7eb', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.1)'}}>
                 <div style={{background: '#f093fb', padding: '1.5rem', textAlign: 'center'}}>
-                  <div style={{width: '80px', height: '80px', background: 'white', borderRadius: '50%', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center'}}><img src="https://i.pravatar.cc/80?img=45" alt="mentor" style={{borderRadius: '50%', width: '80px', height: '80px'}} /></div>
+                  <div style={{width: '80px', height: '80px', background: 'white', borderRadius: '50%', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center'}}><img src="https://i.pravatar.cc/80?img=20" alt="mentor" style={{borderRadius: '50%', width: '80px', height: '80px'}} /></div>
                 </div>
                 <div style={{padding: '1.5rem'}}>
                   <h3 style={{fontSize: '1.1rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.5rem'}}>Anjali Patel</h3>
@@ -1356,7 +1366,7 @@ const CoursePageModern = ({ userName }) => {
 
               <div style={{background: 'white', borderRadius: '12px', border: '1px solid #e5e7eb', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.1)'}}>
                 <div style={{background: '#4facfe', padding: '1.5rem', textAlign: 'center'}}>
-                  <div style={{width: '80px', height: '80px', background: 'white', borderRadius: '50%', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center'}}><img src="https://i.pravatar.cc/80?img=33" alt="mentor" style={{borderRadius: '50%', width: '80px', height: '80px'}} /></div>
+                  <div style={{width: '80px', height: '80px', background: 'white', borderRadius: '50%', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center'}}><img src="https://i.pravatar.cc/80?img=20" alt="mentor" style={{borderRadius: '50%', width: '80px', height: '80px'}} /></div>
                 </div>
                 <div style={{padding: '1.5rem'}}>
                   <h3 style={{fontSize: '1.1rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.5rem'}}>Vikram Singh</h3>
@@ -1376,7 +1386,7 @@ const CoursePageModern = ({ userName }) => {
             <div style={{display: 'grid', gap: '2rem', marginTop: '2rem'}}>
               <div style={{background: 'linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)', padding: '2rem', borderRadius: '12px', border: '2px solid #2196f3'}}>
                 <div style={{display: 'flex', gap: '2rem', alignItems: 'flex-start'}}>
-                  <div style={{width: '100px', height: '100px', background: 'white', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0}}><img src="https://i.pravatar.cc/100?img=60" alt="success" style={{borderRadius: '50%', width: '100px', height: '100px'}} /></div>
+                  <div style={{width: '100px', height: '100px', background: 'white', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0}}><img src="https://i.pravatar.cc/100?img=68" alt="success" style={{borderRadius: '50%', width: '100px', height: '100px'}} /></div>
                   <div style={{flex: 1}}>
                     <h3 style={{fontSize: '1.3rem', fontWeight: '700', color: '#1565c0', marginBottom: '0.5rem'}}>From Mechanical Engineer to Data Scientist</h3>
                     <p style={{fontSize: '0.95rem', fontWeight: '600', color: '#1976d2', marginBottom: '1rem'}}>Karthik Rao • Now at Flipkart</p>
@@ -1384,9 +1394,9 @@ const CoursePageModern = ({ userName }) => {
                       "I was a mechanical engineer with 5 years of experience, but I always wanted to work with data. 360DigiTMG's comprehensive curriculum and placement support helped me land my dream job as a Data Scientist at Flipkart with a 250% salary hike. The hands-on projects and mentorship were game-changers for me."
                     </p>
                     <div style={{display: 'flex', gap: '1rem', fontSize: '0.9rem', color: '#1976d2', fontWeight: '600'}}>
-                      <span><img src="https://img.icons8.com/fluency/16/money-bag.png" alt="salary" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> 250% salary increase</span>
-                      <span><img src="https://img.icons8.com/fluency/16/timer.png" alt="time" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> 8 months program</span>
-                      <span><img src="https://img.icons8.com/fluency/16/bullseye.png" alt="goal" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> Dream role achieved</span>
+                      <span>{/* TODO: Replace with <FaQuestionCircle /> */}<span>⚠️</span> 250% salary increase</span>
+                      <span>{/* TODO: Replace with <FaClock /> */}<span>⚠️</span> 8 months program</span>
+                      <span>{/* TODO: Replace with <FaBullseye /> */}<span>⚠️</span> Dream role achieved</span>
                     </div>
                   </div>
                 </div>
@@ -1394,7 +1404,7 @@ const CoursePageModern = ({ userName }) => {
 
               <div style={{background: 'linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%)', padding: '2rem', borderRadius: '12px', border: '2px solid #9c27b0'}}>
                 <div style={{display: 'flex', gap: '2rem', alignItems: 'flex-start'}}>
-                  <div style={{width: '100px', height: '100px', background: 'white', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0}}><img src="https://i.pravatar.cc/100?img=48" alt="success" style={{borderRadius: '50%', width: '100px', height: '100px'}} /></div>
+                  <div style={{width: '100px', height: '100px', background: 'white', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0}}><img src="https://i.pravatar.cc/100?img=69" alt="success" style={{borderRadius: '50%', width: '100px', height: '100px'}} /></div>
                   <div style={{flex: 1}}>
                     <h3 style={{fontSize: '1.3rem', fontWeight: '700', color: '#7b1fa2', marginBottom: '0.5rem'}}>Fresh Graduate to ML Engineer at Microsoft</h3>
                     <p style={{fontSize: '0.95rem', fontWeight: '600', color: '#9c27b0', marginBottom: '1rem'}}>Sneha Verma • ML Engineer at Microsoft</p>
@@ -1402,9 +1412,9 @@ const CoursePageModern = ({ userName }) => {
                       "As a fresh CS graduate, I had theoretical knowledge but lacked practical skills. 360DigiTMG's industry-oriented program with real-world projects gave me the confidence to crack interviews at top tech companies. The AI mock interviews were especially helpful in my preparation."
                     </p>
                     <div style={{display: 'flex', gap: '1rem', fontSize: '0.9rem', color: '#9c27b0', fontWeight: '600'}}>
-                      <span><img src="https://img.icons8.com/fluency/16/graduation-cap.png" alt="graduate" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> Fresh graduate</span>
-                      <span><img src="https://img.icons8.com/fluency/16/timer.png" alt="time" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> 6 months to placement</span>
-                      <span><img src="https://img.icons8.com/fluency/16/office.png" alt="company" style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> Microsoft offer</span>
+                      <span>{/* TODO: Replace with <FaGraduationCap /> */}<span>⚠️</span> Fresh graduate</span>
+                      <span>{/* TODO: Replace with <FaClock /> */}<span>⚠️</span> 6 months to placement</span>
+                      <span>{/* TODO: Replace with <FaQuestionCircle /> */}<span>⚠️</span> Microsoft offer</span>
                     </div>
                   </div>
                 </div>
@@ -1419,109 +1429,109 @@ const CoursePageModern = ({ userName }) => {
 
             <div className="partners-grid">
               <div className="partner-card">
-                <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google" className="partner-logo-img" />
+                
                 <h4 className="partner-name">Google</h4>
                 <p className="partner-hires">150+ Hires</p>
               </div>
 
               <div className="partner-card">
-                <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft" className="partner-logo-img" />
+                
                 <h4 className="partner-name">Microsoft</h4>
                 <p className="partner-hires">120+ Hires</p>
               </div>
 
               <div className="partner-card">
-                <img src="https://logo.clearbit.com/amazon.com" alt="Amazon" className="partner-logo-img" />
+                
                 <h4 className="partner-name">Amazon</h4>
                 <p className="partner-hires">200+ Hires</p>
               </div>
 
               <div className="partner-card">
-                <img src="https://logo.clearbit.com/tesla.com" alt="Tesla" className="partner-logo-img" />
+                
                 <h4 className="partner-name">Tesla</h4>
                 <p className="partner-hires">80+ Hires</p>
               </div>
 
               <div className="partner-card">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" className="partner-logo-img" />
+                
                 <h4 className="partner-name">IBM</h4>
                 <p className="partner-hires">90+ Hires</p>
               </div>
 
               <div className="partner-card">
-                <img src="https://logo.clearbit.com/accenture.com" alt="Accenture" className="partner-logo-img" />
+                
                 <h4 className="partner-name">Accenture</h4>
                 <p className="partner-hires">110+ Hires</p>
               </div>
 
               <div className="partner-card">
-                <img src="https://logo.clearbit.com/meta.com" alt="Meta" className="partner-logo-img" />
+                
                 <h4 className="partner-name">Meta</h4>
                 <p className="partner-hires">95+ Hires</p>
               </div>
 
               <div className="partner-card">
-                <img src="https://logo.clearbit.com/apple.com" alt="Apple" className="partner-logo-img" />
+                
                 <h4 className="partner-name">Apple</h4>
                 <p className="partner-hires">75+ Hires</p>
               </div>
 
               <div className="partner-card">
-                <img src="https://logo.clearbit.com/netflix.com" alt="Netflix" className="partner-logo-img" />
+                
                 <h4 className="partner-name">Netflix</h4>
                 <p className="partner-hires">60+ Hires</p>
               </div>
 
               <div className="partner-card">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Adobe_Corporate_Logo.png" alt="Adobe" className="partner-logo-img" />
+                
                 <h4 className="partner-name">Adobe</h4>
                 <p className="partner-hires">85+ Hires</p>
               </div>
 
               <div className="partner-card">
-                <img src="https://logo.clearbit.com/flipkart.com" alt="Flipkart" className="partner-logo-img" />
+                
                 <h4 className="partner-name">Flipkart</h4>
                 <p className="partner-hires">130+ Hires</p>
               </div>
 
               <div className="partner-card">
-                <img src="https://logo.clearbit.com/paypal.com" alt="PayPal" className="partner-logo-img" />
+                
                 <h4 className="partner-name">PayPal</h4>
                 <p className="partner-hires">70+ Hires</p>
               </div>
 
               <div className="partner-card">
-                <img src="https://logo.clearbit.com/salesforce.com" alt="Salesforce" className="partner-logo-img" />
+                
                 <h4 className="partner-name">Salesforce</h4>
                 <p className="partner-hires">100+ Hires</p>
               </div>
 
               <div className="partner-card">
-                <img src="https://logo.clearbit.com/oracle.com" alt="Oracle" className="partner-logo-img" />
+                
                 <h4 className="partner-name">Oracle</h4>
                 <p className="partner-hires">95+ Hires</p>
               </div>
 
               <div className="partner-card">
-                <img src="https://logo.clearbit.com/goldmansachs.com" alt="Goldman Sachs" className="partner-logo-img" />
+                
                 <h4 className="partner-name">Goldman Sachs</h4>
                 <p className="partner-hires">65+ Hires</p>
               </div>
 
               <div className="partner-card">
-                <img src="https://logo.clearbit.com/nvidia.com" alt="Nvidia" className="partner-logo-img" />
+                
                 <h4 className="partner-name">Nvidia</h4>
                 <p className="partner-hires">55+ Hires</p>
               </div>
 
               <div className="partner-card">
-                <img src="https://logo.clearbit.com/uber.com" alt="Uber" className="partner-logo-img" />
+                
                 <h4 className="partner-name">Uber</h4>
                 <p className="partner-hires">75+ Hires</p>
               </div>
 
               <div className="partner-card">
-                <img src="https://logo.clearbit.com/airbnb.com" alt="Airbnb" className="partner-logo-img" />
+                
                 <h4 className="partner-name">Airbnb</h4>
                 <p className="partner-hires">50+ Hires</p>
               </div>

@@ -6,6 +6,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -26,8 +27,22 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif|svg|webp)$/i,
         type: 'asset/resource'
+      },
+      {
+        test: /\.(woff|woff2|ttf|eot)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext]'
+        }
       }
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+    fallback: {
+      "fs": false,
+      "path": false
+    }
   },
   plugins: [
     new HtmlWebpackPlugin({

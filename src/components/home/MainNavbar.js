@@ -61,6 +61,10 @@ const MainNavbar = () => {
     navigate('/apply');
   };
 
+  const handleForumClick = () => {
+    navigate('/forum');
+  };
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -74,8 +78,8 @@ const MainNavbar = () => {
       <div className="navbar-container">
         <div className="navbar-logo">
           <img
-            src="https://aispry.com/pluginfile.php/1/theme_university/logo/1760548222/AiTutor-Logo-w.png"
-            alt="AiTutor Logo"
+            src="/images/logo-06.png"
+            alt="360DigiTMG Logo"
             className="logo-image"
           />
         </div>
@@ -94,6 +98,9 @@ const MainNavbar = () => {
             </li>
             <li className="menu-item">
               <button onClick={() => { handleMasterclassClick(); closeMobileMenu(); }} className="menu-link">Masterclass</button>
+            </li>
+            <li className="menu-item">
+              <button onClick={() => { handleForumClick(); closeMobileMenu(); }} className="menu-link">Forum</button>
             </li>
             <li className="menu-item">
               <button onClick={() => { handleAlumniClick(); closeMobileMenu(); }} className="menu-link">Alumni</button>

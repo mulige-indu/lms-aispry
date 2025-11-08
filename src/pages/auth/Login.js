@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaBullseye, FaChalkboardTeacher, FaBriefcase, FaTrophy, FaRocket } from 'react-icons/fa';
 import './Signup.css';
 
 const Login = () => {
@@ -53,9 +54,6 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      console.log('Attempting login with:', { email: formData.email });
-      console.log('Fetching URL:', '/api/auth/login');
-
       const response = await fetch('/api/auth/login', {
         method: 'POST',
         headers: {
@@ -63,9 +61,6 @@ const Login = () => {
         },
         body: JSON.stringify(formData)
       });
-
-      console.log('Response status:', response.status);
-      console.log('Response headers:', response.headers);
 
       // Check if response is JSON
       const contentType = response.headers.get('content-type');
@@ -76,7 +71,6 @@ const Login = () => {
       }
 
       const data = await response.json();
-      console.log('Response data:', data);
 
       if (data.success) {
         // Store token and student data in localStorage
@@ -94,9 +88,7 @@ const Login = () => {
         setErrors({ general: data.message || 'Login failed. Please try again.' });
       }
     } catch (error) {
-      console.error('Login error details:', error);
-      console.error('Error message:', error.message);
-      console.error('Error stack:', error.stack);
+      console.error('Login error:', error);
 
       if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
         setErrors({ general: 'Cannot connect to server. Please ensure the backend server is running on port 8080.' });
@@ -125,8 +117,8 @@ const Login = () => {
           </button>
           <div className="signup-logo">
             <img
-              src="https://aispry.com/pluginfile.php/1/theme_university/logo/1760548222/AiTutor-Logo-w.png"
-              alt="AiTutor Logo"
+              src="/images/logo-06.png"
+              alt="360DigiTMG Logo"
               className="signup-logo-image"
             />
           </div>
@@ -196,23 +188,23 @@ const Login = () => {
 
               <div className="benefits">
                 <div className="benefit-item">
-                  <span className="benefit-icon"><img src="https://img.icons8.com/fluency/32/bullseye.png" alt="target" /></span>
+                  <span className="benefit-icon"><FaBullseye size={32} /></span>
                   <span>Industry-relevant curriculum</span>
                 </div>
                 <div className="benefit-item">
-                  <span className="benefit-icon"><img src="https://img.icons8.com/fluency/32/teacher.png" alt="mentor" /></span>
+                  <span className="benefit-icon"><FaChalkboardTeacher size={32} /></span>
                   <span>Expert mentors and instructors</span>
                 </div>
                 <div className="benefit-item">
-                  <span className="benefit-icon"><img src="https://img.icons8.com/fluency/32/briefcase.png" alt="placement" /></span>
+                  <span className="benefit-icon"><FaBriefcase size={32} /></span>
                   <span>100% placement assistance</span>
                 </div>
                 <div className="benefit-item">
-                  <span className="benefit-icon"><img src="https://img.icons8.com/fluency/32/trophy.png" alt="certification" /></span>
+                  <span className="benefit-icon"><FaTrophy size={32} /></span>
                   <span>Industry certifications</span>
                 </div>
                 <div className="benefit-item">
-                  <span className="benefit-icon"><img src="https://img.icons8.com/fluency/32/rocket.png" alt="projects" /></span>
+                  <span className="benefit-icon"><FaRocket size={32} /></span>
                   <span>Hands-on projects</span>
                 </div>
               </div>

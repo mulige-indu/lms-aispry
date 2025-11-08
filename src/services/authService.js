@@ -10,10 +10,6 @@ class AuthService {
       const cleanEmail = email.trim();
       const cleanPassword = password.trim();
 
-      console.log('AuthService: Attempting login for', cleanEmail);
-      console.log('AuthService: Password length:', cleanPassword.length);
-      console.log('AuthService: Password characters:', cleanPassword.split('').map(c => c.charCodeAt(0)));
-
       const response = await fetch(`${API_BASE_URL}/auth/login`, {
         method: 'POST',
         headers: {
@@ -22,10 +18,7 @@ class AuthService {
         body: JSON.stringify({ email: cleanEmail, password: cleanPassword })
       });
 
-      console.log('AuthService: Response status:', response.status);
-
       const data = await response.json();
-      console.log('AuthService: Response data:', data);
 
       if (response.ok && data.success) {
         // Store authentication data
@@ -60,8 +53,6 @@ class AuthService {
   // Register user
   async signup(userData) {
     try {
-      console.log('AuthService: Attempting signup for', userData.email);
-
       const response = await fetch(`${API_BASE_URL}/auth/signup`, {
         method: 'POST',
         headers: {
@@ -70,10 +61,7 @@ class AuthService {
         body: JSON.stringify(userData)
       });
 
-      console.log('AuthService: Signup response status:', response.status);
-
       const data = await response.json();
-      console.log('AuthService: Signup response data:', data);
 
       if (response.ok && data.success) {
         // Store authentication data
@@ -108,7 +96,6 @@ class AuthService {
   storeAuthData(token, user) {
     localStorage.setItem('token', token);
     localStorage.setItem('student', JSON.stringify(user));
-    console.log('AuthService: Stored auth data for user:', user.firstName);
   }
 
   // Get stored user
@@ -131,7 +118,6 @@ class AuthService {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('student');
-    console.log('AuthService: User logged out');
   }
 
   // Redirect to courses page

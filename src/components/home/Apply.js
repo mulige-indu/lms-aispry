@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import MainNavbar from './MainNavbar';
 import './Apply.css';
+import {
+  FaGraduationCap, FaBolt, FaBullseye, FaMoneyBillWave,
+  FaPhone, FaComments, FaEnvelope, FaRocket, FaHandshake,
+  FaBook, FaGlobe
+} from 'react-icons/fa';
 
 const Apply = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -304,7 +309,7 @@ const Apply = () => {
       <div className="apply-hero">
         <div className="hero-content">
           <div className="hero-announcement">
-            <span className="announcement-icon"><img src="https://img.icons8.com/fluency/48/graduation-cap.png" alt="graduation" style={{width: '24px', height: '24px'}} /></span>
+            <span className="announcement-icon"><FaGraduationCap size={24} /></span>
             <span>Limited Time: Early Bird Discount Available!</span>
           </div>
 
@@ -317,15 +322,15 @@ const Apply = () => {
 
           <div className="hero-features">
             <div className="feature-highlight">
-              <div className="feature-icon"><img src="https://img.icons8.com/fluency/48/lightning-bolt.png" alt="fast" style={{width: '32px', height: '32px'}} /></div>
+              <div className="feature-icon"><FaBolt size={32} /></div>
               <span>5-minute application</span>
             </div>
             <div className="feature-highlight">
-              <div className="feature-icon"><img src="https://img.icons8.com/fluency/48/bullseye.png" alt="target" style={{width: '32px', height: '32px'}} /></div>
+              <div className="feature-icon"><FaBullseye size={32} /></div>
               <span>Instant feedback</span>
             </div>
             <div className="feature-highlight">
-              <div className="feature-icon"><img src="https://img.icons8.com/fluency/48/money-bag.png" alt="scholarship" style={{width: '32px', height: '32px'}} /></div>
+              <div className="feature-icon"><FaMoneyBillWave size={32} /></div>
               <span>Scholarship available</span>
             </div>
           </div>
@@ -416,12 +421,12 @@ const Apply = () => {
           <div className="benefits-card">
             <h3>Why Choose 360DigiTMG?</h3>
             <ul className="benefits-list">
-              <li><img src="https://img.icons8.com/fluency/24/bullseye.png" alt="target" /> Industry-expert instructors</li>
-              <li><img src="https://img.icons8.com/fluency/24/rocket.png" alt="rocket" /> 95% job placement rate</li>
-              <li><img src="https://img.icons8.com/fluency/24/briefcase.png" alt="briefcase" /> Career support & mentorship</li>
-              <li><img src="https://img.icons8.com/fluency/24/globe.png" alt="globe" /> Global certification</li>
-              <li><img src="https://img.icons8.com/fluency/24/handshake.png" alt="handshake" /> Lifetime alumni network</li>
-              <li><img src="https://img.icons8.com/fluency/24/books.png" alt="books" /> Comprehensive curriculum</li>
+              <li><FaBullseye size={24} style={{marginRight: '8px', color: '#d5842e'}} /> Industry-expert instructors</li>
+              <li><FaRocket size={24} style={{marginRight: '8px', color: '#d5842e'}} /> 95% job placement rate</li>
+              <li><FaBriefcase size={24} style={{marginRight: '8px', color: '#d5842e'}} /> Career support & mentorship</li>
+              <li><FaGlobe size={24} style={{marginRight: '8px', color: '#d5842e'}} /> Global certification</li>
+              <li><FaHandshake size={24} style={{marginRight: '8px', color: '#d5842e'}} /> Lifetime alumni network</li>
+              <li><FaBook size={24} style={{marginRight: '8px', color: '#d5842e'}} /> Comprehensive curriculum</li>
             </ul>
           </div>
 
@@ -429,9 +434,9 @@ const Apply = () => {
             <h3>Need Help?</h3>
             <p>Our admissions team is here to assist you throughout the application process.</p>
             <div className="support-options">
-              <button className="support-btn"><img src="https://img.icons8.com/fluency/20/phone.png" alt="phone" /> Schedule Call</button>
-              <button className="support-btn"><img src="https://img.icons8.com/fluency/20/chat.png" alt="chat" /> Live Chat</button>
-              <button className="support-btn"><img src="https://img.icons8.com/fluency/20/email.png" alt="email" /> Email Support</button>
+              <button className="support-btn"><FaPhone size={20} style={{marginRight: '8px'}} /> Schedule Call</button>
+              <button className="support-btn"><FaComments size={20} style={{marginRight: '8px'}} /> Live Chat</button>
+              <button className="support-btn"><FaEnvelope size={20} style={{marginRight: '8px'}} /> Email Support</button>
             </div>
           </div>
 
@@ -439,7 +444,7 @@ const Apply = () => {
             <div className="testimonial-content">
               <p>"The application process was smooth and the support team helped me every step of the way. Best decision I ever made!"</p>
               <div className="testimonial-author">
-                <img src="https://i.pravatar.cc/40?img=47" alt="Sarah" />
+                
                 <div>
                   <strong>Sarah Johnson</strong>
                   <span>AI Engineer at Google</span>
