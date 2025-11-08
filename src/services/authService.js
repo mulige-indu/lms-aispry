@@ -1,51 +1,59 @@
-// Authentication service for Spring Boot API integration
-import { API_BASE_URL } from '../config';
-
+// Authentication service - Frontend only with mock data
 class AuthService {
+
+  // Mock user database
+  getUsersDb() {
+    const usersJson = localStorage.getItem('users');
+    return usersJson ? JSON.parse(usersJson) : [];
+  }
+
+  saveUsersDb(users) {
+    localStorage.setItem('users', JSON.stringify(users));
+  }
 
   // Login user
   async login(email, password) {
     try {
       // Clean the input data
-      const cleanEmail = email.trim();
+      const cleanEmail = email.trim().toLowerCase();
       const cleanPassword = password.trim();
 
-      const response = await fetch(`${API_BASE_URL}/auth/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email: cleanEmail, password: cleanPassword })
-      });
+      // Get users from localStorage
+      const users = this.getUsersDb();
 
-      const data = await response.json();
+      // Find user
+      const user = users.find(u => u.email.toLowerCase() === cleanEmail && u.password === cleanPassword);
 
-      if (response.ok && data.success) {
-        // Store authentication data
-        const user = {
-          id: data.data.studentId,
-          firstName: data.data.firstName,
-          lastName: data.data.lastName,
-          email: data.data.email
+      if (user) {
+        // Create user object without password
+        const userData = {
+          id: user.id,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          email: user.email
         };
-        this.storeAuthData(data.data.token, user);
+
+        // Generate mock token
+        const token = 'mock-token-' + Date.now();
+        this.storeAuthData(token, userData);
+
         return {
           success: true,
-          user: user,
-          token: data.data.token,
-          message: data.message
+          user: userData,
+          token: token,
+          message: 'Login successful'
         };
       } else {
         return {
           success: false,
-          message: data.message || 'Login failed'
+          message: 'Invalid email or password'
         };
       }
     } catch (error) {
       console.error('AuthService: Login error:', error);
       return {
         success: false,
-        message: 'Network error. Please check your connection.'
+        message: 'An error occurred during login'
       };
     }
   }
@@ -53,41 +61,57 @@ class AuthService {
   // Register user
   async signup(userData) {
     try {
-      const response = await fetch(`${API_BASE_URL}/auth/signup`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData)
-      });
+      const cleanEmail = userData.email.trim().toLowerCase();
 
-      const data = await response.json();
+      // Get users from localStorage
+      const users = this.getUsersDb();
 
-      if (response.ok && data.success) {
-        // Store authentication data
-        this.storeAuthData(data.data.token, {
-          id: data.data.studentId,
-          firstName: data.data.firstName,
-          lastName: data.data.lastName,
-          email: data.data.email
-        });
-        return {
-          success: true,
-          user: data.data,
-          token: data.data.token,
-          message: data.message
-        };
-      } else {
+      // Check if user already exists
+      if (users.find(u => u.email.toLowerCase() === cleanEmail)) {
         return {
           success: false,
-          message: data.message || 'Signup failed'
+          message: 'Email already registered'
         };
       }
+
+      // Create new user
+      const newUser = {
+        id: Date.now(),
+        firstName: userData.firstName.trim(),
+        lastName: userData.lastName.trim(),
+        email: cleanEmail,
+        password: userData.password,
+        phone: userData.phone || '',
+        createdAt: new Date().toISOString()
+      };
+
+      // Save to localStorage
+      users.push(newUser);
+      this.saveUsersDb(users);
+
+      // Create user object without password
+      const userDataClean = {
+        id: newUser.id,
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
+        email: newUser.email
+      };
+
+      // Generate mock token
+      const token = 'mock-token-' + Date.now();
+      this.storeAuthData(token, userDataClean);
+
+      return {
+        success: true,
+        user: userDataClean,
+        token: token,
+        message: 'Registration successful'
+      };
     } catch (error) {
       console.error('AuthService: Signup error:', error);
       return {
         success: false,
-        message: 'Network error. Please check your connection.'
+        message: 'An error occurred during signup'
       };
     }
   }

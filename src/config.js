@@ -1,24 +1,8 @@
-// API Configuration
-// Automatically uses production URL when deployed, localhost when developing
+// Application Configuration
+// Frontend-only LMS - no backend required
 
-const getApiBaseUrl = () => {
-  // Check if we're in a browser environment
-  if (typeof window === 'undefined') {
-    return 'http://localhost:8080/api';
-  }
-
-  // If deployed but no env var set, try to detect production
-  if (window.location.hostname !== 'localhost') {
-    // Replace this with your actual Render backend URL after deployment
-    return 'https://lms-backend-xxxx.onrender.com/api';
-  }
-
-  // Local development
-  return 'http://localhost:8080/api';
-};
-
-export const API_BASE_URL = getApiBaseUrl();
+export const APP_NAME = '360DigiTMG LMS';
 
 export default {
-  API_BASE_URL
+  APP_NAME
 };

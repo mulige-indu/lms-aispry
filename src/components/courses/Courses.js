@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { API_BASE_URL } from '../../config';
 import CourseCard from '../common/CourseCard';
 import './Courses.css';
 
@@ -53,16 +52,41 @@ const Courses = () => {
   const fetchCourses = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${API_BASE_URL}/courses`);
-      const data = await response.json();
 
-      if (data.success) {
-        setCourses(data.data);
-      } else {
-        setError('Failed to load courses');
-      }
+      // Mock course data
+      const mockCourses = [
+        {
+          courseId: 1,
+          courseName: 'Data Science with Python',
+          category: 'Data Science',
+          level: 'Beginner',
+          duration: '12 weeks',
+          description: 'Learn data science fundamentals with Python',
+          instructor: 'Dr. Smith'
+        },
+        {
+          courseId: 2,
+          courseName: 'Machine Learning Fundamentals',
+          category: 'AI/ML',
+          level: 'Intermediate',
+          duration: '16 weeks',
+          description: 'Master machine learning algorithms and techniques',
+          instructor: 'Prof. Johnson'
+        },
+        {
+          courseId: 3,
+          courseName: 'Web Development with React',
+          category: 'Development',
+          level: 'Beginner',
+          duration: '10 weeks',
+          description: 'Build modern web applications with React',
+          instructor: 'Ms. Williams'
+        }
+      ];
+
+      setCourses(mockCourses);
     } catch (err) {
-      console.error('Error fetching courses:', err);
+      console.error('Error loading courses:', err);
       setError('Unable to load courses. Please try again later.');
     } finally {
       setLoading(false);
@@ -81,23 +105,26 @@ const Courses = () => {
     try {
       const student = JSON.parse(studentData);
 
-      const response = await fetch(`${API_BASE_URL}/courses/enroll/${courseId}`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ userId: student.id })
-      });
+      // Get enrolled courses from localStorage
+      const enrolledCoursesJson = localStorage.getItem('enrolledCourses');
+      const enrolledCourses = enrolledCoursesJson ? JSON.parse(enrolledCoursesJson) : {};
 
-      const data = await response.json();
-
-      if (data.success) {
-        alert(data.message);
-        navigate('/my-courses');
-      } else {
-        alert(data.message || 'Enrollment failed');
+      // Check if already enrolled
+      if (!enrolledCourses[student.id]) {
+        enrolledCourses[student.id] = [];
       }
+
+      if (enrolledCourses[student.id].includes(courseId)) {
+        alert('You are already enrolled in this course');
+        return;
+      }
+
+      // Enroll in course
+      enrolledCourses[student.id].push(courseId);
+      localStorage.setItem('enrolledCourses', JSON.stringify(enrolledCourses));
+
+      alert('Successfully enrolled in course!');
+      navigate('/my-courses');
     } catch (err) {
       console.error('Enrollment error:', err);
       alert('Unable to enroll. Please try again.');
@@ -265,10 +292,10 @@ const Courses = () => {
           ) : (
             filteredCourses.map(course => (
               <CourseCard
-                key={course.id}
+                key={course.courseId}
                 variant="browse"
                 course={course}
-                onAction={() => handleEnroll(course.id)}
+                onAction={() => handleEnroll(course.courseId)}
                 actionText="Enroll Now"
               />
             ))

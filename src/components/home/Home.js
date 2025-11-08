@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { API_BASE_URL } from '../../config';
 import ScrollingNavbar from './ScrollingNavbar';
 import MainNavbar from './MainNavbar';
 import CourseCard from '../common/CourseCard';
@@ -47,7 +46,6 @@ const Home = () => {
     {
       icon: <FaChartBar />,
       title: 'Data Analyst',
-          icon: <FaChartBar />,
       salary: '₹4-8 LPA',
       timeline: '3-4 Months',
       skills: ['Python', 'SQL', 'Tableau'],
@@ -172,7 +170,6 @@ const Home = () => {
         {
           icon: <FaChartBar />,
           title: 'Data Analyst',
-          icon: <FaChartBar />,
           salary: '₹4-8 LPA',
           timeline: '3-4 Months',
           skills: ['Excel', 'SQL', 'Power BI'],
@@ -225,7 +222,6 @@ const Home = () => {
         {
           icon: <FaChartBar />,
           title: 'Data Analyst',
-          icon: <FaChartBar />,
           salary: '₹6-12 LPA',
           timeline: '3-4 Months',
           skills: ['Python', 'SQL', 'Tableau'],
@@ -304,7 +300,6 @@ const Home = () => {
         {
           icon: <FaChartBar />,
           title: 'Data Analyst',
-          icon: <FaChartBar />,
           salary: '₹5-10 LPA',
           timeline: '3-4 Months',
           skills: ['Python', 'SQL', 'Visualization'],
@@ -331,7 +326,6 @@ const Home = () => {
         {
           icon: <FaChartBar />,
           title: 'Data Analyst',
-          icon: <FaChartBar />,
           salary: '₹5-10 LPA',
           timeline: '3-4 Months',
           skills: ['Python', 'SQL', 'Excel'],
@@ -450,46 +444,30 @@ We're excited to have you on this journey!
     setIsSubmitting(true);
 
     try {
-      // Call the reserve-seat API
-      const response = await fetch(`${API_BASE_URL}/reserve-seat`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone
-        })
-      });
+      // Save seat reservation to localStorage
+      const reservations = JSON.parse(localStorage.getItem('seatReservations') || '[]');
+      const newReservation = {
+        id: Date.now(),
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        timestamp: new Date().toISOString()
+      };
 
-      const data = await response.json();
+      reservations.push(newReservation);
+      localStorage.setItem('seatReservations', JSON.stringify(reservations));
 
-      if (data.success) {
-        // Send SMS message to the student (optional)
-        // Note: SMS is now handled by backend, not frontend
-        // try {
-        //   await sendSMS(formData.phone, formData.name);
-        // } catch (smsError) {
-        //   console.log('SMS sending failed:', smsError);
-        //   // Continue even if SMS fails
-        // }
+      setIsSubmitting(false);
+      setSubmitSuccess(true);
 
-        setIsSubmitting(false);
-        setSubmitSuccess(true);
-
-        // Reset form after a delay
-        setTimeout(() => {
-          setSubmitSuccess(false);
-          setFormData({ name: '', email: '', phone: '' });
-        }, 5000);
-      } else {
-        alert(data.message || 'Failed to reserve seat. Please try again.');
-        setIsSubmitting(false);
-      }
+      // Reset form after a delay
+      setTimeout(() => {
+        setSubmitSuccess(false);
+        setFormData({ name: '', email: '', phone: '' });
+      }, 5000);
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('Failed to reserve seat. Please check your connection and try again.');
+      alert('Failed to reserve seat. Please try again.');
       setIsSubmitting(false);
     }
   };
@@ -778,7 +756,7 @@ We're excited to have you on this journey!
                   {careerTracks.map((track, index) => (
                     <div className="track-card" key={index}>
                       <div className="track-icon">
-                        <img src={track.icon} alt={track.title} />
+                        {track.icon}
                       </div>
                       <div className="track-info">
                         <h4>{track.title}</h4>
