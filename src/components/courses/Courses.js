@@ -423,7 +423,7 @@ const Courses = () => {
             </button>
           </div>
           <div className="navbar-user">
-            {user ? (
+            {user && (
               <div className="user-profile" onClick={() => setShowDropdown(!showDropdown)}>
                 <div className="user-avatar">
                   {user.firstName?.charAt(0).toUpperCase()}
@@ -446,10 +446,6 @@ const Courses = () => {
                   </div>
                 )}
               </div>
-            ) : (
-              <button className="login-btn" onClick={() => navigate('/courses')}>
-                Login
-              </button>
             )}
           </div>
         </div>
