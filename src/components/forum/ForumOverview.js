@@ -147,60 +147,6 @@ const ForumOverview = () => {
 
   return (
     <div className="forum-overview">
-      {/* Navigation Bar */}
-      <nav className="courses-navbar">
-        <div className="navbar-container">
-          <div className="navbar-logo">
-            <img
-              src="https://aispry.com/pluginfile.php/1/theme_university/logo/1762520057/AiTutor-Logo-w.png"
-              alt="AiTutor Logo"
-              className="logo-image"
-            />
-          </div>
-
-          <div className="navbar-menu">
-            <button className="nav-btn" onClick={() => navigate('/my-courses')}>
-              <MyCoursesIcon size={20} color="currentColor" /> My Course
-            </button>
-            <button className="nav-btn" onClick={() => navigate('/courses')}>
-              <BrowseIcon size={20} color="currentColor" /> Browse Courses
-            </button>
-            <button className="nav-btn active" onClick={() => navigate('/forum')}>
-              <ForumIcon size={20} color="currentColor" /> Discussion Forum
-            </button>
-            <button className="nav-btn" onClick={() => alert('Support coming soon!')}>
-              <SupportIcon size={20} color="currentColor" /> Support
-            </button>
-          </div>
-          <div className="navbar-user">
-            {user && (
-              <div className="user-profile" onClick={() => setShowDropdown(!showDropdown)}>
-                <div className="user-avatar">
-                  {user.firstName?.charAt(0).toUpperCase()}
-                </div>
-                <span className="user-name">
-                  {user.firstName} {user.lastName}
-                </span>
-                <span className="dropdown-arrow">▼</span>
-
-                {showDropdown && (
-                  <div className="user-dropdown">
-                    <button className="dropdown-item" onClick={handleSettings}>
-                      <span className="dropdown-icon">⚙️</span>
-                      Settings
-                    </button>
-                    <button className="dropdown-item logout" onClick={handleLogout}>
-                      <span className="dropdown-icon">🚪</span>
-                      Logout
-                    </button>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        </div>
-      </nav>
-
       <div className="forum-header">
         <div className="forum-header-content">
           <h1>Discussion Forum</h1>
