@@ -33,6 +33,7 @@ const SendIcon = () => (
   </svg>
 );
 
+// Clean navbar without Programs, Masterclass, Forum, Alumni, Resources
 const MainNavbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [student, setStudent] = useState(null);
