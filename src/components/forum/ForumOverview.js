@@ -1,17 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import forumService from '../../services/forumService';
-import authService from '../../services/authService';
 import './ForumOverview.css';
 import {
-  FaComments, FaQuestionCircle, FaCode, FaBriefcase,
-  FaLightbulb, FaUsers, FaPlus, FaSearch, FaFire,
-  FaClock, FaComment, FaEye, FaHeart, FaHourglassHalf, FaCheckCircle, FaArrowLeft
-} from 'react-icons/fa';
+  SearchIcon, ClockIcon, HeartIcon, ArrowIcon, CodeIcon,
+  BrainIcon, UserIcon, CheckIcon
+} from '../common/SvgIcons';
 
+// Helper function to get or create guest user
+const getUser = () => {
+  const userStr = localStorage.getItem('student');
+  if (userStr) {
+    return JSON.parse(userStr);
+  }
+  // Create guest user if none exists
+  const guestUser = { id: 'guest-user', firstName: 'Guest', lastName: 'User', email: 'guest@example.com' };
+  localStorage.setItem('student', JSON.stringify(guestUser));
+  return guestUser;
+};
+
+// Map icon names to SVG components
 const iconMap = {
-  FaComments, FaQuestionCircle, FaCode, FaBriefcase,
-  FaLightbulb, FaUsers
+  FaComments: UserIcon,
+  FaQuestionCircle: BrainIcon,
+  FaCode: CodeIcon,
+  FaBriefcase: CodeIcon,
+  FaLightbulb: BrainIcon,
+  FaUsers: UserIcon
 };
 
 const ForumOverview = () => {
@@ -22,13 +37,9 @@ const ForumOverview = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('recent');
   const [filterStatus, setFilterStatus] = useState('all');
-  const user = authService.getUser();
+  const user = getUser();
 
   useEffect(() => {
-    if (!authService.isAuthenticated()) {
-      navigate('/login');
-      return;
-    }
     fetchForumData();
   }, [sortBy, filterStatus]);
 
@@ -44,11 +55,12 @@ const ForumOverview = () => {
         setCategories(categoriesRes.data);
       }
 
-      if (threadsRes.success) {
-        setRecentThreads(threadsRes.data);
+      if (threadsRes.success && threadsRes.data) {
+        setRecentThreads(threadsRes.data.threads || []);
       }
     } catch (error) {
       console.error('Error fetching forum data:', error);
+      setRecentThreads([]);
     } finally {
       setLoading(false);
     }
@@ -85,8 +97,8 @@ const ForumOverview = () => {
   };
 
   const renderIcon = (iconName) => {
-    const Icon = iconMap[iconName] || FaComments;
-    return <Icon />;
+    const Icon = iconMap[iconName] || UserIcon;
+    return <Icon size={24} color="currentColor" />;
   };
 
   if (loading && categories.length === 0) {
@@ -102,7 +114,7 @@ const ForumOverview = () => {
     <div className="forum-overview">
       <div className="forum-back-header">
         <button onClick={() => navigate('/courses')} className="forum-back-btn">
-          <FaArrowLeft /> Back to Courses
+          <ArrowIcon direction="left" size={16} /> Back to Courses
         </button>
       </div>
 
@@ -115,14 +127,14 @@ const ForumOverview = () => {
           className="create-thread-btn"
           onClick={() => navigate('/forum/create')}
         >
-          <FaPlus /> New Thread
+          + New Thread
         </button>
       </div>
 
       <div className="forum-search-section">
         <form onSubmit={handleSearch} className="forum-search-form">
           <div className="search-input-wrapper">
-            <FaSearch className="search-icon" />
+            <SearchIcon className="search-icon" size={20} />
             <input
               type="text"
               placeholder="Search discussions..."
@@ -139,31 +151,31 @@ const ForumOverview = () => {
             className={sortBy === 'recent' ? 'active' : ''}
             onClick={() => setSortBy('recent')}
           >
-            <FaClock /> Recent
+            <ClockIcon size={16} /> Recent
           </button>
           <button
             className={sortBy === 'popular' ? 'active' : ''}
             onClick={() => setSortBy('popular')}
           >
-            <FaFire /> Popular
+            <HeartIcon size={16} /> Popular
           </button>
           <button
             className={sortBy === 'replies' ? 'active' : ''}
             onClick={() => setSortBy('replies')}
           >
-            <FaComment /> Most Replies
+            <UserIcon size={16} /> Most Replies
           </button>
           <button
             className={filterStatus === 'unanswered' ? 'active' : ''}
             onClick={() => setFilterStatus('unanswered')}
           >
-            <FaQuestionCircle /> Unanswered
+            <BrainIcon size={16} /> Unanswered
           </button>
           <button
             className={filterStatus === 'pending' ? 'active' : ''}
             onClick={() => setFilterStatus('pending')}
           >
-            <FaHourglassHalf /> Pending Approval
+            <ClockIcon size={16} /> Pending Approval
           </button>
         </div>
       </div>
@@ -205,7 +217,7 @@ const ForumOverview = () => {
           <div className="no-threads">
             <p>No discussions found. Be the first to start a conversation!</p>
             <button onClick={() => navigate('/forum/create')}>
-              <FaPlus /> Create Thread
+              + Create Thread
             </button>
           </div>
         ) : (
@@ -225,7 +237,7 @@ const ForumOverview = () => {
                       {thread.category_name}
                     </span>
                     {thread.is_pinned && <span className="pinned-badge">Pinned</span>}
-                    {thread.is_resolved && <span className="resolved-badge">Resolved</span>}
+                    {thread.is_resolved && <span className="resolved-badge"><CheckIcon size={12} /> Resolved</span>}
                   </div>
                   <h3 className="thread-title">{thread.title}</h3>
                   <p className="thread-excerpt">
@@ -237,21 +249,20 @@ const ForumOverview = () => {
                       by {thread.firstName} {thread.lastName}
                     </span>
                     <span className="thread-time">
-                      <FaClock /> {formatTimeAgo(thread.last_activity_at)}
+                      <ClockIcon size={14} /> {formatTimeAgo(thread.last_activity_at)}
                     </span>
                   </div>
                 </div>
                 <div className="thread-stats">
                   <div className="stat">
-                    <FaEye />
-                    <span>{thread.view_count}</span>
+                    <span>{thread.view_count} views</span>
                   </div>
                   <div className="stat">
-                    <FaComment />
+                    <UserIcon size={14} />
                     <span>{thread.actual_reply_count || thread.reply_count}</span>
                   </div>
                   <div className="stat">
-                    <FaHeart />
+                    <HeartIcon size={14} />
                     <span>{thread.like_count || 0}</span>
                   </div>
                 </div>

@@ -2,15 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CoursePageModern.css';
 import {
-  FaLaptop, FaCalendarAlt, FaMicrophone, FaStar, FaCompass,
-  FaBook, FaChalkboardTeacher, FaHandshake, FaChartBar,
-  FaGraduationCap, FaTrophy, FaFileAlt, FaBullseye, FaGlobe,
-  FaComments, FaClock, FaEdit, FaQuestionCircle, FaPython,
-  FaChartLine, FaRobot, FaLightbulb, FaBrain, FaUsers,
-  FaRocket, FaCheck, FaExclamation, FaExclamationTriangle,
-  FaSeedling, FaBriefcase, FaMapMarkerAlt, FaPhone, FaUserGraduate,
-  FaBolt, FaSync
-} from 'react-icons/fa';
+  CalendarIcon, ClockIcon, StarIcon, BookIcon, ChartIcon,
+  CodeIcon, BrainIcon, UserIcon, CheckIcon, HeartIcon, EditIcon
+} from '../common/SvgIcons';
 
 const CoursePageModern = ({ userName }) => {
   const [selectedTab, setSelectedTab] = useState('All Free Offerings');
@@ -181,7 +175,7 @@ const CoursePageModern = ({ userName }) => {
           <div data-testid="sidebar" data-cy="mentee_sidebar" className="sidebar mentee-sidebar mentee-sidebar--free-product mentee-sidebar--fp-revamped sidebar__open">
           {/* Sidebar Logo */}
           <div className="sidebar__logo-container">
-            <img src="/images/logo-06.png" alt="AiTutor" className="sidebar__logo" />
+            <img src="https://aispry.com/pluginfile.php/1/theme_university/logo/1762520057/AiTutor-Logo-w.png" alt="AiTutor" className="sidebar__logo" />
           </div>
 
           <div className="sidebar__content scroll-bar-hidden sidebar__content--free-product">
@@ -443,37 +437,37 @@ const CoursePageModern = ({ userName }) => {
             <div className="features-grid-container">
               {/* Row 1 */}
               <div className="dashboard-feature-card">
-                <span className="feature-card-icon">{/* TODO: Replace with <FaLaptop /> */}<span>⚠️</span></span>
+                <span className="feature-card-icon"><CodeIcon size={24} color="#667eea" /></span>
                 <span className="feature-card-title">Free Live Class</span>
               </div>
 
               <div className="dashboard-feature-card">
-                <span className="feature-card-icon">{/* TODO: Replace with <FaCalendar /> */}<span>⚠️</span></span>
+                <span className="feature-card-icon"><CalendarIcon size={24} color="#667eea" /></span>
                 <span className="feature-card-title">Live Masterclass</span>
               </div>
 
               <div className="dashboard-feature-card dashboard-feature-card--highlighted">
-                <span className="feature-card-icon">{/* TODO: Replace with <FaMicrophone /> */}<span>⚠️</span></span>
+                <span className="feature-card-icon"><UserIcon size={24} color="#667eea" /></span>
                 <span className="feature-card-title">AI-Mock Interviews</span>
                 <span className="feature-card-badge">
-                  {/* TODO: Replace with <FaStar /> */}<span>⚠️</span>
+                  <StarIcon size={20} color="#ffc107" />
                   NEW
                 </span>
               </div>
 
               {/* Row 2 */}
               <div className="dashboard-feature-card">
-                <span className="feature-card-icon">{/* TODO: Replace with <FaCompass /> */}<span>⚠️</span></span>
+                <span className="feature-card-icon"><BrainIcon size={24} color="#667eea" /></span>
                 <span className="feature-card-title">Career Roadmap</span>
               </div>
 
               <div className="dashboard-feature-card">
-                <span className="feature-card-icon">{/* TODO: Replace with <FaBook /> */}<span>⚠️</span></span>
+                <span className="feature-card-icon"><BookIcon size={24} color="#5c6bc0" /></span>
                 <span className="feature-card-title">Curriculum</span>
               </div>
 
               <div className="dashboard-feature-card">
-                <span className="feature-card-icon">{/* TODO: Replace with <FaChalkboardTeacher /> */}<span>⚠️</span></span>
+                <span className="feature-card-icon"><UserIcon size={24} color="#667eea" /></span>
                 <span className="feature-card-title">Instructors</span>
               </div>
 
@@ -484,28 +478,28 @@ const CoursePageModern = ({ userName }) => {
               </div>
 
               <div className="dashboard-feature-card">
-                <span className="feature-card-icon">{/* TODO: Replace with <FaHandshake /> */}<span>⚠️</span></span>
+                <span className="feature-card-icon"><UserIcon size={24} color="#667eea" /></span>
                 <span className="feature-card-title">1:1 Expert Connect</span>
               </div>
 
               <div className="dashboard-feature-card">
-                <span className="feature-card-icon">{/* TODO: Replace with <FaChartBar /> */}<span>⚠️</span></span>
+                <span className="feature-card-icon"><ChartIcon size={24} color="#667eea" /></span>
                 <span className="feature-card-title">Placement Report</span>
               </div>
 
               {/* Row 4 */}
               <div className="dashboard-feature-card">
-                <span className="feature-card-icon">{/* TODO: Replace with <FaGraduationCap /> */}<span>⚠️</span></span>
+                <span className="feature-card-icon"><BookIcon size={24} color="#5c6bc0" /></span>
                 <span className="feature-card-title">Scholarship Test</span>
               </div>
 
               <div className="dashboard-feature-card">
-                <span className="feature-card-icon">{/* TODO: Replace with <FaTrophy /> */}<span>⚠️</span></span>
+                <span className="feature-card-icon"><StarIcon size={24} color="#ffc107" /></span>
                 <span className="feature-card-title">IIT-R Certification</span>
               </div>
 
               <div className="dashboard-feature-card">
-                <span className="feature-card-icon">{/* TODO: Replace with <FaFileAlt /> */}<span>⚠️</span></span>
+                <span className="feature-card-icon"><BookIcon size={24} color="#5c6bc0" /></span>
                 <span className="feature-card-title">AI Resume Review</span>
               </div>
             </div>
@@ -527,7 +521,7 @@ const CoursePageModern = ({ userName }) => {
               </div>
 
               <div className="resource-card" style={{padding: '1.5rem', border: '1px solid #e5e7eb', borderRadius: '12px', background: '#ffffff', cursor: 'pointer', transition: 'all 0.3s ease'}}>
-                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaBook /> */}<span>⚠️</span></div>
+                <div style={{marginBottom: '1rem'}}><BookIcon size={32} color="#667eea" /></div>
                 <h3 style={{fontSize: '1.1rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.75rem'}}>Study Materials</h3>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6', marginBottom: '1rem'}}>Download comprehensive PDFs, cheat sheets, and study guides for all data science topics.</p>
                 <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#2196f3', fontWeight: '600', fontSize: '0.9rem'}}>
@@ -536,7 +530,7 @@ const CoursePageModern = ({ userName }) => {
               </div>
 
               <div className="resource-card" style={{padding: '1.5rem', border: '1px solid #e5e7eb', borderRadius: '12px', background: '#ffffff', cursor: 'pointer', transition: 'all 0.3s ease'}}>
-                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaGraduationCap /> */}<span>⚠️</span></div>
+                <div style={{marginBottom: '1rem'}}><BookIcon size={32} color="#667eea" /></div>
                 <h3 style={{fontSize: '1.1rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.75rem'}}>Free Courses</h3>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6', marginBottom: '1rem'}}>Enroll in beginner-friendly courses on Statistics, Python Programming, and SQL fundamentals.</p>
                 <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#2196f3', fontWeight: '600', fontSize: '0.9rem'}}>
@@ -545,7 +539,7 @@ const CoursePageModern = ({ userName }) => {
               </div>
 
               <div className="resource-card" style={{padding: '1.5rem', border: '1px solid #e5e7eb', borderRadius: '12px', background: '#ffffff', cursor: 'pointer', transition: 'all 0.3s ease'}}>
-                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaLaptop /> */}<span>⚠️</span></div>
+                <div style={{marginBottom: '1rem'}}><CodeIcon size={32} color="#667eea" /></div>
                 <h3 style={{fontSize: '1.1rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.75rem'}}>Practice Labs</h3>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6', marginBottom: '1rem'}}>Hands-on coding environments with Jupyter notebooks for practical learning experience.</p>
                 <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#2196f3', fontWeight: '600', fontSize: '0.9rem'}}>
@@ -554,7 +548,7 @@ const CoursePageModern = ({ userName }) => {
               </div>
 
               <div className="resource-card" style={{padding: '1.5rem', border: '1px solid #e5e7eb', borderRadius: '12px', background: '#ffffff', cursor: 'pointer', transition: 'all 0.3s ease'}}>
-                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaBullseye /> */}<span>⚠️</span></div>
+                <div style={{marginBottom: '1rem'}}><StarIcon size={32} color="#667eea" /></div>
                 <h3 style={{fontSize: '1.1rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.75rem'}}>Skill Assessments</h3>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6', marginBottom: '1rem'}}>Test your knowledge with free quizzes and assessments to track your progress.</p>
                 <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#2196f3', fontWeight: '600', fontSize: '0.9rem'}}>
@@ -563,7 +557,7 @@ const CoursePageModern = ({ userName }) => {
               </div>
 
               <div className="resource-card" style={{padding: '1.5rem', border: '1px solid #e5e7eb', borderRadius: '12px', background: '#ffffff', cursor: 'pointer', transition: 'all 0.3s ease'}}>
-                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaGlobe /> */}<span>⚠️</span></div>
+                <div style={{marginBottom: '1rem'}}><BrainIcon size={32} color="#667eea" /></div>
                 <h3 style={{fontSize: '1.1rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.75rem'}}>Community Forums</h3>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6', marginBottom: '1rem'}}>Join 50,000+ learners in our community to discuss, learn, and grow together.</p>
                 <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#2196f3', fontWeight: '600', fontSize: '0.9rem'}}>
@@ -686,31 +680,31 @@ const CoursePageModern = ({ userName }) => {
                     Start Practice Interview
                   </button>
                 </div>
-                <div style={{textAlign: 'center'}}>{/* TODO: Replace with <FaBullseye /> */}<span>⚠️</span></div>
+                <div style={{textAlign: 'center'}}><StarIcon size={40} color="#667eea" /></div>
               </div>
             </div>
 
             <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginTop: '2rem'}}>
               <div style={{padding: '1.5rem', background: '#f9fafb', borderRadius: '10px', border: '1px solid #e5e7eb'}}>
-                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaComments /> */}<span>⚠️</span></div>
+                <div style={{marginBottom: '1rem'}}><UserIcon size={32} color="#667eea" /></div>
                 <h4 style={{fontSize: '1.05rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.5rem'}}>Natural Conversations</h4>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6'}}>Experience realistic interview conversations with our advanced AI that adapts to your responses.</p>
               </div>
 
               <div style={{padding: '1.5rem', background: '#f9fafb', borderRadius: '10px', border: '1px solid #e5e7eb'}}>
-                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaChartBar /> */}<span>⚠️</span></div>
+                <div style={{marginBottom: '1rem'}}><ChartIcon size={32} color="#667eea" /></div>
                 <h4 style={{fontSize: '1.05rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.5rem'}}>Detailed Analytics</h4>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6'}}>Get comprehensive reports on your communication, technical knowledge, and problem-solving skills.</p>
               </div>
 
               <div style={{padding: '1.5rem', background: '#f9fafb', borderRadius: '10px', border: '1px solid #e5e7eb'}}>
-                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaGraduationCap /> */}<span>⚠️</span></div>
+                <div style={{marginBottom: '1rem'}}><BookIcon size={32} color="#667eea" /></div>
                 <h4 style={{fontSize: '1.05rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.5rem'}}>Learn & Improve</h4>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6'}}>Receive personalized suggestions and resources to improve your weak areas after each session.</p>
               </div>
 
               <div style={{padding: '1.5rem', background: '#f9fafb', borderRadius: '10px', border: '1px solid #e5e7eb'}}>
-                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaClock /> */}<span>⚠️</span></div>
+                <div style={{marginBottom: '1rem'}}><ClockIcon size={32} color="#667eea" /></div>
                 <h4 style={{fontSize: '1.05rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.5rem'}}>Practice Anytime</h4>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6'}}>Available 24/7 for unlimited practice sessions. No scheduling required, start whenever you want.</p>
               </div>
@@ -729,7 +723,7 @@ const CoursePageModern = ({ userName }) => {
                 {/* Beginner Path */}
                 <div style={{padding: '2rem', background: 'linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)', borderRadius: '12px', border: '2px solid #2196f3'}}>
                   <div style={{display: 'flex', alignItems: 'flex-start', gap: '1.5rem'}}>
-                    <div>{/* TODO: Replace with <FaSeedling /> */}<span>⚠️</span></div>
+                    <div><StarIcon size={24} color="#4caf50" /></div>
                     <div style={{flex: 1}}>
                       <div style={{display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem'}}>
                         <h4 style={{fontSize: '1.2rem', fontWeight: '700', color: '#1565c0', margin: 0}}>Beginner Path</h4>
@@ -751,7 +745,7 @@ const CoursePageModern = ({ userName }) => {
                 {/* Intermediate Path */}
                 <div style={{padding: '2rem', background: 'linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%)', borderRadius: '12px', border: '2px solid #9c27b0'}}>
                   <div style={{display: 'flex', alignItems: 'flex-start', gap: '1.5rem'}}>
-                    <div>{/* TODO: Replace with <FaChartLine /> */}<span>⚠️</span></div>
+                    <div><ChartIcon size={24} color="#2196f3" /></div>
                     <div style={{flex: 1}}>
                       <div style={{display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem'}}>
                         <h4 style={{fontSize: '1.2rem', fontWeight: '700', color: '#7b1fa2', margin: 0}}>Intermediate Path</h4>
@@ -773,7 +767,7 @@ const CoursePageModern = ({ userName }) => {
                 {/* Advanced Path */}
                 <div style={{padding: '2rem', background: 'linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%)', borderRadius: '12px', border: '2px solid #ff9800'}}>
                   <div style={{display: 'flex', alignItems: 'flex-start', gap: '1.5rem'}}>
-                    <div>{/* TODO: Replace with <FaRocket /> */}<span>⚠️</span></div>
+                    <div><StarIcon size={24} color="#ff5722" /></div>
                     <div style={{flex: 1}}>
                       <div style={{display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem'}}>
                         <h4 style={{fontSize: '1.2rem', fontWeight: '700', color: '#e65100', margin: 0}}>Advanced Path</h4>
@@ -798,7 +792,7 @@ const CoursePageModern = ({ userName }) => {
           {/* Alumni Profiles Section - New Stack Slider */}
           <section id="alumni-profiles-last" className="content-section" style={{background: 'linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%)', padding: '4rem 2rem', marginBottom: '0'}}>
             <div style={{textAlign: 'center', marginBottom: '3rem'}}>
-              <h2 className="section-title" style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaStar /> */}<span>⚠️</span> Alumni Profiles</h2>
+              <h2 className="section-title" style={{marginBottom: '1rem'}}><StarIcon size={24} color="#ffc107" /> Alumni Profiles</h2>
               <p className="section-description" style={{maxWidth: '700px', margin: '0 auto'}}>
                 Real transformations. Real results. See how our alumni achieved their dream careers.
               </p>
@@ -898,7 +892,7 @@ const CoursePageModern = ({ userName }) => {
                                 fontWeight: '700',
                                 backdropFilter: 'blur(10px)'
                               }}>
-                                Featured Story {/* TODO: Replace with <FaStar /> */}<span>⚠️</span>
+                                Featured Story <StarIcon size={16} color="#ffc107" />
                               </div>
 
                               <div style={{display: 'flex', gap: '1.25rem', alignItems: 'center', color: 'white'}}>
@@ -950,7 +944,7 @@ const CoursePageModern = ({ userName }) => {
                                     Growth
                                   </div>
                                   <div style={{fontSize: '0.95rem', fontWeight: '700', color: '#059669'}}>
-                                    {/* TODO: Replace with <FaChartBar /> */}<span>⚠️</span> {alumni.salaryJump}
+                                    <ChartIcon size={16} color="#4caf50" /> {alumni.salaryJump}
                                   </div>
                                 </div>
                               </div>
@@ -968,7 +962,7 @@ const CoursePageModern = ({ userName }) => {
                                   left: '0.85rem',
                                   opacity: '0.2'
                                 }}>
-                                  {/* TODO: Replace with <FaComments /> */}<span>⚠️</span>
+                                  <UserIcon size={16} color="currentColor" />
                                 </div>
                                 <p style={{
                                   fontSize: '0.9rem',
@@ -1064,7 +1058,7 @@ const CoursePageModern = ({ userName }) => {
 
             <div style={{background: 'linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)', padding: '2.5rem', borderRadius: '12px', marginTop: '2rem', border: '2px solid #2196f3'}}>
               <div style={{textAlign: 'center', marginBottom: '2rem'}}>
-                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaEdit /> */}<span>⚠️</span></div>
+                <div style={{marginBottom: '1rem'}}><EditIcon size={32} color="#667eea" /></div>
                 <h3 style={{fontSize: '1.5rem', fontWeight: '700', color: '#1565c0', marginBottom: '0.75rem'}}>Free Eligibility Assessment</h3>
                 <p style={{fontSize: '1rem', color: '#424242', lineHeight: '1.6', maxWidth: '600px', margin: '0 auto'}}>
                   Evaluate your skills and discover which program suits you best. Get personalized learning path recommendations.
@@ -1073,17 +1067,17 @@ const CoursePageModern = ({ userName }) => {
 
               <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', marginBottom: '2rem'}}>
                 <div style={{textAlign: 'center', padding: '1.5rem', background: 'white', borderRadius: '10px'}}>
-                  <div style={{marginBottom: '0.5rem'}}>{/* TODO: Replace with <FaClock /> */}<span>⚠️</span></div>
+                  <div style={{marginBottom: '0.5rem'}}><ClockIcon size={24} color="#667eea" /></div>
                   <div style={{fontSize: '1.5rem', fontWeight: '700', color: '#1976d2', marginBottom: '0.25rem'}}>30 mins</div>
                   <div style={{fontSize: '0.85rem', color: '#6b7280'}}>Duration</div>
                 </div>
                 <div style={{textAlign: 'center', padding: '1.5rem', background: 'white', borderRadius: '10px'}}>
-                  <div style={{marginBottom: '0.5rem'}}>{/* TODO: Replace with <FaQuestionCircle /> */}<span>⚠️</span></div>
+                  <div style={{marginBottom: '0.5rem'}}><BrainIcon size={24} color="#667eea" /></div>
                   <div style={{fontSize: '1.5rem', fontWeight: '700', color: '#1976d2', marginBottom: '0.25rem'}}>50 Questions</div>
                   <div style={{fontSize: '0.85rem', color: '#6b7280'}}>MCQ Format</div>
                 </div>
                 <div style={{textAlign: 'center', padding: '1.5rem', background: 'white', borderRadius: '10px'}}>
-                  <div style={{marginBottom: '0.5rem'}}>{/* TODO: Replace with <FaChartBar /> */}<span>⚠️</span></div>
+                  <div style={{marginBottom: '0.5rem'}}><ChartIcon size={24} color="#667eea" /></div>
                   <div style={{fontSize: '1.5rem', fontWeight: '700', color: '#1976d2', marginBottom: '0.25rem'}}>Instant Report</div>
                   <div style={{fontSize: '0.85rem', color: '#6b7280'}}>Get Results</div>
                 </div>
@@ -1093,7 +1087,7 @@ const CoursePageModern = ({ userName }) => {
                 <h4 style={{fontSize: '1.1rem', fontWeight: '700', color: '#1f2937', marginBottom: '1rem'}}>Test Sections:</h4>
                 <div style={{display: 'grid', gap: '0.75rem'}}>
                   <div style={{display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.75rem', background: 'white', borderRadius: '8px'}}>
-                    <span>{/* TODO: Replace with <FaPython /> */}<span>⚠️</span></span>
+                    <span><CodeIcon size={16} color="#3776ab" /></span>
                     <span style={{fontSize: '0.95rem', fontWeight: '500', color: '#1f2937'}}>Python Programming Basics</span>
                   </div>
                   <div style={{display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.75rem', background: 'white', borderRadius: '8px'}}>
@@ -1273,7 +1267,7 @@ const CoursePageModern = ({ userName }) => {
 
             <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginTop: '2rem'}}>
               <div style={{padding: '2rem', background: 'white', border: '2px solid #2196f3', borderRadius: '12px'}}>
-                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaBullseye /> */}<span>⚠️</span></div>
+                <div style={{marginBottom: '1rem'}}><StarIcon size={32} color="#667eea" /></div>
                 <h3 style={{fontSize: '1.2rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.75rem'}}>Career Counseling</h3>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6', marginBottom: '1rem'}}>Get expert advice on career transitions, skill development, and industry trends.</p>
                 <div style={{fontSize: '0.85rem', color: '#2196f3', fontWeight: '600', marginBottom: '1rem'}}>{/* TODO: Replace with <FaClock /> */}<span>⚠️</span> 45 min session • Free</div>
@@ -1281,7 +1275,7 @@ const CoursePageModern = ({ userName }) => {
               </div>
 
               <div style={{padding: '2rem', background: 'white', border: '2px solid #9c27b0', borderRadius: '12px'}}>
-                <div style={{marginBottom: '1rem'}}>{/* TODO: Replace with <FaEdit /> */}<span>⚠️</span></div>
+                <div style={{marginBottom: '1rem'}}><EditIcon size={32} color="#667eea" /></div>
                 <h3 style={{fontSize: '1.2rem', fontWeight: '700', color: '#1f2937', marginBottom: '0.75rem'}}>Resume Review</h3>
                 <p style={{fontSize: '0.9rem', color: '#6b7280', lineHeight: '1.6', marginBottom: '1rem'}}>Professional feedback on your resume with actionable improvement suggestions.</p>
                 <div style={{fontSize: '0.85rem', color: '#9c27b0', fontWeight: '600', marginBottom: '1rem'}}>{/* TODO: Replace with <FaClock /> */}<span>⚠️</span> 30 min session • Free</div>

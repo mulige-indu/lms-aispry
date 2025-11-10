@@ -40,6 +40,18 @@
   object-fit: contain;
 }
 
+.menu-icon {
+  margin-right: 6px;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.user-icon {
+  margin-right: 6px;
+  font-size: 18px;
+  vertical-align: middle;
+}
+
 .navbar-menu {
   flex: 1;
   display: flex;

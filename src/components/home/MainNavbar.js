@@ -2,10 +2,40 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './MainNavbar.css';
 
+// Custom SVG Icons
+const GraduationCapIcon = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+    <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+  </svg>
+);
+
+const UserCircleIcon = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+  </svg>
+);
+
+const SignOutIcon = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+    <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+  </svg>
+);
+
+const SignInIcon = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+    <path d="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"/>
+  </svg>
+);
+
+const SendIcon = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+  </svg>
+);
+
 const MainNavbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [student, setStudent] = useState(null);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,13 +51,8 @@ const MainNavbar = () => {
 
 
   const handleLoginClick = () => {
-    if (isLoggedIn) {
-      // If logged in, go to courses
-      navigate('/courses');
-    } else {
-      // Go to React login page
-      navigate('/login');
-    }
+    // Always go directly to courses page
+    navigate('/courses');
   };
 
 
@@ -40,37 +65,8 @@ const MainNavbar = () => {
   };
 
 
-  const handleProgramsClick = () => {
-    navigate('/programs');
-  };
-
-  const handleMasterclassClick = () => {
-    navigate('/masterclass');
-  };
-
-  const handleAlumniClick = () => {
-    navigate('/alumni');
-  };
-
-  const handleResourcesClick = () => {
-    navigate('/resources');
-  };
-
-
   const handleApplyClick = () => {
     navigate('/apply');
-  };
-
-  const handleForumClick = () => {
-    navigate('/forum');
-  };
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -78,59 +74,34 @@ const MainNavbar = () => {
       <div className="navbar-container">
         <div className="navbar-logo">
           <img
-            src="/images/logo-06.png"
-            alt="360DigiTMG Logo"
+            src="https://aispry.com/pluginfile.php/1/theme_university/logo/1762520057/AiTutor-Logo-w.png"
+            alt="AiTutor Logo"
             className="logo-image"
           />
         </div>
 
-        {/* Hamburger Menu Button for Mobile */}
-        <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
-          <span className="hamburger-line"></span>
-          <span className="hamburger-line"></span>
-          <span className="hamburger-line"></span>
-        </button>
 
-        <div className={`navbar-menu ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
-          <ul className="menu-list">
-            <li className="menu-item">
-              <button onClick={() => { handleProgramsClick(); closeMobileMenu(); }} className="menu-link">Programs</button>
-            </li>
-            <li className="menu-item">
-              <button onClick={() => { handleMasterclassClick(); closeMobileMenu(); }} className="menu-link">Masterclass</button>
-            </li>
-            <li className="menu-item">
-              <button onClick={() => { handleForumClick(); closeMobileMenu(); }} className="menu-link">Forum</button>
-            </li>
-            <li className="menu-item">
-              <button onClick={() => { handleAlumniClick(); closeMobileMenu(); }} className="menu-link">Alumni</button>
-            </li>
-            <li className="menu-item">
-              <button onClick={() => { handleResourcesClick(); closeMobileMenu(); }} className="menu-link">Resources</button>
-            </li>
-          </ul>
-        </div>
 
         <div className="navbar-actions">
 
           <div className="auth-buttons">
             {isLoggedIn ? (
               <div className="user-menu">
-                <span className="welcome-text">Hi, {student?.firstName}!</span>
+                <span className="welcome-text"><span className="user-icon"><UserCircleIcon /></span> Hi, {student?.firstName}!</span>
                 <button className="dashboard-btn" onClick={handleLoginClick}>
-                  My Courses
+                  <GraduationCapIcon /> My Courses
                 </button>
                 <button className="logout-btn" onClick={handleLogout}>
-                  Logout
+                  <SignOutIcon /> Logout
                 </button>
               </div>
             ) : (
               <>
                 <button className="login-btn" onClick={handleLoginClick}>
-                  Login
+                  <SignInIcon /> Login
                 </button>
                 <button className="apply-btn" onClick={handleApplyClick}>
-                  Apply Now
+                  <SendIcon /> Apply Now
                 </button>
               </>
             )}

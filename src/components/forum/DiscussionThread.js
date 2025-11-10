@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import forumService from '../../services/forumService';
-import authService from '../../services/authService';
 import './DiscussionThread.css';
 import {
-  FaArrowLeft, FaHeart, FaRegHeart, FaBookmark, FaRegBookmark,
-  FaClock, FaEye, FaComment, FaEdit, FaTrash, FaReply
-} from 'react-icons/fa';
+  ArrowIcon, HeartIcon, ClockIcon, EditIcon, DeleteIcon, SendIcon
+} from '../common/SvgIcons';
+
+// Helper function to get or create guest user
+const getUser = () => {
+  const userStr = localStorage.getItem('student');
+  if (userStr) {
+    return JSON.parse(userStr);
+  }
+  // Create guest user if none exists
+  const guestUser = { id: 'guest-user', firstName: 'Guest', lastName: 'User', email: 'guest@example.com' };
+  localStorage.setItem('student', JSON.stringify(guestUser));
+  return guestUser;
+};
 
 const DiscussionThread = () => {
   const { threadId } = useParams();
@@ -20,13 +30,9 @@ const DiscussionThread = () => {
   const [submitting, setSubmitting] = useState(false);
   const [liked, setLiked] = useState(false);
   const [bookmarked, setBookmarked] = useState(false);
-  const user = authService.getUser();
+  const user = getUser();
 
   useEffect(() => {
-    if (!authService.isAuthenticated()) {
-      navigate('/login');
-      return;
-    }
     fetchThread();
   }, [threadId]);
 
@@ -189,7 +195,7 @@ const DiscussionThread = () => {
     <div className="discussion-thread">
       <div className="thread-navigation">
         <button onClick={() => navigate('/forum')} className="back-btn">
-          <FaArrowLeft /> Back to Forum
+          <ArrowIcon direction="left" size={16} /> Back to Forum
         </button>
         <span className="thread-category" style={{ backgroundColor: thread.category_color }}>
           {thread.category_name}
@@ -206,7 +212,7 @@ const DiscussionThread = () => {
               <div>
                 <h4>{thread.firstName} {thread.lastName}</h4>
                 <span className="post-time">
-                  <FaClock /> {formatTimeAgo(thread.created_at)}
+                  <ClockIcon size={14} /> {formatTimeAgo(thread.created_at)}
                 </span>
               </div>
             </div>
@@ -215,14 +221,14 @@ const DiscussionThread = () => {
                 onClick={handleLikeThread}
                 className={`action-btn ${liked ? 'liked' : ''}`}
               >
-                {liked ? <FaHeart /> : <FaRegHeart />}
+                <HeartIcon size={18} color={liked ? '#e91e63' : 'currentColor'} />
                 <span>{thread.like_count || 0}</span>
               </button>
               <button
                 onClick={handleBookmarkThread}
                 className={`action-btn ${bookmarked ? 'bookmarked' : ''}`}
               >
-                {bookmarked ? <FaBookmark /> : <FaRegBookmark />}
+                {bookmarked ? '★' : '☆'}
               </button>
             </div>
           </div>
@@ -233,8 +239,8 @@ const DiscussionThread = () => {
           </div>
 
           <div className="thread-stats-footer">
-            <span><FaEye /> {thread.view_count} views</span>
-            <span><FaComment /> {posts.length} replies</span>
+            <span>{thread.view_count} views</span>
+            <span>{posts.length} replies</span>
           </div>
         </div>
 
@@ -256,7 +262,7 @@ const DiscussionThread = () => {
                     <div>
                       <h4>{post.firstName} {post.lastName}</h4>
                       <span className="post-time">
-                        <FaClock /> {formatTimeAgo(post.created_at)}
+                        <ClockIcon size={14} /> {formatTimeAgo(post.created_at)}
                         {post.is_edited && <span className="edited-badge"> (edited)</span>}
                       </span>
                     </div>
@@ -266,7 +272,7 @@ const DiscussionThread = () => {
                       onClick={() => handleLikePost(post.id)}
                       className="action-btn-small"
                     >
-                      <FaHeart /> {post.like_count || 0}
+                      <HeartIcon size={14} /> {post.like_count || 0}
                     </button>
                     {user.id === post.user_id && (
                       <>
@@ -277,13 +283,13 @@ const DiscussionThread = () => {
                           }}
                           className="action-btn-small"
                         >
-                          <FaEdit />
+                          <EditIcon size={14} />
                         </button>
                         <button
                           onClick={() => handleDelete(post.id)}
                           className="action-btn-small delete"
                         >
-                          <FaTrash />
+                          <DeleteIcon size={14} />
                         </button>
                       </>
                     )}
@@ -321,7 +327,7 @@ const DiscussionThread = () => {
         </div>
 
         <div className="reply-form-wrapper">
-          <h3><FaReply /> Post a Reply</h3>
+          <h3><SendIcon size={20} /> Post a Reply</h3>
           <form onSubmit={handleReply} className="reply-form">
             <textarea
               placeholder="Share your thoughts..."

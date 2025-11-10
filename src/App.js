@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/home/Home';
-import Login from './pages/auth/Login';
-import Signup from './pages/auth/Signup';
 import Dashboard from './components/courses/CoursePageModern';
 import Courses from './components/courses/Courses';
 import MyCourses from './components/courses/MyCourses';
@@ -43,8 +41,6 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/my-courses" element={<MyCourses />} />

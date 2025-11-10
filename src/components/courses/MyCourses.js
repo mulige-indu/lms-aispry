@@ -14,12 +14,14 @@ const MyCourses = () => {
 
   // Get logged-in user info
   useEffect(() => {
-    const studentData = localStorage.getItem('student');
+    let studentData = localStorage.getItem('student');
     if (studentData) {
       setUser(JSON.parse(studentData));
     } else {
-      // Redirect to login if not logged in
-      navigate('/login');
+      // Create a default guest student
+      const guestUser = { id: 'guest-user', firstName: 'Guest', lastName: 'User', email: 'guest@example.com' };
+      localStorage.setItem('student', JSON.stringify(guestUser));
+      setUser(guestUser);
     }
   }, [navigate]);
 
@@ -126,8 +128,8 @@ const MyCourses = () => {
         <div className="navbar-container">
           <div className="navbar-logo">
             <img
-              src="/images/logo-06.png"
-              alt="360DigiTMG Logo"
+              src="https://aispry.com/pluginfile.php/1/theme_university/logo/1762520057/AiTutor-Logo-w.png"
+              alt="AiTutor Logo"
               className="logo-image"
             />
           </div>
@@ -172,7 +174,7 @@ const MyCourses = () => {
                 )}
               </div>
             ) : (
-              <button className="login-btn" onClick={() => navigate('/login')}>
+              <button className="login-btn" onClick={() => navigate('/courses')}>
                 Login
               </button>
             )}

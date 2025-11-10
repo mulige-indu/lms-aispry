@@ -1,9 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import forumService from '../../services/forumService';
-import authService from '../../services/authService';
 import './CreateThread.css';
-import { FaArrowLeft, FaPen, FaTimes } from 'react-icons/fa';
+import { ArrowIcon, EditIcon, CloseIcon } from '../common/SvgIcons';
+
+// Helper function to get or create guest user
+const getUser = () => {
+  const userStr = localStorage.getItem('student');
+  if (userStr) {
+    return JSON.parse(userStr);
+  }
+  // Create guest user if none exists
+  const guestUser = { id: 'guest-user', firstName: 'Guest', lastName: 'User', email: 'guest@example.com' };
+  localStorage.setItem('student', JSON.stringify(guestUser));
+  return guestUser;
+};
 
 const CreateThread = () => {
   const navigate = useNavigate();
@@ -18,13 +29,9 @@ const CreateThread = () => {
     content: ''
   });
   const [errors, setErrors] = useState({});
-  const user = authService.getUser();
+  const user = getUser();
 
   useEffect(() => {
-    if (!authService.isAuthenticated()) {
-      navigate('/login');
-      return;
-    }
     fetchData();
   }, []);
 
@@ -140,13 +147,13 @@ const CreateThread = () => {
     <div className="create-thread-page">
       <div className="create-thread-header">
         <button onClick={() => navigate('/forum')} className="back-btn">
-          <FaArrowLeft /> Back to Forum
+          <ArrowIcon direction="left" size={16} /> Back to Forum
         </button>
       </div>
 
       <div className="create-thread-container">
         <div className="create-thread-title-section">
-          <FaPen className="pen-icon" />
+          <EditIcon className="pen-icon" size={32} />
           <h1>Start a New Discussion</h1>
           <p>Share your thoughts, ask questions, or start a conversation with the community</p>
         </div>
@@ -229,7 +236,7 @@ const CreateThread = () => {
               className="cancel-btn"
               disabled={submitting}
             >
-              <FaTimes /> Cancel
+              <CloseIcon size={16} /> Cancel
             </button>
             <button
               type="submit"

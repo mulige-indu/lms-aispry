@@ -112,6 +112,7 @@ const forumService = {
         return { success: false, message: 'Thread not found' };
       }
 
+      
       // Get posts for this thread
       const posts = getStorageData('forum_posts').filter(p => p.threadId == threadId);
 

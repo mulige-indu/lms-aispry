@@ -1,6 +1,6 @@
 .apply-container {
   min-height: 100vh;
-  /* background: linear-gradient(135deg, #0a9ec7 0%, #529895 50%, #d5842e 100%); */
+  background: #ffffff;
   padding-top: 120px;
   position: relative;
   overflow: hidden;
@@ -32,7 +32,7 @@
 .orb-1 {
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(213, 132, 46, 0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(240, 147, 251, 0.4) 0%, transparent 70%);
   top: 10%;
   left: -10%;
   animation-delay: 0s;
@@ -41,7 +41,7 @@
 .orb-2 {
   width: 200px;
   height: 200px;
-  background: radial-gradient(circle, rgba(10, 158, 199, 0.4) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.5) 0%, transparent 70%);
   top: 50%;
   right: -5%;
   animation-delay: 8s;
@@ -50,7 +50,7 @@
 .orb-3 {
   width: 250px;
   height: 250px;
-  background: radial-gradient(circle, rgba(82, 152, 149, 0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(118, 75, 162, 0.4) 0%, transparent 70%);
   bottom: 20%;
   left: 20%;
   animation-delay: 16s;
@@ -94,7 +94,7 @@
 .triangle-2 {
   border-left: 25px solid transparent;
   border-right: 25px solid transparent;
-  border-bottom: 40px solid rgba(213, 132, 46, 0.8);
+  border-bottom: 40px solid rgba(240, 147, 251, 0.5);
   bottom: 30%;
   left: 10%;
   animation-delay: 10s;
@@ -135,30 +135,31 @@
 }
 
 .apply-hero {
-  padding: 60px 20px 40px;
+  padding: 40px 20px 30px;
   text-align: center;
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 60px;
-  max-width: 1200px;
+  grid-template-columns: 1fr 350px;
+  gap: 40px;
+  max-width: 1100px;
   margin: 0 auto;
   align-items: center;
 }
 
 .hero-announcement {
-  background: linear-gradient(45deg, #d5842e, #529895);
+  background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
   color: white;
-  padding: 10px 20px;
+  padding: 8px 16px;
   border-radius: 25px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   animation: announcement-pulse 3s infinite;
+  box-shadow: 0 3px 15px rgba(255, 107, 107, 0.3);
 }
 
 @keyframes announcement-pulse {
@@ -173,8 +174,8 @@
 .hero-features {
   display: flex;
   justify-content: center;
-  gap: 30px;
-  margin-top: 30px;
+  gap: 15px;
+  margin-top: 20px;
   flex-wrap: wrap;
 }
 
@@ -182,23 +183,27 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 10px 16px;
+  background: #f8f9fa;
+  padding: 8px 16px;
   border-radius: 20px;
-  backdrop-filter: blur(10px);
-  color: white;
-  font-weight: 500;
-  font-size: 0.9rem;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  color: #333;
+  font-weight: 600;
+  font-size: 0.85rem;
   transition: all 0.3s ease;
 }
 
 .feature-highlight:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: white;
   transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+  border-color: #667eea;
 }
 
 .feature-icon {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  color: #667eea;
 }
 
 .hero-visual {
@@ -211,10 +216,10 @@
 
 .preview-screen {
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  margin-bottom: 20px;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  margin-bottom: 15px;
 }
 
 .screen-header {
@@ -270,28 +275,29 @@
 
 .stat-circle {
   text-align: center;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 15px;
+  background: white;
+  border: 2px solid #e0e0e0;
+  padding: 10px;
   border-radius: 50%;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(10px);
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
 }
 
 .stat-circle span {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  color: white;
+  color: #667eea;
   display: block;
 }
 
 .stat-circle label {
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.65rem;
+  color: #666;
   margin-top: 2px;
 }
 
@@ -301,46 +307,46 @@
 }
 
 .hero-title {
-  font-size: 3.2rem;
+  font-size: 2.5rem;
   font-weight: 800;
-  color: white;
-  margin-bottom: 20px;
+  color: #1a1a1a;
+  margin-bottom: 15px;
   line-height: 1.2;
 }
 
 .gradient-text {
-  background: linear-gradient(45deg, #d5842e, #0a9ec7, #529895);
+  background: linear-gradient(135deg, #667eea, #764ba2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .hero-subtitle {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.6;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
 }
 
 .application-container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 40px 20px 60px;
+  padding: 30px 20px 50px;
   display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 40px;
+  grid-template-columns: 1fr 280px;
+  gap: 30px;
   align-items: start;
 }
 
 .application-wrapper {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 25px;
-  padding: 40px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+  background: white;
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
 }
 
 .progress-section {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .progress-bar {
@@ -371,8 +377,8 @@
 }
 
 .step-circle {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   background: #e0e0e0;
   color: #999;
@@ -380,20 +386,22 @@
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  font-size: 0.9rem;
-  margin-bottom: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
   transition: all 0.3s ease;
 }
 
 .progress-step.active .step-circle {
-  background: linear-gradient(45deg, #0a9ec7, #529895);
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
 }
 
 .progress-step.current .step-circle {
-  background: linear-gradient(45deg, #d5842e, #0a9ec7);
+  background: linear-gradient(135deg, #f093fb, #f5576c);
   color: white;
   animation: pulse 2s infinite;
+  box-shadow: 0 4px 20px rgba(240, 147, 251, 0.5);
 }
 
 @keyframes pulse {
@@ -403,14 +411,14 @@
 }
 
 .step-label {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #666;
   font-weight: 500;
   text-align: center;
 }
 
 .progress-step.active .step-label {
-  color: #0a9ec7;
+  color: #667eea;
   font-weight: 600;
 }
 
@@ -419,10 +427,13 @@
 }
 
 .step-content h2 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  color: #333;
-  margin-bottom: 30px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 25px;
   text-align: center;
 }
 
@@ -441,18 +452,18 @@
   display: block;
   font-weight: 600;
   color: #333;
-  margin-bottom: 8px;
-  font-size: 0.95rem;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
   width: 100%;
-  padding: 15px;
-  border: 2px solid #e0e0e0;
-  border-radius: 12px;
-  font-size: 1rem;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 0.95rem;
   transition: all 0.3s ease;
   background: white;
   box-sizing: border-box;
@@ -462,8 +473,8 @@
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #0a9ec7;
-  box-shadow: 0 0 0 3px rgba(10, 158, 199, 0.1);
+  border-color: #667eea;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
 }
 
 .form-group textarea {
@@ -489,14 +500,15 @@
 }
 
 .program-card:hover {
-  border-color: #0a9ec7;
+  border-color: #667eea;
   transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(10, 158, 199, 0.1);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
 }
 
 .program-card.selected {
-  border-color: #0a9ec7;
-  background: linear-gradient(135deg, rgba(10, 158, 199, 0.05), rgba(82, 152, 149, 0.05));
+  border-color: #667eea;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
 }
 
 .program-header h3 {
@@ -516,7 +528,10 @@
 .program-price {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #0a9ec7;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .program-duration {
@@ -531,9 +546,9 @@
 }
 
 .program-selector input[type="radio"] {
-  width: 20px;
-  height: 20px;
-  accent-color: #0a9ec7;
+  width: 22px;
+  height: 22px;
+  accent-color: #667eea;
 }
 
 .application-summary {
@@ -588,44 +603,45 @@
 }
 
 .nav-btn {
-  padding: 15px 30px;
+  padding: 12px 24px;
   border: none;
-  border-radius: 25px;
+  border-radius: 20px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.95rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .prev-btn {
-  background: #f8f9fa;
-  color: #0a9ec7;
-  border: 2px solid #0a9ec7;
+  background: white;
+  color: #667eea;
+  border: 2px solid #667eea;
 }
 
 .prev-btn:hover {
-  background: #0a9ec7;
+  background: #667eea;
   color: white;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
 }
 
 .next-btn {
-  background: linear-gradient(45deg, #0a9ec7, #529895);
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
 }
 
 .next-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(10, 158, 199, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
 }
 
 .submit-btn {
-  background: linear-gradient(45deg, #529895, #d5842e);
+  background: linear-gradient(135deg, #f093fb, #f5576c);
   color: white;
 }
 
 .submit-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(82, 152, 149, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(240, 147, 251, 0.4);
 }
 
 .step-info {
@@ -642,18 +658,21 @@
 .benefits-card,
 .support-card,
 .testimonial-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 25px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
 }
 
 .benefits-card h3,
 .support-card h3 {
-  color: white;
-  font-size: 1.2rem;
-  font-weight: 600;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.1rem;
+  font-weight: 700;
   margin-bottom: 15px;
 }
 
@@ -664,15 +683,16 @@
 }
 
 .benefits-list li {
-  color: rgba(255, 255, 255, 0.9);
-  padding: 8px 0;
-  font-size: 0.95rem;
+  color: #333;
+  padding: 6px 0;
+  font-size: 0.85rem;
 }
 
 .support-card p {
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 20px;
+  color: #555;
+  margin-bottom: 15px;
   line-height: 1.5;
+  font-size: 0.9rem;
 }
 
 .support-options {
@@ -682,20 +702,21 @@
 }
 
 .support-btn {
-  background: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 12px 15px;
+  border: none;
+  padding: 10px 14px;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 3px 12px rgba(102, 126, 234, 0.25);
 }
 
 .support-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
 
 .testimonial-card {
@@ -703,10 +724,11 @@
 }
 
 .testimonial-content p {
-  color: rgba(255, 255, 255, 0.9);
+  color: #555;
   font-style: italic;
-  line-height: 1.6;
-  margin-bottom: 20px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
 }
 
 .testimonial-author {
@@ -724,14 +746,14 @@
 
 .testimonial-author strong {
   display: block;
-  color: white;
-  font-size: 0.9rem;
+  color: #1a1a1a;
+  font-size: 0.85rem;
   margin-bottom: 2px;
 }
 
 .testimonial-author span {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.8rem;
+  color: #666;
+  font-size: 0.75rem;
 }
 
 /* Dark theme */
