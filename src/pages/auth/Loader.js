@@ -6,7 +6,7 @@ const Loader = () => {
     <div className="loader-overlay">
       <div className="loader-container">
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqlM-yC-LgqF3V_GabuCorzMsvxHUY6ifABA&s"
+          src="https://aispry.com/theme/university/assets/img/a-chatic.png"
           alt="Loading..."
           className="loader-image"
         />
