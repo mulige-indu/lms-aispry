@@ -22,10 +22,10 @@
 
 /* Logo Image */
 .loader-image {
-  width: 200px;
+  width: 80px;
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
   animation: pulse 1.5s ease-in-out infinite;
 }
 
@@ -55,12 +55,12 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .loader-image {
-    width: 150px;
+    width: 60px;
   }
 }
 
 @media (max-width: 480px) {
   .loader-image {
-    width: 120px;
+    width: 50px;
   }
 }
