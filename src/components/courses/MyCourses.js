@@ -131,11 +131,10 @@ const MyCourses = () => {
         <div className="navbar-container">
           <div className="navbar-logo">
             <img
-              src="https://aispry.com/theme/university/assets/img/a-chatic.png"
-              alt="aispry Logo"
+              src="https://aispry.com/pluginfile.php/1/theme_university/logo/1762520057/AiTutor-Logo-w.png"
+              alt="AiTutor Logo"
               className="logo-image"
             />
-            <span className="logo-text">aispry</span>
           </div>
 
           <div className="navbar-menu">
