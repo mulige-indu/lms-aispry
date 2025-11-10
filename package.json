@@ -1,7 +1,7 @@
 {
-  "name": "360digitmg-lms",
+  "name": "aispry-lms",
   "version": "1.0.0",
-  "description": "360DigiTMG Learning Management System - Frontend Only",
+  "description": "aispry Learning Management System - Frontend Only",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --mode development",

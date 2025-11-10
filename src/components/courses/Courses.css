@@ -33,12 +33,23 @@
 
 .navbar-logo {
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .logo-image {
-  height: 30px;
+  height: 40px;
   width: auto;
   object-fit: contain;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 1px;
+  text-transform: lowercase;
 }
 
 .navbar-menu {
