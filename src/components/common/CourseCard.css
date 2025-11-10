@@ -257,6 +257,11 @@
   transition: all 0.3s ease;
 }
 
+.course-card--browse .course-card__icon-wrapper svg {
+  width: 32px;
+  height: 32px;
+}
+
 .course-card--browse:hover .course-card__icon-wrapper {
   transform: rotate(5deg) scale(1.08);
   background: linear-gradient(135deg, rgba(213, 132, 46, 0.15) 0%, rgba(10, 158, 199, 0.15) 100%);
@@ -441,6 +446,11 @@
   flex-shrink: 0;
   transition: all 0.3s ease;
   border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.course-card--enrolled .course-card__icon-box svg {
+  width: 28px;
+  height: 28px;
 }
 
 .course-card--enrolled:hover .course-card__icon-box {

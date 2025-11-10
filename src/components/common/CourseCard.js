@@ -49,11 +49,15 @@ const CourseCard = ({
     return (
       <div className="course-card course-card--browse">
         <div className="course-card__icon-wrapper">
-          <CourseIcon iconName={course.icon} size={28} color="#ffffff" />
+          {typeof course.icon === 'string' ? (
+            <CourseIcon iconName={course.icon} size={28} color="#ffffff" />
+          ) : (
+            course.icon
+          )}
         </div>
 
         <div className="course-card__header">
-          <h3 className="course-card__title">{course.name}</h3>
+          <h3 className="course-card__title">{course.courseName || course.name}</h3>
           <span className={`course-card__level level-${course.level?.toLowerCase()}`}>
             {course.level || 'Beginner'}
           </span>
@@ -68,12 +72,14 @@ const CourseCard = ({
           </div>
           <div className="detail-item">
             <span className="detail-icon">⏱️</span>
-            <span className="detail-text">{course.durationMonths} months</span>
+            <span className="detail-text">{course.duration || `${course.durationMonths} months`}</span>
           </div>
-          <div className="detail-item">
-            <span className="detail-icon">💰</span>
-            <span className="detail-text">₹{parseFloat(course.price).toLocaleString('en-IN')}</span>
-          </div>
+          {course.price && (
+            <div className="detail-item">
+              <span className="detail-icon">💰</span>
+              <span className="detail-text">₹{parseFloat(course.price).toLocaleString('en-IN')}</span>
+            </div>
+          )}
         </div>
 
         <button className="course-card__btn course-card__btn--primary" onClick={onAction}>
@@ -92,15 +98,19 @@ const CourseCard = ({
         <div className="course-card__content">
           <div className="course-card__header-enrolled">
             <div className="course-card__icon-box">
-              <CourseIcon iconName={course.icon} size={28} color="#ffffff" />
+              {typeof course.icon === 'string' ? (
+                <CourseIcon iconName={course.icon} size={28} color="#ffffff" />
+              ) : (
+                course.icon
+              )}
             </div>
             <div className="course-card__info">
-              <h3 className="course-card__title">{course.name}</h3>
+              <h3 className="course-card__title">{course.courseName || course.name}</h3>
               <div className="course-card__meta">
                 <span className={`course-card__level level-${course.level?.toLowerCase()}`}>
                   {course.level || 'Beginner'}
                 </span>
-                <span className="course-card__duration">{course.durationMonths} mo</span>
+                <span className="course-card__duration">{course.durationMonths || course.duration} mo</span>
               </div>
             </div>
           </div>
