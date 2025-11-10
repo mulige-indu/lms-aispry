@@ -65,6 +65,10 @@
   text-align: center;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .nav-btn:hover {

@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import CourseCard from '../common/CourseCard';
 import './Courses.css';
 import {
-  ChartIcon, BrainIcon, CodeIcon, CloudIcon, DatabaseIcon
+  ChartIcon, BrainIcon, CodeIcon, CloudIcon, DatabaseIcon,
+  MyCoursesIcon, BrowseIcon, ForumIcon, SupportIcon
 } from '../common/SvgIcons';
 
 const Courses = () => {
@@ -409,16 +410,16 @@ const Courses = () => {
 
           <div className="navbar-menu">
             <button className="nav-btn" onClick={() => navigate('/my-courses')}>
-              📚 My Course
+              <MyCoursesIcon size={20} color="currentColor" /> My Course
             </button>
             <button className="nav-btn active" onClick={() => navigate('/courses')}>
-              🔍 Browse Courses
+              <BrowseIcon size={20} color="currentColor" /> Browse Courses
             </button>
             <button className="nav-btn" onClick={() => navigate('/forum')}>
-              💬 Discussion Forum
+              <ForumIcon size={20} color="currentColor" /> Discussion Forum
             </button>
             <button className="nav-btn" onClick={() => alert('Support coming soon!')}>
-              🎧 Support
+              <SupportIcon size={20} color="currentColor" /> Support
             </button>
           </div>
           <div className="navbar-user">

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CourseCard from '../common/CourseCard';
 import './Courses.css';
+import {
+  MyCoursesIcon, BrowseIcon, ForumIcon, SupportIcon
+} from '../common/SvgIcons';
 
 const MyCourses = () => {
   const [courses, setCourses] = useState([]);
@@ -136,16 +139,16 @@ const MyCourses = () => {
 
           <div className="navbar-menu">
             <button className="nav-btn active" onClick={() => navigate('/my-courses')}>
-              📚 My Course
+              <MyCoursesIcon size={20} color="currentColor" /> My Course
             </button>
             <button className="nav-btn" onClick={() => navigate('/courses')}>
-              🔍 Browse Courses
+              <BrowseIcon size={20} color="currentColor" /> Browse Courses
             </button>
             <button className="nav-btn" onClick={() => navigate('/forum')}>
-              💬 Discussion Forum
+              <ForumIcon size={20} color="currentColor" /> Discussion Forum
             </button>
             <button className="nav-btn" onClick={() => alert('Support coming soon!')}>
-              🎧 Support
+              <SupportIcon size={20} color="currentColor" /> Support
             </button>
           </div>
 
