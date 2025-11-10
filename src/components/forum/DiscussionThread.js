@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import forumService from '../../services/forumService';
 import './DiscussionThread.css';
+import '../courses/Courses.css';
 import {
-  ArrowIcon, HeartIcon, ClockIcon, EditIcon, DeleteIcon, SendIcon
+  ArrowIcon, HeartIcon, ClockIcon, EditIcon, DeleteIcon, SendIcon,
+  MyCoursesIcon, BrowseIcon, ForumIcon, SupportIcon
 } from '../common/SvgIcons';
 
 // Helper function to get or create guest user
@@ -30,7 +32,40 @@ const DiscussionThread = () => {
   const [submitting, setSubmitting] = useState(false);
   const [liked, setLiked] = useState(false);
   const [bookmarked, setBookmarked] = useState(false);
-  const user = getUser();
+  const [user, setUser] = useState(null);
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  // Get logged-in user info
+  useEffect(() => {
+    const studentData = localStorage.getItem('student');
+    if (studentData) {
+      setUser(JSON.parse(studentData));
+    }
+  }, []);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (showDropdown && !event.target.closest('.user-profile')) {
+        setShowDropdown(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [showDropdown]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('student');
+    setShowDropdown(false);
+    navigate('/');
+  };
+
+  const handleSettings = () => {
+    setShowDropdown(false);
+    alert('Settings page coming soon!');
+  };
 
   useEffect(() => {
     fetchThread();
@@ -193,14 +228,59 @@ const DiscussionThread = () => {
 
   return (
     <div className="discussion-thread">
-      <div className="thread-navigation">
-        <button onClick={() => navigate('/forum')} className="back-btn">
-          <ArrowIcon direction="left" size={16} /> Back to Forum
-        </button>
-        <span className="thread-category" style={{ backgroundColor: thread.category_color }}>
-          {thread.category_name}
-        </span>
-      </div>
+      {/* Navigation Bar */}
+      <nav className="courses-navbar">
+        <div className="navbar-container">
+          <div className="navbar-logo">
+            <img
+              src="https://aispry.com/pluginfile.php/1/theme_university/logo/1762520057/AiTutor-Logo-w.png"
+              alt="AiTutor Logo"
+              className="logo-image"
+            />
+          </div>
+
+          <div className="navbar-menu">
+            <button className="nav-btn" onClick={() => navigate('/my-courses')}>
+              <MyCoursesIcon size={20} color="currentColor" /> My Course
+            </button>
+            <button className="nav-btn" onClick={() => navigate('/courses')}>
+              <BrowseIcon size={20} color="currentColor" /> Browse Courses
+            </button>
+            <button className="nav-btn active" onClick={() => navigate('/forum')}>
+              <ForumIcon size={20} color="currentColor" /> Discussion Forum
+            </button>
+            <button className="nav-btn" onClick={() => alert('Support coming soon!')}>
+              <SupportIcon size={20} color="currentColor" /> Support
+            </button>
+          </div>
+          <div className="navbar-user">
+            {user && (
+              <div className="user-profile" onClick={() => setShowDropdown(!showDropdown)}>
+                <div className="user-avatar">
+                  {user.firstName?.charAt(0).toUpperCase()}
+                </div>
+                <span className="user-name">
+                  {user.firstName} {user.lastName}
+                </span>
+                <span className="dropdown-arrow">▼</span>
+
+                {showDropdown && (
+                  <div className="user-dropdown">
+                    <button className="dropdown-item" onClick={handleSettings}>
+                      <span className="dropdown-icon">⚙️</span>
+                      Settings
+                    </button>
+                    <button className="dropdown-item logout" onClick={handleLogout}>
+                      <span className="dropdown-icon">🚪</span>
+                      Logout
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      </nav>
 
       <div className="thread-content-wrapper">
         <div className="thread-original-post">
