@@ -153,7 +153,7 @@ const MyCourses = () => {
           </div>
 
           <div className="navbar-user">
-            {user ? (
+            {user && (
               <div className="user-profile" onClick={() => setShowDropdown(!showDropdown)}>
                 <div className="user-avatar">
                   {user.firstName?.charAt(0).toUpperCase()}
@@ -176,8 +176,6 @@ const MyCourses = () => {
                   </div>
                 )}
               </div>
-            ) : (
-              <div style={{color: 'white', padding: '10px'}}>No user logged in</div>
             )}
           </div>
         </div>
