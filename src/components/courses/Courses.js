@@ -576,10 +576,9 @@ const Courses = () => {
   const levels = ['All', 'Beginner', 'Intermediate', 'Advanced'];
 
   const filteredCourses = courses.filter(course => {
-    if (selectedCategory === 'All') {
-      return true;
-    }
-    return course.category === selectedCategory;
+    const categoryMatch = selectedCategory === 'All' || course.category === selectedCategory;
+    const levelMatch = selectedLevel === 'All' || course.level === selectedLevel;
+    return categoryMatch && levelMatch;
   });
 
   if (loading) {
