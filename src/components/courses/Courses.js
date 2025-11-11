@@ -348,9 +348,10 @@ const Courses = () => {
   const levels = ['All', 'Beginner', 'Intermediate', 'Advanced'];
 
   const filteredCourses = courses.filter(course => {
-    const categoryMatch = selectedCategory === 'All' || course.category === selectedCategory;
-    // Only filter by category, ignore level filter
-    return categoryMatch;
+    if (selectedCategory === 'All') {
+      return true;
+    }
+    return course.category === selectedCategory;
   });
 
   if (loading) {
