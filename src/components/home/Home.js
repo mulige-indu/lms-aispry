@@ -1035,7 +1035,7 @@ We're excited to have you on this journey!
                 </div>
 
                 <h2 className="brochure-headline">
-                  Ready to Launch Your <span className="highlight-text">AI & Data Science</span> Career?
+                  Ready to Launch Your AI & Data Science Career?
                 </h2>
 
                 <p className="brochure-description">
