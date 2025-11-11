@@ -300,7 +300,7 @@ body.dark-theme .booking-aside {
   }
 
   .main-content {
-    margin-top: 0;
+    margin-top: 120px;
     padding: 15px 0;
   }
 
@@ -376,6 +376,11 @@ body.dark-theme .booking-aside {
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
+  }
+
+  .main-content {
+    margin-top: 110px;
+    padding: 15px 0;
   }
 
   .hero-heading {
@@ -462,6 +467,11 @@ body.dark-theme .booking-aside {
   .nav-item {
     font-size: 10px;
     padding: 5px 10px;
+  }
+
+  .main-content {
+    margin-top: 95px;
+    padding: 15px 0;
   }
 
   .video-aside,
