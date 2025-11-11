@@ -370,8 +370,8 @@ const Courses = () => {
 
   const filteredCourses = courses.filter(course => {
     const categoryMatch = selectedCategory === 'All' || course.category === selectedCategory;
-    const levelMatch = selectedLevel === 'All' || course.level === selectedLevel;
-    return categoryMatch && levelMatch;
+    // Only filter by category, ignore level filter
+    return categoryMatch;
   });
 
   if (loading) {
