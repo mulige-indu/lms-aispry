@@ -57,8 +57,9 @@ const Courses = () => {
     try {
       setLoading(true);
 
-      // Mock course data
+      // Courses matching Browse by Category
       const mockCourses = [
+        // Data Science
         {
           courseId: 1,
           courseName: 'Data Science with Python',
@@ -71,38 +72,50 @@ const Courses = () => {
         },
         {
           courseId: 2,
+          courseName: 'Advanced Data Science',
+          category: 'Data Science',
+          level: 'Advanced',
+          duration: '16 weeks',
+          description: 'Master advanced data science techniques, statistical modeling, and predictive analytics',
+          instructor: 'Prof. Johnson',
+          icon: <ChartIcon size={48} color="#667eea" />
+        },
+        // Artificial Intelligence
+        {
+          courseId: 3,
           courseName: 'Machine Learning Fundamentals',
-          category: 'AI/ML',
+          category: 'Artificial Intelligence',
           level: 'Intermediate',
           duration: '16 weeks',
           description: 'Master machine learning algorithms and techniques including supervised and unsupervised learning',
-          instructor: 'Prof. Johnson',
-          icon: <BrainIcon size={48} color="#667eea" />
-        },
-        {
-          courseId: 3,
-          courseName: 'Web Development with React',
-          category: 'Development',
-          level: 'Beginner',
-          duration: '10 weeks',
-          description: 'Build modern web applications with React, Redux, and hooks',
-          instructor: 'Ms. Williams',
-          icon: <CodeIcon size={48} color="#61dafb" />
-        },
-        {
-          courseId: 4,
-          courseName: 'Deep Learning & Neural Networks',
-          category: 'AI/ML',
-          level: 'Advanced',
-          duration: '20 weeks',
-          description: 'Master deep learning, CNNs, RNNs, and transformer models with TensorFlow and PyTorch',
           instructor: 'Dr. Kumar',
           icon: <BrainIcon size={48} color="#667eea" />
         },
         {
+          courseId: 4,
+          courseName: 'Deep Learning & Neural Networks',
+          category: 'Artificial Intelligence',
+          level: 'Advanced',
+          duration: '20 weeks',
+          description: 'Master deep learning, CNNs, RNNs, and transformer models with TensorFlow and PyTorch',
+          instructor: 'Prof. Sharma',
+          icon: <BrainIcon size={48} color="#667eea" />
+        },
+        {
           courseId: 5,
+          courseName: 'Generative AI & LLMs',
+          category: 'Artificial Intelligence',
+          level: 'Intermediate',
+          duration: '10 weeks',
+          description: 'Master generative AI, prompt engineering, fine-tuning LLMs, and build AI applications',
+          instructor: 'Dr. Lee',
+          icon: <BrainIcon size={48} color="#FFC107" />
+        },
+        // Analytics
+        {
+          courseId: 6,
           courseName: 'Business Analytics with Power BI',
-          category: 'Data Science',
+          category: 'Analytics',
           level: 'Beginner',
           duration: '8 weeks',
           description: 'Learn business intelligence, data visualization, and reporting with Power BI and Excel',
@@ -110,19 +123,20 @@ const Courses = () => {
           icon: <ChartIcon size={48} color="#667eea" />
         },
         {
-          courseId: 6,
-          courseName: 'Full Stack Python Development',
-          category: 'Development',
-          level: 'Intermediate',
-          duration: '18 weeks',
-          description: 'Build complete web applications using Django, Flask, REST APIs, and PostgreSQL',
-          instructor: 'Mr. Anderson',
-          icon: <CodeIcon size={48} color="#3776ab" />
-        },
-        {
           courseId: 7,
+          courseName: 'Tableau for Data Visualization',
+          category: 'Analytics',
+          level: 'Beginner',
+          duration: '6 weeks',
+          description: 'Create stunning dashboards and interactive visualizations with Tableau',
+          instructor: 'Mr. Moore',
+          icon: <ChartIcon size={48} color="#E97627" />
+        },
+        // Cloud & DevOps
+        {
+          courseId: 8,
           courseName: 'Cloud Computing with AWS',
-          category: 'Cloud',
+          category: 'Cloud & DevOps',
           level: 'Intermediate',
           duration: '14 weeks',
           description: 'Master AWS services including EC2, S3, Lambda, and deploy scalable cloud applications',
@@ -130,17 +144,59 @@ const Courses = () => {
           icon: <CloudIcon size={48} color="#FF9900" />
         },
         {
-          courseId: 8,
-          courseName: 'Artificial Intelligence Engineer',
-          category: 'AI/ML',
-          level: 'Advanced',
-          duration: '24 weeks',
-          description: 'Comprehensive AI training covering NLP, Computer Vision, Generative AI, and LLMs',
-          instructor: 'Prof. Sharma',
-          icon: <BrainIcon size={48} color="#667eea" />
+          courseId: 9,
+          courseName: 'Azure Cloud Solutions',
+          category: 'Cloud & DevOps',
+          level: 'Beginner',
+          duration: '12 weeks',
+          description: 'Learn Microsoft Azure services, cloud architecture, and Azure DevOps',
+          instructor: 'Ms. White',
+          icon: <CloudIcon size={48} color="#0089D6" />
         },
         {
-          courseId: 9,
+          courseId: 10,
+          courseName: 'DevOps & CI/CD Bootcamp',
+          category: 'Cloud & DevOps',
+          level: 'Intermediate',
+          duration: '12 weeks',
+          description: 'Master Docker, Kubernetes, Jenkins, Git, and automated deployment pipelines',
+          instructor: 'Mr. Thompson',
+          icon: <CodeIcon size={48} color="#2496ED" />
+        },
+        // Programming
+        {
+          courseId: 11,
+          courseName: 'Full Stack Python Development',
+          category: 'Programming',
+          level: 'Intermediate',
+          duration: '18 weeks',
+          description: 'Build complete web applications using Django, Flask, REST APIs, and PostgreSQL',
+          instructor: 'Mr. Anderson',
+          icon: <CodeIcon size={48} color="#3776ab" />
+        },
+        {
+          courseId: 12,
+          courseName: 'Web Development with React',
+          category: 'Programming',
+          level: 'Beginner',
+          duration: '10 weeks',
+          description: 'Build modern web applications with React, Redux, and hooks',
+          instructor: 'Ms. Williams',
+          icon: <CodeIcon size={48} color="#61dafb" />
+        },
+        {
+          courseId: 13,
+          courseName: 'Mobile App Development',
+          category: 'Programming',
+          level: 'Intermediate',
+          duration: '16 weeks',
+          description: 'Build cross-platform mobile apps with React Native and Flutter',
+          instructor: 'Mr. Garcia',
+          icon: <CodeIcon size={48} color="#61dafb" />
+        },
+        // Security
+        {
+          courseId: 14,
           courseName: 'Cyber Security Essentials',
           category: 'Security',
           level: 'Beginner',
@@ -150,9 +206,20 @@ const Courses = () => {
           icon: <CodeIcon size={48} color="#00BCD4" />
         },
         {
-          courseId: 10,
+          courseId: 15,
+          courseName: 'Advanced Security & Penetration Testing',
+          category: 'Security',
+          level: 'Advanced',
+          duration: '16 weeks',
+          description: 'Master advanced security techniques, vulnerability assessment, and penetration testing',
+          instructor: 'Dr. Martinez',
+          icon: <CodeIcon size={48} color="#00BCD4" />
+        },
+        // Data Engineering
+        {
+          courseId: 16,
           courseName: 'Data Engineering with Spark',
-          category: 'Data Science',
+          category: 'Data Engineering',
           level: 'Advanced',
           duration: '16 weeks',
           description: 'Build big data pipelines with Apache Spark, Kafka, Hadoop, and Airflow',
@@ -160,37 +227,18 @@ const Courses = () => {
           icon: <DatabaseIcon size={48} color="#667eea" />
         },
         {
-          courseId: 11,
-          courseName: 'DevOps & CI/CD Bootcamp',
-          category: 'Development',
-          level: 'Intermediate',
-          duration: '12 weeks',
-          description: 'Master Docker, Kubernetes, Jenkins, Git, and automated deployment pipelines',
-          instructor: 'Mr. Thompson',
-          icon: <CodeIcon size={48} color="#2496ED" />
+          courseId: 17,
+          courseName: 'SQL & Database Management',
+          category: 'Data Engineering',
+          level: 'Beginner',
+          duration: '8 weeks',
+          description: 'Learn SQL queries, database design, normalization, and work with MySQL and PostgreSQL',
+          instructor: 'Ms. Brown',
+          icon: <DatabaseIcon size={48} color="#667eea" />
         },
+        // Marketing
         {
-          courseId: 12,
-          courseName: 'Natural Language Processing',
-          category: 'AI/ML',
-          level: 'Advanced',
-          duration: '18 weeks',
-          description: 'Deep dive into NLP, transformers, BERT, GPT, and build chatbots and text analytics',
-          instructor: 'Dr. Nguyen',
-          icon: <CodeIcon size={48} color="#4CAF50" />
-        },
-        {
-          courseId: 13,
-          courseName: 'Blockchain Development',
-          category: 'Development',
-          level: 'Advanced',
-          duration: '16 weeks',
-          description: 'Build decentralized applications with Ethereum, Solidity, and smart contracts',
-          instructor: 'Ms. Davis',
-          icon: <CodeIcon size={48} color="#F7931A" />
-        },
-        {
-          courseId: 14,
+          courseId: 18,
           courseName: 'Digital Marketing Analytics',
           category: 'Marketing',
           level: 'Beginner',
@@ -200,104 +248,35 @@ const Courses = () => {
           icon: <ChartIcon size={48} color="#FF5722" />
         },
         {
-          courseId: 15,
-          courseName: 'Computer Vision with OpenCV',
-          category: 'AI/ML',
-          level: 'Intermediate',
-          duration: '14 weeks',
-          description: 'Master image processing, object detection, facial recognition, and video analytics',
-          instructor: 'Prof. Martinez',
-          icon: <BrainIcon size={48} color="#667eea" />
-        },
-        {
-          courseId: 16,
-          courseName: 'SQL & Database Management',
-          category: 'Data Science',
-          level: 'Beginner',
-          duration: '8 weeks',
-          description: 'Learn SQL queries, database design, normalization, and work with MySQL and PostgreSQL',
-          instructor: 'Ms. Brown',
-          icon: <DatabaseIcon size={48} color="#667eea" />
-        },
-        {
-          courseId: 17,
-          courseName: 'Mobile App Development',
-          category: 'Development',
-          level: 'Intermediate',
-          duration: '16 weeks',
-          description: 'Build cross-platform mobile apps with React Native and Flutter',
-          instructor: 'Mr. Garcia',
-          icon: <CodeIcon size={48} color="#61dafb" />
-        },
-        {
-          courseId: 18,
-          courseName: 'MLOps & Model Deployment',
-          category: 'AI/ML',
-          level: 'Advanced',
-          duration: '12 weeks',
-          description: 'Deploy ML models in production with MLflow, Docker, Kubernetes, and monitoring',
-          instructor: 'Dr. Taylor',
-          icon: <CodeIcon size={48} color="#667eea" />
-        },
-        {
           courseId: 19,
-          courseName: 'Azure Cloud Solutions',
-          category: 'Cloud',
-          level: 'Beginner',
+          courseName: 'Advanced Digital Marketing',
+          category: 'Marketing',
+          level: 'Intermediate',
           duration: '12 weeks',
-          description: 'Learn Microsoft Azure services, cloud architecture, and Azure DevOps',
-          instructor: 'Ms. White',
-          icon: <CloudIcon size={48} color="#0089D6" />
+          description: 'Master content marketing, conversion optimization, and marketing automation',
+          instructor: 'Ms. Davis',
+          icon: <ChartIcon size={48} color="#FF5722" />
         },
+        // Blockchain
         {
           courseId: 20,
-          courseName: 'Generative AI & ChatGPT',
-          category: 'AI/ML',
-          level: 'Intermediate',
-          duration: '10 weeks',
-          description: 'Master generative AI, prompt engineering, fine-tuning LLMs, and build AI applications',
-          instructor: 'Prof. Kumar',
-          icon: <BrainIcon size={48} color="#FFC107" />
+          courseName: 'Blockchain Development',
+          category: 'Blockchain',
+          level: 'Advanced',
+          duration: '16 weeks',
+          description: 'Build decentralized applications with Ethereum, Solidity, and smart contracts',
+          instructor: 'Mr. Clark',
+          icon: <CodeIcon size={48} color="#F7931A" />
         },
         {
           courseId: 21,
-          courseName: 'Tableau for Data Visualization',
-          category: 'Data Science',
+          courseName: 'Blockchain Fundamentals',
+          category: 'Blockchain',
           level: 'Beginner',
-          duration: '6 weeks',
-          description: 'Create stunning dashboards and interactive visualizations with Tableau',
-          instructor: 'Mr. Moore',
-          icon: <ChartIcon size={48} color="#E97627" />
-        },
-        {
-          courseId: 22,
-          courseName: 'Python for Finance & Trading',
-          category: 'Finance',
-          level: 'Intermediate',
-          duration: '14 weeks',
-          description: 'Build trading algorithms, analyze financial data, and create backtesting strategies',
-          instructor: 'Dr. Jackson',
-          icon: <ChartIcon size={48} color="#667eea" />
-        },
-        {
-          courseId: 23,
-          courseName: 'UI/UX Design Fundamentals',
-          category: 'Design',
-          level: 'Beginner',
-          duration: '10 weeks',
-          description: 'Learn user research, wireframing, prototyping with Figma, and design thinking',
-          instructor: 'Ms. Harris',
-          icon: <CodeIcon size={48} color="#E91E63" />
-        },
-        {
-          courseId: 24,
-          courseName: 'IoT & Embedded Systems',
-          category: 'Development',
-          level: 'Advanced',
-          duration: '16 weeks',
-          description: 'Build IoT projects with Arduino, Raspberry Pi, sensors, and cloud integration',
-          instructor: 'Mr. Clark',
-          icon: <CodeIcon size={48} color="#9C27B0" />
+          duration: '8 weeks',
+          description: 'Learn blockchain technology, cryptocurrency, and distributed ledger basics',
+          instructor: 'Dr. Taylor',
+          icon: <CodeIcon size={48} color="#F7931A" />
         }
       ];
 
