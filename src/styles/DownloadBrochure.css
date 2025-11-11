@@ -510,20 +510,7 @@ body.dark-theme .benefit-item {
   }
 }
 
-@media (max-width: 768px) {
-  .brochure-content-wrapper {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .brochure-features {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .trust-indicators {
-    flex-wrap: wrap;
-  }
-}
+/* Brochure section keeps same size and layout on all devices - no mobile changes */
 
 /* Removed 480px specific styles - using same size across all devices */
 /* @media (max-width: 480px) {
