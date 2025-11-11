@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ScrollingNavbar from './ScrollingNavbar';
 import MainNavbar from './MainNavbar';
@@ -177,6 +177,7 @@ const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentFeatureSlide, setCurrentFeatureSlide] = useState(0);
   const [currentCenterSlide, setCurrentCenterSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   // Touch gesture states
   const [featureTouchStart, setFeatureTouchStart] = useState(0);
@@ -221,6 +222,59 @@ const Home = () => {
   const [salaryUpdateKey, setSalaryUpdateKey] = useState(0);
 
   const navigate = useNavigate();
+
+  // Handle window resize for mobile detection
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Modern scroll-based slider tracking for features
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const featuresGrid = document.querySelector('.features-section .features-grid');
+    if (!featuresGrid) return;
+
+    const handleScroll = () => {
+      const cards = featuresGrid.querySelectorAll('.feature-card');
+      const scrollLeft = featuresGrid.scrollLeft;
+      const cardWidth = cards[0]?.offsetWidth || 0;
+      const gap = 16; // 1rem gap
+      const currentIndex = Math.round(scrollLeft / (cardWidth + gap));
+      setCurrentFeatureSlide(Math.min(currentIndex, cards.length - 1));
+    };
+
+    featuresGrid.addEventListener('scroll', handleScroll);
+    return () => featuresGrid.removeEventListener('scroll', handleScroll);
+  }, [isMobile]);
+
+  // Simple Fade Slider for training centers
+  useEffect(() => {
+    const cards = document.querySelectorAll('.training-centers-section .center-card');
+    if (cards.length === 0) return;
+
+    if (!isMobile) {
+      // On desktop, remove all active classes
+      cards.forEach((card) => {
+        card.classList.remove('active');
+      });
+      return;
+    }
+
+    // On mobile: add/remove active class
+    cards.forEach((card, index) => {
+      if (index === currentCenterSlide) {
+        card.classList.add('active');
+      } else {
+        card.classList.remove('active');
+      }
+    });
+  }, [isMobile, currentCenterSlide]);
 
   // Course data
   const courses = [
@@ -639,22 +693,40 @@ We're excited to have you on this journey!
     setCurrentSlide(index);
   };
 
-  // Features slider navigation
+  // Features slider navigation - Modern scroll-based
   const nextFeatureSlide = () => {
-    setCurrentFeatureSlide((prev) => (prev + 1) % 8); // 8 feature cards
+    const featuresGrid = document.querySelector('.features-section .features-grid');
+    if (featuresGrid) {
+      const cards = featuresGrid.querySelectorAll('.feature-card');
+      const cardWidth = cards[0]?.offsetWidth || 0;
+      const gap = 16;
+      featuresGrid.scrollBy({ left: cardWidth + gap, behavior: 'smooth' });
+    }
   };
 
   const prevFeatureSlide = () => {
-    setCurrentFeatureSlide((prev) => (prev - 1 + 8) % 8);
+    const featuresGrid = document.querySelector('.features-section .features-grid');
+    if (featuresGrid) {
+      const cards = featuresGrid.querySelectorAll('.feature-card');
+      const cardWidth = cards[0]?.offsetWidth || 0;
+      const gap = 16;
+      featuresGrid.scrollBy({ left: -(cardWidth + gap), behavior: 'smooth' });
+    }
   };
 
   const goToFeatureSlide = (index) => {
-    setCurrentFeatureSlide(index);
+    const featuresGrid = document.querySelector('.features-section .features-grid');
+    if (featuresGrid) {
+      const cards = featuresGrid.querySelectorAll('.feature-card');
+      const cardWidth = cards[0]?.offsetWidth || 0;
+      const gap = 16;
+      featuresGrid.scrollTo({ left: index * (cardWidth + gap), behavior: 'smooth' });
+    }
   };
 
-  // Training centers slider navigation
+  // Training centers 3D carousel navigation
   const nextCenterSlide = () => {
-    setCurrentCenterSlide((prev) => (prev + 1) % 4); // 4 training center cards
+    setCurrentCenterSlide((prev) => (prev + 1) % 4);
   };
 
   const prevCenterSlide = () => {
@@ -691,7 +763,7 @@ We're excited to have you on this journey!
     setFeatureTouchEnd(0);
   };
 
-  // Touch gesture handlers for centers slider
+  // Touch swipe for stacked cards
   const handleCenterTouchStart = (e) => {
     setCenterTouchStart(e.targetTouches[0].clientX);
   };
@@ -706,10 +778,10 @@ We're excited to have you on this journey!
     const isLeftSwipe = distance > 50;
     const isRightSwipe = distance < -50;
 
-    if (isLeftSwipe && currentCenterSlide < 3) {
+    if (isLeftSwipe) {
       nextCenterSlide();
     }
-    if (isRightSwipe && currentCenterSlide > 0) {
+    if (isRightSwipe) {
       prevCenterSlide();
     }
 
@@ -1203,10 +1275,6 @@ We're excited to have you on this journey!
 
               <div
                 className="features-grid"
-                style={{ transform: `translateX(-${currentFeatureSlide * 100}%)` }}
-                onTouchStart={handleFeatureTouchStart}
-                onTouchMove={handleFeatureTouchMove}
-                onTouchEnd={handleFeatureTouchEnd}
               >
               <div className="feature-card">
                 <div className="feature-icon"><GraduationCapIcon /></div>
@@ -1290,7 +1358,6 @@ We're excited to have you on this journey!
               <div
                 className="centers-grid"
                 role="list"
-                style={{ transform: `translateX(-${currentCenterSlide * 100}%)` }}
                 onTouchStart={handleCenterTouchStart}
                 onTouchMove={handleCenterTouchMove}
                 onTouchEnd={handleCenterTouchEnd}
@@ -1318,7 +1385,7 @@ We're excited to have you on this journey!
 
               <article className="center-card" role="listitem">
                 <div className="center-icon" aria-hidden="true">
-                  <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&h=400&fit=crop&auto=format&q=80&sat=10" alt="" />
+                  <img src="https://s7ap1.scene7.com/is/image/incredibleindia/vidhana-soudha-bangalore-karnataka-hero?qlt=82&ts=1742199603184" alt="Vidhana Soudha, Bangalore" />
                 </div>
                 <h3 className="center-city">Bangalore</h3>
                 <div className="center-details">
@@ -1339,7 +1406,7 @@ We're excited to have you on this journey!
 
               <article className="center-card" role="listitem">
                 <div className="center-icon" aria-hidden="true">
-                  
+                  <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&h=400&fit=crop&auto=format&q=80" alt="Chennai Temple" />
                 </div>
                 <h3 className="center-city">Chennai</h3>
                 <div className="center-details">
