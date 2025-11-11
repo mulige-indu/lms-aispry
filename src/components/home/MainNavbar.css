@@ -495,6 +495,7 @@ body.dark-theme .content-section p {
   .main-navbar {
     height: 70px;
     top: 45px;
+    z-index: 998;
   }
 
   .navbar-container {
