@@ -1220,7 +1220,9 @@ body {
   }
 
   /* Navbar - Smaller and Fixed */
-  .main-navbar,
+  /* REMOVED: This was causing both navbars to overlap at top: 0 */
+  /* Individual navbar positioning is handled in their respective CSS files */
+  /* .main-navbar,
   .scrolling-navbar {
     padding: 0.4rem !important;
     position: fixed !important;
@@ -1229,7 +1231,7 @@ body {
     right: 0 !important;
     width: 100% !important;
     z-index: 1000 !important;
-  }
+  } */
 
   .navbar-menu a {
     font-size: 0.65rem !important;
