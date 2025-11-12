@@ -57,454 +57,432 @@ const Courses = () => {
     try {
       setLoading(true);
 
-      // Courses matching Browse by Category
+      // Professional Industry-Standard Courses
       const mockCourses = [
-        // Data Science (5 courses)
+        // Data Science & AI (6 courses)
         {
           courseId: 1,
-          courseName: 'Data Science with Python',
-          category: 'Data Science',
+          courseName: 'Data Science Certification Course',
+          category: 'Data Science & AI',
           level: 'Beginner',
-          duration: '12 weeks',
-          description: 'Learn data science fundamentals with Python, including NumPy, Pandas, and data visualization',
+          duration: '6 months',
+          description: 'Complete data science training with Python, statistics, machine learning, and real-world projects',
           instructor: 'Dr. Smith',
-          icon: <CodeIcon size={48} color="#3776ab" />
+          icon: <ChartIcon size={48} color="#667eea" />
         },
         {
           courseId: 2,
-          courseName: 'Advanced Data Science & Statistical Analysis',
-          category: 'Data Science',
+          courseName: 'Artificial Intelligence & Deep Learning',
+          category: 'Data Science & AI',
           level: 'Advanced',
-          duration: '16 weeks',
-          description: 'Master advanced data science techniques, statistical modeling, hypothesis testing, and predictive analytics',
+          duration: '6 months',
+          description: 'Master AI, deep learning, neural networks, TensorFlow, PyTorch with hands-on projects',
           instructor: 'Prof. Johnson',
-          icon: <ChartIcon size={48} color="#667eea" />
+          icon: <BrainIcon size={48} color="#667eea" />
         },
         {
           courseId: 3,
-          courseName: 'Data Science for Business Decisions',
-          category: 'Data Science',
+          courseName: 'Machine Learning Professional Course',
+          category: 'Data Science & AI',
           level: 'Intermediate',
-          duration: '10 weeks',
-          description: 'Apply data science to solve real business problems, forecasting, and strategic decision making',
-          instructor: 'Dr. Williams',
-          icon: <ChartIcon size={48} color="#667eea" />
-        },
-        {
-          courseId: 4,
-          courseName: 'Time Series Analysis & Forecasting',
-          category: 'Data Science',
-          level: 'Advanced',
-          duration: '14 weeks',
-          description: 'Master time series analysis, ARIMA, Prophet, and forecasting techniques for business',
-          instructor: 'Ms. Chen',
-          icon: <ChartIcon size={48} color="#667eea" />
-        },
-        {
-          courseId: 5,
-          courseName: 'R Programming for Data Science',
-          category: 'Data Science',
-          level: 'Beginner',
-          duration: '10 weeks',
-          description: 'Learn R programming, ggplot2, dplyr, and statistical computing for data analysis',
-          instructor: 'Prof. Anderson',
-          icon: <CodeIcon size={48} color="#276DC3" />
-        },
-
-        // Artificial Intelligence (6 courses)
-        {
-          courseId: 6,
-          courseName: 'Machine Learning Fundamentals',
-          category: 'Artificial Intelligence',
-          level: 'Intermediate',
-          duration: '16 weeks',
-          description: 'Master machine learning algorithms including supervised and unsupervised learning, regression, and classification',
+          duration: '5 months',
+          description: 'Learn supervised, unsupervised learning, model deployment, and ML algorithms',
           instructor: 'Dr. Kumar',
           icon: <BrainIcon size={48} color="#667eea" />
         },
         {
-          courseId: 7,
-          courseName: 'Deep Learning & Neural Networks',
-          category: 'Artificial Intelligence',
-          level: 'Advanced',
-          duration: '20 weeks',
-          description: 'Master deep learning, CNNs, RNNs, and transformer models with TensorFlow and PyTorch',
-          instructor: 'Prof. Sharma',
-          icon: <BrainIcon size={48} color="#667eea" />
+          courseId: 4,
+          courseName: 'Python for Data Science',
+          category: 'Data Science & AI',
+          level: 'Beginner',
+          duration: '3 months',
+          description: 'Master Python programming, NumPy, Pandas, data manipulation, and visualization',
+          instructor: 'Ms. Chen',
+          icon: <CodeIcon size={48} color="#3776ab" />
         },
         {
-          courseId: 8,
-          courseName: 'Generative AI & LLMs',
-          category: 'Artificial Intelligence',
-          level: 'Intermediate',
-          duration: '10 weeks',
-          description: 'Master generative AI, prompt engineering, fine-tuning LLMs, and build AI applications with GPT',
-          instructor: 'Dr. Lee',
-          icon: <BrainIcon size={48} color="#FFC107" />
-        },
-        {
-          courseId: 9,
+          courseId: 5,
           courseName: 'Natural Language Processing (NLP)',
-          category: 'Artificial Intelligence',
+          category: 'Data Science & AI',
           level: 'Advanced',
-          duration: '18 weeks',
-          description: 'Deep dive into NLP, transformers, BERT, text analytics, sentiment analysis, and chatbot development',
-          instructor: 'Dr. Nguyen',
-          icon: <CodeIcon size={48} color="#4CAF50" />
+          duration: '4 months',
+          description: 'Build text analytics, sentiment analysis, chatbots, and language models',
+          instructor: 'Dr. Lee',
+          icon: <BrainIcon size={48} color="#4CAF50" />
         },
         {
-          courseId: 10,
-          courseName: 'Computer Vision & Image Processing',
-          category: 'Artificial Intelligence',
+          courseId: 6,
+          courseName: 'Computer Vision & Image Recognition',
+          category: 'Data Science & AI',
           level: 'Advanced',
-          duration: '14 weeks',
-          description: 'Master image processing, object detection, facial recognition, and video analytics with OpenCV',
+          duration: '4 months',
+          description: 'Master OpenCV, object detection, facial recognition, and deep learning for vision',
           instructor: 'Prof. Martinez',
           icon: <BrainIcon size={48} color="#667eea" />
         },
-        {
-          courseId: 11,
-          courseName: 'Reinforcement Learning & AI Agents',
-          category: 'Artificial Intelligence',
-          level: 'Advanced',
-          duration: '16 weeks',
-          description: 'Learn Q-learning, policy gradients, deep reinforcement learning, and build autonomous AI agents',
-          instructor: 'Dr. Park',
-          icon: <BrainIcon size={48} color="#667eea" />
-        },
 
-        // Analytics (4 courses)
+        // Data Analytics & BI (6 courses)
         {
-          courseId: 12,
-          courseName: 'Business Analytics with Power BI',
-          category: 'Analytics',
+          courseId: 7,
+          courseName: 'Data Analytics Certification',
+          category: 'Data Analytics & BI',
           level: 'Beginner',
-          duration: '8 weeks',
-          description: 'Learn business intelligence, data visualization, and reporting with Power BI and Excel',
+          duration: '4 months',
+          description: 'Learn data analysis, Excel, SQL, statistics, and business intelligence fundamentals',
           instructor: 'Ms. Patel',
           icon: <ChartIcon size={48} color="#667eea" />
         },
         {
-          courseId: 13,
-          courseName: 'Tableau for Data Visualization',
-          category: 'Analytics',
+          courseId: 8,
+          courseName: 'Power BI for Business Analytics',
+          category: 'Data Analytics & BI',
           level: 'Beginner',
-          duration: '6 weeks',
-          description: 'Create stunning dashboards and interactive visualizations with Tableau',
+          duration: '2 months',
+          description: 'Create interactive dashboards, reports, and data visualizations with Power BI',
           instructor: 'Mr. Moore',
+          icon: <ChartIcon size={48} color="#F2C811" />
+        },
+        {
+          courseId: 9,
+          courseName: 'Tableau Data Visualization',
+          category: 'Data Analytics & BI',
+          level: 'Beginner',
+          duration: '2 months',
+          description: 'Build stunning visualizations and business dashboards with Tableau',
+          instructor: 'Ms. Taylor',
           icon: <ChartIcon size={48} color="#E97627" />
         },
         {
-          courseId: 14,
-          courseName: 'Google Analytics & Web Analytics',
-          category: 'Analytics',
-          level: 'Beginner',
-          duration: '8 weeks',
-          description: 'Master Google Analytics, track user behavior, conversion optimization, and web performance metrics',
-          instructor: 'Ms. Taylor',
-          icon: <ChartIcon size={48} color="#FF5722" />
-        },
-        {
-          courseId: 15,
-          courseName: 'Predictive Analytics & Forecasting',
-          category: 'Analytics',
-          level: 'Advanced',
-          duration: '12 weeks',
-          description: 'Build predictive models, regression analysis, and advanced forecasting techniques for business',
+          courseId: 10,
+          courseName: 'Business Analytics Professional Course',
+          category: 'Data Analytics & BI',
+          level: 'Intermediate',
+          duration: '5 months',
+          description: 'Master business metrics, KPIs, predictive analytics, and data-driven decision making',
           instructor: 'Dr. Robinson',
           icon: <ChartIcon size={48} color="#667eea" />
         },
-
-        // Cloud & DevOps (5 courses)
         {
-          courseId: 16,
-          courseName: 'Cloud Computing with AWS',
-          category: 'Cloud & DevOps',
-          level: 'Intermediate',
-          duration: '14 weeks',
-          description: 'Master AWS services including EC2, S3, Lambda, RDS, and deploy scalable cloud applications',
-          instructor: 'Dr. Chen',
-          icon: <CloudIcon size={48} color="#FF9900" />
+          courseId: 11,
+          courseName: 'SQL & Database Management',
+          category: 'Data Analytics & BI',
+          level: 'Beginner',
+          duration: '2 months',
+          description: 'Learn SQL queries, database design, joins, and data manipulation',
+          instructor: 'Ms. Brown',
+          icon: <DatabaseIcon size={48} color="#00758F" />
         },
         {
-          courseId: 17,
-          courseName: 'Microsoft Azure Cloud Solutions',
-          category: 'Cloud & DevOps',
+          courseId: 12,
+          courseName: 'Excel for Data Analytics',
+          category: 'Data Analytics & BI',
           level: 'Beginner',
-          duration: '12 weeks',
-          description: 'Learn Microsoft Azure services, cloud architecture, Azure DevOps, and cloud security',
-          instructor: 'Ms. White',
-          icon: <CloudIcon size={48} color="#0089D6" />
+          duration: '1 month',
+          description: 'Master Excel formulas, pivot tables, macros, and advanced data analysis',
+          instructor: 'Mr. Wilson',
+          icon: <ChartIcon size={48} color="#217346" />
+        },
+
+        // Generative AI & LLMs (4 courses)
+        {
+          courseId: 13,
+          courseName: 'Generative AI Certification Course',
+          category: 'Generative AI & LLMs',
+          level: 'Intermediate',
+          duration: '3 months',
+          description: 'Master GPT, DALL-E, Stable Diffusion, and build AI-powered applications',
+          instructor: 'Dr. Nguyen',
+          icon: <BrainIcon size={48} color="#FFC107" />
+        },
+        {
+          courseId: 14,
+          courseName: 'Prompt Engineering Professional Course',
+          category: 'Generative AI & LLMs',
+          level: 'Beginner',
+          duration: '2 months',
+          description: 'Learn prompt design, optimization, and build AI solutions with LLMs',
+          instructor: 'Ms. Williams',
+          icon: <BrainIcon size={48} color="#FFC107" />
+        },
+        {
+          courseId: 15,
+          courseName: 'LLM Fine-Tuning & RAG Systems',
+          category: 'Generative AI & LLMs',
+          level: 'Advanced',
+          duration: '4 months',
+          description: 'Fine-tune large language models, build RAG systems, and custom AI applications',
+          instructor: 'Dr. Park',
+          icon: <BrainIcon size={48} color="#FFC107" />
+        },
+        {
+          courseId: 16,
+          courseName: 'ChatGPT & AI for Business',
+          category: 'Generative AI & LLMs',
+          level: 'Beginner',
+          duration: '1 month',
+          description: 'Use ChatGPT, AI tools for productivity, automation, and business applications',
+          instructor: 'Ms. Davis',
+          icon: <BrainIcon size={48} color="#FFC107" />
+        },
+
+        // MLOps & Deployment (4 courses)
+        {
+          courseId: 17,
+          courseName: 'MLOps Certification Course',
+          category: 'MLOps & Deployment',
+          level: 'Advanced',
+          duration: '4 months',
+          description: 'Deploy ML models, CI/CD pipelines, monitoring, and production ML systems',
+          instructor: 'Mr. Thompson',
+          icon: <CloudIcon size={48} color="#326CE5" />
         },
         {
           courseId: 18,
-          courseName: 'DevOps & CI/CD Bootcamp',
-          category: 'Cloud & DevOps',
+          courseName: 'Model Deployment & Production',
+          category: 'MLOps & Deployment',
           level: 'Intermediate',
-          duration: '12 weeks',
-          description: 'Master Docker, Kubernetes, Jenkins, Git, Ansible, and automated deployment pipelines',
-          instructor: 'Mr. Thompson',
-          icon: <CodeIcon size={48} color="#2496ED" />
+          duration: '3 months',
+          description: 'Deploy models with Docker, Kubernetes, Flask, FastAPI, and cloud platforms',
+          instructor: 'Dr. Mitchell',
+          icon: <CloudIcon size={48} color="#2496ED" />
         },
         {
           courseId: 19,
-          courseName: 'Google Cloud Platform (GCP)',
-          category: 'Cloud & DevOps',
-          level: 'Intermediate',
-          duration: '14 weeks',
-          description: 'Master Google Cloud Platform, Compute Engine, Cloud Functions, BigQuery, and GCP services',
-          instructor: 'Dr. Mitchell',
-          icon: <CloudIcon size={48} color="#4285F4" />
+          courseName: 'ML Model Monitoring & Maintenance',
+          category: 'MLOps & Deployment',
+          level: 'Advanced',
+          duration: '2 months',
+          description: 'Monitor model performance, drift detection, retraining, and A/B testing',
+          instructor: 'Ms. Clark',
+          icon: <ChartIcon size={48} color="#667eea" />
         },
         {
           courseId: 20,
-          courseName: 'Kubernetes & Container Orchestration',
-          category: 'Cloud & DevOps',
-          level: 'Advanced',
-          duration: '10 weeks',
-          description: 'Deep dive into Kubernetes, container orchestration, microservices, and production deployment',
-          instructor: 'Mr. Davis',
-          icon: <CodeIcon size={48} color="#326CE5" />
+          courseName: 'AutoML & Model Optimization',
+          category: 'MLOps & Deployment',
+          level: 'Intermediate',
+          duration: '3 months',
+          description: 'Automated machine learning, hyperparameter tuning, and model optimization',
+          instructor: 'Dr. Kim',
+          icon: <BrainIcon size={48} color="#667eea" />
         },
 
-        // Programming (6 courses)
+        // Programming & Development (6 courses)
         {
           courseId: 21,
-          courseName: 'Full Stack Python Development',
-          category: 'Programming',
+          courseName: 'Full Stack Web Development',
+          category: 'Programming & Development',
           level: 'Intermediate',
-          duration: '18 weeks',
-          description: 'Build complete web applications using Django, Flask, REST APIs, and PostgreSQL',
+          duration: '6 months',
+          description: 'Build complete web applications with React, Node.js, databases, and deployment',
           instructor: 'Mr. Anderson',
-          icon: <CodeIcon size={48} color="#3776ab" />
-        },
-        {
-          courseId: 22,
-          courseName: 'Web Development with React',
-          category: 'Programming',
-          level: 'Beginner',
-          duration: '10 weeks',
-          description: 'Build modern web applications with React, Redux, hooks, and component architecture',
-          instructor: 'Ms. Williams',
           icon: <CodeIcon size={48} color="#61dafb" />
         },
         {
+          courseId: 22,
+          courseName: 'Python Programming Certification',
+          category: 'Programming & Development',
+          level: 'Beginner',
+          duration: '3 months',
+          description: 'Learn Python fundamentals, OOP, file handling, and build real-world projects',
+          instructor: 'Ms. White',
+          icon: <CodeIcon size={48} color="#3776ab" />
+        },
+        {
           courseId: 23,
-          courseName: 'Mobile App Development',
-          category: 'Programming',
-          level: 'Intermediate',
-          duration: '16 weeks',
-          description: 'Build cross-platform mobile apps with React Native, Flutter, and native features',
+          courseName: 'React & Modern Web Development',
+          category: 'Programming & Development',
+          level: 'Beginner',
+          duration: '4 months',
+          description: 'Build responsive web apps with React, hooks, Redux, and modern JavaScript',
           instructor: 'Mr. Garcia',
           icon: <CodeIcon size={48} color="#61dafb" />
         },
         {
           courseId: 24,
-          courseName: 'Java Full Stack Development',
-          category: 'Programming',
+          courseName: 'Java Programming & Spring Boot',
+          category: 'Programming & Development',
           level: 'Intermediate',
-          duration: '20 weeks',
-          description: 'Master Java, Spring Boot, Hibernate, microservices, and full stack development',
+          duration: '5 months',
+          description: 'Master Java, Spring Boot, microservices, and enterprise application development',
           instructor: 'Dr. Kumar',
           icon: <CodeIcon size={48} color="#007396" />
         },
         {
           courseId: 25,
-          courseName: 'Node.js Backend Development',
-          category: 'Programming',
+          courseName: 'Mobile App Development',
+          category: 'Programming & Development',
           level: 'Intermediate',
-          duration: '12 weeks',
-          description: 'Build scalable backend applications with Node.js, Express, MongoDB, and RESTful APIs',
-          instructor: 'Ms. Brown',
-          icon: <CodeIcon size={48} color="#339933" />
+          duration: '5 months',
+          description: 'Build cross-platform mobile apps with React Native and Flutter',
+          instructor: 'Ms. Green',
+          icon: <CodeIcon size={48} color="#61dafb" />
         },
         {
           courseId: 26,
-          courseName: 'iOS Development with Swift',
-          category: 'Programming',
-          level: 'Beginner',
-          duration: '14 weeks',
-          description: 'Create native iOS applications with Swift, SwiftUI, and Xcode',
+          courseName: 'Backend Development with Node.js',
+          category: 'Programming & Development',
+          level: 'Intermediate',
+          duration: '4 months',
+          description: 'Build REST APIs, authentication, databases with Node.js and Express',
           instructor: 'Mr. Wilson',
-          icon: <CodeIcon size={48} color="#FA7343" />
+          icon: <CodeIcon size={48} color="#339933" />
         },
 
-        // Security (4 courses)
+        // Digital Marketing (5 courses)
         {
           courseId: 27,
-          courseName: 'Cyber Security Essentials',
-          category: 'Security',
+          courseName: 'Digital Marketing Certification',
+          category: 'Digital Marketing',
           level: 'Beginner',
-          duration: '12 weeks',
-          description: 'Learn ethical hacking, network security, penetration testing, and security best practices',
-          instructor: 'Mr. Rodriguez',
-          icon: <CodeIcon size={48} color="#00BCD4" />
-        },
-        {
-          courseId: 28,
-          courseName: 'Advanced Penetration Testing',
-          category: 'Security',
-          level: 'Advanced',
-          duration: '16 weeks',
-          description: 'Master advanced security techniques, vulnerability assessment, exploit development, and red team operations',
-          instructor: 'Dr. Martinez',
-          icon: <CodeIcon size={48} color="#00BCD4" />
-        },
-        {
-          courseId: 29,
-          courseName: 'Cloud Security & Compliance',
-          category: 'Security',
-          level: 'Intermediate',
-          duration: '10 weeks',
-          description: 'Secure cloud infrastructure, IAM, encryption, compliance (GDPR, SOC2), and security monitoring',
-          instructor: 'Ms. Jackson',
-          icon: <CodeIcon size={48} color="#00BCD4" />
-        },
-        {
-          courseId: 30,
-          courseName: 'Application Security & Secure Coding',
-          category: 'Security',
-          level: 'Intermediate',
-          duration: '12 weeks',
-          description: 'Learn secure coding practices, OWASP Top 10, code review, and application security testing',
-          instructor: 'Dr. Harris',
-          icon: <CodeIcon size={48} color="#00BCD4" />
-        },
-
-        // Data Engineering (5 courses)
-        {
-          courseId: 31,
-          courseName: 'Data Engineering with Apache Spark',
-          category: 'Data Engineering',
-          level: 'Advanced',
-          duration: '16 weeks',
-          description: 'Build big data pipelines with Apache Spark, PySpark, Kafka, Hadoop, and Airflow',
-          instructor: 'Ms. Lee',
-          icon: <DatabaseIcon size={48} color="#667eea" />
-        },
-        {
-          courseId: 32,
-          courseName: 'SQL & Database Management',
-          category: 'Data Engineering',
-          level: 'Beginner',
-          duration: '8 weeks',
-          description: 'Learn SQL queries, database design, normalization, indexes, and work with MySQL and PostgreSQL',
-          instructor: 'Ms. Brown',
-          icon: <DatabaseIcon size={48} color="#667eea" />
-        },
-        {
-          courseId: 33,
-          courseName: 'ETL & Data Warehousing',
-          category: 'Data Engineering',
-          level: 'Intermediate',
-          duration: '14 weeks',
-          description: 'Master ETL processes, data warehousing, dimensional modeling, Snowflake, and Redshift',
-          instructor: 'Mr. Thomas',
-          icon: <DatabaseIcon size={48} color="#667eea" />
-        },
-        {
-          courseId: 34,
-          courseName: 'Real-Time Data Streaming',
-          category: 'Data Engineering',
-          level: 'Advanced',
-          duration: '12 weeks',
-          description: 'Build real-time streaming pipelines with Kafka, Flink, Storm, and event-driven architectures',
-          instructor: 'Dr. Kim',
-          icon: <DatabaseIcon size={48} color="#667eea" />
-        },
-        {
-          courseId: 35,
-          courseName: 'NoSQL Databases & MongoDB',
-          category: 'Data Engineering',
-          level: 'Intermediate',
-          duration: '10 weeks',
-          description: 'Master NoSQL databases, MongoDB, Cassandra, Redis, and document-oriented data modeling',
-          instructor: 'Ms. Clark',
-          icon: <DatabaseIcon size={48} color="#47A248" />
-        },
-
-        // Marketing (4 courses)
-        {
-          courseId: 36,
-          courseName: 'Digital Marketing Analytics',
-          category: 'Marketing',
-          level: 'Beginner',
-          duration: '10 weeks',
-          description: 'Learn SEO, Google Analytics, social media analytics, and marketing ROI measurement',
-          instructor: 'Mr. Wilson',
-          icon: <ChartIcon size={48} color="#FF5722" />
-        },
-        {
-          courseId: 37,
-          courseName: 'Advanced Digital Marketing Strategy',
-          category: 'Marketing',
-          level: 'Intermediate',
-          duration: '12 weeks',
-          description: 'Master content marketing, conversion optimization, A/B testing, and marketing automation',
+          duration: '4 months',
+          description: 'Learn SEO, SEM, social media, email marketing, and digital strategy',
           instructor: 'Ms. Davis',
           icon: <ChartIcon size={48} color="#FF5722" />
         },
         {
-          courseId: 38,
-          courseName: 'Social Media Marketing & Advertising',
-          category: 'Marketing',
+          courseId: 28,
+          courseName: 'SEO & Content Marketing',
+          category: 'Digital Marketing',
           level: 'Beginner',
-          duration: '8 weeks',
-          description: 'Master Facebook Ads, Instagram marketing, LinkedIn advertising, and social media strategy',
-          instructor: 'Ms. Green',
-          icon: <ChartIcon size={48} color="#FF5722" />
-        },
-        {
-          courseId: 39,
-          courseName: 'Email Marketing & Marketing Automation',
-          category: 'Marketing',
-          level: 'Intermediate',
-          duration: '10 weeks',
-          description: 'Build email campaigns, marketing automation workflows, lead nurturing, and CRM integration',
+          duration: '2 months',
+          description: 'Master SEO optimization, keyword research, content strategy, and link building',
           instructor: 'Mr. Young',
           icon: <ChartIcon size={48} color="#FF5722" />
         },
+        {
+          courseId: 29,
+          courseName: 'Social Media Marketing',
+          category: 'Digital Marketing',
+          level: 'Beginner',
+          duration: '2 months',
+          description: 'Facebook, Instagram, LinkedIn ads, social media strategy, and influencer marketing',
+          instructor: 'Ms. Miller',
+          icon: <ChartIcon size={48} color="#E1306C" />
+        },
+        {
+          courseId: 30,
+          courseName: 'Google Analytics & Web Analytics',
+          category: 'Digital Marketing',
+          level: 'Beginner',
+          duration: '2 months',
+          description: 'Track website traffic, user behavior, conversion optimization, and analytics',
+          instructor: 'Mr. Adams',
+          icon: <ChartIcon size={48} color="#E37400" />
+        },
+        {
+          courseId: 31,
+          courseName: 'Performance Marketing & PPC',
+          category: 'Digital Marketing',
+          level: 'Intermediate',
+          duration: '3 months',
+          description: 'Google Ads, Facebook Ads, campaign optimization, ROI tracking, and A/B testing',
+          instructor: 'Ms. Jackson',
+          icon: <ChartIcon size={48} color="#FF5722" />
+        },
 
-        // Blockchain (4 courses)
+        // Cloud Computing (5 courses)
+        {
+          courseId: 32,
+          courseName: 'AWS Cloud Practitioner',
+          category: 'Cloud Computing',
+          level: 'Beginner',
+          duration: '3 months',
+          description: 'Learn AWS services, EC2, S3, Lambda, RDS, and cloud fundamentals',
+          instructor: 'Dr. Chen',
+          icon: <CloudIcon size={48} color="#FF9900" />
+        },
+        {
+          courseId: 33,
+          courseName: 'Microsoft Azure Fundamentals',
+          category: 'Cloud Computing',
+          level: 'Beginner',
+          duration: '3 months',
+          description: 'Master Azure services, virtual machines, storage, networking, and Azure DevOps',
+          instructor: 'Ms. White',
+          icon: <CloudIcon size={48} color="#0089D6" />
+        },
+        {
+          courseId: 34,
+          courseName: 'Google Cloud Platform (GCP)',
+          category: 'Cloud Computing',
+          level: 'Intermediate',
+          duration: '4 months',
+          description: 'Learn GCP services, Compute Engine, Cloud Functions, BigQuery, and Kubernetes',
+          instructor: 'Dr. Mitchell',
+          icon: <CloudIcon size={48} color="#4285F4" />
+        },
+        {
+          courseId: 35,
+          courseName: 'DevOps Engineering',
+          category: 'Cloud Computing',
+          level: 'Advanced',
+          duration: '5 months',
+          description: 'CI/CD pipelines, Docker, Kubernetes, Jenkins, Git, infrastructure as code',
+          instructor: 'Mr. Thompson',
+          icon: <CodeIcon size={48} color="#2496ED" />
+        },
+        {
+          courseId: 36,
+          courseName: 'Cloud Architecture & Design',
+          category: 'Cloud Computing',
+          level: 'Advanced',
+          duration: '4 months',
+          description: 'Design scalable cloud solutions, microservices, serverless, and cloud security',
+          instructor: 'Dr. Harris',
+          icon: <CloudIcon size={48} color="#667eea" />
+        },
+
+        // Cybersecurity (5 courses)
+        {
+          courseId: 37,
+          courseName: 'Cybersecurity Certification Course',
+          category: 'Cybersecurity',
+          level: 'Beginner',
+          duration: '5 months',
+          description: 'Learn ethical hacking, network security, penetration testing, and security tools',
+          instructor: 'Mr. Rodriguez',
+          icon: <CodeIcon size={48} color="#00BCD4" />
+        },
+        {
+          courseId: 38,
+          courseName: 'Ethical Hacking & Penetration Testing',
+          category: 'Cybersecurity',
+          level: 'Advanced',
+          duration: '6 months',
+          description: 'Master penetration testing, vulnerability assessment, Kali Linux, and security audits',
+          instructor: 'Dr. Martinez',
+          icon: <CodeIcon size={48} color="#00BCD4" />
+        },
+        {
+          courseId: 39,
+          courseName: 'Network Security & Firewall',
+          category: 'Cybersecurity',
+          level: 'Intermediate',
+          duration: '4 months',
+          description: 'Secure networks, configure firewalls, IDS/IPS, VPN, and network protocols',
+          instructor: 'Ms. Jackson',
+          icon: <CodeIcon size={48} color="#00BCD4" />
+        },
         {
           courseId: 40,
-          courseName: 'Blockchain Development',
-          category: 'Blockchain',
+          courseName: 'Cloud Security Professional',
+          category: 'Cybersecurity',
           level: 'Advanced',
-          duration: '16 weeks',
-          description: 'Build decentralized applications with Ethereum, Solidity, smart contracts, and Web3.js',
-          instructor: 'Mr. Clark',
-          icon: <CodeIcon size={48} color="#F7931A" />
+          duration: '4 months',
+          description: 'AWS/Azure security, IAM, encryption, compliance, and cloud security best practices',
+          instructor: 'Dr. Harris',
+          icon: <CloudIcon size={48} color="#00BCD4" />
         },
         {
           courseId: 41,
-          courseName: 'Blockchain Fundamentals',
-          category: 'Blockchain',
-          level: 'Beginner',
-          duration: '8 weeks',
-          description: 'Learn blockchain technology, cryptocurrency, distributed ledger, consensus algorithms, and Bitcoin',
-          instructor: 'Dr. Taylor',
-          icon: <CodeIcon size={48} color="#F7931A" />
-        },
-        {
-          courseId: 42,
-          courseName: 'DeFi & Smart Contract Development',
-          category: 'Blockchain',
-          level: 'Advanced',
-          duration: '14 weeks',
-          description: 'Build DeFi protocols, yield farming, liquidity pools, and advanced smart contract patterns',
-          instructor: 'Ms. Miller',
-          icon: <CodeIcon size={48} color="#F7931A" />
-        },
-        {
-          courseId: 43,
-          courseName: 'NFT Development & Web3',
-          category: 'Blockchain',
+          courseName: 'Application Security & OWASP',
+          category: 'Cybersecurity',
           level: 'Intermediate',
-          duration: '10 weeks',
-          description: 'Create NFTs, build NFT marketplaces, Web3 applications, and integrate with IPFS',
-          instructor: 'Mr. Adams',
-          icon: <CodeIcon size={48} color="#F7931A" />
+          duration: '3 months',
+          description: 'Secure coding, OWASP Top 10, XSS, SQL injection, authentication, and code review',
+          instructor: 'Mr. Clark',
+          icon: <CodeIcon size={48} color="#00BCD4" />
         }
       ];
 
@@ -563,15 +541,14 @@ const Courses = () => {
 
   const categories = [
     'All',
-    'Data Science',
-    'Artificial Intelligence',
-    'Analytics',
-    'Cloud & DevOps',
-    'Programming',
-    'Security',
-    'Data Engineering',
-    'Marketing',
-    'Blockchain'
+    'Data Science & AI',
+    'Data Analytics & BI',
+    'Generative AI & LLMs',
+    'MLOps & Deployment',
+    'Programming & Development',
+    'Digital Marketing',
+    'Cloud Computing',
+    'Cybersecurity'
   ];
   const levels = ['All', 'Beginner', 'Intermediate', 'Advanced'];
 
