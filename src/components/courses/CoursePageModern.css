@@ -20,7 +20,7 @@ body {
 }
 
 .digitmg-dashboard {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica', 'Arial', sans-serif;
   background-color: #f5f7f9;
   min-height: 100vh;
   display: flex;
@@ -720,7 +720,7 @@ dotlottie-player {
   overflow-y: auto;
   overflow-x: hidden;
   flex: 1;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica', 'Arial', sans-serif;
   width: 100%;
   box-sizing: border-box;
   scrollbar-width: none;

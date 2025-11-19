@@ -2,7 +2,7 @@
 .offering-page {
   min-height: 100vh;
   background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica', 'Arial', sans-serif;
 }
 
 .offering-nav {

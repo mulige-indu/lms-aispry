@@ -1,0 +1,175 @@
+/* Global Styles - Font Standardization */
+
+/* CSS Variables for Typography Scale */
+:root {
+  /* Font Sizes - Standardized Scale */
+  --font-size-xs: 0.75rem;      /* 12px - Small labels, tags */
+  --font-size-sm: 0.875rem;     /* 14px - Small text, captions */
+  --font-size-base: 1rem;       /* 16px - Base body text */
+  --font-size-md: 1.125rem;     /* 18px - Medium text */
+  --font-size-lg: 1.25rem;      /* 20px - Large text */
+  --font-size-xl: 1.5rem;       /* 24px - Section headings */
+  --font-size-2xl: 2rem;        /* 32px - Page headings */
+  --font-size-3xl: 2.5rem;      /* 40px - Hero headings */
+  --font-size-4xl: 3rem;        /* 48px - Display headings */
+
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica', 'Arial', sans-serif;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: white;
+  min-height: 100vh;
+}
+
+/* Standardized Heading Sizes */
+h1 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+}
+
+h4 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+}
+
+h5 {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+}
+
+h6 {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+}
+
+p {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Ensure all elements inherit the font family */
+button,
+input,
+textarea,
+select,
+a,
+div,
+span,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: inherit;
+}
+
+/* Standard button font size */
+button {
+  font-size: var(--font-size-base);
+}
+
+/* Standard input/form font sizes */
+input,
+textarea,
+select {
+  font-size: var(--font-size-base);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Utility classes for font sizes */
+.text-xs { font-size: var(--font-size-xs) !important; }
+.text-sm { font-size: var(--font-size-sm) !important; }
+.text-base { font-size: var(--font-size-base) !important; }
+.text-md { font-size: var(--font-size-md) !important; }
+.text-lg { font-size: var(--font-size-lg) !important; }
+.text-xl { font-size: var(--font-size-xl) !important; }
+.text-2xl { font-size: var(--font-size-2xl) !important; }
+.text-3xl { font-size: var(--font-size-3xl) !important; }
+.text-4xl { font-size: var(--font-size-4xl) !important; }
+
+/* Utility classes for font weights */
+.font-normal { font-weight: var(--font-weight-normal) !important; }
+.font-medium { font-weight: var(--font-weight-medium) !important; }
+.font-semibold { font-weight: var(--font-weight-semibold) !important; }
+.font-bold { font-weight: var(--font-weight-bold) !important; }
+.font-extrabold { font-weight: var(--font-weight-extrabold) !important; }
+
+/* Utility classes for line heights */
+.leading-tight { line-height: var(--line-height-tight) !important; }
+.leading-normal { line-height: var(--line-height-normal) !important; }
+.leading-relaxed { line-height: var(--line-height-relaxed) !important; }
+
+/* ============================================
+   STANDARDIZED SECTION HEADING
+   Use this class for ALL major section headings
+   Only controls size, weight, line-height
+   Colors are controlled by individual classes
+   ============================================ */
+.section-heading {
+  font-size: var(--font-size-2xl) !important;      /* 32px - reduced size */
+  font-weight: 700 !important;
+  font-family: inherit !important;
+  line-height: 1.2 !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Responsive adjustments for section headings */
+@media (max-width: 768px) {
+  .section-heading {
+    font-size: var(--font-size-xl) !important;   /* 24px on tablet */
+  }
+}
+
+@media (max-width: 480px) {
+  .section-heading {
+    font-size: var(--font-size-lg) !important;   /* 20px on mobile */
+  }
+}

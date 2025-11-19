@@ -177,6 +177,7 @@ const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentFeatureSlide, setCurrentFeatureSlide] = useState(0);
   const [currentCenterSlide, setCurrentCenterSlide] = useState(0);
+  const [expandedCenter, setExpandedCenter] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   // Touch gesture states
@@ -231,6 +232,23 @@ const Home = () => {
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Preserve scroll position on page reload
+  useEffect(() => {
+    // Restore scroll position on mount
+    const savedScrollPosition = sessionStorage.getItem('homeScrollPosition');
+    if (savedScrollPosition) {
+      window.scrollTo(0, parseInt(savedScrollPosition, 10));
+    }
+
+    // Save scroll position on scroll
+    const handleScroll = () => {
+      sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Modern scroll-based slider tracking for features
@@ -726,15 +744,19 @@ We're excited to have you on this journey!
 
   // Training centers 3D carousel navigation
   const nextCenterSlide = () => {
-    setCurrentCenterSlide((prev) => (prev + 1) % 4);
+    setCurrentCenterSlide((prev) => (prev + 1) % 9);
   };
 
   const prevCenterSlide = () => {
-    setCurrentCenterSlide((prev) => (prev - 1 + 4) % 4);
+    setCurrentCenterSlide((prev) => (prev - 1 + 9) % 9);
   };
 
   const goToCenterSlide = (index) => {
     setCurrentCenterSlide(index);
+  };
+
+  const toggleCenterExpand = (centerId) => {
+    setExpandedCenter(expandedCenter === centerId ? null : centerId);
   };
 
   // Touch gesture handlers for features slider
@@ -790,14 +812,14 @@ We're excited to have you on this journey!
   };
 
   return (
-    <div className="App">
+    <main className="App">
       <ScrollingNavbar />
       <MainNavbar />
 
       <div className="main-content">
-        <div className="hero-heading">
+        <header className="hero-heading">
           <h1>Become the Top 1% in Tech</h1>
-        </div>
+        </header>
 
         <section className="video-booking-section">
           <aside className="video-aside">
@@ -904,7 +926,7 @@ We're excited to have you on this journey!
         <section className="learner-outcomes">
           <div className="outcomes-container">
             <div className="outcomes-header">
-              <h2 className="outcomes-title">Transform Your Career, Multiply Your Income</h2>
+              <h2 className="section-heading outcomes-title">Transform Your Career, Multiply Your Income</h2>
               <p className="outcomes-subtitle">Join 20,000+ professionals who transformed their careers and achieved 3x salary growth. Calculate your future tech salary potential.</p>
             </div>
 
@@ -1034,7 +1056,7 @@ We're excited to have you on this journey!
                   <span className="badge-text">Free Career Guide</span>
                 </div>
 
-                <h2 className="brochure-headline">
+                <h2 className="section-heading brochure-headline">
                   Ready to Launch Your AI & Data Science Career?
                 </h2>
 
@@ -1167,7 +1189,7 @@ We're excited to have you on this journey!
         <section className="home-courses-section">
           <div className="home-courses-container">
             <div className="home-courses-header">
-              <h2 className="home-courses-title">Find Your Perfect Program</h2>
+              <h2 className="section-heading home-courses-title">Find Your Perfect Program</h2>
               <p className="home-courses-subtitle">Explore our range of courses designed for every career stage.</p>
             </div>
 
@@ -1214,7 +1236,7 @@ We're excited to have you on this journey!
         <section className="alumni-section">
           <div className="alumni-container">
             <div className="alumni-header">
-              <h2 className="alumni-title">Trusted By 20,000+ Alumni Working At Top Companies</h2>
+              <h2 className="section-heading alumni-title">Trusted By 20,000+ Alumni Working At Top Companies</h2>
             </div>
 
             <div className="alumni-logos">
@@ -1226,14 +1248,14 @@ We're excited to have you on this journey!
                   <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg" alt="Accenture" className="company-logo-ai" />
                   <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" className="company-logo-ai" />
                   <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg" alt="Oracle" className="company-logo-ai" />
-                  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c5/Capgemini_Logo.svg/512px-Capgemini_Logo.svg.png" alt="Capgemini" className="company-logo-ai" />
+                  <img src="data:image/png;base64,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" alt="Capgemini" className="company-logo-ai" />
                   <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" className="company-logo-ai" />
                   <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" className="company-logo-ai" />
                   <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" className="company-logo-ai" />
                   <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg" alt="Accenture" className="company-logo-ai" />
                   <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" className="company-logo-ai" />
                   <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg" alt="Oracle" className="company-logo-ai" />
-                  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c5/Capgemini_Logo.svg/512px-Capgemini_Logo.svg.png" alt="Capgemini" className="company-logo-ai" />
+                  <img src="data:image/png;base64,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" alt="Capgemini" className="company-logo-ai" />
                 </div>
               </div>
 
@@ -1242,19 +1264,19 @@ We're excited to have you on this journey!
                   <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" className="company-logo-ai" />
                   <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg" alt="Accenture" className="company-logo-ai" />
                   <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" alt="Infosys" className="company-logo-ai" />
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg" alt="TCS" className="company-logo-ai" />
+                  <img src="https://upload.wikimedia.org/wikipedia/en/b/b1/Tata_Consultancy_Services_Logo.png" alt="TCS" className="company-logo-ai" />
                   <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Primary_Logo_Color_RGB.svg" alt="Wipro" className="company-logo-ai" />
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Cognizant_logo_2022.svg" alt="Cognizant" className="company-logo-ai" />
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/HCLTech_logo.svg" alt="HCL Technologies" className="company-logo-ai" />
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Tech_Mahindra_New_Logo.svg/512px-Tech_Mahindra_New_Logo.svg.png" alt="Tech Mahindra" className="company-logo-ai" />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Cognizant_logo_2022.svg/1280px-Cognizant_logo_2022.svg.png" alt="Cognizant" className="company-logo-ai" />
+                  <img src="https://toppng.com/uploads/preview/hcl-technologies-vector-logo-free-11574106908xagflgb27g.png" alt="HCL Technologies" className="company-logo-ai" />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Tech_Mahindra_logo.png" alt="Tech Mahindra" className="company-logo-ai" />
                   <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" className="company-logo-ai" />
                   <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg" alt="Accenture" className="company-logo-ai" />
                   <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" alt="Infosys" className="company-logo-ai" />
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg" alt="TCS" className="company-logo-ai" />
+                  <img src="https://upload.wikimedia.org/wikipedia/en/b/b1/Tata_Consultancy_Services_Logo.png" alt="TCS" className="company-logo-ai" />
                   <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Primary_Logo_Color_RGB.svg" alt="Wipro" className="company-logo-ai" />
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Cognizant_logo_2022.svg" alt="Cognizant" className="company-logo-ai" />
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/HCLTech_logo.svg" alt="HCL Technologies" className="company-logo-ai" />
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Tech_Mahindra_New_Logo.svg/512px-Tech_Mahindra_New_Logo.svg.png" alt="Tech Mahindra" className="company-logo-ai" />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Cognizant_logo_2022.svg/1280px-Cognizant_logo_2022.svg.png" alt="Cognizant" className="company-logo-ai" />
+                  <img src="https://toppng.com/uploads/preview/hcl-technologies-vector-logo-free-11574106908xagflgb27g.png" alt="HCL Technologies" className="company-logo-ai" />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Tech_Mahindra_logo.png" alt="Tech Mahindra" className="company-logo-ai" />
                 </div>
               </div>
             </div>
@@ -1264,7 +1286,7 @@ We're excited to have you on this journey!
         <section className="features-section">
           <div className="features-container">
             <div className="features-header">
-              <h2 className="features-title">The 360DigiTMG Advantage</h2>
+              <h2 className="section-heading features-title">The 360DigiTMG Advantage</h2>
               <p className="features-subtitle">Everything You Need to Succeed in One Place</p>
             </div>
 
@@ -1346,7 +1368,7 @@ We're excited to have you on this journey!
         <section className="training-centers-section" aria-label="Training Centers">
           <div className="centers-container">
             <div className="centers-header">
-              <h2 className="centers-title">Our Training Centers</h2>
+              <h2 className="section-heading centers-title">Our Training Centers</h2>
               <p className="centers-subtitle">World-class facilities across India's leading tech hubs with state-of-the-art infrastructure</p>
             </div>
 
@@ -1362,86 +1384,230 @@ We're excited to have you on this journey!
                 onTouchMove={handleCenterTouchMove}
                 onTouchEnd={handleCenterTouchEnd}
               >
-              <article className="center-card" role="listitem">
-                <div className="center-icon" aria-hidden="true">
-                  <img src={require('../../assets/images/Charminar.jpg')} alt="Charminar, Hyderabad" />
+              <article className="center-card" role="listitem" onClick={() => window.open('https://maps.google.com/?q=2-56/2/19, 3rd floor, Vijaya Towers, near Meridian School, Ayyappa Society Rd, Madhapur, Hyderabad, Telangana 500081', '_blank')} style={{cursor: 'pointer'}}>
+                <div className="center-image-section">
+                  <div className="center-icon" aria-hidden="true">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIeF25ILWHaG79wGOxa4W2D_Q_Igq1szMV0Q&s" alt="Durgam Cheruvu Cable Bridge, Hyderabad" />
+                  </div>
+                  <h3 className="center-city">Hyderabad, Telangana</h3>
                 </div>
-                <h3 className="center-city">Hyderabad</h3>
-                <div className="center-details">
-                  <div className="detail-item">
-                    <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
-                    <span>Hi-Tech City, Madhapur</span>
-                  </div>
-                  <div className="detail-item">
-                    <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
-                    <span><a href="tel:+914023456789">+91 40 2345 6789</a></span>
-                  </div>
-                  <div className="detail-item">
-                    <img src="https://img.icons8.com/fluency/20/students.png" alt="" aria-hidden="true" />
-                    <span>5,000+ Students Trained</span>
-                  </div>
-                </div>
-              </article>
-
-              <article className="center-card" role="listitem">
-                <div className="center-icon" aria-hidden="true">
-                  <img src="https://s7ap1.scene7.com/is/image/incredibleindia/vidhana-soudha-bangalore-karnataka-hero?qlt=82&ts=1742199603184" alt="Vidhana Soudha, Bangalore" />
-                </div>
-                <h3 className="center-city">Bangalore</h3>
-                <div className="center-details">
-                  <div className="detail-item">
-                    <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
-                    <span>Koramangala, BTM Layout</span>
-                  </div>
-                  <div className="detail-item">
-                    <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
-                    <span><a href="tel:+918045678901">+91 80 4567 8901</a></span>
-                  </div>
-                  <div className="detail-item">
-                    <img src="https://img.icons8.com/fluency/20/students.png" alt="" aria-hidden="true" />
-                    <span>4,500+ Students Trained</span>
+                <div className="center-content-section">
+                  <p className="center-description">Our corporate headquarters and flagship training center equipped with world-class infrastructure and technology.</p>
+                  <div className="center-details">
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
+                      <span>2-56/2/19, 3rd floor, Vijaya Towers, near Meridian School, Ayyappa Society Rd, Madhapur, Hyderabad, Telangana 500081</span>
+                    </div>
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
+                      <span><a href="tel:1800212654321">1800-212-654321</a></span>
+                    </div>
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/email.png" alt="" aria-hidden="true" />
+                      <span><a href="mailto:franchise@360digitmg.com">franchise@360digitmg.com</a></span>
+                    </div>
                   </div>
                 </div>
               </article>
 
-              <article className="center-card" role="listitem">
-                <div className="center-icon" aria-hidden="true">
-                  <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&h=400&fit=crop&auto=format&q=80" alt="Chennai Temple" />
+              <article className="center-card" role="listitem" onClick={() => window.open('https://maps.app.goo.gl/tC3Rore8xfZS8S4U6', '_blank')} style={{cursor: 'pointer'}}>
+                <div className="center-image-section">
+                  <div className="center-icon" aria-hidden="true">
+                    <img src="https://images.yourstory.com/cs/wordpress/2016/07/Yourstory-Vidhana-Soudha.jpg?mode=crop&crop=faces&ar=16%3A9&format=auto&w=1920&q=75" alt="Vidhana Soudha, Bangalore" />
+                  </div>
+                  <h3 className="center-city">Bangalore, Karnataka</h3>
                 </div>
-                <h3 className="center-city">Chennai</h3>
-                <div className="center-details">
-                  <div className="detail-item">
-                    <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
-                    <span>Velachery, Adyar</span>
-                  </div>
-                  <div className="detail-item">
-                    <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
-                    <span><a href="tel:+914467890123">+91 44 6789 0123</a></span>
-                  </div>
-                  <div className="detail-item">
-                    <img src="https://img.icons8.com/fluency/20/students.png" alt="" aria-hidden="true" />
-                    <span>3,500+ Students Trained</span>
+                <div className="center-content-section">
+                  <p className="center-description">Located in the heart of India's Silicon Valley, our Bangalore center offers cutting-edge data science and AI training programs.</p>
+                  <div className="center-details">
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
+                      <span>No 23, 2nd Floor, 9th Main Rd, 22nd Cross Rd, 7th Sector, HSR Layout, Bangalore - 560102</span>
+                    </div>
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
+                      <span><a href="tel:+919989994319">+91 99899 94319 / 1800-212-654321</a></span>
+                    </div>
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/email.png" alt="" aria-hidden="true" />
+                      <span><a href="mailto:enquiry@360digitmg.com">enquiry@360digitmg.com</a></span>
+                    </div>
                   </div>
                 </div>
               </article>
 
-              <article className="center-card" role="listitem">
-                <div className="center-icon" aria-hidden="true">
-                  <img src="https://images.unsplash.com/photo-1595658658481-d53d3f999875?w=600&h=400&fit=crop&auto=format&q=80&contrast=10" alt="" />
+              <article className="center-card" role="listitem" onClick={() => window.open('https://maps.app.goo.gl/GEor31R9gwVENSmaA', '_blank')} style={{cursor: 'pointer'}}>
+                <div className="center-image-section">
+                  <div className="center-icon" aria-hidden="true">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRWA4MwTRzgfOBXVF3RiQH8JgO9sIbcT-ujQ&s" alt="Valluvar Kottam, Chennai" />
+                  </div>
+                  <h3 className="center-city">Nungambakkam, Chennai</h3>
                 </div>
-                <h3 className="center-city">Pune</h3>
-                <div className="center-details">
-                  <div className="detail-item">
-                    <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
-                    <span>Hinjewadi, Wakad</span>
+                <div className="center-content-section">
+                  <p className="center-description">Our Chennai training center in Nungambakkam provides comprehensive data analytics and business intelligence courses.</p>
+                  <div className="center-details">
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
+                      <span>1st Floor, Santi Ram Centre, Tirumurthy Nagar, Nungambakkam, Opposite to Indian Oil Bhavan, Chennai, Tamil Nadu - 600006</span>
+                    </div>
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
+                      <span><a href="tel:1800212654321">1800 212 654321</a></span>
+                    </div>
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/email.png" alt="" aria-hidden="true" />
+                      <span><a href="mailto:enquiry@360digitmg.com">enquiry@360digitmg.com</a></span>
+                    </div>
                   </div>
-                  <div className="detail-item">
-                    <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
-                    <span><a href="tel:+912034567890">+91 20 3456 7890</a></span>
+                </div>
+              </article>
+
+              <article className="center-card" role="listitem" onClick={() => window.open('https://maps.app.goo.gl/KCsfrQdYMvHg9nkC6', '_blank')} style={{cursor: 'pointer'}}>
+                <div className="center-image-section">
+                  <div className="center-icon" aria-hidden="true">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuf5_M-4zkPWtfG7dOx46ZGRxYT72BeueyKg&s" alt="Vitthal-Rukmini Temple, Pune" />
                   </div>
-                  <div className="detail-item">
-                    <img src="https://img.icons8.com/fluency/20/students.png" alt="" aria-hidden="true" />
-                    <span>2,000+ Students Trained</span>
+                  <h3 className="center-city">Kharadi,<br/> Pune</h3>
+                </div>
+                <div className="center-content-section">
+                  <div className="center-details">
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
+                      <span>#705, 7th floor, Global Business Hub, Opp. Eon IT Park, Survey No. 1/1 A, Kharadi, Pune - 411014</span>
+                    </div>
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
+                      <span><a href="tel:9850070368">9850070368</a></span>
+                    </div>
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/email.png" alt="" aria-hidden="true" />
+                      <span><a href="mailto:kharadi.pune@360digitmg.com">kharadi.pune@360digitmg.com</a></span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article className="center-card" role="listitem" onClick={() => window.open('https://maps.app.goo.gl/UQa2HFYFcHRaqkSk7', '_blank')} style={{cursor: 'pointer'}}>
+                <div className="center-image-section">
+                  <div className="center-icon" aria-hidden="true">
+                    <img src="https://www.shutterstock.com/image-photo/bhilai-chhattisgarh-india-oct-26-260nw-600395621.jpg" alt="Maitri Bagh, Bhilai" />
+                  </div>
+                  <h3 className="center-city">Bhilai, Chhattisgarh</h3>
+                </div>
+                <div className="center-content-section">
+                  <div className="center-details">
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
+                      <span>No 8 & 9, Sadhana Complex, Maitri Nagar, Risali, Bhilai(CG) - 490006</span>
+                    </div>
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
+                      <span><a href="tel:+919981617903">+91 9981617903 / +91 9886628363</a></span>
+                    </div>
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/email.png" alt="" aria-hidden="true" />
+                      <span><a href="mailto:bhilai@360digitmg.com">bhilai@360digitmg.com</a></span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article className="center-card" role="listitem" onClick={() => window.open('https://maps.app.goo.gl/3WpDihanxE8WDpP88', '_blank')} style={{cursor: 'pointer'}}>
+                <div className="center-image-section">
+                  <div className="center-icon" aria-hidden="true">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAvoZ-XB-PJRC9F0qSQB41Vk4PEajHCwNskoR3Q53qOwiTxIj1OSvByPaV7_etP4TpcAQ&usqp=CAU" alt="Shaniwar Wada, Pune" />
+                  </div>
+                  <h3 className="center-city">Kothrud,<br/> Pune</h3>
+                </div>
+                <div className="center-content-section">
+                  <div className="center-details">
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
+                      <span>408, Fourth Floor, Saarrthi Success Square, Near Maharshi Karve Statue, Kothrud, Pune - 411038</span>
+                    </div>
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
+                      <span><a href="tel:+919665066683">+91 9665066683</a></span>
+                    </div>
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/email.png" alt="" aria-hidden="true" />
+                      <span><a href="mailto:kothrud_pune@360digitmg.com">kothrud_pune@360digitmg.com</a></span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article className="center-card" role="listitem" onClick={() => window.open('https://maps.app.goo.gl/ZUAcZMLcJtZDMYfX7', '_blank')} style={{cursor: 'pointer'}}>
+                <div className="center-image-section">
+                  <div className="center-icon" aria-hidden="true">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8qVElYdlVqthcAlvlvWx4RguDJcviorCXHg&s" alt="Lingaraja Temple, Bhubaneswar" />
+                  </div>
+                  <h3 className="center-city">Bhubaneswar, Odisha</h3>
+                </div>
+                <div className="center-content-section">
+                  <div className="center-details">
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
+                      <span>A23, Driems Villa, Patia, Bhubaneswar - 751024</span>
+                    </div>
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
+                      <span><a href="tel:+919789819082">+91 9789819082</a></span>
+                    </div>
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/email.png" alt="" aria-hidden="true" />
+                      <span><a href="mailto:odisha@360digitmg.com">odisha@360digitmg.com</a></span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article className="center-card" role="listitem" onClick={() => window.open('https://maps.app.goo.gl/DpX7Ho7w4EmeCZWB9', '_blank')} style={{cursor: 'pointer'}}>
+                <div className="center-image-section">
+                  <div className="center-icon" aria-hidden="true">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmLMV3QfF-Y0XbEsVO3Ft6orHoPZM1zjHltg&s" alt="Akshardham Temple, Delhi NCR" />
+                  </div>
+                  <h3 className="center-city">Noida, Uttar Pradesh</h3>
+                </div>
+                <div className="center-content-section">
+                  <div className="center-details">
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
+                      <span>2308 Gold, 23rd Floor, Wave One, Sector-18, Noida – 201301</span>
+                    </div>
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
+                      <span><a href="tel:+919205517358">+91 9205517358</a></span>
+                    </div>
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/email.png" alt="" aria-hidden="true" />
+                      <span><a href="mailto:noida@360digitmg.com">noida@360digitmg.com</a></span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article className="center-card" role="listitem" onClick={() => window.open('https://maps.app.goo.gl/d2JKJkVxPcmVBZ6u7', '_blank')} style={{cursor: 'pointer'}}>
+                <div className="center-image-section">
+                  <div className="center-icon" aria-hidden="true">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIXStigI_iv0E0DepMYnppIrOP9Fw4-Pex-SjHgbV4ADQ9L3Q9QEHuTYB8vVNEwBMWXOU&usqp=CAU" alt="Dolphin's Nose, Visakhapatnam" />
+                  </div>
+                  <h3 className="center-city">Vizag, Andhra Pradesh</h3>
+                </div>
+                <div className="center-content-section">
+                  <div className="center-details">
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
+                      <span>3rd floor, 30-15-35, above IDBI Bank, near Saraswati Park Road, Daba Gardens, Allipuram, Jct, Visakhapatnam, Andhra Pradesh 530020</span>
+                    </div>
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
+                      <span><a href="tel:+919640921445">+91 9640921445</a></span>
+                    </div>
+                    <div className="detail-item">
+                      <img src="https://img.icons8.com/fluency/20/email.png" alt="" aria-hidden="true" />
+                      <span><a href="mailto:vizag@360digitmg.com">vizag@360digitmg.com</a></span>
+                    </div>
                   </div>
                 </div>
               </article>
@@ -1452,7 +1618,7 @@ We're excited to have you on this journey!
               </button>
 
               <div className="slider-dots">
-                {[0, 1, 2, 3].map((index) => (
+                {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((index) => (
                   <button
                     key={index}
                     className={`slider-dot ${index === currentCenterSlide ? 'active' : ''}`}
@@ -1588,10 +1754,14 @@ We're excited to have you on this journey!
               <div className="footer-section">
                 <h3 className="footer-title">Contact Info</h3>
                 <div className="contact-info">
-                  <p className="contact-item"> Hyderabad, Bangalore, Chennai</p>
-                  <p className="contact-item"> +91-40-23456789</p>
-                  <p className="contact-item"> info@360digitmg.com</p>
-                  <p className="contact-item"> Mon-Fri 9AM-6PM</p>
+                  <p className="contact-item"><strong>Corporate Location</strong></p>
+                  <p className="contact-item">2-56/2/19, 3rd floor, Vijaya Towers, near Meridian School, Ayyappa Society Rd, Madhapur, Hyderabad, Telangana 500081</p>
+
+                  <p className="contact-item" style={{marginTop: '10px'}}><strong>Business Phone</strong></p>
+                  <p className="contact-item"> 1800-212-654321</p>
+
+                  <p className="contact-item" style={{marginTop: '10px'}}><strong>Business Email :</strong>
+                  <a href="mailto:enquiry@360digitmg.com">enquiry@360digitmg.com</a></p>
                 </div>
               </div>
             </div>
@@ -1612,7 +1782,7 @@ We're excited to have you on this journey!
         </footer>
 
       </div>
-    </div>
+    </main>
   );
 };
 

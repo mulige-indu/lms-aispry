@@ -226,3 +226,41 @@ export const MyCoursesIcon = ({ size = 24, color = "currentColor" }) => (
     <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z" fill={color}/>
   </svg>
 );
+
+// ==================== ADDITIONAL ICONS ====================
+export const ShieldIcon = ({ size = 24, color = "#667eea" }) => (
+  <svg viewBox="0 0 24 24" width={size} height={size}>
+    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z" fill={color}/>
+  </svg>
+);
+
+export const ToolIcon = ({ size = 24, color = "#667eea" }) => (
+  <svg viewBox="0 0 24 24" width={size} height={size}>
+    <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z" fill={color}/>
+  </svg>
+);
+
+export const AwardIcon = ({ size = 24, color = "#667eea" }) => (
+  <svg viewBox="0 0 24 24" width={size} height={size}>
+    <circle cx="12" cy="8" r="7" stroke={color} strokeWidth="2" fill="none"/>
+    <path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.11" stroke={color} strokeWidth="2" fill="none"/>
+  </svg>
+);
+
+export const UsersIcon = ({ size = 24, color = "#667eea" }) => (
+  <svg viewBox="0 0 24 24" width={size} height={size}>
+    <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" fill={color}/>
+  </svg>
+);
+
+export const BookOpenIcon = ({ size = 24, color = "#667eea" }) => (
+  <svg viewBox="0 0 24 24" width={size} height={size}>
+    <path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z" fill={color}/>
+  </svg>
+);
+
+export const TrendingUpIcon = ({ size = 24, color = "#667eea" }) => (
+  <svg viewBox="0 0 24 24" width={size} height={size}>
+    <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z" fill={color}/>
+  </svg>
+);

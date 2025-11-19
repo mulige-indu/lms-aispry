@@ -64,9 +64,6 @@
 }
 
 .brochure-headline {
-  font-size: 2.2rem !important;
-  font-weight: 900 !important;
-  line-height: 1.2 !important;
   color: white;
   margin: 0;
   animation: fadeInUp 0.8s ease-out 0.2s backwards;
@@ -240,7 +237,7 @@
 
 .card-title {
   font-size: 1.2rem;
-  font-weight: 800;
+  font-weight: 700;
   color: #1a1a1a;
   margin: 0 0 6px 0;
   line-height: 1.25;

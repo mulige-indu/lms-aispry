@@ -227,7 +227,7 @@ const DiscussionThread = () => {
   }
 
   return (
-    <div className="discussion-thread">
+    <main className="discussion-thread">
       {/* Navigation Bar */}
       <nav className="courses-navbar">
         <div className="navbar-container">
@@ -283,8 +283,8 @@ const DiscussionThread = () => {
         </div>
       </nav>
 
-      <div className="thread-content-wrapper">
-        <div className="thread-original-post">
+      <article className="thread-content-wrapper">
+        <section className="thread-original-post">
           <div className="post-header">
             <div className="author-info">
               <div className="author-avatar">
@@ -323,9 +323,9 @@ const DiscussionThread = () => {
             <span>{thread.view_count} views</span>
             <span>{posts.length} replies</span>
           </div>
-        </div>
+        </section>
 
-        <div className="thread-replies">
+        <section className="thread-replies">
           <h3>{posts.length} Replies</h3>
 
           {posts.length === 0 ? (
@@ -334,7 +334,7 @@ const DiscussionThread = () => {
             </div>
           ) : (
             posts.map(post => (
-              <div key={post.id} className="reply-item">
+              <article key={post.id} className="reply-item">
                 <div className="reply-header">
                   <div className="author-info">
                     <div className="author-avatar">
@@ -402,12 +402,12 @@ const DiscussionThread = () => {
                 ) : (
                   <div className="reply-content">{post.content}</div>
                 )}
-              </div>
+              </article>
             ))
           )}
-        </div>
+        </section>
 
-        <div className="reply-form-wrapper">
+        <section className="reply-form-wrapper">
           <h3><SendIcon size={20} /> Post a Reply</h3>
           <form onSubmit={handleReply} className="reply-form">
             <textarea
@@ -421,9 +421,9 @@ const DiscussionThread = () => {
               {submitting ? 'Posting...' : 'Post Reply'}
             </button>
           </form>
-        </div>
-      </div>
-    </div>
+        </section>
+      </article>
+    </main>
   );
 };
 

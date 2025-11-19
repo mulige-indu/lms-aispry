@@ -86,7 +86,7 @@
   left: 20px;
   font-size: 4rem;
   opacity: 0.3;
-  font-family: serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica', 'Arial', sans-serif;
 }
 
 .testimonial-preview blockquote {

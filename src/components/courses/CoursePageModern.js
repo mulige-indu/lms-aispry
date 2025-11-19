@@ -167,7 +167,7 @@ const CoursePageModern = ({ userName }) => {
   const displayUserName = userName || loggedInUser;
 
   return (
-    <div className="digitmg-dashboard">
+    <main className="digitmg-dashboard">
       {/* ==================== MAIN LAYOUT ==================== */}
       <section className="main-section">
         {/* FIRST ASIDE - LEFT SIDEBAR */}
@@ -507,7 +507,7 @@ const CoursePageModern = ({ userName }) => {
 
           {/* All Free Offerings Section */}
           <section id="start-learning" className="content-section">
-            <h2 className="section-title">All Free Offerings</h2>
+            <h2 className="section-heading section-title">All Free Offerings</h2>
             <p className="section-description">Explore our comprehensive free resources to kickstart your learning journey.</p>
 
             <div className="features-grid-container" style={{marginTop: '2rem', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem'}}>
@@ -666,7 +666,7 @@ const CoursePageModern = ({ userName }) => {
 
           {/* AI Mock Interview Section */}
           <section id="ai-mock-interview-banner" className="content-section">
-            <h2 className="section-title">AI Mock Interview</h2>
+            <h2 className="section-heading section-title">AI Mock Interview</h2>
             <p className="section-description">Practice with our AI-powered mock interview system and get instant feedback.</p>
 
             <div style={{background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', padding: '2.5rem', borderRadius: '12px', marginTop: '2rem', color: 'white'}}>
@@ -713,7 +713,7 @@ const CoursePageModern = ({ userName }) => {
 
           {/* Explore AI Section */}
           <section id="why-ai-section" className="content-section">
-            <h2 className="section-title">Explore AI</h2>
+            <h2 className="section-heading section-title">Explore AI</h2>
             <p className="section-description">Discover the power of AI and machine learning in modern data science.</p>
 
             <div style={{marginTop: '2rem'}}>
@@ -792,7 +792,7 @@ const CoursePageModern = ({ userName }) => {
           {/* Alumni Profiles Section - New Stack Slider */}
           <section id="alumni-profiles-last" className="content-section" style={{background: 'linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%)', padding: '4rem 2rem', marginBottom: '0'}}>
             <div style={{textAlign: 'center', marginBottom: '3rem'}}>
-              <h2 className="section-title" style={{marginBottom: '1rem'}}><StarIcon size={24} color="#ffc107" /> Alumni Profiles</h2>
+              <h2 className="section-heading section-title" style={{marginBottom: '1rem'}}><StarIcon size={24} color="#ffc107" /> Alumni Profiles</h2>
               <p className="section-description" style={{maxWidth: '700px', margin: '0 auto'}}>
                 Real transformations. Real results. See how our alumni achieved their dream careers.
               </p>
@@ -1053,7 +1053,7 @@ const CoursePageModern = ({ userName }) => {
 
           {/* 360DigiTMG Eligibility Test Section */}
           <section id="entrance-test" className="content-section">
-            <h2 className="section-title">360DigiTMG Eligibility Test</h2>
+            <h2 className="section-heading section-title">360DigiTMG Eligibility Test</h2>
             <p className="section-description">Take our entrance test to assess your current skill level and get personalized recommendations.</p>
 
             <div style={{background: 'linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)', padding: '2.5rem', borderRadius: '12px', marginTop: '2rem', border: '2px solid #2196f3'}}>
@@ -1116,7 +1116,7 @@ const CoursePageModern = ({ userName }) => {
 
           {/* View Masterclass Section */}
           <section id="digitmg-events" className="content-section">
-            <h2 className="section-title">View Masterclass</h2>
+            <h2 className="section-heading section-title">View Masterclass</h2>
             <p className="section-description">Join our expert-led masterclasses on cutting-edge topics in data science and AI.</p>
 
             <div style={{display: 'grid', gap: '1.5rem', marginTop: '2rem'}}>
@@ -1200,7 +1200,7 @@ const CoursePageModern = ({ userName }) => {
 
           {/* Coding Problems Section */}
           <section id="problems" className="content-section">
-            <h2 className="section-title">Coding Problems</h2>
+            <h2 className="section-heading section-title">Coding Problems</h2>
             <p className="section-description">Sharpen your coding skills with our curated collection of practice problems.</p>
 
             <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginTop: '2rem'}}>
@@ -1262,7 +1262,7 @@ const CoursePageModern = ({ userName }) => {
 
           {/* Guidance Sessions Section */}
           <section id="guidance-sessions" className="content-section">
-            <h2 className="section-title">Guidance Sessions</h2>
+            <h2 className="section-heading section-title">Guidance Sessions</h2>
             <p className="section-description">Book one-on-one sessions with industry experts for personalized career guidance.</p>
 
             <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginTop: '2rem'}}>
@@ -1294,7 +1294,7 @@ const CoursePageModern = ({ userName }) => {
 
           {/* Premium Classes Section */}
           <section id="premium-classes" className="content-section">
-            <h2 className="section-title">Premium Classes</h2>
+            <h2 className="section-heading section-title">Premium Classes</h2>
             <p className="section-description">Access our premium content and accelerate your learning with advanced courses.</p>
 
             <div style={{display: 'grid', gap: '1.5rem', marginTop: '2rem'}}>
@@ -1330,7 +1330,7 @@ const CoursePageModern = ({ userName }) => {
 
           {/* Expert Guidance Section */}
           <section id="expert-guidance" className="content-section">
-            <h2 className="section-title">Expert Guidance</h2>
+            <h2 className="section-heading section-title">Expert Guidance</h2>
             <p className="section-description">Get mentorship from industry veterans to guide your career path.</p>
 
             <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', marginTop: '2rem'}}>
@@ -1374,7 +1374,7 @@ const CoursePageModern = ({ userName }) => {
 
           {/* Success Stories Section */}
           <section id="success-stories" className="content-section">
-            <h2 className="section-title">Success Stories</h2>
+            <h2 className="section-heading section-title">Success Stories</h2>
             <p className="section-description">Inspiring journeys of our learners who transformed their careers with 360DigiTMG.</p>
 
             <div style={{display: 'grid', gap: '2rem', marginTop: '2rem'}}>
@@ -1418,7 +1418,7 @@ const CoursePageModern = ({ userName }) => {
 
           {/* Industry Partners Section */}
           <section id="industry-partners" className="industry-partners-section">
-            <h2 className="section-title">Industry Partners & Hiring Companies</h2>
+            <h2 className="section-heading section-title">Industry Partners & Hiring Companies</h2>
             <p className="section-description">Our alumni have been hired by leading companies across the globe</p>
 
             <div className="partners-grid">
@@ -1586,7 +1586,7 @@ const CoursePageModern = ({ userName }) => {
           </div>
         </aside>
       </section>
-    </div>
+    </main>
   );
 };
 

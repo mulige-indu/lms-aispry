@@ -125,7 +125,7 @@ const MyCourses = () => {
   }
 
   return (
-    <div className="courses-page">
+    <main className="courses-page">
       {/* Navigation Bar */}
       <nav className="courses-navbar">
         <div className="navbar-container">
@@ -225,9 +225,9 @@ const MyCourses = () => {
         </aside>
 
         {/* Main Content Area */}
-        <div className="main-content-area" style={{ padding: '20px 30px' }}>
+        <section className="main-content-area" style={{ padding: '20px 30px' }}>
           {/* Courses Container */}
-          <div className="courses-container">
+          <section className="courses-container">
         {activeSection === 'mycourses' && error ? (
           <div className="courses-error" style={{ minHeight: '50vh' }}>
             <div className="error-icon">⚠️</div>
@@ -297,7 +297,7 @@ const MyCourses = () => {
         ) : activeSection === 'mycourses' ? (
           <>
             {/* Merged Header and Learning Summary */}
-            <div className="my-courses-summary" style={{
+            <header className="my-courses-summary" style={{
               background: 'linear-gradient(135deg, #d5842e 25%, rgba(82, 152, 149, 0.95) 50%, #0a9ec7 100%)',
               padding: '25px',
               borderRadius: '12px',
@@ -334,10 +334,10 @@ const MyCourses = () => {
                   <div style={{ opacity: 0.95, fontSize: '0.8rem', letterSpacing: '0.5px', fontWeight: '500' }}>Total Months</div>
                 </div>
               </div>
-            </div>
+            </header>
 
             {/* Enrolled Courses List */}
-            <div className="courses-grid" style={{
+            <section className="courses-grid" style={{
               marginTop: '20px',
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
@@ -352,24 +352,72 @@ const MyCourses = () => {
                   actionText="Continue"
                 />
               ))}
-            </div>
+            </section>
           </>
         ) : activeSection === 'orientation' ? (
-          <div className="section-content" style={{ padding: '20px' }}>
-            <h2>🎯 Welcome to Your Learning Journey</h2>
-            <div style={{ background: 'white', padding: '30px', borderRadius: '15px', marginTop: '20px' }}>
-              <h3>Getting Started</h3>
-              <ul style={{ lineHeight: '2' }}>
-                <li>📚 Review your enrolled courses</li>
-                <li>📅 Check your class schedule</li>
-                <li>🛠️ Explore learning tools and resources</li>
-                <li>💼 Start working on projects</li>
-                <li>💬 Join discussion forums</li>
-              </ul>
+          <section className="section-content" style={{ padding: '20px' }}>
+            <h2 style={{ fontSize: '2rem', fontWeight: '700', color: '#1a202c', marginBottom: '30px', textAlign: 'center' }}>
+              🎯 Welcome to Your Learning Journey
+            </h2>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px', marginTop: '30px' }}>
+              <div style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', padding: '30px', borderRadius: '15px', color: 'white', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <span>📚</span> Getting Started
+                </h3>
+                <ul style={{ lineHeight: '2', listStyle: 'none', padding: 0 }}>
+                  <li>✓ Complete your profile setup</li>
+                  <li>✓ Review course curriculum</li>
+                  <li>✓ Join orientation session</li>
+                  <li>✓ Download learning materials</li>
+                </ul>
+              </div>
+
+              <div style={{ background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)', padding: '30px', borderRadius: '15px', color: 'white', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <span>🎓</span> Learning Path
+                </h3>
+                <ul style={{ lineHeight: '2', listStyle: 'none', padding: 0 }}>
+                  <li>→ Follow structured curriculum</li>
+                  <li>→ Complete assignments on time</li>
+                  <li>→ Attend live sessions regularly</li>
+                  <li>→ Practice with real projects</li>
+                </ul>
+              </div>
+
+              <div style={{ background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)', padding: '30px', borderRadius: '15px', color: 'white', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <span>💡</span> Support & Resources
+                </h3>
+                <ul style={{ lineHeight: '2', listStyle: 'none', padding: 0 }}>
+                  <li>→ 24/7 mentor support available</li>
+                  <li>→ Access community forums</li>
+                  <li>→ Download study materials</li>
+                  <li>→ Join peer study groups</li>
+                </ul>
+              </div>
             </div>
-          </div>
+
+            <div style={{ background: 'white', padding: '30px', borderRadius: '15px', marginTop: '30px', border: '2px solid #e2e8f0' }}>
+              <h3 style={{ fontSize: '1.3rem', color: '#2d3748', marginBottom: '15px' }}>📌 Important Guidelines</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginTop: '20px' }}>
+                <div style={{ padding: '15px', background: '#f7fafc', borderRadius: '10px', borderLeft: '4px solid #d5842e' }}>
+                  <strong style={{ color: '#d5842e' }}>Attendance:</strong> Maintain 80% attendance for certification
+                </div>
+                <div style={{ padding: '15px', background: '#f7fafc', borderRadius: '10px', borderLeft: '4px solid #0a9ec7' }}>
+                  <strong style={{ color: '#0a9ec7' }}>Assignments:</strong> Submit all projects before deadlines
+                </div>
+                <div style={{ padding: '15px', background: '#f7fafc', borderRadius: '10px', borderLeft: '4px solid #48bb78' }}>
+                  <strong style={{ color: '#48bb78' }}>Assessments:</strong> Complete quizzes and exams to track progress
+                </div>
+                <div style={{ padding: '15px', background: '#f7fafc', borderRadius: '10px', borderLeft: '4px solid #ed8936' }}>
+                  <strong style={{ color: '#ed8936' }}>Placement:</strong> 100% placement assistance after course completion
+                </div>
+              </div>
+            </div>
+          </section>
         ) : activeSection === 'learningtools' ? (
-          <div className="section-content" style={{ padding: '20px' }}>
+          <section className="section-content" style={{ padding: '20px' }}>
             <h2>🛠️ Learning Tools & Resources</h2>
             <div className="courses-grid" style={{ marginTop: '20px' }}>
               <div className="course-card">
@@ -388,9 +436,9 @@ const MyCourses = () => {
                 <button className="enroll-btn">View Videos</button>
               </div>
             </div>
-          </div>
+          </section>
         ) : activeSection === 'classschedule' ? (
-          <div className="section-content" style={{ padding: '20px' }}>
+          <section className="section-content" style={{ padding: '20px' }}>
             <h2>📅 Upcoming Classes</h2>
             <div style={{ background: 'white', padding: '30px', borderRadius: '15px', marginTop: '20px' }}>
               <p style={{ textAlign: 'center', color: '#666', fontSize: '1.2rem' }}>
@@ -400,9 +448,9 @@ const MyCourses = () => {
                 Class schedules will appear here once available
               </p>
             </div>
-          </div>
+          </section>
         ) : activeSection === 'projects' ? (
-          <div className="section-content" style={{ padding: '20px' }}>
+          <section className="section-content" style={{ padding: '20px' }}>
             <h2>💼 My Projects</h2>
             <div style={{ background: 'white', padding: '30px', borderRadius: '15px', marginTop: '20px' }}>
               <p style={{ textAlign: 'center', color: '#666', fontSize: '1.2rem' }}>
@@ -412,9 +460,9 @@ const MyCourses = () => {
                 Start learning to unlock project assignments
               </p>
             </div>
-          </div>
+          </section>
         ) : null}
-      </div>
+          </section>
 
           {/* Browse More */}
           {activeSection === 'mycourses' && courses.length > 0 && (
@@ -464,9 +512,9 @@ const MyCourses = () => {
               </button>
             </div>
           )}
-        </div>
+        </section>
       </div>
-    </div>
+    </main>
   );
 };
 

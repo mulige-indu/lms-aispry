@@ -342,7 +342,7 @@ const Apply = () => {
   return (
     <>
       <MainNavbar />
-      <div className="apply-container">
+      <main className="apply-container">
       <div className="apply-bg-effects">
         <div className="gradient-orbs">
           <div className="orb orb-1"></div>
@@ -357,9 +357,9 @@ const Apply = () => {
         </div>
       </div>
 
-      <div className="application-container">
-        <div className="application-wrapper">
-          <div className="progress-section">
+      <section className="application-container">
+        <article className="application-wrapper">
+          <header className="progress-section">
             <div className="progress-bar">
               {[1, 2, 3, 4].map((step) => (
                 <div
@@ -378,7 +378,7 @@ const Apply = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </header>
 
           <form className="application-form" onSubmit={handleSubmit}>
             {renderStep()}
@@ -403,10 +403,10 @@ const Apply = () => {
               )}
             </div>
           </form>
-        </div>
+        </article>
 
-        <div className="application-sidebar">
-          <div className="benefits-card">
+        <aside className="application-sidebar">
+          <article className="benefits-card">
             <h3>Why Choose 360DigiTMG?</h3>
             <ul className="benefits-list">
               <li><span style={{marginRight: '8px', color: '#667eea', display: 'inline-flex', alignItems: 'center'}}><InstructorIcon /></span> Industry-expert instructors</li>
@@ -416,9 +416,9 @@ const Apply = () => {
               <li><span style={{marginRight: '8px', color: '#667eea', display: 'inline-flex', alignItems: 'center'}}><UsersIcon /></span> Lifetime alumni network</li>
               <li><span style={{marginRight: '8px', color: '#667eea', display: 'inline-flex', alignItems: 'center'}}><LaptopIcon /></span> Comprehensive curriculum</li>
             </ul>
-          </div>
+          </article>
 
-          <div className="support-card">
+          <article className="support-card">
             <h3>Need Help?</h3>
             <p>Our admissions team is here to assist you throughout the application process.</p>
             <div className="support-options">
@@ -426,9 +426,9 @@ const Apply = () => {
               <button className="support-btn"><span style={{marginRight: '8px', display: 'inline-flex'}}><CommentIcon /></span> Live Chat</button>
               <button className="support-btn"><span style={{marginRight: '8px', display: 'inline-flex'}}><SendIcon /></span> Email Support</button>
             </div>
-          </div>
+          </article>
 
-          <div className="testimonial-card">
+          <article className="testimonial-card">
             <div className="testimonial-content">
               <p>"The application process was smooth and the support team helped me every step of the way. Best decision I ever made!"</p>
               <div className="testimonial-author">
@@ -439,10 +439,10 @@ const Apply = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          </article>
+        </aside>
+      </section>
+    </main>
     </>
   );
 };

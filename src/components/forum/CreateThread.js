@@ -181,7 +181,7 @@ const CreateThread = () => {
   }
 
   return (
-    <div className="create-thread-page">
+    <main className="create-thread-page">
       {/* Navigation Bar */}
       <nav className="courses-navbar">
         <div className="navbar-container">
@@ -237,12 +237,12 @@ const CreateThread = () => {
         </div>
       </nav>
 
-      <div className="create-thread-container">
-        <div className="create-thread-title-section">
+      <section className="create-thread-container">
+        <header className="create-thread-title-section">
           <EditIcon className="pen-icon" size={32} />
-          <h1>Start a New Discussion</h1>
+          <h2 className="section-heading">Start a New Discussion</h2>
           <p>Share your thoughts, ask questions, or start a conversation with the community</p>
-        </div>
+        </header>
 
         <form onSubmit={handleSubmit} className="create-thread-form">
           <div className="form-group">
@@ -333,8 +333,8 @@ const CreateThread = () => {
             </button>
           </div>
         </form>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

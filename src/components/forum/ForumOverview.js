@@ -146,7 +146,7 @@ const ForumOverview = () => {
   }
 
   return (
-    <div className="forum-overview">
+    <main className="forum-overview">
       {/* Navigation Bar */}
       <nav className="courses-navbar">
         <div className="navbar-container">
@@ -202,9 +202,9 @@ const ForumOverview = () => {
         </div>
       </nav>
 
-      <div className="forum-header">
+      <header className="forum-header">
         <div className="forum-header-content">
-          <h1>Discussion Forum</h1>
+          <h2 className="section-heading">Discussion Forum</h2>
           <p>Connect with fellow learners, ask questions, and share knowledge</p>
         </div>
         <button
@@ -213,9 +213,9 @@ const ForumOverview = () => {
         >
           + New Thread
         </button>
-      </div>
+      </header>
 
-      <div className="forum-search-section">
+      <section className="forum-search-section">
         <form onSubmit={handleSearch} className="forum-search-form">
           <div className="search-input-wrapper">
             <SearchIcon className="search-icon" size={20} />
@@ -262,11 +262,11 @@ const ForumOverview = () => {
             <ClockIcon size={16} /> Pending Approval
           </button>
         </div>
-      </div>
+      </section>
 
-      <div className="forum-categories-grid">
+      <section className="forum-categories-grid">
         {categories.map(category => (
-          <div
+          <article
             key={category.id}
             className="category-card"
             onClick={() => navigate(`/forum/category/${category.id}`)}
@@ -280,11 +280,11 @@ const ForumOverview = () => {
               <p>{category.description}</p>
               <span className="thread-count">{category.thread_count} threads</span>
             </div>
-          </div>
+          </article>
         ))}
-      </div>
+      </section>
 
-      <div className="forum-threads-section">
+      <section className="forum-threads-section">
         <h2>
           {filterStatus === 'all' && sortBy === 'recent' && 'Recent Discussions'}
           {filterStatus === 'all' && sortBy === 'popular' && 'Popular Discussions'}
@@ -307,7 +307,7 @@ const ForumOverview = () => {
         ) : (
           <div className="threads-list">
             {recentThreads.map(thread => (
-              <div
+              <article
                 key={thread.id}
                 className="thread-item"
                 onClick={() => navigate(`/forum/thread/${thread.id}`)}
@@ -350,12 +350,12 @@ const ForumOverview = () => {
                     <span>{thread.like_count || 0}</span>
                   </div>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         )}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

@@ -580,7 +580,7 @@ const Courses = () => {
   }
 
   return (
-    <div className="courses-page">
+    <main className="courses-page">
       {/* Navigation Bar */}
       <nav className="courses-navbar">
         <div className="navbar-container">
@@ -639,13 +639,13 @@ const Courses = () => {
       {/* Header */}
       <header className="courses-header">
         <div className="header-content">
-          <h1 className="courses-title">Explore Our Courses</h1>
+          <h2 className="section-heading courses-title">Explore Our Courses</h2>
           <p className="courses-subtitle">Transform your career with industry-leading programs</p>
         </div>
       </header>
 
       {/* Main Content with Sidebar */}
-      <div className="courses-main-layout">
+      <section className="courses-main-layout">
         {/* Category Aside */}
         <aside className="courses-filters-sidebar category-aside">
           <div className="sidebar-section">
@@ -683,7 +683,7 @@ const Courses = () => {
         </aside>
 
         {/* Courses Grid */}
-        <div className="courses-container">
+        <section className="courses-container">
           <div className="courses-grid">
           {filteredCourses.length === 0 ? (
             <div className="no-courses">
@@ -701,11 +701,11 @@ const Courses = () => {
             ))
           )}
         </div>
-      </div>
-    </div>
+      </section>
+    </section>
 
       {/* Stats Section */}
-      <div className="courses-stats">
+      <section className="courses-stats">
         <div className="stat-card">
           <div className="stat-icon">📚</div>
           <div className="stat-number" data-target={courses.length}>{courses.length}+</div>
@@ -730,8 +730,8 @@ const Courses = () => {
           <div className="stat-label">Hiring Partners</div>
           <div className="stat-description">Top companies worldwide</div>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

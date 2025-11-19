@@ -16,13 +16,13 @@ const CourseCard = ({
   // Slider variant - Used in Home page with hover expand effect
   if (variant === 'slider') {
     return (
-      <div className="course-card course-card--slider slider-card">
+      <article className="course-card course-card--slider slider-card">
         <div className="course-icon-container">
           <div className="course-card__icon-wrapper">
             {course.icon}
           </div>
         </div>
-        <div className="course-content">
+        <section className="course-content">
           <div className="course-content-top">
             <h3 className="course-card__title">{course.name}</h3>
             <p className="course-card__description">{course.description}</p>
@@ -39,15 +39,15 @@ const CourseCard = ({
               {actionText || 'Learn More'}
             </button>
           </div>
-        </div>
-      </div>
+        </section>
+      </article>
     );
   }
 
   // Browse variant - Used in Courses page (browse all)
   if (variant === 'browse') {
     return (
-      <div className="course-card course-card--browse">
+      <article className="course-card course-card--browse">
         <div className="course-card__icon-wrapper">
           {typeof course.icon === 'string' ? (
             <CourseIcon iconName={course.icon} size={28} color="#ffffff" />
@@ -85,17 +85,17 @@ const CourseCard = ({
         <button className="course-card__btn course-card__btn--primary" onClick={onAction}>
           {actionText || 'Enroll Now'}
         </button>
-      </div>
+      </article>
     );
   }
 
   // Enrolled variant - Used in My Courses page
   if (variant === 'enrolled') {
     return (
-      <div className="course-card course-card--enrolled">
+      <article className="course-card course-card--enrolled">
         <div className="course-card__accent-bar"></div>
 
-        <div className="course-card__content">
+        <section className="course-card__content">
           <div className="course-card__header-enrolled">
             <div className="course-card__icon-box">
               {typeof course.icon === 'string' ? (
@@ -159,9 +159,9 @@ const CourseCard = ({
               })}</span>
             </div>
           )}
-        </div>
+        </section>
 
-        <div className="course-card__actions">
+        <footer className="course-card__actions">
           <button className="course-card__btn course-card__btn--continue" onClick={onAction}>
             <span className="btn-icon">▶️</span>
             <span className="btn-text">{actionText || 'Continue'}</span>
@@ -169,8 +169,8 @@ const CourseCard = ({
           <button className="course-card__btn course-card__btn--secondary">
             📄
           </button>
-        </div>
-      </div>
+        </footer>
+      </article>
     );
   }
 
