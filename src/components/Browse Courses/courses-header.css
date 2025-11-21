@@ -1,0 +1,92 @@
+/* Header */
+.courses-header {
+  background: linear-gradient(135deg, #d5842e 25%, rgba(82, 152, 149, 0.95) 50%, #0a9ec7 100%);
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  grid-column: 1 / -1;
+  margin-bottom: 20px;
+  border-radius: 15px;
+}
+
+.courses-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateX(-5px);
+}
+
+.courses-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
+  margin: 0 0 10px 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.courses-subtitle {
+  font-size: 1.1rem;
+  color: #ffeb3b;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .courses-title {
+    font-size: 2.5rem;
+  }
+
+  .courses-subtitle {
+    font-size: 1rem;
+  }
+
+  .back-button {
+    top: 10px;
+    left: 10px;
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .courses-title {
+    font-size: 2rem;
+  }
+}

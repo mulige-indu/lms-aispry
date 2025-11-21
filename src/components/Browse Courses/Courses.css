@@ -1365,12 +1365,6 @@
   font-weight: 600;
 }
 
-/* Main Content Area */
-.main-content-area {
-  flex: 1;
-  min-width: 0;
-}
-
 /* Responsive Sidebar */
 @media (max-width: 1024px) {
   .sidebar-nav {

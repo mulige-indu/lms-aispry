@@ -813,7 +813,7 @@ body.dark-theme .benefit-item {
   }
 
   .download-note {
-    font-size: 0.34rem !important;
+    font-size: 0.25rem !important;
     line-height: 1.15;
     gap: 0.09375rem;
     margin: 0.09375rem 0 0 0;
@@ -858,3 +858,346 @@ body.dark-theme .benefit-item {
     color: #1a1a1a;
   }
 } */
+
+/* ==================== RESPONSIVE STYLES FROM GLOBALRESPONSIVE.CSS ==================== */
+
+/* Tablets and Small Laptops (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .download-brochure {
+    height: 400px !important;
+    max-height: 400px !important;
+  }
+
+  .brochure-container {
+    padding: 15px 12px !important;
+    margin: 0 15px !important;
+    max-width: calc(100% - 30px) !important;
+    width: auto !important;
+    max-height: 400px !important;
+    height: 400px !important;
+  }
+
+  .brochure-left {
+    max-height: 400px !important;
+    height: 400px !important;
+    gap: 0 !important;
+  }
+
+  .brochure-right {
+    max-width: 250px !important;
+    width: auto !important;
+    max-height: 400px !important;
+    height: 400px !important;
+    gap: 0 !important;
+  }
+
+  .brochure-content-wrapper {
+    height: 400px !important;
+    max-height: 400px !important;
+  }
+
+  .download-card {
+    max-height: 300px !important;
+    height: 300px !important;
+  }
+
+  /* Font sizes */
+  .brochure-badge {
+    font-size: 0.5rem !important;
+  }
+
+  .section-heading.brochure-headline {
+    font-size: 1rem !important;
+  }
+
+  .brochure-description {
+    font-size: 0.6rem !important;
+  }
+
+  .benefit-item {
+    font-size: 0.45rem !important;
+  }
+
+  .card-header {
+    max-height: 60px !important;
+    height: auto !important;
+    margin-bottom: 8px !important;
+  }
+
+  .card-header h3 {
+    font-size: 0.6rem !important;
+  }
+
+  .card-header p {
+    font-size: 0.45rem !important;
+  }
+
+  .card-body {
+    max-height: 180px !important;
+    height: auto !important;
+    gap: 8px !important;
+  }
+
+  .feature-tag {
+    font-size: 0.35rem !important;
+  }
+
+  .trust-number {
+    font-size: 0.9rem !important;
+  }
+
+  .trust-label {
+    font-size: 0.5rem !important;
+  }
+
+  .download-note {
+    font-size: 0.35rem !important;
+  }
+
+  .bonus-icon {
+    font-size: 0.5rem !important;
+  }
+
+  .bonus-text {
+    font-size: 0.45rem !important;
+  }
+}
+
+/* Tablets (max-width: 768px) */
+@media (max-width: 768px) {
+  .download-brochure {
+    min-height: auto !important;
+    height: 400px !important;
+    max-height: 400px !important;
+  }
+
+  .brochure-container {
+    padding: 12px 10px !important;
+    margin: 0 10px !important;
+    max-width: calc(100% - 20px) !important;
+    width: auto !important;
+    max-height: 400px !important;
+    height: 400px !important;
+  }
+
+  .brochure-left {
+    max-height: 400px !important;
+    height: 400px !important;
+    gap: 0 !important;
+  }
+
+  .brochure-right {
+    max-width: 200px !important;
+    width: auto !important;
+    max-height: 400px !important;
+    height: 400px !important;
+    gap: 0 !important;
+  }
+
+  .brochure-content-wrapper {
+    height: 400px !important;
+    max-height: 400px !important;
+  }
+
+  .download-card {
+    max-height: 300px !important;
+    height: 300px !important;
+  }
+
+  /* Font sizes */
+  .brochure-badge {
+    font-size: 0.45rem !important;
+  }
+
+  .section-heading.brochure-headline {
+    font-size: 0.85rem !important;
+  }
+
+  .brochure-description {
+    font-size: 0.5rem !important;
+  }
+
+  .benefit-item {
+    font-size: 0.4rem !important;
+  }
+
+  .card-header {
+    max-height: 50px !important;
+    height: auto !important;
+    margin-bottom: 6px !important;
+  }
+
+  .card-header h3 {
+    font-size: 0.55rem !important;
+  }
+
+  .card-header p {
+    font-size: 0.4rem !important;
+  }
+
+  .card-body {
+    max-height: 160px !important;
+    height: auto !important;
+    gap: 6px !important;
+  }
+
+  .feature-tag {
+    font-size: 0.32rem !important;
+  }
+
+  .trust-number {
+    font-size: 0.75rem !important;
+  }
+
+  .trust-label {
+    font-size: 0.45rem !important;
+  }
+
+  .download-note {
+    font-size: 0.3rem !important;
+  }
+
+  .bonus-icon {
+    font-size: 0.45rem !important;
+  }
+
+  .bonus-text {
+    font-size: 0.4rem !important;
+  }
+
+  /* Download Brochure - Keep side by side on mobile */
+  .brochure-content-wrapper,
+  .brochure-hero {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .hero-left,
+  .hero-right,
+  .brochure-left,
+  .brochure-right {
+    width: auto !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .download-brochure * {
+    font-size: inherit !important;
+  }
+
+  .download-brochure {
+    height: 400px !important;
+    max-height: 400px !important;
+  }
+
+  .brochure-container {
+    padding: 10px 8px !important;
+    margin: 0 8px !important;
+    max-width: calc(100% - 16px) !important;
+    width: auto !important;
+    max-height: 380px !important;
+    height: 380px !important;
+  }
+
+  .brochure-left {
+    max-height: 400px !important;
+    height: 400px !important;
+    gap: 0 !important;
+  }
+
+  .brochure-right {
+    max-width: 150px !important;
+    width: auto !important;
+    max-height: 400px !important;
+    height: 400px !important;
+    gap: 0 !important;
+  }
+
+  .brochure-content-wrapper {
+    height: 400px !important;
+    max-height: 400px !important;
+  }
+
+  .download-card {
+    max-height: 200px !important;
+    height: 240px !important;
+  }
+
+  /* Font sizes */
+  .brochure-badge {
+    font-size: 0.4rem !important;
+  }
+
+  .section-heading.brochure-headline {
+    font-size: 0.7rem !important;
+  }
+
+  .brochure-description {
+    font-size: 0.45rem !important;
+  }
+
+  .benefit-item {
+    font-size: 0.35rem !important;
+  }
+
+  .card-header {
+    max-height: 40px !important;
+    height: auto !important;
+    margin-bottom: 4px !important;
+  }
+
+  .card-header h3 {
+    font-size: 0.46rem !important;
+  }
+
+  .card-header p {
+    font-size: 0.34rem !important;
+  }
+
+  .card-body {
+    max-height: 140px !important;
+    height: auto !important;
+    gap: 4px !important;
+  }
+
+  .feature-tag {
+    font-size: 0.28rem !important;
+  }
+
+  .trust-number {
+    font-size: 0.65rem !important;
+  }
+
+  .trust-label {
+    font-size: 0.4rem !important;
+  }
+
+  .download-note {
+    font-size: 0.25rem !important;
+  }
+
+  .bonus-icon {
+    font-size: 0.38rem !important;
+  }
+
+  .bonus-text {
+    font-size: 0.34rem !important;
+  }
+
+  /* Download Brochure - Keep side by side on mobile */
+  .brochure-content-wrapper,
+  .brochure-hero {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .hero-left,
+  .hero-right,
+  .brochure-left,
+  .brochure-right {
+    width: auto !important;
+    max-width: 100% !important;
+  }
+}

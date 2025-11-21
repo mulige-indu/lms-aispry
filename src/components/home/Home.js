@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ScrollingNavbar from './ScrollingNavbar';
 import MainNavbar from './MainNavbar';
-import CourseCard from '../common/CourseCard';
-import '../courses/CourseSlider.css';
-import './AboutLeadership.css';
+import CourseCard from '../Browse Courses/CourseCard';
+import './home-courses.css';
+import '../Browse Courses/CourseSlider.css';
+import './leadership-section.css';
 import './TrainingCenters.css';
 import './AlumniSection.css';
+import './main-content.css';
 // No longer using FontAwesome icons - all replaced with custom SVG icons
 
 // ✅ SVG ICONS for courses - Relevant and professional with colors

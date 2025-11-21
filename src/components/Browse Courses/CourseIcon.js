@@ -5,7 +5,7 @@ import React from 'react';
 import {
   DataScienceIcon, AIIcon, CloudIcon, DatabaseIcon, CodeIcon,
   ChartIcon, BrainIcon, BookIcon
-} from './SvgIcons';
+} from '../SvgIcons';
 import './CourseIcon.css';
 
 const CourseIcon = ({ iconName, size = 40, color = '#ffffff', className = '' }) => {

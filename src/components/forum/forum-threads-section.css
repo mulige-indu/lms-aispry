@@ -1,0 +1,163 @@
+/* Forum Threads Section */
+.forum-threads-section h2 {
+  font-size: 1.8rem;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+.threads-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.thread-item {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.thread-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.thread-main {
+  flex: 1;
+}
+
+.thread-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.thread-category {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.pinned-badge,
+.resolved-badge {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.pinned-badge {
+  background: #ff9500;
+  color: white;
+}
+
+.resolved-badge {
+  background: #50c878;
+  color: white;
+}
+
+.thread-title {
+  font-size: 1.3rem;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.thread-excerpt {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.thread-meta {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.thread-author {
+  font-weight: 600;
+  color: #666;
+}
+
+.thread-time {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.thread-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  min-width: 80px;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+  font-weight: 600;
+}
+
+.stat svg {
+  color: #999;
+}
+
+.no-threads {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 12px;
+}
+
+.no-threads p {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.no-threads button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0a9ec7;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.no-threads button:hover {
+  background: #088aac;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .thread-item {
+    flex-direction: column;
+  }
+
+  .thread-stats {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+  }
+}

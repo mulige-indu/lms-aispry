@@ -1,25 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/home/Home';
-import Dashboard from './components/courses/CoursePageModern';
-import Courses from './components/courses/Courses';
-import MyCourses from './components/courses/MyCourses';
+import Courses from './components/Browse Courses/Courses';
+import MyCourses from './components/Browse Courses/MyCourses';
 import Apply from './components/home/Apply';
-import Loader from './pages/auth/Loader';
+import Loader from './components/Loader';
 import ForumOverview from './components/forum/ForumOverview';
 import DiscussionThread from './components/forum/DiscussionThread';
 import CreateThread from './components/forum/CreateThread';
 
-import './styles/GlobalResponsive.css'; // Import responsive styles first
-import './styles/VideoInfo.css';
-import './styles/AttractiveForm.css';
-import './styles/LearnerOutcomes.css';
-import './styles/DownloadBrochure.css';
-import './components/home/AlumniPage.css';
-import './components/home/Footer.css';
-import './components/courses/Courses.css';
+import './components/home/VideoInfo.css';
+import './components/home/LearnerOutcomes.css';
+import './components/home/DownloadBrochure.css';
+import './components/home/main-footer.css';
+import './components/Browse Courses/Courses.css';
 import './components/home/Features.css';
-import './components/home/AICareerCompact.css';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -41,7 +36,6 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/my-courses" element={<MyCourses />} />
         <Route path="/apply" element={<Apply />} />

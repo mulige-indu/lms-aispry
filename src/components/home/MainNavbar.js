@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './MainNavbar.css';
 
 // Custom SVG Icons
@@ -38,18 +38,51 @@ const MainNavbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [student, setStudent] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     // Check if user is logged in
+    const checkLoginStatus = () => {
+      const token = localStorage.getItem('token');
+      const studentData = localStorage.getItem('student');
+
+      if (token && studentData) {
+        setIsLoggedIn(true);
+        setStudent(JSON.parse(studentData));
+      } else {
+        setIsLoggedIn(false);
+        setStudent(null);
+      }
+    };
+
+    // Check on mount
+    checkLoginStatus();
+
+    // Listen for storage changes (when logging in from another tab/window)
+    window.addEventListener('storage', checkLoginStatus);
+
+    // Listen for custom event (when logging in from same window)
+    window.addEventListener('loginStatusChanged', checkLoginStatus);
+
+    return () => {
+      window.removeEventListener('storage', checkLoginStatus);
+      window.removeEventListener('loginStatusChanged', checkLoginStatus);
+    };
+  }, []);
+
+  // Re-check login status whenever the route changes
+  useEffect(() => {
     const token = localStorage.getItem('token');
     const studentData = localStorage.getItem('student');
 
     if (token && studentData) {
       setIsLoggedIn(true);
       setStudent(JSON.parse(studentData));
+    } else {
+      setIsLoggedIn(false);
+      setStudent(null);
     }
-  }, []);
-
+  }, [location]);
 
   const handleLoginClick = () => {
     // Always go directly to courses page

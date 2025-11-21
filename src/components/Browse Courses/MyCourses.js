@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import CourseCard from '../common/CourseCard';
+import CourseCard from './CourseCard';
+import './courses-navbar.css';
+import './courses-header.css';
+import './courses-main-layout.css';
+import './courses-stats.css';
+import './page-layout.css';
 import './Courses.css';
+import '../home/main-content.css';
 import {
   MyCoursesIcon, BrowseIcon, ForumIcon, SupportIcon
-} from '../common/SvgIcons';
+} from '../SvgIcons';
 
 const MyCourses = () => {
   const [courses, setCourses] = useState([]);

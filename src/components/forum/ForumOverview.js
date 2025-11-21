@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import forumService from '../../services/forumService';
+import forumService from './forumService';
 import './ForumOverview.css';
-import '../courses/Courses.css';
+import './forum-header.css';
+import './forum-search-section.css';
+import './forum-categories-grid.css';
+import './forum-threads-section.css';
+import '../Browse Courses/courses-navbar.css';
+import '../Browse Courses/courses-header.css';
+import '../Browse Courses/courses-main-layout.css';
+import '../Browse Courses/courses-stats.css';
+import '../Browse Courses/page-layout.css';
+import '../Browse Courses/Courses.css';
 import {
   SearchIcon, ClockIcon, HeartIcon, ArrowIcon, CodeIcon,
   BrainIcon, UserIcon, CheckIcon, MyCoursesIcon, BrowseIcon,
   ForumIcon, SupportIcon
-} from '../common/SvgIcons';
+} from '../SvgIcons';
 
 // Helper function to get or create guest user
 const getUser = () => {

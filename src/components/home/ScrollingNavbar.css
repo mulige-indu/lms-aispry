@@ -1,6 +1,9 @@
+/* ==================== SCROLLING NAVBAR STYLES ==================== */
+
+/* Desktop Styles (Default) */
 .scrolling-navbar {
   background: linear-gradient(135deg, #d5842e 25%, rgba(82, 152, 149, 0.95) 50%, #0a9ec7 100%);
-  padding: 4px 0;
+  padding: 2px 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
@@ -12,7 +15,7 @@
   display: flex;
   align-items: center;
   height: auto;
-  min-height: 32px;
+  min-height: 16px;
 }
 
 .scrolling-content {
@@ -53,6 +56,7 @@
   align-self: center;
 }
 
+/* Animations */
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -74,275 +78,34 @@
   }
 }
 
-.main-content {
-  margin-top: 80px;
-  padding: 20px 0;
-  width: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
+/* ==================== RESPONSIVE BREAKPOINTS ==================== */
 
-.main-content > section {
-  position: relative;
-  z-index: 1;
-  display: block;
-  clear: both;
-}
-
-.main-content .video-booking-section {
-  display: flex;
-  flex-direction: row;
-  gap: 30px;
-}
-
-.hero-heading {
-  text-align: center;
-  margin-top: 30px;
-  padding: 20px 20px 30px 20px;
-}
-
-.hero-heading h1 {
-  font-size: var(--font-size-4xl);
-  font-weight: 800;
-  margin: 0;
-  background-color: #d5842e;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  line-height: 1.2;
-}
-
-body.dark-theme .hero-heading h1 {
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-@media (max-width: 768px) {
-  .hero-heading h1 {
-    font-size: var(--font-size-3xl);
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-heading h1 {
-    font-size: var(--font-size-2xl);
-  }
-}
-
-.video-booking-section {
-  display: flex;
-  flex-direction: row;
-  gap: 30px;
-  margin: 0 auto;
-  align-items: stretch;
-  background: transparent;
-  max-width: 1200px;
-  padding: 40px 20px 40px 20px;
-  box-sizing: border-box;
-  width: 100%;
-}
-
-.video-aside {
-  background: white;
-  border-radius: 15px;
-  padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  min-height: 400px;
-  flex: 2;
-  box-sizing: border-box;
-}
-
-.video-aside:hover {
-  transform: translateY(-5px);
-}
-
-.video-container {
-  width: 100%;
-}
-
-.course-video {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-}
-
-.booking-aside {
-  border-radius: 15px;
-  padding: 40px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  color: #333;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  min-height: 400px;
-  flex: 1;
-  box-sizing: border-box;
-}
-
-.booking-aside::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-.form-input {
-  width: 100%;
-  padding: 15px 20px;
-  border: none;
-  border-radius: 10px;
-  font-size: var(--font-size-base);
-  background: rgba(255, 255, 255, 0.95);
-  color: #333;
-  transition: all 0.3s ease;
-  box-sizing: border-box;
-}
-
-.form-input:focus {
-  outline: none;
-  background: white;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-}
-
-.form-textarea {
-  resize: vertical;
-  min-height: 80px;
-  font-family: inherit;
-}
-
-.submit-btn {
-  width: 100%;
-  padding: 18px 30px;
-  background: white;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-size: var(--font-size-md);
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-top: 10px;
-}
-
-.submit-btn:hover {
-  background: #f8f9fa;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-/* Dark theme styles */
-body.dark-theme .video-aside {
-  background: #1e1e1e;
-  color: #e0e0e0;
-}
-
-body.dark-theme .booking-aside {
-  background: linear-gradient(135deg, #8B0045, #B30058);
-}
-
-/* Responsive design */
-@media (max-width: 1024px) {
-  .main-content {
-    margin-top: 110px;
-  }
-
-  .video-booking-section {
-    gap: 25px;
-    padding: 0 20px;
-  }
-}
-
+/* Tablets and Small Laptops (max-width: 768px) */
 @media (max-width: 768px) {
   .scrolling-navbar {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    z-index: 9999 !important;
-    padding: 12px 0 !important;
-    min-height: 45px !important;
-    height: 45px !important;
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    background: linear-gradient(135deg, #d5842e 25%, rgba(82, 152, 149, 0.95) 50%, #0a9ec7 100%) !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999;
+    padding: 2px 0;
+    min-height: 20px;
+    height: 25px;
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+    background: linear-gradient(135deg, #d5842e 25%, rgba(82, 152, 149, 0.95) 50%, #0a9ec7 100%);
   }
 
   .scrolling-content {
-    display: block !important;
-    width: 100% !important;
+    display: block;
+    width: 100%;
   }
 
   .scroll-track {
-    display: inline-flex !important;
-  }
-
-  .nav-item {
-    font-size: var(--font-size-sm);
-  }
-
-  .main-content {
-    margin-top: 120px;
-    padding: 15px 0;
-  }
-
-  .hero-heading {
-    padding: 15px 10px 40px 10px;
-    margin-bottom: 30px;
-  }
-
-  .video-booking-section {
-    flex-direction: column !important;
-    gap: 20px;
-    padding: 0 10px;
-    margin: 0 auto;
-  }
-
-  .video-aside,
-  .booking-aside {
-    flex: 1;
-    width: 100%;
-    min-height: auto;
-  }
-
-  .video-aside {
-    padding: 20px;
-  }
-
-  .booking-aside {
-    padding: 25px;
-  }
-
-  .booking-heading {
-    font-size: var(--font-size-xl);
-  }
-
-  .course-video {
-    max-height: 300px;
-    object-fit: cover;
+    display: inline-flex;
+    gap: 30px;
   }
 
   .nav-item {
@@ -350,84 +113,38 @@ body.dark-theme .booking-aside {
     padding: 8px 15px;
   }
 
-  .scroll-track {
-    gap: 30px;
-  }
-
-  .content-section {
-    padding: 25px 15px;
-    margin: 15px 0;
-  }
-
-  .content-section h2 {
-    font-size: var(--font-size-xl);
-  }
-
-  .content-section p {
+  .star-separator {
     font-size: var(--font-size-sm);
+    margin: 0 6px;
   }
 }
 
+/* Mobile Devices (max-width: 480px) - 375x667 */
 @media (max-width: 480px) {
   .scrolling-navbar {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    z-index: 9999 !important;
-    padding: 10px 0 !important;
-    min-height: 40px !important;
-    height: 40px !important;
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    background: linear-gradient(135deg, #d5842e 25%, rgba(82, 152, 149, 0.95) 50%, #0a9ec7 100%) !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999;
+    padding: 1px 0;
+    min-height: 10px;
+    height: 20px;
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+    background: linear-gradient(135deg, #d5842e 25%, rgba(82, 152, 149, 0.95) 50%, #0a9ec7 100%);
   }
 
   .scrolling-content {
-    display: block !important;
-    width: 100% !important;
+    display: block;
+    width: 100%;
   }
 
   .scroll-track {
-    display: inline-flex !important;
-  }
-
-  .main-content {
-    margin-top: 110px;
-    padding: 15px 0;
-  }
-
-  .hero-heading {
-    padding: 10px 5px 30px 5px;
-    margin-bottom: 20px;
-  }
-
-  .video-booking-section {
-    gap: 15px;
-    padding: 0 5px;
-    margin-bottom: 0;
-  }
-
-  .video-aside,
-  .booking-aside {
-    padding: 15px;
-    border-radius: 12px;
-  }
-
-  .booking-heading {
-    font-size: var(--font-size-lg);
-  }
-
-  .form-input {
-    padding: 12px 15px;
-    font-size: var(--font-size-base); /* Prevent iOS zoom */
-  }
-
-  .submit-btn {
-    padding: 14px 20px;
-    font-size: var(--font-size-base);
+    display: inline-flex;
+    gap: 20px;
   }
 
   .nav-item {
@@ -435,60 +152,38 @@ body.dark-theme .booking-aside {
     padding: 6px 12px;
   }
 
-  .scroll-track {
-    gap: 20px;
-  }
-
   .star-separator {
     font-size: var(--font-size-sm);
     margin: 0 5px;
   }
-
-  .course-video {
-    max-height: 250px;
-  }
-
-  .content-section {
-    padding: 20px 12px;
-    margin: 10px 0;
-    border-radius: 12px;
-  }
-
-  .content-section h2 {
-    font-size: var(--font-size-lg);
-    margin-bottom: 15px;
-  }
-
-  .content-section p {
-    font-size: var(--font-size-sm);
-    line-height: 1.6;
-  }
 }
 
+/* Extra Small Mobile (max-width: 320px) */
 @media (max-width: 320px) {
   .scrolling-navbar {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    z-index: 9999 !important;
-    padding: 8px 0 !important;
-    min-height: 35px !important;
-    height: 35px !important;
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    background: linear-gradient(135deg, #d5842e 25%, rgba(82, 152, 149, 0.95) 50%, #0a9ec7 100%) !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999;
+    padding: 2px 0;
+    min-height: 10px;
+    height: 10px;
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+    background: linear-gradient(135deg, #d5842e 25%, rgba(82, 152, 149, 0.95) 50%, #0a9ec7 100%);
   }
 
   .scrolling-content {
-    display: block !important;
-    width: 100% !important;
+    display: block;
+    width: 100%;
   }
 
   .scroll-track {
-    display: inline-flex !important;
+    display: inline-flex;
+    gap: 15px;
   }
 
   .nav-item {
@@ -496,61 +191,8 @@ body.dark-theme .booking-aside {
     padding: 5px 10px;
   }
 
-  .main-content {
-    margin-top: 95px;
-    padding: 15px 0;
+  .star-separator {
+    font-size: var(--font-size-xs);
+    margin: 0 4px;
   }
-
-  .video-aside,
-  .booking-aside {
-    padding: 12px;
-  }
-
-  .booking-heading {
-    font-size: var(--font-size-md);
-  }
-
-  .form-input {
-    padding: 10px 12px;
-  }
-
-  .submit-btn {
-    padding: 12px 18px;
-    font-size: var(--font-size-sm);
-  }
-
-  .course-video {
-    max-height: 200px;
-  }
-
-  .content-section {
-    padding: 15px 10px;
-  }
-}
-
-.content-section {
-  background: white;
-  margin: 20px 0;
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-}
-
-.content-section h2 {
-  color: #333;
-  margin-bottom: 20px;
-  font-size: var(--font-size-2xl);
-}
-
-.content-section p {
-  color: #666;
-  line-height: 1.8;
-  font-size: var(--font-size-base);
-}
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica', 'Arial', sans-serif;
-  background: white;
-  min-height: 100vh;
 }

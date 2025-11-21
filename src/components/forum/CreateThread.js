@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import forumService from '../../services/forumService';
+import forumService from './forumService';
 import './CreateThread.css';
-import '../courses/Courses.css';
+import '../Browse Courses/courses-navbar.css';
+import '../Browse Courses/courses-header.css';
+import '../Browse Courses/courses-main-layout.css';
+import '../Browse Courses/courses-stats.css';
+import '../Browse Courses/page-layout.css';
+import '../Browse Courses/Courses.css';
 import {
   ArrowIcon, EditIcon, CloseIcon, MyCoursesIcon, BrowseIcon,
   ForumIcon, SupportIcon
-} from '../common/SvgIcons';
+} from '../SvgIcons';
 
 // Helper function to get or create guest user
 const getUser = () => {
