@@ -273,12 +273,17 @@ const Home = () => {
     return () => featuresGrid.removeEventListener('scroll', handleScroll);
   }, [isMobile]);
 
-  // Simple Fade Slider for training centers
+  // Scroll-based expansion for training centers
   useEffect(() => {
     const cards = document.querySelectorAll('.training-centers-section .center-card');
-    if (cards.length === 0) return;
+    const section = document.querySelector('.training-centers-section');
+    const centersGrid = document.querySelector('.centers-grid');
+    if (cards.length === 0 || !section || !centersGrid) return;
 
-    if (!isMobile) {
+    // Check if we're in mobile/tablet view (below 1024px)
+    const isSmallScreen = window.innerWidth < 1024;
+
+    if (!isSmallScreen) {
       // On desktop, remove all active classes
       cards.forEach((card) => {
         card.classList.remove('active');
@@ -286,15 +291,95 @@ const Home = () => {
       return;
     }
 
-    // On mobile: add/remove active class
-    cards.forEach((card, index) => {
-      if (index === currentCenterSlide) {
-        card.classList.add('active');
-      } else {
-        card.classList.remove('active');
-      }
+    let sectionHasBeenViewed = false;
+
+    // Observer for the section itself
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !sectionHasBeenViewed) {
+          // Section is in view for the first time
+          sectionHasBeenViewed = true;
+
+          // Activate first card
+          if (cards[0]) {
+            cards[0].classList.add('active');
+          }
+
+          // Scroll first card to center after a short delay
+          setTimeout(() => {
+            if (cards[0]) {
+              const firstCard = cards[0];
+              const gridRect = centersGrid.getBoundingClientRect();
+              const cardRect = firstCard.getBoundingClientRect();
+              const centerOffset = (gridRect.width / 2) - (cardRect.width / 2);
+              const scrollLeft = firstCard.offsetLeft - centerOffset;
+
+              centersGrid.scrollTo({
+                left: scrollLeft,
+                behavior: 'smooth'
+              });
+            }
+          }, 100);
+        }
+      });
+    }, {
+      threshold: 0.2,
+      rootMargin: '0px'
     });
-  }, [isMobile, currentCenterSlide]);
+
+    sectionObserver.observe(section);
+
+    // Scroll event handler for horizontal card scrolling
+    let scrollTimeout;
+    const handleCardScroll = () => {
+      // Clear previous timeout to debounce
+      clearTimeout(scrollTimeout);
+
+      scrollTimeout = setTimeout(() => {
+        const gridRect = centersGrid.getBoundingClientRect();
+        const centerX = gridRect.left + gridRect.width / 2;
+
+        let closestCard = null;
+        let closestDistance = Infinity;
+
+        cards.forEach((card) => {
+          const cardRect = card.getBoundingClientRect();
+          const cardCenterX = cardRect.left + cardRect.width / 2;
+          const distance = Math.abs(centerX - cardCenterX);
+
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestCard = card;
+          }
+        });
+
+        if (closestCard) {
+          const currentActive = document.querySelector('.center-card.active');
+          if (currentActive !== closestCard) {
+            cards.forEach((card) => card.classList.remove('active'));
+            closestCard.classList.add('active');
+          }
+        }
+      }, 50); // Debounce for 50ms
+    };
+
+    // Add scroll listener
+    centersGrid.addEventListener('scroll', handleCardScroll);
+
+    // Also trigger on scroll end for more accurate detection
+    centersGrid.addEventListener('scrollend', handleCardScroll);
+
+    // Initial call to set the first card
+    handleCardScroll();
+
+    // Cleanup
+    return () => {
+      sectionObserver.unobserve(section);
+      centersGrid.removeEventListener('scroll', handleCardScroll);
+      centersGrid.removeEventListener('scrollend', handleCardScroll);
+      clearTimeout(scrollTimeout);
+    };
+  }, []);
 
   // Course data
   const courses = [
@@ -1386,8 +1471,9 @@ We're excited to have you on this journey!
                 onTouchMove={handleCenterTouchMove}
                 onTouchEnd={handleCenterTouchEnd}
               >
-              <article className="center-card" role="listitem" onClick={() => window.open('https://maps.google.com/?q=2-56/2/19, 3rd floor, Vijaya Towers, near Meridian School, Ayyappa Society Rd, Madhapur, Hyderabad, Telangana 500081', '_blank')} style={{cursor: 'pointer'}}>
-                <div className="center-image-section">
+              <article className="center-card" role="listitem">
+                <div className="center-image-section" onClick={() => window.open('https://maps.google.com/?q=2-56/2/19, 3rd floor, Vijaya Towers, near Meridian School, Ayyappa Society Rd, Madhapur, Hyderabad, Telangana 500081', '_blank')} style={{cursor: 'pointer'}}>
+
                   <div className="center-icon" aria-hidden="true">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIeF25ILWHaG79wGOxa4W2D_Q_Igq1szMV0Q&s" alt="Durgam Cheruvu Cable Bridge, Hyderabad" />
                   </div>
@@ -1412,8 +1498,9 @@ We're excited to have you on this journey!
                 </div>
               </article>
 
-              <article className="center-card" role="listitem" onClick={() => window.open('https://maps.app.goo.gl/tC3Rore8xfZS8S4U6', '_blank')} style={{cursor: 'pointer'}}>
-                <div className="center-image-section">
+              <article className="center-card" role="listitem">
+                <div className="center-image-section" onClick={() => window.open('https://maps.app.goo.gl/tC3Rore8xfZS8S4U6', '_blank')} style={{cursor: 'pointer'}}>
+
                   <div className="center-icon" aria-hidden="true">
                     <img src="https://images.yourstory.com/cs/wordpress/2016/07/Yourstory-Vidhana-Soudha.jpg?mode=crop&crop=faces&ar=16%3A9&format=auto&w=1920&q=75" alt="Vidhana Soudha, Bangalore" />
                   </div>
@@ -1438,8 +1525,9 @@ We're excited to have you on this journey!
                 </div>
               </article>
 
-              <article className="center-card" role="listitem" onClick={() => window.open('https://maps.app.goo.gl/GEor31R9gwVENSmaA', '_blank')} style={{cursor: 'pointer'}}>
-                <div className="center-image-section">
+              <article className="center-card" role="listitem">
+                <div className="center-image-section" onClick={() => window.open('https://maps.app.goo.gl/GEor31R9gwVENSmaA', '_blank')} style={{cursor: 'pointer'}}>
+
                   <div className="center-icon" aria-hidden="true">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRWA4MwTRzgfOBXVF3RiQH8JgO9sIbcT-ujQ&s" alt="Valluvar Kottam, Chennai" />
                   </div>
@@ -1464,8 +1552,9 @@ We're excited to have you on this journey!
                 </div>
               </article>
 
-              <article className="center-card" role="listitem" onClick={() => window.open('https://maps.app.goo.gl/KCsfrQdYMvHg9nkC6', '_blank')} style={{cursor: 'pointer'}}>
-                <div className="center-image-section">
+              <article className="center-card" role="listitem">
+                <div className="center-image-section" onClick={() => window.open('https://maps.app.goo.gl/KCsfrQdYMvHg9nkC6', '_blank')} style={{cursor: 'pointer'}}>
+
                   <div className="center-icon" aria-hidden="true">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuf5_M-4zkPWtfG7dOx46ZGRxYT72BeueyKg&s" alt="Vitthal-Rukmini Temple, Pune" />
                   </div>
@@ -1489,8 +1578,9 @@ We're excited to have you on this journey!
                 </div>
               </article>
 
-              <article className="center-card" role="listitem" onClick={() => window.open('https://maps.app.goo.gl/UQa2HFYFcHRaqkSk7', '_blank')} style={{cursor: 'pointer'}}>
-                <div className="center-image-section">
+              <article className="center-card" role="listitem">
+                <div className="center-image-section" onClick={() => window.open('https://maps.app.goo.gl/UQa2HFYFcHRaqkSk7', '_blank')} style={{cursor: 'pointer'}}>
+
                   <div className="center-icon" aria-hidden="true">
                     <img src="https://www.shutterstock.com/image-photo/bhilai-chhattisgarh-india-oct-26-260nw-600395621.jpg" alt="Maitri Bagh, Bhilai" />
                   </div>
@@ -1514,8 +1604,9 @@ We're excited to have you on this journey!
                 </div>
               </article>
 
-              <article className="center-card" role="listitem" onClick={() => window.open('https://maps.app.goo.gl/3WpDihanxE8WDpP88', '_blank')} style={{cursor: 'pointer'}}>
-                <div className="center-image-section">
+              <article className="center-card" role="listitem">
+                <div className="center-image-section" onClick={() => window.open('https://maps.app.goo.gl/3WpDihanxE8WDpP88', '_blank')} style={{cursor: 'pointer'}}>
+
                   <div className="center-icon" aria-hidden="true">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAvoZ-XB-PJRC9F0qSQB41Vk4PEajHCwNskoR3Q53qOwiTxIj1OSvByPaV7_etP4TpcAQ&usqp=CAU" alt="Shaniwar Wada, Pune" />
                   </div>
@@ -1539,8 +1630,9 @@ We're excited to have you on this journey!
                 </div>
               </article>
 
-              <article className="center-card" role="listitem" onClick={() => window.open('https://maps.app.goo.gl/ZUAcZMLcJtZDMYfX7', '_blank')} style={{cursor: 'pointer'}}>
-                <div className="center-image-section">
+              <article className="center-card" role="listitem">
+                <div className="center-image-section" onClick={() => window.open('https://maps.app.goo.gl/ZUAcZMLcJtZDMYfX7', '_blank')} style={{cursor: 'pointer'}}>
+
                   <div className="center-icon" aria-hidden="true">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8qVElYdlVqthcAlvlvWx4RguDJcviorCXHg&s" alt="Lingaraja Temple, Bhubaneswar" />
                   </div>
@@ -1564,8 +1656,9 @@ We're excited to have you on this journey!
                 </div>
               </article>
 
-              <article className="center-card" role="listitem" onClick={() => window.open('https://maps.app.goo.gl/DpX7Ho7w4EmeCZWB9', '_blank')} style={{cursor: 'pointer'}}>
-                <div className="center-image-section">
+              <article className="center-card" role="listitem">
+                <div className="center-image-section" onClick={() => window.open('https://maps.app.goo.gl/DpX7Ho7w4EmeCZWB9', '_blank')} style={{cursor: 'pointer'}}>
+
                   <div className="center-icon" aria-hidden="true">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmLMV3QfF-Y0XbEsVO3Ft6orHoPZM1zjHltg&s" alt="Akshardham Temple, Delhi NCR" />
                   </div>
@@ -1589,10 +1682,11 @@ We're excited to have you on this journey!
                 </div>
               </article>
 
-              <article className="center-card" role="listitem" onClick={() => window.open('https://maps.app.goo.gl/d2JKJkVxPcmVBZ6u7', '_blank')} style={{cursor: 'pointer'}}>
-                <div className="center-image-section">
+              <article className="center-card" role="listitem">
+                <div className="center-image-section" onClick={() => window.open('https://maps.app.goo.gl/d2JKJkVxPcmVBZ6u7', '_blank')} style={{cursor: 'pointer'}}>
+
                   <div className="center-icon" aria-hidden="true">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIXStigI_iv0E0DepMYnppIrOP9Fw4-Pex-SjHgbV4ADQ9L3Q9QEHuTYB8vVNEwBMWXOU&usqp=CAU" alt="Dolphin's Nose, Visakhapatnam" />
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYcBMRKcHXeNGK_iToHzEnwD4uehP_Y1IuPQ&s" alt="Dolphin's Nose, Visakhapatnam" />
                   </div>
                   <h3 className="center-city">Vizag, Andhra Pradesh</h3>
                 </div>
