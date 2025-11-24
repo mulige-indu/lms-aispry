@@ -54,7 +54,7 @@
   gap: 0;
   margin-bottom: 25px;
   padding: 30px 0;
-  justify-content: center;
+  justify-content: flex-start;
   max-width: 100%;
   flex-wrap: nowrap;
   position: relative;
@@ -72,26 +72,12 @@
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(213, 132, 46, 0.5) rgba(0, 0, 0, 0.1);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .centers-grid::-webkit-scrollbar {
-  height: 8px;
-}
-
-.centers-grid::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-}
-
-.centers-grid::-webkit-scrollbar-thumb {
-  background: rgba(213, 132, 46, 0.5);
-  border-radius: 4px;
-}
-
-.centers-grid::-webkit-scrollbar-thumb:hover {
-  background: rgba(213, 132, 46, 0.7);
+  display: none;
 }
 
 
@@ -238,6 +224,12 @@
     overflow-y: auto;
     overflow-x: hidden;
     background: #ffffff;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .center-card.expanded .center-content-section::-webkit-scrollbar {
+    display: none;
   }
 
   .center-card.expanded .content-header h3 {
@@ -661,6 +653,13 @@ body.dark-theme .centers-cta p {
 }
 
 /* ==================== RESPONSIVE DESIGN ==================== */
+
+/* Desktop centering */
+@media (min-width: 1024px) {
+  .centers-grid {
+    justify-content: center;
+  }
+}
 
 /* Large Desktop (1200px+) */
 @media (min-width: 1200px) {
