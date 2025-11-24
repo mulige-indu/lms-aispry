@@ -53,9 +53,8 @@
   flex-direction: row;
   gap: 0;
   margin-bottom: 25px;
-  overflow: visible;
-  padding: 30px 20px;
-  justify-content: center;
+  padding: 30px 0;
+  justify-content: flex-start;
   max-width: 100%;
   flex-wrap: nowrap;
   position: relative;
@@ -67,6 +66,32 @@
   position: relative;
   width: 100%;
   overflow: visible;
+}
+
+.centers-grid {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(213, 132, 46, 0.5) rgba(0, 0, 0, 0.1);
+}
+
+.centers-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.centers-grid::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.centers-grid::-webkit-scrollbar-thumb {
+  background: rgba(213, 132, 46, 0.5);
+  border-radius: 4px;
+}
+
+.centers-grid::-webkit-scrollbar-thumb:hover {
+  background: rgba(213, 132, 46, 0.7);
 }
 
 
@@ -94,7 +119,8 @@
 }
 
 @media (min-width: 1024px) {
-  .center-card:hover {
+  .center-card:hover,
+  .center-card.expanded {
     z-index: 100;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     height: 320px;
@@ -124,7 +150,8 @@
 }
 
 @media (min-width: 1024px) {
-  .center-card:hover .center-image-section {
+  .center-card:hover .center-image-section,
+  .center-card.expanded .center-image-section {
     width: 300px !important;
     max-width: 55%;
     height: 320px;
@@ -151,7 +178,8 @@
 }
 
 @media (min-width: 1024px) {
-  .center-card:hover .center-content-section {
+  .center-card:hover .center-content-section,
+  .center-card.expanded .center-content-section {
     width: 250px;
     max-width: 45%;
     min-width: 230px;
@@ -189,14 +217,16 @@
 }
 
 @media (min-width: 1024px) {
-  .center-card:hover .center-icon {
+  .center-card:hover .center-icon,
+  .center-card.expanded .center-icon {
     background: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .center-card:hover .center-icon img {
+  .center-card:hover .center-icon img,
+  .center-card.expanded .center-icon img {
     filter: grayscale(0%) brightness(1.05) saturate(1.1);
     object-fit: contain;
     transform: scale(1);
@@ -222,6 +252,13 @@
   writing-mode: horizontal-tb;
   line-height: 1.2;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  z-index: 10;
+}
+
+.center-city:hover {
+  background: rgba(213, 132, 46, 0.95);
+  color: white;
 }
 
 @media (min-width: 1024px) {
@@ -569,454 +606,13 @@ body.dark-theme .centers-cta p {
   }
 }
 
-/* Below 1024px */
-@media (max-width: 1023px) {
-  .centers-container {
-    padding: 0 0 0 40px;
-    margin: 0 auto;
-    overflow: visible;
-  }
+/* Below 1024px - Using same desktop behavior */
 
-  .centers-grid {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    padding: 30px 0 30px 0;
-    margin: 0;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    gap: 0;
-    scroll-snap-type: x mandatory;
-    position: relative;
-  }
+/* Mobile (768px and below) - Using same desktop behavior */
 
-  .centers-grid::-webkit-scrollbar {
-    display: none;
-  }
+/* Small Mobile (480px and below) - Using same desktop behavior */
 
-  /* Cards collapsed by default */
-  .center-card {
-    padding: 0;
-    flex-shrink: 0;
-    height: 320px;
-    width: 120px;
-    min-width: 120px;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    scroll-snap-align: center;
-    margin-left: 0;
-    box-shadow: none;
-    z-index: 1;
-  }
-
-  .center-card:first-child {
-    margin-left: 40px;
-  }
-
-  .center-card:last-child {
-    margin-right: 40px;
-  }
-
-  /* Collapsed state - default */
-  .center-card .center-image-section {
-    width: 120px;
-  }
-
-  .center-card .center-content-section {
-    width: 0;
-    padding: 0;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-  }
-
-  .center-card .center-city {
-    display: block;
-  }
-
-  .center-card .center-icon img {
-    filter: grayscale(100%) brightness(0.7);
-  }
-
-  /* Expanded state - when active (in view) */
-  .center-card.active {
-    width: 550px;
-    max-width: calc(100vw - 80px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    z-index: 100;
-    flex-direction: column;
-    height: 320px;
-  }
-
-  .center-card.active .center-image-section {
-    width: 100% !important;
-    max-width: 100%;
-    height: 150px;
-  }
-
-  .center-card.active .center-content-section {
-    width: 100%;
-    max-width: 100%;
-    min-width: auto;
-    flex: 1;
-    padding: 12px;
-    opacity: 1;
-    visibility: visible;
-    pointer-events: all;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-
-  .center-card.active .center-city {
-    display: none;
-  }
-
-  .center-card.active .center-icon {
-    background: #ffffff;
-  }
-
-  .center-card.active .center-icon img {
-    filter: grayscale(0%) brightness(1.05) saturate(1.1);
-    object-fit: contain;
-    padding: 8px;
-  }
-
-  .center-card.active .center-badge {
-    transform: scale(1.05);
-    box-shadow: 0 6px 18px rgba(213, 132, 46, 0.5);
-  }
-
-  .center-city {
-    font-size: 1.5rem;
-  }
-
-  .training-centers-section {
-    padding: 60px 0;
-    margin: 0;
-  }
-
-  .centers-header {
-    margin-bottom: 40px;
-    padding: 0 40px;
-  }
-
-  .centers-title {
-    font-size: 2.25rem;
-  }
-
-  .centers-subtitle {
-    font-size: 1.1rem;
-  }
-}
-
-/* Mobile (768px and below) - Simple Fade Slider */
-@media (max-width: 768px) {
-  .training-centers-section {
-    padding: 60px 0;
-    margin: 0;
-  }
-
-  .centers-container {
-    padding: 0 0 0 40px;
-    margin: 0 auto;
-    overflow: visible;
-    position: relative;
-  }
-
-  .centers-header {
-    margin-bottom: 40px;
-    padding: 0 40px;
-  }
-
-  .centers-title {
-    font-size: 2rem;
-  }
-
-  .centers-subtitle {
-    font-size: 1rem;
-  }
-
-  /* Simple Slider Wrapper */
-  .centers-slider-wrapper {
-    position: relative;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    overflow: visible;
-  }
-
-  /* Cards Container */
-  .centers-grid {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    padding: 30px 0 30px 0;
-    margin: 0;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    gap: 0;
-    position: relative;
-    width: 100%;
-    scroll-snap-type: x mandatory;
-  }
-
-  .centers-grid::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Cards collapsed by default */
-  .center-card {
-    padding: 0;
-    flex-shrink: 0;
-    height: 320px;
-    width: 120px;
-    min-width: 120px;
-    position: relative;
-    opacity: 1;
-    visibility: visible;
-    pointer-events: all;
-    margin-left: 0;
-    box-sizing: border-box;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    scroll-snap-align: center;
-    box-shadow: none;
-    z-index: 1;
-  }
-
-  .center-card:first-child {
-    margin-left: 40px;
-  }
-
-  .center-card:last-child {
-    margin-right: 40px;
-  }
-
-  /* Collapsed state - default */
-  .center-card .center-image-section {
-    width: 120px;
-  }
-
-  .center-card .center-content-section {
-    width: 0;
-    padding: 0;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-  }
-
-  .center-card .center-city {
-    display: block;
-  }
-
-  .center-card .center-icon img {
-    filter: grayscale(100%) brightness(0.7);
-  }
-
-  /* Expanded state - when active (in view) */
-  .center-card.active {
-    width: 550px;
-    max-width: calc(100vw - 80px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    z-index: 100;
-    flex-direction: column;
-    height: 320px;
-  }
-
-  .center-card.active .center-image-section {
-    width: 100% !important;
-    max-width: 100%;
-    height: 150px;
-  }
-
-  .center-card.active .center-content-section {
-    width: 100%;
-    max-width: 100%;
-    min-width: auto;
-    flex: 1;
-    padding: 12px;
-    opacity: 1;
-    visibility: visible;
-    pointer-events: all;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-
-  .center-card.active .center-city {
-    display: none;
-  }
-
-  .center-card.active .center-icon {
-    background: #ffffff;
-  }
-
-  .center-card.active .center-icon img {
-    filter: grayscale(0%) brightness(1.05) saturate(1.1);
-    object-fit: contain;
-    padding: 8px;
-  }
-
-  .center-card.active .center-badge {
-    transform: scale(1.05);
-    box-shadow: 0 6px 18px rgba(213, 132, 46, 0.5);
-  }
-
-  .center-card .center-city {
-    font-size: 1.4rem;
-  }
-
-  .center-card .center-badge {
-    font-size: 0.75rem;
-    padding: 5px 14px;
-  }
-
-  .center-card .center-features span {
-    font-size: 0.8rem;
-    padding: 7px 14px;
-  }
-
-  .center-card .center-details {
-    padding: 15px 0;
-  }
-
-  .centers-cta {
-    padding: 30px 25px;
-    margin-top: 30px;
-  }
-
-  .centers-cta p {
-    font-size: 1rem;
-  }
-
-  .explore-btn {
-    padding: 14px 32px;
-    font-size: 1rem;
-  }
-
-  /* Hide arrow navigation and dots */
-  .training-centers-section .slider-nav-btn {
-    display: none !important;
-  }
-
-  .training-centers-section .slider-dots {
-    display: none !important;
-  }
-
-  .training-centers-section .slider-dot {
-    display: none !important;
-  }
-}
-
-/* Small Mobile (480px and below) */
-@media (max-width: 480px) {
-  .training-centers-section {
-    padding: 0;
-    margin: 0;
-  }
-
-  .centers-header {
-    margin-bottom: 1.5rem;
-    padding: 0 0.75rem;
-  }
-
-  .centers-title {
-    font-size: 1.75rem;
-    letter-spacing: -0.3px;
-  }
-
-  .centers-subtitle {
-    font-size: 0.95rem;
-  }
-
-  .center-card {
-    padding: 0;
-  }
-
-  .center-icon {
-    height: 160px;
-  }
-
-  .center-city {
-    font-size: 1.25rem;
-  }
-
-  .center-badge {
-    font-size: 0.7rem;
-    padding: 4px 12px;
-  }
-
-  .center-details {
-    gap: 10px;
-    padding: 15px 0;
-  }
-
-  .detail-item {
-    gap: 10px;
-  }
-
-  .center-features {
-    gap: 6px;
-  }
-
-  .center-features span {
-    font-size: 0.75rem;
-    padding: 6px 12px;
-  }
-
-  .centers-cta {
-    padding: 25px 20px;
-  }
-
-  .centers-cta p {
-    font-size: 0.95rem;
-    margin-bottom: 15px;
-  }
-
-  .explore-btn {
-    padding: 12px 28px;
-    font-size: 0.95rem;
-    width: 100%;
-  }
-}
-
-/* Extra Small Mobile (360px and below) */
-@media (max-width: 360px) {
-  .centers-title {
-    font-size: 1.5rem;
-  }
-
-  .centers-subtitle {
-    font-size: 0.9rem;
-  }
-
-  .center-card {
-    padding: 0;
-  }
-
-  .center-icon {
-    height: 140px;
-  }
-
-  .center-city {
-    font-size: 1.15rem;
-  }
-
-  .center-features span {
-    font-size: 0.7rem;
-    padding: 5px 10px;
-  }
-
-  .centers-cta p {
-    font-size: 0.9rem;
-  }
-
-  .explore-btn {
-    padding: 11px 24px;
-    font-size: 0.9rem;
-  }
-}
+/* Extra Small Mobile (360px and below) - Using same desktop behavior */
 
 /* ==================== ACCESSIBILITY ==================== */
 
