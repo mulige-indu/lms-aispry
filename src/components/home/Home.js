@@ -875,44 +875,37 @@ We're excited to have you on this journey!
     }
   };
 
-  // Handle center image click - expand on first click, navigate on second click
+  // Handle center image section click - always expand the card
+  const handleImageSectionClick = (e) => {
+    e.stopPropagation();
+
+    const card = e.currentTarget.closest('.center-card');
+    if (card) {
+      const cards = document.querySelectorAll('.center-card');
+      cards.forEach((c) => c.classList.remove('expanded'));
+      card.classList.add('expanded');
+    }
+  };
+
+  // Handle center image click - only expand the card, never navigate
   const handleCenterImageClick = (e, centerIndex, locationUrl) => {
     e.stopPropagation();
 
     const card = e.currentTarget.closest('.center-card');
-    const isExpanded = card && card.classList.contains('expanded');
 
-    if (isExpanded) {
-      // Already expanded - navigate to location
-      window.open(locationUrl, '_blank');
-    } else {
-      // Not expanded - expand the card
+    // Always just expand the card, never navigate
+    if (card) {
       const cards = document.querySelectorAll('.center-card');
       cards.forEach((c) => c.classList.remove('expanded'));
-      if (card) {
-        card.classList.add('expanded');
-      }
+      card.classList.add('expanded');
     }
   };
 
-  // Handle center city click - check if expanded, if yes navigate, if no expand first
+  // Handle center city click - always navigate to location immediately
   const handleCenterCityClick = (e, locationUrl) => {
     e.stopPropagation();
-
-    const card = e.currentTarget.closest('.center-card');
-    const isExpanded = card && card.classList.contains('expanded');
-
-    if (isExpanded) {
-      // Already expanded - navigate to location
-      window.open(locationUrl, '_blank');
-    } else {
-      // Not expanded - expand the card first
-      const cards = document.querySelectorAll('.center-card');
-      cards.forEach((c) => c.classList.remove('expanded'));
-      if (card) {
-        card.classList.add('expanded');
-      }
-    }
+    // Always navigate directly to location
+    window.open(locationUrl, '_blank');
   };
 
   return (
@@ -1482,7 +1475,7 @@ We're excited to have you on this journey!
                 role="list"
               >
               <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.google.com/?q=2-56/2/19, 3rd floor, Vijaya Towers, near Meridian School, Ayyappa Society Rd, Madhapur, Hyderabad, Telangana 500081')}>
-                <div className="center-image-section">
+                <div className="center-image-section" onClick={handleImageSectionClick}>
 
                   <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 0, 'https://maps.google.com/?q=2-56/2/19, 3rd floor, Vijaya Towers, near Meridian School, Ayyappa Society Rd, Madhapur, Hyderabad, Telangana 500081')} style={{cursor: 'pointer'}}>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIeF25ILWHaG79wGOxa4W2D_Q_Igq1szMV0Q&s" alt="Durgam Cheruvu Cable Bridge, Hyderabad" />
@@ -1509,7 +1502,7 @@ We're excited to have you on this journey!
               </article>
 
               <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/tC3Rore8xfZS8S4U6')}>
-                <div className="center-image-section">
+                <div className="center-image-section" onClick={handleImageSectionClick}>
 
                   <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 1, 'https://maps.app.goo.gl/tC3Rore8xfZS8S4U6')} style={{cursor: 'pointer'}}>
                     <img src="https://images.yourstory.com/cs/wordpress/2016/07/Yourstory-Vidhana-Soudha.jpg?mode=crop&crop=faces&ar=16%3A9&format=auto&w=1920&q=75" alt="Vidhana Soudha, Bangalore" />
@@ -1536,7 +1529,7 @@ We're excited to have you on this journey!
               </article>
 
               <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/GEor31R9gwVENSmaA')}>
-                <div className="center-image-section">
+                <div className="center-image-section" onClick={handleImageSectionClick}>
 
                   <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 2, 'https://maps.app.goo.gl/GEor31R9gwVENSmaA')} style={{cursor: 'pointer'}}>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRWA4MwTRzgfOBXVF3RiQH8JgO9sIbcT-ujQ&s" alt="Valluvar Kottam, Chennai" />
@@ -1563,7 +1556,7 @@ We're excited to have you on this journey!
               </article>
 
               <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/KCsfrQdYMvHg9nkC6')}>
-                <div className="center-image-section">
+                <div className="center-image-section" onClick={handleImageSectionClick}>
 
                   <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 3, 'https://maps.app.goo.gl/KCsfrQdYMvHg9nkC6')} style={{cursor: 'pointer'}}>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuf5_M-4zkPWtfG7dOx46ZGRxYT72BeueyKg&s" alt="Vitthal-Rukmini Temple, Pune" />
@@ -1589,7 +1582,7 @@ We're excited to have you on this journey!
               </article>
 
               <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/UQa2HFYFcHRaqkSk7')}>
-                <div className="center-image-section">
+                <div className="center-image-section" onClick={handleImageSectionClick}>
 
                   <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 4, 'https://maps.app.goo.gl/UQa2HFYFcHRaqkSk7')} style={{cursor: 'pointer'}}>
                     <img src="https://www.shutterstock.com/image-photo/bhilai-chhattisgarh-india-oct-26-260nw-600395621.jpg" alt="Maitri Bagh, Bhilai" />
@@ -1615,7 +1608,7 @@ We're excited to have you on this journey!
               </article>
 
               <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/3WpDihanxE8WDpP88')}>
-                <div className="center-image-section">
+                <div className="center-image-section" onClick={handleImageSectionClick}>
 
                   <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 5, 'https://maps.app.goo.gl/3WpDihanxE8WDpP88')} style={{cursor: 'pointer'}}>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAvoZ-XB-PJRC9F0qSQB41Vk4PEajHCwNskoR3Q53qOwiTxIj1OSvByPaV7_etP4TpcAQ&usqp=CAU" alt="Shaniwar Wada, Pune" />
@@ -1641,7 +1634,7 @@ We're excited to have you on this journey!
               </article>
 
               <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/ZUAcZMLcJtZDMYfX7')}>
-                <div className="center-image-section">
+                <div className="center-image-section" onClick={handleImageSectionClick}>
 
                   <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 6, 'https://maps.app.goo.gl/ZUAcZMLcJtZDMYfX7')} style={{cursor: 'pointer'}}>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8qVElYdlVqthcAlvlvWx4RguDJcviorCXHg&s" alt="Lingaraja Temple, Bhubaneswar" />
@@ -1667,7 +1660,7 @@ We're excited to have you on this journey!
               </article>
 
               <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/DpX7Ho7w4EmeCZWB9')}>
-                <div className="center-image-section">
+                <div className="center-image-section" onClick={handleImageSectionClick}>
 
                   <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 7, 'https://maps.app.goo.gl/DpX7Ho7w4EmeCZWB9')} style={{cursor: 'pointer'}}>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmLMV3QfF-Y0XbEsVO3Ft6orHoPZM1zjHltg&s" alt="Akshardham Temple, Delhi NCR" />
@@ -1693,7 +1686,7 @@ We're excited to have you on this journey!
               </article>
 
               <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/d2JKJkVxPcmVBZ6u7')}>
-                <div className="center-image-section">
+                <div className="center-image-section" onClick={handleImageSectionClick}>
 
                   <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 8, 'https://maps.app.goo.gl/d2JKJkVxPcmVBZ6u7')} style={{cursor: 'pointer'}}>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYcBMRKcHXeNGK_iToHzEnwD4uehP_Y1IuPQ&s" alt="Dolphin's Nose, Visakhapatnam" />
