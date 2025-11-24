@@ -178,15 +178,12 @@ const Home = () => {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentFeatureSlide, setCurrentFeatureSlide] = useState(0);
-  const [currentCenterSlide, setCurrentCenterSlide] = useState(0);
   const [expandedCenter, setExpandedCenter] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   // Touch gesture states
   const [featureTouchStart, setFeatureTouchStart] = useState(0);
   const [featureTouchEnd, setFeatureTouchEnd] = useState(0);
-  const [centerTouchStart, setCenterTouchStart] = useState(0);
-  const [centerTouchEnd, setCenterTouchEnd] = useState(0);
 
   // Career calculator states
   const [selectedRole, setSelectedRole] = useState('');
@@ -829,18 +826,7 @@ We're excited to have you on this journey!
     }
   };
 
-  // Training centers 3D carousel navigation
-  const nextCenterSlide = () => {
-    setCurrentCenterSlide((prev) => (prev + 1) % 9);
-  };
 
-  const prevCenterSlide = () => {
-    setCurrentCenterSlide((prev) => (prev - 1 + 9) % 9);
-  };
-
-  const goToCenterSlide = (index) => {
-    setCurrentCenterSlide(index);
-  };
 
   const toggleCenterExpand = (centerId) => {
     setExpandedCenter(expandedCenter === centerId ? null : centerId);
@@ -872,30 +858,61 @@ We're excited to have you on this journey!
     setFeatureTouchEnd(0);
   };
 
-  // Touch swipe for stacked cards
-  const handleCenterTouchStart = (e) => {
-    setCenterTouchStart(e.targetTouches[0].clientX);
+
+  // Handle center card click - expand on first click
+  const handleCenterCardClick = (e, locationUrl) => {
+    const card = e.currentTarget;
+    const isExpanded = card.classList.contains('expanded');
+
+    if (!isExpanded) {
+      // Not expanded - expand the card
+      const cards = document.querySelectorAll('.center-card');
+      cards.forEach((c) => c.classList.remove('expanded'));
+      card.classList.add('expanded');
+    } else {
+      // Already expanded - navigate to location
+      window.open(locationUrl, '_blank');
+    }
   };
 
-  const handleCenterTouchMove = (e) => {
-    setCenterTouchEnd(e.targetTouches[0].clientX);
+  // Handle center image click - expand on first click, navigate on second click
+  const handleCenterImageClick = (e, centerIndex, locationUrl) => {
+    e.stopPropagation();
+
+    const card = e.currentTarget.closest('.center-card');
+    const isExpanded = card && card.classList.contains('expanded');
+
+    if (isExpanded) {
+      // Already expanded - navigate to location
+      window.open(locationUrl, '_blank');
+    } else {
+      // Not expanded - expand the card
+      const cards = document.querySelectorAll('.center-card');
+      cards.forEach((c) => c.classList.remove('expanded'));
+      if (card) {
+        card.classList.add('expanded');
+      }
+    }
   };
 
-  const handleCenterTouchEnd = () => {
-    if (!centerTouchStart || !centerTouchEnd) return;
-    const distance = centerTouchStart - centerTouchEnd;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
+  // Handle center city click - check if expanded, if yes navigate, if no expand first
+  const handleCenterCityClick = (e, locationUrl) => {
+    e.stopPropagation();
 
-    if (isLeftSwipe) {
-      nextCenterSlide();
-    }
-    if (isRightSwipe) {
-      prevCenterSlide();
-    }
+    const card = e.currentTarget.closest('.center-card');
+    const isExpanded = card && card.classList.contains('expanded');
 
-    setCenterTouchStart(0);
-    setCenterTouchEnd(0);
+    if (isExpanded) {
+      // Already expanded - navigate to location
+      window.open(locationUrl, '_blank');
+    } else {
+      // Not expanded - expand the card first
+      const cards = document.querySelectorAll('.center-card');
+      cards.forEach((c) => c.classList.remove('expanded'));
+      if (card) {
+        card.classList.add('expanded');
+      }
+    }
   };
 
   return (
@@ -1460,24 +1477,17 @@ We're excited to have you on this journey!
             </div>
 
             <div className="centers-slider-wrapper">
-              <button className="slider-nav-btn prev" onClick={prevCenterSlide} aria-label="Previous training center">
-                ‹
-              </button>
-
               <div
                 className="centers-grid"
                 role="list"
-                onTouchStart={handleCenterTouchStart}
-                onTouchMove={handleCenterTouchMove}
-                onTouchEnd={handleCenterTouchEnd}
               >
-              <article className="center-card" role="listitem">
-                <div className="center-image-section" onClick={() => window.open('https://maps.google.com/?q=2-56/2/19, 3rd floor, Vijaya Towers, near Meridian School, Ayyappa Society Rd, Madhapur, Hyderabad, Telangana 500081', '_blank')} style={{cursor: 'pointer'}}>
+              <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.google.com/?q=2-56/2/19, 3rd floor, Vijaya Towers, near Meridian School, Ayyappa Society Rd, Madhapur, Hyderabad, Telangana 500081')}>
+                <div className="center-image-section">
 
-                  <div className="center-icon" aria-hidden="true">
+                  <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 0, 'https://maps.google.com/?q=2-56/2/19, 3rd floor, Vijaya Towers, near Meridian School, Ayyappa Society Rd, Madhapur, Hyderabad, Telangana 500081')} style={{cursor: 'pointer'}}>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIeF25ILWHaG79wGOxa4W2D_Q_Igq1szMV0Q&s" alt="Durgam Cheruvu Cable Bridge, Hyderabad" />
                   </div>
-                  <h3 className="center-city">Hyderabad, Telangana</h3>
+                  <h3 className="center-city" onClick={(e) => handleCenterCityClick(e, 'https://maps.google.com/?q=2-56/2/19, 3rd floor, Vijaya Towers, near Meridian School, Ayyappa Society Rd, Madhapur, Hyderabad, Telangana 500081')}>Hyderabad, Telangana</h3>
                 </div>
                 <div className="center-content-section">
                   <p className="center-description">Our corporate headquarters and flagship training center equipped with world-class infrastructure and technology.</p>
@@ -1498,13 +1508,13 @@ We're excited to have you on this journey!
                 </div>
               </article>
 
-              <article className="center-card" role="listitem">
-                <div className="center-image-section" onClick={() => window.open('https://maps.app.goo.gl/tC3Rore8xfZS8S4U6', '_blank')} style={{cursor: 'pointer'}}>
+              <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/tC3Rore8xfZS8S4U6')}>
+                <div className="center-image-section">
 
-                  <div className="center-icon" aria-hidden="true">
+                  <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 1, 'https://maps.app.goo.gl/tC3Rore8xfZS8S4U6')} style={{cursor: 'pointer'}}>
                     <img src="https://images.yourstory.com/cs/wordpress/2016/07/Yourstory-Vidhana-Soudha.jpg?mode=crop&crop=faces&ar=16%3A9&format=auto&w=1920&q=75" alt="Vidhana Soudha, Bangalore" />
                   </div>
-                  <h3 className="center-city">Bangalore, Karnataka</h3>
+                  <h3 className="center-city" onClick={(e) => handleCenterCityClick(e, 'https://maps.app.goo.gl/tC3Rore8xfZS8S4U6')}>Bangalore, Karnataka</h3>
                 </div>
                 <div className="center-content-section">
                   <p className="center-description">Located in the heart of India's Silicon Valley, our Bangalore center offers cutting-edge data science and AI training programs.</p>
@@ -1525,13 +1535,13 @@ We're excited to have you on this journey!
                 </div>
               </article>
 
-              <article className="center-card" role="listitem">
-                <div className="center-image-section" onClick={() => window.open('https://maps.app.goo.gl/GEor31R9gwVENSmaA', '_blank')} style={{cursor: 'pointer'}}>
+              <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/GEor31R9gwVENSmaA')}>
+                <div className="center-image-section">
 
-                  <div className="center-icon" aria-hidden="true">
+                  <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 2, 'https://maps.app.goo.gl/GEor31R9gwVENSmaA')} style={{cursor: 'pointer'}}>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRWA4MwTRzgfOBXVF3RiQH8JgO9sIbcT-ujQ&s" alt="Valluvar Kottam, Chennai" />
                   </div>
-                  <h3 className="center-city">Nungambakkam, Chennai</h3>
+                  <h3 className="center-city" onClick={(e) => handleCenterCityClick(e, 'https://maps.app.goo.gl/GEor31R9gwVENSmaA')}>Nungambakkam, Chennai</h3>
                 </div>
                 <div className="center-content-section">
                   <p className="center-description">Our Chennai training center in Nungambakkam provides comprehensive data analytics and business intelligence courses.</p>
@@ -1552,13 +1562,13 @@ We're excited to have you on this journey!
                 </div>
               </article>
 
-              <article className="center-card" role="listitem">
-                <div className="center-image-section" onClick={() => window.open('https://maps.app.goo.gl/KCsfrQdYMvHg9nkC6', '_blank')} style={{cursor: 'pointer'}}>
+              <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/KCsfrQdYMvHg9nkC6')}>
+                <div className="center-image-section">
 
-                  <div className="center-icon" aria-hidden="true">
+                  <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 3, 'https://maps.app.goo.gl/KCsfrQdYMvHg9nkC6')} style={{cursor: 'pointer'}}>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuf5_M-4zkPWtfG7dOx46ZGRxYT72BeueyKg&s" alt="Vitthal-Rukmini Temple, Pune" />
                   </div>
-                  <h3 className="center-city">Kharadi,<br/> Pune</h3>
+                  <h3 className="center-city" onClick={(e) => handleCenterCityClick(e, 'https://maps.app.goo.gl/KCsfrQdYMvHg9nkC6')}>Kharadi,<br/> Pune</h3>
                 </div>
                 <div className="center-content-section">
                   <div className="center-details">
@@ -1578,13 +1588,13 @@ We're excited to have you on this journey!
                 </div>
               </article>
 
-              <article className="center-card" role="listitem">
-                <div className="center-image-section" onClick={() => window.open('https://maps.app.goo.gl/UQa2HFYFcHRaqkSk7', '_blank')} style={{cursor: 'pointer'}}>
+              <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/UQa2HFYFcHRaqkSk7')}>
+                <div className="center-image-section">
 
-                  <div className="center-icon" aria-hidden="true">
+                  <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 4, 'https://maps.app.goo.gl/UQa2HFYFcHRaqkSk7')} style={{cursor: 'pointer'}}>
                     <img src="https://www.shutterstock.com/image-photo/bhilai-chhattisgarh-india-oct-26-260nw-600395621.jpg" alt="Maitri Bagh, Bhilai" />
                   </div>
-                  <h3 className="center-city">Bhilai, Chhattisgarh</h3>
+                  <h3 className="center-city" onClick={(e) => handleCenterCityClick(e, 'https://maps.app.goo.gl/UQa2HFYFcHRaqkSk7')}>Bhilai, Chhattisgarh</h3>
                 </div>
                 <div className="center-content-section">
                   <div className="center-details">
@@ -1604,13 +1614,13 @@ We're excited to have you on this journey!
                 </div>
               </article>
 
-              <article className="center-card" role="listitem">
-                <div className="center-image-section" onClick={() => window.open('https://maps.app.goo.gl/3WpDihanxE8WDpP88', '_blank')} style={{cursor: 'pointer'}}>
+              <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/3WpDihanxE8WDpP88')}>
+                <div className="center-image-section">
 
-                  <div className="center-icon" aria-hidden="true">
+                  <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 5, 'https://maps.app.goo.gl/3WpDihanxE8WDpP88')} style={{cursor: 'pointer'}}>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAvoZ-XB-PJRC9F0qSQB41Vk4PEajHCwNskoR3Q53qOwiTxIj1OSvByPaV7_etP4TpcAQ&usqp=CAU" alt="Shaniwar Wada, Pune" />
                   </div>
-                  <h3 className="center-city">Kothrud,<br/> Pune</h3>
+                  <h3 className="center-city" onClick={(e) => handleCenterCityClick(e, 'https://maps.app.goo.gl/3WpDihanxE8WDpP88')}>Kothrud,<br/> Pune</h3>
                 </div>
                 <div className="center-content-section">
                   <div className="center-details">
@@ -1630,13 +1640,13 @@ We're excited to have you on this journey!
                 </div>
               </article>
 
-              <article className="center-card" role="listitem">
-                <div className="center-image-section" onClick={() => window.open('https://maps.app.goo.gl/ZUAcZMLcJtZDMYfX7', '_blank')} style={{cursor: 'pointer'}}>
+              <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/ZUAcZMLcJtZDMYfX7')}>
+                <div className="center-image-section">
 
-                  <div className="center-icon" aria-hidden="true">
+                  <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 6, 'https://maps.app.goo.gl/ZUAcZMLcJtZDMYfX7')} style={{cursor: 'pointer'}}>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8qVElYdlVqthcAlvlvWx4RguDJcviorCXHg&s" alt="Lingaraja Temple, Bhubaneswar" />
                   </div>
-                  <h3 className="center-city">Bhubaneswar, Odisha</h3>
+                  <h3 className="center-city" onClick={(e) => handleCenterCityClick(e, 'https://maps.app.goo.gl/ZUAcZMLcJtZDMYfX7')}>Bhubaneswar, Odisha</h3>
                 </div>
                 <div className="center-content-section">
                   <div className="center-details">
@@ -1656,13 +1666,13 @@ We're excited to have you on this journey!
                 </div>
               </article>
 
-              <article className="center-card" role="listitem">
-                <div className="center-image-section" onClick={() => window.open('https://maps.app.goo.gl/DpX7Ho7w4EmeCZWB9', '_blank')} style={{cursor: 'pointer'}}>
+              <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/DpX7Ho7w4EmeCZWB9')}>
+                <div className="center-image-section">
 
-                  <div className="center-icon" aria-hidden="true">
+                  <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 7, 'https://maps.app.goo.gl/DpX7Ho7w4EmeCZWB9')} style={{cursor: 'pointer'}}>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmLMV3QfF-Y0XbEsVO3Ft6orHoPZM1zjHltg&s" alt="Akshardham Temple, Delhi NCR" />
                   </div>
-                  <h3 className="center-city">Noida, Uttar Pradesh</h3>
+                  <h3 className="center-city" onClick={(e) => handleCenterCityClick(e, 'https://maps.app.goo.gl/DpX7Ho7w4EmeCZWB9')}>Noida, Uttar Pradesh</h3>
                 </div>
                 <div className="center-content-section">
                   <div className="center-details">
@@ -1682,13 +1692,13 @@ We're excited to have you on this journey!
                 </div>
               </article>
 
-              <article className="center-card" role="listitem">
-                <div className="center-image-section" onClick={() => window.open('https://maps.app.goo.gl/d2JKJkVxPcmVBZ6u7', '_blank')} style={{cursor: 'pointer'}}>
+              <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/d2JKJkVxPcmVBZ6u7')}>
+                <div className="center-image-section">
 
-                  <div className="center-icon" aria-hidden="true">
+                  <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 8, 'https://maps.app.goo.gl/d2JKJkVxPcmVBZ6u7')} style={{cursor: 'pointer'}}>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYcBMRKcHXeNGK_iToHzEnwD4uehP_Y1IuPQ&s" alt="Dolphin's Nose, Visakhapatnam" />
                   </div>
-                  <h3 className="center-city">Vizag, Andhra Pradesh</h3>
+                  <h3 className="center-city" onClick={(e) => handleCenterCityClick(e, 'https://maps.app.goo.gl/d2JKJkVxPcmVBZ6u7')}>Vizag, Andhra Pradesh</h3>
                 </div>
                 <div className="center-content-section">
                   <div className="center-details">
@@ -1707,21 +1717,6 @@ We're excited to have you on this journey!
                   </div>
                 </div>
               </article>
-              </div>
-
-              <button className="slider-nav-btn next" onClick={nextCenterSlide} aria-label="Next training center">
-                ›
-              </button>
-
-              <div className="slider-dots">
-                {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((index) => (
-                  <button
-                    key={index}
-                    className={`slider-dot ${index === currentCenterSlide ? 'active' : ''}`}
-                    onClick={() => goToCenterSlide(index)}
-                    aria-label={`Go to training center ${index + 1}`}
-                  />
-                ))}
               </div>
             </div>
 
