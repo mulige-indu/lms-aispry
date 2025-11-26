@@ -109,8 +109,8 @@
   .center-card.expanded {
     z-index: 100;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    height: auto;
-    min-height: 300px;
+    height: 320px;
+    max-height: 320px;
     width: 75vw;
     max-width: 350px;
     flex-shrink: 0;
@@ -120,6 +120,7 @@
     left: 0;
     right: 0;
     flex-direction: column;
+    overflow: hidden;
   }
 }
 
@@ -215,11 +216,12 @@
     width: 100%;
     max-width: 100%;
     min-width: auto;
-    flex: 1;
-    padding: 15px;
+    height: 170px;
+    max-height: 170px;
+    padding: 10px 15px;
     opacity: 1;
     visibility: visible;
-    transition: width 0.25s ease-out, opacity 0.15s ease-in 150ms, padding 0.25s ease-out, visibility 0s linear 0s;
+    transition: opacity 0.2s ease-in, padding 0.2s ease-out, visibility 0s linear 0s;
     pointer-events: all;
     overflow-y: auto;
     overflow-x: hidden;
@@ -233,25 +235,32 @@
   }
 
   .center-card.expanded .content-header h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+    font-size: 1rem;
+    margin-bottom: 8px;
     color: #1a1a1a;
     font-weight: 700;
   }
 
   .center-card.expanded .center-badge {
-    font-size: 0.75rem;
-    padding: 6px 16px;
+    font-size: 0.7rem;
+    padding: 4px 12px;
+    margin-bottom: 8px;
   }
 
   .center-card.expanded .center-description {
-    font-size: 0.85rem;
-    line-height: 1.5;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-bottom: 8px;
   }
 
   .center-card.expanded .detail-item {
-    font-size: 0.8rem;
-    padding: 4px 6px;
+    font-size: 0.75rem;
+    padding: 3px 5px;
+  }
+
+  .center-card.expanded .center-details {
+    padding: 8px 0;
+    gap: 6px;
   }
 }
 
