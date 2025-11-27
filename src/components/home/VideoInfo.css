@@ -207,24 +207,61 @@ body.dark-theme .booking-aside {
 /* Large Desktop and Tablets (max-width: 1024px) */
 @media (max-width: 1024px) {
   .video-booking-section {
-    flex-direction: column !important;
-    padding: 2rem 1.5rem !important;
-  }
-
-  .video-aside,
-  .booking-aside {
-    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    padding: 0.75rem 2rem !important;
+    gap: 1rem !important;
     max-width: 100% !important;
   }
 
+  .video-aside {
+    flex: 1.5 !important;
+    padding: 1rem !important;
+    padding-left: 1.5rem !important;
+    margin-left: 1rem !important;
+    min-height: 430px !important;
+  }
+
   .booking-aside {
-    max-height: 400px !important;
+    flex: 0.8 !important;
+    padding: 0.5rem !important;
+    min-height: 430px !important;
+    max-height: 430px !important;
     overflow-y: auto !important;
   }
 
   .video-container {
     width: 100% !important;
     margin-bottom: 0;
+    max-height: 200px !important;
+  }
+
+  .video-info {
+    margin-top: 1rem;
+  }
+
+  .video-info h3 {
+    margin: 0 0 1rem 0;
+  }
+
+  .course-features {
+    margin-top: 0.5rem;
+  }
+
+  .features-list li {
+    padding: 0 0 0.5rem 0 !important;
+    font-size: 0.65rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .course-video {
+    max-height: 220px !important;
+    height: auto !important;
+    object-fit: cover;
+  }
+
+  .form-highlights {
+    display: none !important;
   }
 }
 
@@ -695,42 +732,39 @@ body.dark-theme .booking-aside {
 @media (max-width: 1024px) {
   .student-form {
     width: 100%;
-    max-height: 280px !important;
-    overflow-y: auto !important;
+    max-height: none !important;
+    overflow-y: visible !important;
   }
 
   .form-highlights {
     display: none !important;
   }
 
-  .form-highlight-item {
-    margin-bottom: 0.25rem !important;
-  }
-
-  .form-highlight-item:last-child {
-    margin-bottom: 0 !important;
-  }
-
   .booking-form-container {
-    padding: 1.2rem !important;
-    width: 95% !important;
-    max-width: 400px !important;
-    max-height: 350px !important;
-    margin: 0 auto !important;
-    overflow-y: auto !important;
+    padding: 1rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    margin: 0 !important;
+    overflow-y: visible !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
   }
 
   .booking-heading {
-    font-size: 1rem !important;
-    font-weight: 500 !important;
-    margin-bottom: 0.35rem !important;
-    line-height: 1.15 !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.8rem !important;
+    line-height: 1.3 !important;
     padding: 0 !important;
+    text-align: center !important;
   }
 
   .form-header {
-    margin-bottom: 0.35rem !important;
+    margin-bottom: 0.8rem !important;
     padding: 0 !important;
+    border-bottom: none !important;
   }
 
   .form-header h2,
@@ -740,8 +774,9 @@ body.dark-theme .booking-aside {
   }
 
   .form-label {
-    font-size: 0.8rem !important;
-    font-weight: 400 !important;
+    font-size: 0.75rem !important;
+    font-weight: 500 !important;
+    margin-bottom: 0.3rem !important;
   }
 
   .form-input,
@@ -750,23 +785,56 @@ body.dark-theme .booking-aside {
   .form-group textarea {
     font-size: 0.85rem !important;
     font-weight: 400 !important;
-    padding: 0.5rem !important;
+    padding: 0.6rem !important;
+  }
+
+  .form-input.modern,
+  .form-group input.modern {
+    padding: 10px 12px !important;
+    font-size: 0.85rem !important;
+    width: 100% !important;
+    min-height: 38px !important;
+    max-height: none !important;
+  }
+
+  .form-group {
+    margin-bottom: 0.8rem !important;
   }
 
   .submit-btn {
-    font-size: 0.85rem !important;
+    font-size: 0.75rem !important;
     font-weight: 500 !important;
-    padding: 0.6rem 1rem !important;
+    padding: 0.5rem 1rem !important;
+    margin-top: 0.5rem !important;
   }
 
-  .form-highlight-item {
-    font-size: 0.8rem !important;
+  .submit-btn.modern,
+  button.submit-btn.modern {
+    padding: 8px 16px !important;
+    font-size: 0.75rem !important;
+    font-weight: 500 !important;
+    min-height: 32px !important;
+    max-height: 36px !important;
+    height: auto !important;
+  }
+
+  .submit-btn.modern h2,
+  button.submit-btn.modern h2 {
+    font-size: 0.7rem !important;
     font-weight: 400 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .guarantee-text {
-    font-size: 0.8rem !important;
+    font-size: 0.75rem !important;
     font-weight: 400 !important;
+    margin-top: 0.8rem !important;
+  }
+
+  .form-footer {
+    margin-top: auto !important;
+    padding-top: 0.5rem !important;
   }
 }
 
