@@ -104,6 +104,22 @@
 }
 
 /* Responsive */
+/* Tablet view (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .alumni-section {
+    padding: 20px 20px 30px 20px !important;
+    margin: 0 !important;
+  }
+
+  .alumni-header {
+    margin-bottom: 30px !important;
+  }
+
+  .logo-row {
+    margin-bottom: 20px !important;
+  }
+}
+
 @media (max-width: 768px) {
   .alumni-section {
     padding: 0;

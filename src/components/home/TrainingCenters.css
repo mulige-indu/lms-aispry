@@ -701,6 +701,15 @@ body.dark-theme .centers-cta p {
 }
 
 /* Below 1024px - Using same desktop behavior */
+@media (max-width: 1024px) {
+  .centers-grid {
+    padding: 0 !important;
+  }
+
+  .centers-header {
+    margin-bottom: 15px !important;
+  }
+}
 
 /* Mobile (768px and below) - Using same desktop behavior */
 

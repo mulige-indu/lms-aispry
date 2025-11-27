@@ -156,9 +156,24 @@ body.dark-theme .feature-card:nth-child(3n) {
 
 /* Responsive design - Convert to Slider on Mobile */
 @media (max-width: 1024px) {
+  .features-section,
+  section.features-section {
+    padding: 0 0 0 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin: 0 !important;
+  }
+
+  .features-container {
+    padding: 0 !important;
+  }
+
   .features-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 1.5rem !important;
+    margin-top: 0 !important;
   }
 }
 
