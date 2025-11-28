@@ -884,7 +884,7 @@
     text-align: left !important;
     padding: 6px 8px !important;
     margin-bottom: 6px !important;
-    min-height: 45px !important;
+    min-height: 65px !important;
     height: auto !important;
   }
 
@@ -908,13 +908,13 @@
     min-width: 0 !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 2px !important;
+    gap: 1px !important;
   }
 
   .track-info h4 {
-    font-size: 0.5rem !important;
+    font-size: 0.4rem !important;
     margin: 0 !important;
-    line-height: 1.2 !important;
+    line-height: 1.1 !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
