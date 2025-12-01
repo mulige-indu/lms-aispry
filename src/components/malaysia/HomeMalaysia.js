@@ -7,7 +7,7 @@ import './home-courses.css';
 import '../Browse Courses/CourseSlider.css';
 import './leadership-section.css';
 import './TrainingCenters.css';
-import './AlumniSection.css';
+import './AlumniSectionMalaysia.css';
 import './main-content.css';
 // No longer using FontAwesome icons - all replaced with custom SVG icons
 
@@ -167,7 +167,7 @@ const YouTubeIcon = () => (
   </svg>
 );
 
-const Home = () => {
+const HomeMalaysia = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -190,15 +190,15 @@ const Home = () => {
   const [selectedRole, setSelectedRole] = useState('');
   const [selectedExperience, setSelectedExperience] = useState('0-2 Years');
   const [salaryData, setSalaryData] = useState({
-    current: '₹3-5 LPA',
-    projected: '₹8-12 LPA',
+    current: 'RM3-5 K/year',
+    projected: 'RM8-12 K/year',
     growth: '+180%'
   });
   const [careerTracks, setCareerTracks] = useState([
     {
       icon: <DataScienceIcon />,
       title: 'Data Analyst',
-      salary: '₹4-8 LPA',
+      salary: 'RM4-8 K/year',
       timeline: '3-4 Months',
       skills: ['Python', 'SQL', 'Tableau'],
       demand: 'High Demand'
@@ -206,7 +206,7 @@ const Home = () => {
     {
       icon: <AIIcon />,
       title: 'Data Scientist',
-      salary: '₹8-15 LPA',
+      salary: 'RM8-15 K/year',
       timeline: '6-8 Months',
       skills: ['Machine Learning', 'Python', 'Statistics'],
       demand: 'Very High'
@@ -214,7 +214,7 @@ const Home = () => {
     {
       icon: <CloudIcon />,
       title: 'ML Engineer',
-      salary: '₹12-25 LPA',
+      salary: 'RM12-25 K/year',
       timeline: '8-10 Months',
       skills: ['Deep Learning', 'MLOps', 'Cloud'],
       demand: 'Extreme'
@@ -435,39 +435,39 @@ const Home = () => {
     // Realistic salary data based on Indian market (2024-2025)
     const salaryMatrix = {
       'Student/Fresher': {
-        '0-2 Years': { current: '₹2.5-4 LPA', projected: '₹6-9 LPA', growth: '+140%' },
-        '3-5 Years': { current: '₹4-6 LPA', projected: '₹9-14 LPA', growth: '+133%' },
-        '5+ Years': { current: '₹6-9 LPA', projected: '₹14-20 LPA', growth: '+140%' }
+        '0-2 Years': { current: 'RM2.5-4 K/year', projected: 'RM6-9 K/year', growth: '+140%' },
+        '3-5 Years': { current: 'RM4-6 K/year', projected: 'RM9-14 K/year', growth: '+133%' },
+        '5+ Years': { current: 'RM6-9 K/year', projected: 'RM14-20 K/year', growth: '+140%' }
       },
       'Software Developer': {
-        '0-2 Years': { current: '₹4-7 LPA', projected: '₹8-12 LPA', growth: '+80%' },
-        '3-5 Years': { current: '₹7-12 LPA', projected: '₹15-22 LPA', growth: '+100%' },
-        '5+ Years': { current: '₹12-18 LPA', projected: '₹20-30 LPA', growth: '+75%' }
+        '0-2 Years': { current: 'RM4-7 K/year', projected: 'RM8-12 K/year', growth: '+80%' },
+        '3-5 Years': { current: 'RM7-12 K/year', projected: 'RM15-22 K/year', growth: '+100%' },
+        '5+ Years': { current: 'RM12-18 K/year', projected: 'RM20-30 K/year', growth: '+75%' }
       },
       'Business Analyst': {
-        '0-2 Years': { current: '₹3.5-6 LPA', projected: '₹7-11 LPA', growth: '+90%' },
-        '3-5 Years': { current: '₹6-10 LPA', projected: '₹12-18 LPA', growth: '+85%' },
-        '5+ Years': { current: '₹10-15 LPA', projected: '₹18-25 LPA', growth: '+75%' }
+        '0-2 Years': { current: 'RM3.5-6 K/year', projected: 'RM7-11 K/year', growth: '+90%' },
+        '3-5 Years': { current: 'RM6-10 K/year', projected: 'RM12-18 K/year', growth: '+85%' },
+        '5+ Years': { current: 'RM10-15 K/year', projected: 'RM18-25 K/year', growth: '+75%' }
       },
       'Marketing Executive': {
-        '0-2 Years': { current: '₹3-5 LPA', projected: '₹8-12 LPA', growth: '+150%' },
-        '3-5 Years': { current: '₹5-8 LPA', projected: '₹12-18 LPA', growth: '+133%' },
-        '5+ Years': { current: '₹8-12 LPA', projected: '₹16-24 LPA', growth: '+110%' }
+        '0-2 Years': { current: 'RM3-5 K/year', projected: 'RM8-12 K/year', growth: '+150%' },
+        '3-5 Years': { current: 'RM5-8 K/year', projected: 'RM12-18 K/year', growth: '+133%' },
+        '5+ Years': { current: 'RM8-12 K/year', projected: 'RM16-24 K/year', growth: '+110%' }
       },
       'Sales Representative': {
-        '0-2 Years': { current: '₹2.5-5 LPA', projected: '₹8-13 LPA', growth: '+160%' },
-        '3-5 Years': { current: '₹5-9 LPA', projected: '₹13-20 LPA', growth: '+133%' },
-        '5+ Years': { current: '₹9-14 LPA', projected: '₹18-28 LPA', growth: '+110%' }
+        '0-2 Years': { current: 'RM2.5-5 K/year', projected: 'RM8-13 K/year', growth: '+160%' },
+        '3-5 Years': { current: 'RM5-9 K/year', projected: 'RM13-20 K/year', growth: '+133%' },
+        '5+ Years': { current: 'RM9-14 K/year', projected: 'RM18-28 K/year', growth: '+110%' }
       },
       'Teacher': {
-        '0-2 Years': { current: '₹2.5-4 LPA', projected: '₹7-11 LPA', growth: '+170%' },
-        '3-5 Years': { current: '₹4-6 LPA', projected: '₹11-16 LPA', growth: '+150%' },
-        '5+ Years': { current: '₹6-9 LPA', projected: '₹16-22 LPA', growth: '+140%' }
+        '0-2 Years': { current: 'RM2.5-4 K/year', projected: 'RM7-11 K/year', growth: '+170%' },
+        '3-5 Years': { current: 'RM4-6 K/year', projected: 'RM11-16 K/year', growth: '+150%' },
+        '5+ Years': { current: 'RM6-9 K/year', projected: 'RM16-22 K/year', growth: '+140%' }
       },
       'Other': {
-        '0-2 Years': { current: '₹3-5 LPA', projected: '₹8-12 LPA', growth: '+150%' },
-        '3-5 Years': { current: '₹5-9 LPA', projected: '₹12-18 LPA', growth: '+120%' },
-        '5+ Years': { current: '₹9-14 LPA', projected: '₹18-26 LPA', growth: '+100%' }
+        '0-2 Years': { current: 'RM3-5 K/year', projected: 'RM8-12 K/year', growth: '+150%' },
+        '3-5 Years': { current: 'RM5-9 K/year', projected: 'RM12-18 K/year', growth: '+120%' },
+        '5+ Years': { current: 'RM9-14 K/year', projected: 'RM18-26 K/year', growth: '+100%' }
       }
     };
 
@@ -477,7 +477,7 @@ const Home = () => {
         {
           icon: <DataScienceIcon />,
           title: 'Data Analyst',
-          salary: '₹4-8 LPA',
+          salary: 'RM4-8 K/year',
           timeline: '3-4 Months',
           skills: ['Excel', 'SQL', 'Power BI'],
           demand: 'High Demand'
@@ -485,7 +485,7 @@ const Home = () => {
         {
           icon: <PythonIcon />,
           title: 'Python Developer',
-          salary: '₹5-10 LPA',
+          salary: 'RM5-10 K/year',
           timeline: '4-5 Months',
           skills: ['Python', 'Django', 'APIs'],
           demand: 'Very High'
@@ -493,7 +493,7 @@ const Home = () => {
         {
           icon: <BusinessIcon />,
           title: 'Business Analyst',
-          salary: '₹6-11 LPA',
+          salary: 'RM6-11 K/year',
           timeline: '3-4 Months',
           skills: ['Analytics', 'SQL', 'Tableau'],
           demand: 'High Demand'
@@ -503,7 +503,7 @@ const Home = () => {
         {
           icon: <AIIcon />,
           title: 'Data Scientist',
-          salary: '₹10-18 LPA',
+          salary: 'RM10-18 K/year',
           timeline: '5-6 Months',
           skills: ['ML', 'Python', 'Statistics'],
           demand: 'Very High'
@@ -511,7 +511,7 @@ const Home = () => {
         {
           icon: <CloudIcon />,
           title: 'ML Engineer',
-          salary: '₹15-28 LPA',
+          salary: 'RM15-28 K/year',
           timeline: '6-8 Months',
           skills: ['Deep Learning', 'TensorFlow', 'Cloud'],
           demand: 'Extreme'
@@ -519,7 +519,7 @@ const Home = () => {
         {
           icon: <AIIcon />,
           title: 'AI Engineer',
-          salary: '₹18-35 LPA',
+          salary: 'RM18-35 K/year',
           timeline: '8-10 Months',
           skills: ['NLP', 'Computer Vision', 'LLMs'],
           demand: 'Extreme'
@@ -529,7 +529,7 @@ const Home = () => {
         {
           icon: <DataScienceIcon />,
           title: 'Data Analyst',
-          salary: '₹6-12 LPA',
+          salary: 'RM6-12 K/year',
           timeline: '3-4 Months',
           skills: ['Python', 'SQL', 'Tableau'],
           demand: 'High Demand'
@@ -537,7 +537,7 @@ const Home = () => {
         {
           icon: <BusinessIcon />,
           title: 'Business Intelligence Analyst',
-          salary: '₹8-15 LPA',
+          salary: 'RM8-15 K/year',
           timeline: '4-5 Months',
           skills: ['Power BI', 'SQL', 'Data Modeling'],
           demand: 'Very High'
@@ -545,7 +545,7 @@ const Home = () => {
         {
           icon: <BusinessIcon />,
           title: 'Analytics Manager',
-          salary: '₹12-22 LPA',
+          salary: 'RM12-22 K/year',
           timeline: '5-6 Months',
           skills: ['Strategy', 'ML', 'Leadership'],
           demand: 'High Demand'
@@ -555,7 +555,7 @@ const Home = () => {
         {
           icon: <DataScienceIcon />,
           title: 'Marketing Data Analyst',
-          salary: '₹6-12 LPA',
+          salary: 'RM6-12 K/year',
           timeline: '3-4 Months',
           skills: ['Analytics', 'SQL', 'Google Analytics'],
           demand: 'High Demand'
@@ -563,7 +563,7 @@ const Home = () => {
         {
           icon: <RocketIcon />,
           title: 'Growth Analyst',
-          salary: '₹8-16 LPA',
+          salary: 'RM8-16 K/year',
           timeline: '4-5 Months',
           skills: ['Python', 'A/B Testing', 'SQL'],
           demand: 'Very High'
@@ -571,7 +571,7 @@ const Home = () => {
         {
           icon: <AIIcon />,
           title: 'Marketing Science Analyst',
-          salary: '₹12-20 LPA',
+          salary: 'RM12-20 K/year',
           timeline: '5-6 Months',
           skills: ['ML', 'Statistics', 'Marketing'],
           demand: 'Very High'
@@ -581,7 +581,7 @@ const Home = () => {
         {
           icon: <DataScienceIcon />,
           title: 'Sales Data Analyst',
-          salary: '₹6-13 LPA',
+          salary: 'RM6-13 K/year',
           timeline: '3-4 Months',
           skills: ['Excel', 'SQL', 'Salesforce'],
           demand: 'High Demand'
@@ -589,7 +589,7 @@ const Home = () => {
         {
           icon: <BusinessIcon />,
           title: 'Business Analyst',
-          salary: '₹8-16 LPA',
+          salary: 'RM8-16 K/year',
           timeline: '4-5 Months',
           skills: ['Analytics', 'CRM', 'Forecasting'],
           demand: 'Very High'
@@ -597,7 +597,7 @@ const Home = () => {
         {
           icon: <DataScienceIcon />,
           title: 'Sales Intelligence Analyst',
-          salary: '₹12-22 LPA',
+          salary: 'RM12-22 K/year',
           timeline: '5-6 Months',
           skills: ['ML', 'Predictive Analytics', 'Python'],
           demand: 'Very High'
@@ -607,7 +607,7 @@ const Home = () => {
         {
           icon: <DataScienceIcon />,
           title: 'Data Analyst',
-          salary: '₹5-10 LPA',
+          salary: 'RM5-10 K/year',
           timeline: '3-4 Months',
           skills: ['Python', 'SQL', 'Visualization'],
           demand: 'High Demand'
@@ -615,7 +615,7 @@ const Home = () => {
         {
           icon: <AIIcon />,
           title: 'EdTech Data Scientist',
-          salary: '₹8-15 LPA',
+          salary: 'RM8-15 K/year',
           timeline: '5-6 Months',
           skills: ['ML', 'Learning Analytics', 'Python'],
           demand: 'Very High'
@@ -623,7 +623,7 @@ const Home = () => {
         {
           icon: <BookIcon />,
           title: 'Technical Content Creator',
-          salary: '₹6-12 LPA',
+          salary: 'RM6-12 K/year',
           timeline: '3-4 Months',
           skills: ['Programming', 'Teaching', 'Content'],
           demand: 'High Demand'
@@ -633,7 +633,7 @@ const Home = () => {
         {
           icon: <DataScienceIcon />,
           title: 'Data Analyst',
-          salary: '₹5-10 LPA',
+          salary: 'RM5-10 K/year',
           timeline: '3-4 Months',
           skills: ['Python', 'SQL', 'Excel'],
           demand: 'High Demand'
@@ -641,7 +641,7 @@ const Home = () => {
         {
           icon: <AIIcon />,
           title: 'Data Scientist',
-          salary: '₹10-18 LPA',
+          salary: 'RM10-18 K/year',
           timeline: '6-8 Months',
           skills: ['ML', 'Statistics', 'Python'],
           demand: 'Very High'
@@ -649,7 +649,7 @@ const Home = () => {
         {
           icon: <BusinessIcon />,
           title: 'Business Analyst',
-          salary: '₹7-13 LPA',
+          salary: 'RM7-13 K/year',
           timeline: '4-5 Months',
           skills: ['Analytics', 'SQL', 'Business'],
           demand: 'High Demand'
@@ -1338,11 +1338,13 @@ We're excited to have you on this journey!
             </div>
 
             <div className="testimonial-3d-slider">
-              <button className="slider-3d-nav prev" onClick={() => setActiveTestimonial(prev => prev === 0 ? 9 : prev - 1)} aria-label="Previous">‹</button>
+              <button className="slider-3d-nav prev" onClick={() => setActiveTestimonial(prev => prev === 0 ? 11 : prev - 1)} aria-label="Previous">‹</button>
 
               <div className="slider-3d-container">
                 <div className="slider-3d-track">
                   {[
+                    { name: "Yi Xian", role: "Data Scientist", img: "https://360digitmg.com/uploads/success_stories/imaage-11.png", linkedin: "https://www.youtube.com/live/pSUKRbhl4I4", text: "I still remember going through websites for the Data Scientist course and reading reviews. That's when I finally found 360DigiTMG. Today, I will consider 360DigiTMG as the best one because it has offered me way more than any other training institute can do: Incredible curriculum, instructors, mentorship, and most job search skills and interviews best practices. I strongly recommend the Data Science program at 360DigiTMG to anyone looking for a Data Scientist/Analyst role." },
+                    { name: "Ben Balachandran", role: "Power BI Analyst, Emirates Dubai", img: "https://360digitmg.com/uploads/success_stories/Blocks-2-05.png", linkedin: "https://www.youtube.com/watch?v=HYZ7DdrtRwQ", text: "When I decided to transition from a 13-year career as a flight attendant to data science during the COVID-19 pandemic, 360DigiTMG became my turning point. Their curriculum focused on Python and R, laid the foundation I needed. The mentorship and practical experience were invaluable. I'm now proud to have successfully transitioned into the data science field. I highly recommend 360DigiTMG to anyone looking to make a similar career shift." },
                     { name: "Nikhil Miriyala", role: "Senior Data Scientist, HCL Technologies", img: "https://360digit.b-cdn.net/assets/admin/ckfinder/userfiles/images/success-story-student-images/Nikhil%20Miriyala-02.png", linkedin: "https://www.linkedin.com/in/miryala-nikhil/", text: "The practical training and hands-on projects at 360DigiTMG made complex concepts easy to grasp. Mentor support and placement assistance enhanced my learning, setting me up for a successful data science career." },
                     { name: "Sowjanya V", role: "Senior Data Scientist, Capgemini", img: "https://360digit.b-cdn.net/assets/admin/ckfinder/userfiles/images/success-story-student-images/Sowji-02.png", linkedin: "https://www.linkedin.com/in/sowjanya-v-47b3801a1/", text: "The training at 360DigiTMG simplified complex topics, and the mentors were supportive. Hands-on projects gave real-world experience, boosting my confidence. Placement assistance helped me land a job. A great journey!" },
                     { name: "Prakruthi", role: "Data Scientist, NVIDIA", img: "https://360digit.b-cdn.net/assets/admin/ckfinder/userfiles/images/success-story-student-images3/Prakruthi-02.png", linkedin: "https://www.linkedin.com/in/prakruthi-b-gowda-b3aaa9160/", text: "Learning was impactful with practical training at 360DigiTMG. Mentors provided great support, and hands-on projects simplified complex topics. Placement assistance was invaluable in my job search. Exactly what I needed!" },
@@ -1355,8 +1357,8 @@ We're excited to have you on this journey!
                     { name: "Momin", role: "Assistant Manager - Data Science & IT, Volvo", img: "https://360digit.b-cdn.net/assets/admin/ckfinder/userfiles/images/success-story-student-images5/Momin%20Patel-02.png", linkedin: "https://www.linkedin.com/in/momin-patel-085a7a141/", text: "Trainers made complex topics approachable, and real-world projects enhanced my understanding. The focus on individual growth and self-paced learning had a lasting impact, providing skills that will stay with me forever." }
                   ].map((testimonial, index) => {
                     let position = index - activeTestimonial;
-                    if (position < -5) position += 10;
-                    if (position > 5) position -= 10;
+                    if (position < -6) position += 12;
+                    if (position > 6) position -= 12;
 
                     return (
                       <div
@@ -1383,10 +1385,10 @@ We're excited to have you on this journey!
                 </div>
               </div>
 
-              <button className="slider-3d-nav next" onClick={() => setActiveTestimonial(prev => prev === 9 ? 0 : prev + 1)} aria-label="Next">›</button>
+              <button className="slider-3d-nav next" onClick={() => setActiveTestimonial(prev => prev === 11 ? 0 : prev + 1)} aria-label="Next">›</button>
 
               <div className="slider-3d-dots">
-                {[...Array(10)].map((_, index) => (
+                {[...Array(12)].map((_, index) => (
                   <button key={index} className={`dot-3d ${index === activeTestimonial ? 'active' : ''}`} onClick={() => setActiveTestimonial(index)} aria-label={`Go to slide ${index + 1}`}></button>
                 ))}
               </div>
@@ -1394,98 +1396,80 @@ We're excited to have you on this journey!
           </div>
         </section>
 
-        {/* Prestigious Corporate Connections Section */}
+        {/* Prestigious Corporate Connections Section - Malaysia */}
         <section className="corporate-section">
-          <div className="corporate-wrapper">
-            <h2 className="corporate-heading">Companies That Trust Us</h2>
-            <p className="corporate-subtext">Our corporate partners across the globe</p>
+          <div className="container">
+            <h2 className="corporate-heading" style={{textAlign: 'center', marginBottom: '30px'}}>Companies That Trust Us</h2>
+            <div className="prestco-slider-wrapper">
+              <div className="prestco-slider">
+                <div className="prestco-box">
+                  <div className="media">
+                    <div className="prest-c" style={{borderRadius: '0', width: '90px', height: '80px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                      <img alt="Herbalife" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/herbalife.png" style={{width: '100%', height: 'auto', objectFit: 'contain'}} />
+                    </div>
+                    <div className="media-body">
+                      <h5>Ong Peik Chen</h5>
+                      <h6>Director, Herbalife</h6>
+                      <p>I had the privilege of collaborating with Lavanya and her team in 2023. Their professionalism and attentive approach to our specific requirements were commendable. I am sincerely grateful for their flexibility in tailoring the content for our 20+ participants. The virtual training delivered was exceptional, and the trainers' teaching style resonated well with participants, earning widespread appreciation.</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="prestco-box">
+                  <div className="media">
+                    <div className="prest-c" style={{borderRadius: '8px'}}>
+                      <img alt="USIM" className="img-responsive" src="https://logo.clearbit.com/usim.edu.my" style={{width: '100%', height: '100%', objectFit: 'contain', background: '#fff', padding: '10px', borderRadius: '8px'}} />
+                    </div>
+                    <div className="media-body">
+                      <h5>Dr. Mazlynda Md Yusuf</h5>
+                      <h6>Assoc. Prof. Universiti Sains Islam Malaysia (USIM)</h6>
+                      <p>First of all, thank you for arranging such a successful and worthy training program for our students at USIM. We are grateful that the program runs smoothly and that the students enjoyed and have gained valuable knowledge and analytical skills in Data Science using Python and R. The students were very impressed and satisfied with the whole programme.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-            <div className="corporate-scroll-container">
+            <div className="anprelogs desktop-view">
               {/* Row 1 - Scrolls Left */}
-              <div className="corporate-row scroll-left">
-                <div className="corporate-track">
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumn-kpmg.png" alt="KPMG" />
-                  </div>
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumn-deloitte.png" alt="Deloitte" />
-                  </div>
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumn-ey.png" alt="EY" />
-                  </div>
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumn-pwc.png" alt="PWC" />
-                  </div>
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumn-google.png" alt="Google" />
-                  </div>
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumni-amazon.png" alt="Amazon" />
-                  </div>
+              <div className="logo-row scroll-left">
+                <div className="logo-track">
+                  <div className="anprlog"><img alt="Maybank" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-maybank.png" /></div>
+                  <div className="anprlog"><img alt="RHB" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-rhb.png" /></div>
+                  <div className="anprlog"><img alt="Bank of America" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-bankamerica.png" /></div>
+                  <div className="anprlog"><img alt="Malaysia" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-malaysia.png" /></div>
+                  <div className="anprlog"><img alt="UNIMAS" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-unimas.png" /></div>
+                  <div className="anprlog"><img alt="Affin" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-affin.png" /></div>
                   {/* Duplicate for seamless loop */}
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumn-kpmg.png" alt="KPMG" />
-                  </div>
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumn-deloitte.png" alt="Deloitte" />
-                  </div>
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumn-ey.png" alt="EY" />
-                  </div>
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumn-pwc.png" alt="PWC" />
-                  </div>
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumn-google.png" alt="Google" />
-                  </div>
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumni-amazon.png" alt="Amazon" />
-                  </div>
+                  <div className="anprlog"><img alt="Maybank" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-maybank.png" /></div>
+                  <div className="anprlog"><img alt="RHB" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-rhb.png" /></div>
+                  <div className="anprlog"><img alt="Bank of America" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-bankamerica.png" /></div>
+                  <div className="anprlog"><img alt="Malaysia" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-malaysia.png" /></div>
+                  <div className="anprlog"><img alt="UNIMAS" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-unimas.png" /></div>
+                  <div className="anprlog"><img alt="Affin" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-affin.png" /></div>
                 </div>
               </div>
-
               {/* Row 2 - Scrolls Right */}
-              <div className="corporate-row scroll-right">
-                <div className="corporate-track">
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumn-meta.png" alt="Meta" />
-                  </div>
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumn-walmart.png" alt="Walmart" />
-                  </div>
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumn-capgemini.png" alt="Capgemini" />
-                  </div>
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumn-accenture.png" alt="Accenture" />
-                  </div>
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumn-infosys.png" alt="Infosys" />
-                  </div>
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumn-wipro.png" alt="Wipro" />
-                  </div>
+              <div className="logo-row scroll-right">
+                <div className="logo-track">
+                  <div className="anprlog"><img alt="Korean" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-ksrean.png" /></div>
+                  <div className="anprlog"><img alt="Medtronic" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-medtr.png" /></div>
+                  <div className="anprlog"><img alt="Hong Leong" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-hong.png" /></div>
+                  <div className="anprlog"><img alt="LTI" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-lti.png" /></div>
+                  <div className="anprlog"><img alt="Mindtree" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-mindt.png" /></div>
+                  <div className="anprlog"><img alt="Air Asia" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-air.png" /></div>
                   {/* Duplicate for seamless loop */}
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumn-meta.png" alt="Meta" />
-                  </div>
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumn-walmart.png" alt="Walmart" />
-                  </div>
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumn-capgemini.png" alt="Capgemini" />
-                  </div>
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumn-accenture.png" alt="Accenture" />
-                  </div>
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumn-infosys.png" alt="Infosys" />
-                  </div>
-                  <div className="corporate-logo-card">
-                    <img src="https://360digit.b-cdn.net/assets/img/new-design/alumn-wipro.png" alt="Wipro" />
-                  </div>
+                  <div className="anprlog"><img alt="Korean" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-ksrean.png" /></div>
+                  <div className="anprlog"><img alt="Medtronic" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-medtr.png" /></div>
+                  <div className="anprlog"><img alt="Hong Leong" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-hong.png" /></div>
+                  <div className="anprlog"><img alt="LTI" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-lti.png" /></div>
+                  <div className="anprlog"><img alt="Mindtree" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-mindt.png" /></div>
+                  <div className="anprlog"><img alt="Air Asia" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/pre-air.png" /></div>
                 </div>
               </div>
+            </div>
+
+            <div className="mobile-view">
+              <img alt="Corporate Partners" className="img-responsive" src="https://360digit.b-cdn.net/assets/img/new-design/anprgolgd.png" />
             </div>
           </div>
         </section>
@@ -1576,246 +1560,36 @@ We're excited to have you on this journey!
           <div className="centers-container">
             <div className="centers-header">
               <h2 className="section-heading centers-title">Our Training Centers</h2>
-              <p className="centers-subtitle">World-class facilities across India's leading tech hubs with state-of-the-art infrastructure</p>
+              <p className="centers-subtitle">World-class facilities in Malaysia with state-of-the-art infrastructure</p>
             </div>
 
             <div className="centers-slider-wrapper">
               <div
-                className="centers-grid"
+                className="centers-grid single-center"
                 role="list"
               >
-              <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.google.com/?q=2-56/2/19, 3rd floor, Vijaya Towers, near Meridian School, Ayyappa Society Rd, Madhapur, Hyderabad, Telangana 500081')}>
+              <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/L52KHDjYAbxBYRYAA')}>
                 <div className="center-image-section" onClick={handleImageSectionClick}>
 
-                  <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 0, 'https://maps.google.com/?q=2-56/2/19, 3rd floor, Vijaya Towers, near Meridian School, Ayyappa Society Rd, Madhapur, Hyderabad, Telangana 500081')} style={{cursor: 'pointer'}}>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIeF25ILWHaG79wGOxa4W2D_Q_Igq1szMV0Q&s" alt="Durgam Cheruvu Cable Bridge, Hyderabad" />
+                  <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 0, 'https://maps.app.goo.gl/L52KHDjYAbxBYRYAA')} style={{cursor: 'pointer'}}>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ue2YDFaVWlq3AXtsrejRW2HrrsqcSBCQZA&s" alt="Petronas Towers, Kuala Lumpur" />
                   </div>
-                  <h3 className="center-city" onClick={(e) => handleCenterCityClick(e, 'https://maps.google.com/?q=2-56/2/19, 3rd floor, Vijaya Towers, near Meridian School, Ayyappa Society Rd, Madhapur, Hyderabad, Telangana 500081')}>Hyderabad, Telangana</h3>
+                  <h3 className="center-city" onClick={(e) => handleCenterCityClick(e, 'https://maps.google.com/?q=Level+16,+1+Sentral,+Jalan+Stesen+Sentral+5,+KL+Sentral,+Kuala+Lumpur,+Malaysia')}>Kuala Lumpur, Malaysia</h3>
                 </div>
                 <div className="center-content-section">
-                  <p className="center-description">Our corporate headquarters and flagship training center equipped with world-class infrastructure and technology.</p>
+                  <p className="center-description">360DigiTMG SDN BHD (1265527-M) - Our Malaysia headquarters offering world-class data science and AI training programs.</p>
                   <div className="center-details">
                     <div className="detail-item">
                       <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
-                      <span>2-56/2/19, 3rd floor, Vijaya Towers, near Meridian School, Ayyappa Society Rd, Madhapur, Hyderabad, Telangana 500081</span>
+                      <span>Level 16, 1 Sentral, Jalan Stesen Sentral 5, KL Sentral, Kuala Lumpur, Malaysia</span>
                     </div>
                     <div className="detail-item">
                       <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
-                      <span><a href="tel:1800212654321">1800-212-654321</a></span>
+                      <span><a href="tel:+60193831378">+60 19-383 1378</a></span>
                     </div>
                     <div className="detail-item">
                       <img src="https://img.icons8.com/fluency/20/email.png" alt="" aria-hidden="true" />
-                      <span><a href="mailto:franchise@360digitmg.com">franchise@360digitmg.com</a></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/tC3Rore8xfZS8S4U6')}>
-                <div className="center-image-section" onClick={handleImageSectionClick}>
-
-                  <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 1, 'https://maps.app.goo.gl/tC3Rore8xfZS8S4U6')} style={{cursor: 'pointer'}}>
-                    <img src="https://images.yourstory.com/cs/wordpress/2016/07/Yourstory-Vidhana-Soudha.jpg?mode=crop&crop=faces&ar=16%3A9&format=auto&w=1920&q=75" alt="Vidhana Soudha, Bangalore" />
-                  </div>
-                  <h3 className="center-city" onClick={(e) => handleCenterCityClick(e, 'https://maps.app.goo.gl/tC3Rore8xfZS8S4U6')}>Bangalore, Karnataka</h3>
-                </div>
-                <div className="center-content-section">
-                  <p className="center-description">Located in the heart of India's Silicon Valley, our Bangalore center offers cutting-edge data science and AI training programs.</p>
-                  <div className="center-details">
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
-                      <span>No 23, 2nd Floor, 9th Main Rd, 22nd Cross Rd, 7th Sector, HSR Layout, Bangalore - 560102</span>
-                    </div>
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
-                      <span><a href="tel:+919989994319">+91 99899 94319 / 1800-212-654321</a></span>
-                    </div>
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/email.png" alt="" aria-hidden="true" />
-                      <span><a href="mailto:enquiry@360digitmg.com">enquiry@360digitmg.com</a></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/GEor31R9gwVENSmaA')}>
-                <div className="center-image-section" onClick={handleImageSectionClick}>
-
-                  <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 2, 'https://maps.app.goo.gl/GEor31R9gwVENSmaA')} style={{cursor: 'pointer'}}>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRWA4MwTRzgfOBXVF3RiQH8JgO9sIbcT-ujQ&s" alt="Valluvar Kottam, Chennai" />
-                  </div>
-                  <h3 className="center-city" onClick={(e) => handleCenterCityClick(e, 'https://maps.app.goo.gl/GEor31R9gwVENSmaA')}>Nungambakkam, Chennai</h3>
-                </div>
-                <div className="center-content-section">
-                  <p className="center-description">Our Chennai training center in Nungambakkam provides comprehensive data analytics and business intelligence courses.</p>
-                  <div className="center-details">
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
-                      <span>1st Floor, Santi Ram Centre, Tirumurthy Nagar, Nungambakkam, Opposite to Indian Oil Bhavan, Chennai, Tamil Nadu - 600006</span>
-                    </div>
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
-                      <span><a href="tel:1800212654321">1800 212 654321</a></span>
-                    </div>
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/email.png" alt="" aria-hidden="true" />
-                      <span><a href="mailto:enquiry@360digitmg.com">enquiry@360digitmg.com</a></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/KCsfrQdYMvHg9nkC6')}>
-                <div className="center-image-section" onClick={handleImageSectionClick}>
-
-                  <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 3, 'https://maps.app.goo.gl/KCsfrQdYMvHg9nkC6')} style={{cursor: 'pointer'}}>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuf5_M-4zkPWtfG7dOx46ZGRxYT72BeueyKg&s" alt="Vitthal-Rukmini Temple, Pune" />
-                  </div>
-                  <h3 className="center-city" onClick={(e) => handleCenterCityClick(e, 'https://maps.app.goo.gl/KCsfrQdYMvHg9nkC6')}>Kharadi,<br/> Pune</h3>
-                </div>
-                <div className="center-content-section">
-                  <div className="center-details">
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
-                      <span>#705, 7th floor, Global Business Hub, Opp. Eon IT Park, Survey No. 1/1 A, Kharadi, Pune - 411014</span>
-                    </div>
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
-                      <span><a href="tel:9850070368">9850070368</a></span>
-                    </div>
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/email.png" alt="" aria-hidden="true" />
-                      <span><a href="mailto:kharadi.pune@360digitmg.com">kharadi.pune@360digitmg.com</a></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/UQa2HFYFcHRaqkSk7')}>
-                <div className="center-image-section" onClick={handleImageSectionClick}>
-
-                  <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 4, 'https://maps.app.goo.gl/UQa2HFYFcHRaqkSk7')} style={{cursor: 'pointer'}}>
-                    <img src="https://www.shutterstock.com/image-photo/bhilai-chhattisgarh-india-oct-26-260nw-600395621.jpg" alt="Maitri Bagh, Bhilai" />
-                  </div>
-                  <h3 className="center-city" onClick={(e) => handleCenterCityClick(e, 'https://maps.app.goo.gl/UQa2HFYFcHRaqkSk7')}>Bhilai, Chhattisgarh</h3>
-                </div>
-                <div className="center-content-section">
-                  <div className="center-details">
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
-                      <span>No 8 & 9, Sadhana Complex, Maitri Nagar, Risali, Bhilai(CG) - 490006</span>
-                    </div>
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
-                      <span><a href="tel:+919981617903">+91 9981617903 / +91 9886628363</a></span>
-                    </div>
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/email.png" alt="" aria-hidden="true" />
-                      <span><a href="mailto:bhilai@360digitmg.com">bhilai@360digitmg.com</a></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/3WpDihanxE8WDpP88')}>
-                <div className="center-image-section" onClick={handleImageSectionClick}>
-
-                  <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 5, 'https://maps.app.goo.gl/3WpDihanxE8WDpP88')} style={{cursor: 'pointer'}}>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAvoZ-XB-PJRC9F0qSQB41Vk4PEajHCwNskoR3Q53qOwiTxIj1OSvByPaV7_etP4TpcAQ&usqp=CAU" alt="Shaniwar Wada, Pune" />
-                  </div>
-                  <h3 className="center-city" onClick={(e) => handleCenterCityClick(e, 'https://maps.app.goo.gl/3WpDihanxE8WDpP88')}>Kothrud,<br/> Pune</h3>
-                </div>
-                <div className="center-content-section">
-                  <div className="center-details">
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
-                      <span>408, Fourth Floor, Saarrthi Success Square, Near Maharshi Karve Statue, Kothrud, Pune - 411038</span>
-                    </div>
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
-                      <span><a href="tel:+919665066683">+91 9665066683</a></span>
-                    </div>
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/email.png" alt="" aria-hidden="true" />
-                      <span><a href="mailto:kothrud_pune@360digitmg.com">kothrud_pune@360digitmg.com</a></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/ZUAcZMLcJtZDMYfX7')}>
-                <div className="center-image-section" onClick={handleImageSectionClick}>
-
-                  <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 6, 'https://maps.app.goo.gl/ZUAcZMLcJtZDMYfX7')} style={{cursor: 'pointer'}}>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8qVElYdlVqthcAlvlvWx4RguDJcviorCXHg&s" alt="Lingaraja Temple, Bhubaneswar" />
-                  </div>
-                  <h3 className="center-city" onClick={(e) => handleCenterCityClick(e, 'https://maps.app.goo.gl/ZUAcZMLcJtZDMYfX7')}>Bhubaneswar, Odisha</h3>
-                </div>
-                <div className="center-content-section">
-                  <div className="center-details">
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
-                      <span>A23, Driems Villa, Patia, Bhubaneswar - 751024</span>
-                    </div>
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
-                      <span><a href="tel:+919789819082">+91 9789819082</a></span>
-                    </div>
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/email.png" alt="" aria-hidden="true" />
-                      <span><a href="mailto:odisha@360digitmg.com">odisha@360digitmg.com</a></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/DpX7Ho7w4EmeCZWB9')}>
-                <div className="center-image-section" onClick={handleImageSectionClick}>
-
-                  <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 7, 'https://maps.app.goo.gl/DpX7Ho7w4EmeCZWB9')} style={{cursor: 'pointer'}}>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmLMV3QfF-Y0XbEsVO3Ft6orHoPZM1zjHltg&s" alt="Akshardham Temple, Delhi NCR" />
-                  </div>
-                  <h3 className="center-city" onClick={(e) => handleCenterCityClick(e, 'https://maps.app.goo.gl/DpX7Ho7w4EmeCZWB9')}>Noida, Uttar Pradesh</h3>
-                </div>
-                <div className="center-content-section">
-                  <div className="center-details">
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
-                      <span>2308 Gold, 23rd Floor, Wave One, Sector-18, Noida – 201301</span>
-                    </div>
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
-                      <span><a href="tel:+919205517358">+91 9205517358</a></span>
-                    </div>
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/email.png" alt="" aria-hidden="true" />
-                      <span><a href="mailto:noida@360digitmg.com">noida@360digitmg.com</a></span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <article className="center-card" role="listitem" onClick={(e) => handleCenterCardClick(e, 'https://maps.app.goo.gl/d2JKJkVxPcmVBZ6u7')}>
-                <div className="center-image-section" onClick={handleImageSectionClick}>
-
-                  <div className="center-icon" aria-hidden="true" onClick={(e) => handleCenterImageClick(e, 8, 'https://maps.app.goo.gl/d2JKJkVxPcmVBZ6u7')} style={{cursor: 'pointer'}}>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYcBMRKcHXeNGK_iToHzEnwD4uehP_Y1IuPQ&s" alt="Dolphin's Nose, Visakhapatnam" />
-                  </div>
-                  <h3 className="center-city" onClick={(e) => handleCenterCityClick(e, 'https://maps.app.goo.gl/d2JKJkVxPcmVBZ6u7')}>Vizag, Andhra Pradesh</h3>
-                </div>
-                <div className="center-content-section">
-                  <div className="center-details">
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/marker.png" alt="" aria-hidden="true" />
-                      <span>3rd floor, 30-15-35, above IDBI Bank, near Saraswati Park Road, Daba Gardens, Allipuram, Jct, Visakhapatnam, Andhra Pradesh 530020</span>
-                    </div>
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/phone.png" alt="" aria-hidden="true" />
-                      <span><a href="tel:+919640921445">+91 9640921445</a></span>
-                    </div>
-                    <div className="detail-item">
-                      <img src="https://img.icons8.com/fluency/20/email.png" alt="" aria-hidden="true" />
-                      <span><a href="mailto:vizag@360digitmg.com">vizag@360digitmg.com</a></span>
+                      <span><a href="mailto:info@360digitmg.com">info@360digitmg.com</a></span>
                     </div>
                   </div>
                 </div>
@@ -1824,7 +1598,7 @@ We're excited to have you on this journey!
             </div>
 
             <div className="centers-cta" role="region" aria-label="Online learning option">
-              <p>Can't find a center near you? <strong>No problem!</strong> We offer <strong>Live Online Classes</strong> with the same quality, expert trainers, and interactive learning experience from anywhere in India.</p>
+              <p>Can't find a center near you? <strong>No problem!</strong> We offer <strong>Live Online Classes</strong> with the same quality, expert trainers, and interactive learning experience from anywhere in Malaysia.</p>
               <button
                 className="explore-btn"
                 onClick={() => navigate("/courses")}
@@ -1949,13 +1723,13 @@ We're excited to have you on this journey!
                 <h3 className="footer-title">Contact Info</h3>
                 <div className="contact-info">
                   <p className="contact-item"><strong>Corporate Location</strong></p>
-                  <p className="contact-item">2-56/2/19, 3rd floor, Vijaya Towers, near Meridian School, Ayyappa Society Rd, Madhapur, Hyderabad, Telangana 500081</p>
+                  <p className="contact-item">360DigiTMG SDN BHD (1265527-M)<br/>Level 16, 1 Sentral, Jalan Stesen Sentral 5, KL Sentral, Kuala Lumpur, Malaysia</p>
 
                   <p className="contact-item" style={{marginTop: '10px'}}><strong>Business Phone</strong></p>
-                  <p className="contact-item"> 1800-212-654321</p>
+                  <p className="contact-item"><a href="tel:+60193831378">+60 19-383 1378</a></p>
 
                   <p className="contact-item" style={{marginTop: '10px'}}><strong>Business Email :</strong>
-                  <a href="mailto:enquiry@360digitmg.com">enquiry@360digitmg.com</a></p>
+                  <a href="mailto:info@360digitmg.com">info@360digitmg.com</a></p>
                 </div>
               </div>
             </div>
@@ -1980,4 +1754,4 @@ We're excited to have you on this journey!
   );
 };
 
-export default Home;
+export default HomeMalaysia;

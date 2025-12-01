@@ -1,0 +1,110 @@
+/* ==================== HOME COURSES SECTION STYLES ==================== */
+
+.home-courses-section {
+  background: white;
+  padding: 40px 20px 40px 40px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-courses-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header Section with Gradient Background */
+.home-courses-header {
+  background: linear-gradient(135deg, #d5842e 25%, rgba(82, 152, 149, 0.95) 50%, #0a9ec7 100%);
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 50px;
+  border-radius: 15px;
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-courses-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+  z-index: 0;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.home-courses-title {
+  color: white;
+  margin: 0 0 10px 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.home-courses-subtitle {
+  font-size: 1.1rem;
+  color: #ffeb3b;
+  margin: 0;
+  font-weight: 400;
+  position: relative;
+  z-index: 1;
+}
+
+/* ==================== RESPONSIVE BREAKPOINTS ==================== */
+
+/* Mobile (768px and below) */
+@media (max-width: 768px) {
+  .home-courses-section {
+    padding: 60px 0;
+  }
+
+  .home-courses-container {
+    padding: 0 15px;
+  }
+
+  .home-courses-header {
+    width: 100%;
+    padding: 30px 20px;
+    margin-bottom: 40px;
+  }
+
+  .home-courses-title {
+    font-size: 2rem;
+  }
+
+  .home-courses-subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* Small Mobile (480px and below) */
+@media (max-width: 480px) {
+  .home-courses-header {
+    padding: 25px 15px;
+  }
+
+  .home-courses-title {
+    font-size: 1.75rem;
+  }
+
+  .home-courses-subtitle {
+    font-size: 0.95rem;
+  }
+}

@@ -1034,3 +1034,165 @@
   }
 }
 
+/* Malaysia Corporate Section Styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.sb-tlte {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 30px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Corporate Logos Grid */
+.anprelogs {
+  margin-top: 40px;
+}
+
+.anprelogs .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.anprelogs .col-lg-2 {
+  flex: 0 0 auto;
+  width: 14%;
+  min-width: 120px;
+}
+
+.anprlog {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.anprlog:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.anprlog img {
+  max-width: 100%;
+  max-height: 50px;
+  object-fit: contain;
+}
+
+/* Desktop/Mobile View Toggle */
+.desktop-view {
+  display: block;
+}
+
+.mobile-view {
+  display: none;
+  text-align: center;
+}
+
+.mobile-view img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .desktop-view {
+    display: none;
+  }
+
+  .mobile-view {
+    display: block;
+  }
+
+  .sb-tlte {
+    font-size: 24px;
+  }
+
+  .anprelogs .col-lg-2 {
+    width: 30%;
+    min-width: 100px;
+  }
+
+  .anprlog {
+    height: 60px;
+    padding: 15px;
+  }
+
+  .anprlog img {
+    max-height: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .anprelogs .col-lg-2 {
+    width: 45%;
+  }
+
+  .anprlog {
+    height: 50px;
+    padding: 10px;
+  }
+}
+
+/* Scrolling Logo Rows for Malaysia */
+.anprelogs .logo-row {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.anprelogs .logo-row:last-child {
+  margin-bottom: 0;
+}
+
+.anprelogs .logo-track {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.anprelogs .scroll-left .logo-track {
+  animation-name: scrollLogoLeft;
+  animation-duration: 25s;
+}
+
+.anprelogs .scroll-right .logo-track {
+  animation-name: scrollLogoRight;
+  animation-duration: 25s;
+}
+
+@keyframes scrollLogoLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scrollLogoRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.anprelogs .logo-row:hover .logo-track {
+  animation-play-state: paused;
+}
+
+.anprelogs .logo-track .anprlog {
+  flex-shrink: 0;
+  min-width: 150px;
+}
+

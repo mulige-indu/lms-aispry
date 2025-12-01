@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/home/Home';
+import HomeMalaysia from './components/malaysia/HomeMalaysia';
 import Courses from './components/Browse Courses/Courses';
 import MyCourses from './components/Browse Courses/MyCourses';
 import Apply from './components/home/Apply';
@@ -36,6 +37,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/malaysia" element={<HomeMalaysia />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/my-courses" element={<MyCourses />} />
         <Route path="/apply" element={<Apply />} />
