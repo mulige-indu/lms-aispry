@@ -269,20 +269,84 @@
 
 @media (max-width: 768px) {
   .courses-navbar {
-    height: 70px;
-    top: 20px;
+    height: 60px;
+    top: 0;
+    padding: 0;
   }
 
   .courses-page {
-    padding-top: 110px;
+    padding-top: 70px;
   }
 
-  .navbar-container {
+  .courses-navbar .navbar-container {
     padding: 0 10px;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 10px;
+    justify-content: flex-start !important;
+    max-width: 100%;
+    height: 100%;
   }
 
-  .navbar-menu {
+  .courses-navbar .navbar-logo {
+    flex: 0 0 auto !important;
+    display: flex !important;
+    align-items: center;
+    width: auto !important;
+  }
+
+  .courses-navbar .navbar-menu {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    flex: 0 1 auto !important;
+    margin: 0 !important;
+    gap: 4px;
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    width: auto !important;
+    position: static !important;
+    background: transparent !important;
+    max-height: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .courses-navbar .navbar-user {
+    flex: 0 0 auto;
+    margin-left: auto;
+  }
+
+  .navbar-menu::-webkit-scrollbar {
     display: none;
+  }
+
+  .courses-navbar .nav-btn {
+    font-size: 7px !important;
+    font-weight: 400 !important;
+    padding: 3px 5px !important;
+    min-width: auto !important;
+    gap: 2px !important;
+    border-radius: 10px !important;
+    white-space: nowrap;
+    flex-shrink: 0;
+    border-width: 1px !important;
+  }
+
+  .nav-btn svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .navbar-user {
+    flex-shrink: 0;
+    margin-left: auto;
   }
 
   .navbar-actions {
@@ -290,14 +354,11 @@
   }
 
   .user-name {
-    font-size: 0.8rem;
-    max-width: 80px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    display: none;
   }
 
   .logo-image {
-    height: 30px;
+    height: 28px;
   }
 
   /* Responsive Dropdown */
@@ -314,32 +375,76 @@
 
 @media (max-width: 480px) {
   .courses-navbar {
-    height: 65px;
-    top: 10px;
+    height: 50px;
+    top: 0;
+    padding: 0;
   }
 
   .courses-page {
-    padding-top: 95px;
+    padding-top: 60px;
   }
 
-  .navbar-container {
+  .courses-navbar .navbar-container {
     padding: 0 8px;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 8px;
+    justify-content: flex-start !important;
+    height: 100%;
   }
 
-  .nav-btn {
-    padding: 7px 12px;
-    font-size: 11px;
-    min-width: 75px;
+  .courses-navbar .navbar-logo {
+    flex: 0 0 auto !important;
+    display: flex !important;
+    align-items: center;
+    width: auto !important;
+  }
+
+  .courses-navbar .navbar-menu {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 2px;
+    flex: 0 1 auto !important;
+    flex-wrap: nowrap !important;
+    width: auto !important;
+    position: static !important;
+    background: transparent !important;
+    max-height: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .courses-navbar .navbar-user {
+    flex: 0 0 auto;
+    margin-left: auto;
+  }
+
+  .courses-navbar .nav-btn {
+    padding: 2px 4px !important;
+    font-size: 6px !important;
+    font-weight: 400 !important;
+    min-width: auto !important;
+    gap: 2px !important;
+    border-width: 1px !important;
+  }
+
+  .nav-btn svg {
+    width: 9px;
+    height: 9px;
   }
 
   .logo-image {
-    height: 30px;
+    height: 20px;
   }
 
   .user-avatar {
-    width: 30px;
-    height: 30px;
-    font-size: 1rem;
+    width: 22px;
+    height: 22px;
+    font-size: 0.7rem;
   }
 
   .user-name {
@@ -347,13 +452,13 @@
   }
 
   .login-btn {
-    padding: 7px 12px;
-    font-size: 11px;
-    min-width: 65px;
+    padding: 3px 6px;
+    font-size: 7px;
+    min-width: auto;
   }
 
   .dropdown-arrow {
-    font-size: 0.6rem;
+    font-size: 0.5rem;
   }
 
   .user-dropdown {

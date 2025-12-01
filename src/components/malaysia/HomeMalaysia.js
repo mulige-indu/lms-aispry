@@ -221,6 +221,7 @@ const HomeMalaysia = () => {
     }
   ]);
   const [salaryUpdateKey, setSalaryUpdateKey] = useState(0);
+  const [prestcoSlide, setPrestcoSlide] = useState(0);
 
   const navigate = useNavigate();
 
@@ -827,7 +828,14 @@ We're excited to have you on this journey!
     }
   };
 
+  // Prestco slider navigation
+  const nextPrestcoSlide = () => {
+    setPrestcoSlide((prev) => (prev + 1) % 2);
+  };
 
+  const prevPrestcoSlide = () => {
+    setPrestcoSlide((prev) => (prev - 1 + 2) % 2);
+  };
 
   const toggleCenterExpand = (centerId) => {
     setExpandedCenter(expandedCenter === centerId ? null : centerId);
@@ -1401,7 +1409,8 @@ We're excited to have you on this journey!
           <div className="container">
             <h2 className="corporate-heading" style={{textAlign: 'center', marginBottom: '30px'}}>Companies That Trust Us</h2>
             <div className="prestco-slider-wrapper">
-              <div className="prestco-slider">
+              <button className="prestco-nav-btn prev" onClick={prevPrestcoSlide} aria-label="Previous testimonial">‹</button>
+              <div className="prestco-slider" style={{transform: `translateX(-${prestcoSlide * 100}%)`}}>
                 <div className="prestco-box">
                   <div className="media">
                     <div className="prest-c" style={{borderRadius: '0', width: '90px', height: '80px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
@@ -1427,6 +1436,7 @@ We're excited to have you on this journey!
                   </div>
                 </div>
               </div>
+              <button className="prestco-nav-btn next" onClick={nextPrestcoSlide} aria-label="Next testimonial">›</button>
             </div>
 
             <div className="anprelogs desktop-view">

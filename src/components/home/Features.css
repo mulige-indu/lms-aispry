@@ -158,12 +158,10 @@ body.dark-theme .feature-card:nth-child(3n) {
 @media (max-width: 1024px) {
   .features-section,
   section.features-section {
-    padding: 0 0 0 0 !important;
-    padding-top: 0 !important;
+    padding: 15px 0 0 0 !important;
     padding-bottom: 0 !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
     margin: 0 !important;
+    margin-top: 15px !important;
   }
 
   .features-container {
@@ -179,9 +177,10 @@ body.dark-theme .feature-card:nth-child(3n) {
 
 @media (max-width: 768px) {
   .features-section {
-    padding: 1.5rem 0 !important;
+    padding: 10px 0 1.5rem 0 !important;
     min-height: auto !important;
     margin: 0;
+    margin-top: 10px !important;
     overflow: visible;
     box-sizing: border-box;
   }

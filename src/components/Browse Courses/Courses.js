@@ -588,8 +588,8 @@ const Courses = () => {
     <main className="courses-page">
       {/* Navigation Bar */}
       <nav className="courses-navbar">
-        <div className="navbar-container">
-          <div className="navbar-logo">
+        <div className="navbar-container" style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'center', justifyContent: 'flex-start', height: '100%', gap: '10px' }}>
+          <div className="navbar-logo" style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center' }}>
             <img
               src="https://aispry.com/pluginfile.php/1/theme_university/logo/1762520057/AiTutor-Logo-w.png"
               alt="AiTutor Logo"
@@ -597,7 +597,7 @@ const Courses = () => {
             />
           </div>
 
-          <div className="navbar-menu">
+          <div className="navbar-menu" style={{ flex: '0 1 auto', display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'center', gap: '4px' }}>
             <button className="nav-btn" onClick={() => navigate('/my-courses')}>
               <MyCoursesIcon size={20} color="currentColor" /> My Course
             </button>
