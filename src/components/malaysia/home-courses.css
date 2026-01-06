@@ -26,7 +26,6 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  margin-bottom: 50px;
   border-radius: 15px;
   width: 1200px;
   margin-left: auto;
@@ -82,7 +81,6 @@
   .home-courses-header {
     width: 100%;
     padding: 30px 20px;
-    margin-bottom: 40px;
   }
 
   .home-courses-title {

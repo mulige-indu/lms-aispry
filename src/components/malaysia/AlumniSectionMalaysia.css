@@ -18,9 +18,20 @@
 }
 
 .alumni-title {
-  color: #000000;
+  background: linear-gradient(135deg, #d5842e 25%, rgba(82, 152, 149, 0.95) 50%, #0a9ec7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin: 0;
   padding: 0;
+}
+
+.alumni-subtitle {
+  font-size: 18px;
+  color: #64748b;
+  margin: 15px 0 0 0;
+  font-weight: 400;
+  text-align: center;
 }
 
 /* Prestigious Corporate Connections Slider */
@@ -499,7 +510,10 @@
 .corporate-heading {
   font-size: 36px;
   font-weight: 700;
-  color: #1a1a2e;
+  background: linear-gradient(135deg, #d5842e 25%, rgba(82, 152, 149, 0.95) 50%, #0a9ec7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin: 0 0 15px 0;
   letter-spacing: -0.5px;
 }
@@ -509,6 +523,7 @@
   color: #64748b;
   margin: 0 0 50px 0;
   font-weight: 400;
+  text-align: center;
 }
 
 .corporate-scroll-container {

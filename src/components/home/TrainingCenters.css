@@ -27,7 +27,7 @@
 .centers-title {
   font-size: 2.5rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #d5842e 35%, #529895 50%, #0a9ec7 90%);
+  background: linear-gradient(135deg, #d5842e 25%, rgba(82, 152, 149, 0.95) 50%, #0a9ec7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

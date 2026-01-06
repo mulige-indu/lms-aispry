@@ -139,6 +139,15 @@
   z-index: 1;
 }
 
+.leadership-title {
+  text-align: center;
+  margin-bottom: 30px;
+  background: linear-gradient(135deg, #d5842e 25%, rgba(82, 152, 149, 0.95) 50%, #0a9ec7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .leadership-card-compact {
   background: white;
   border-radius: 25px;
@@ -265,18 +274,24 @@
 .leader-details {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 20px;
+}
+
+.leader-header-compact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .leader-header-compact h3 {
   font-size: 2rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #d5842e 0%, #529895 50%, #0a9ec7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #352f2f;
   margin: 0 0 8px 0;
   letter-spacing: -0.5px;
+  text-align: left;
 }
 
 .leader-position {
@@ -284,20 +299,13 @@
   color: #666;
   font-weight: 600;
   margin: 0;
+  padding: 0 !important;
+  padding-left: 0 !important;
   position: relative;
-  padding-left: 15px;
 }
 
 .leader-position::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  height: 80%;
-  background: linear-gradient(135deg, #d5842e 0%, #0a9ec7 100%);
-  border-radius: 2px;
+  display: none !important;
 }
 
 .leader-badges {
@@ -803,5 +811,360 @@ body.dark-theme .expertise-compact span {
   .linkedin-btn {
     font-size: 0.85rem;
     padding: 8px 16px;
+  }
+}
+
+/* Faculty & Program Contributors Section */
+.faculty-section {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #f0f4f8 100%);
+  padding: 60px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.faculty-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(213, 132, 46, 0.04) 0%, transparent 50%),
+              radial-gradient(circle at 70% 70%, rgba(10, 158, 199, 0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.faculty-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.faculty-title {
+  text-align: center;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #d5842e 25%, rgba(82, 152, 149, 0.95) 50%, #0a9ec7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.faculty-subheading {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.faculty-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.faculty-card {
+  background: white;
+  border-radius: 20px;
+  padding: 35px 30px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.faculty-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #d5842e 0%, #529895 50%, #0a9ec7 100%);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.faculty-card:hover::before {
+  transform: scaleX(1);
+}
+
+.faculty-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+  border-color: rgba(213, 132, 46, 0.3);
+}
+
+.faculty-image {
+  margin-bottom: 15px;
+}
+
+.faculty-image img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.faculty-card:hover .faculty-image img {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(213, 132, 46, 0.25);
+  border-color: rgba(213, 132, 46, 0.3);
+}
+
+.faculty-image-placeholder {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d5842e 0%, #529895 50%, #0a9ec7 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.faculty-image-placeholder span {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.faculty-card:hover .faculty-image-placeholder {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(213, 132, 46, 0.3);
+}
+
+.faculty-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faculty-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.faculty-designation {
+  font-size: 0.95rem;
+  color: #666;
+  font-weight: 600;
+  margin: 0;
+  position: relative;
+  display: inline-block;
+}
+
+.faculty-expertise-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.expertise-tag {
+  font-size: 0.8rem;
+  color: #555;
+  padding: 8px 14px;
+  background: linear-gradient(135deg, rgba(213, 132, 46, 0.08) 0%, rgba(10, 158, 199, 0.08) 100%);
+  border-radius: 20px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  border: 1px solid rgba(213, 132, 46, 0.15);
+  transition: all 0.3s ease;
+}
+
+.expertise-tag:hover {
+  background: linear-gradient(135deg, rgba(213, 132, 46, 0.15) 0%, rgba(10, 158, 199, 0.15) 100%);
+  border-color: rgba(213, 132, 46, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Dark Theme Support for Faculty Section */
+body.dark-theme .faculty-section {
+  background: linear-gradient(135deg, #1e1e1e 0%, #252525 50%, #1a1a1a 100%);
+}
+
+body.dark-theme .faculty-card {
+  background: #2d2d2d;
+  border-color: #444;
+}
+
+body.dark-theme .faculty-name {
+  color: #ffffff;
+}
+
+body.dark-theme .faculty-designation {
+  color: #b0b0b0;
+}
+
+body.dark-theme .expertise-tag {
+  background: rgba(213, 132, 46, 0.15);
+  color: #c0c0c0;
+  border-color: rgba(213, 132, 46, 0.25);
+}
+
+body.dark-theme .expertise-tag:hover {
+  background: rgba(213, 132, 46, 0.25);
+  border-color: rgba(213, 132, 46, 0.4);
+}
+
+body.dark-theme .faculty-subheading {
+  color: #b0b0b0;
+}
+
+body.dark-theme .faculty-image img {
+  border-color: #444;
+}
+
+body.dark-theme .faculty-card:hover .faculty-image img {
+  border-color: rgba(213, 132, 46, 0.4);
+}
+
+/* Responsive Design for Faculty Section */
+@media (max-width: 1024px) {
+  .faculty-section {
+    padding: 50px 0;
+  }
+
+  .faculty-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .faculty-card {
+    padding: 30px 25px;
+  }
+
+  .faculty-name {
+    font-size: 1.25rem;
+  }
+
+  .faculty-designation {
+    font-size: 0.9rem;
+  }
+
+  .expertise-tag {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+
+  .faculty-image img,
+  .faculty-image-placeholder {
+    width: 90px;
+    height: 90px;
+  }
+
+  .faculty-image-placeholder span {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .faculty-section {
+    padding: 40px 0;
+  }
+
+  .faculty-subheading {
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+  }
+
+  .faculty-image img,
+  .faculty-image-placeholder {
+    width: 80px;
+    height: 80px;
+  }
+
+  .faculty-image-placeholder span {
+    font-size: 1.4rem;
+  }
+
+  .faculty-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .faculty-card {
+    padding: 25px 20px;
+  }
+
+  .faculty-name {
+    font-size: 1.15rem;
+  }
+
+  .faculty-designation {
+    font-size: 0.85rem;
+  }
+
+  .expertise-tag {
+    font-size: 0.7rem;
+    padding: 5px 10px;
+  }
+
+  .faculty-expertise-tags {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .faculty-section {
+    padding: 30px 0;
+  }
+
+  .faculty-subheading {
+    font-size: 0.85rem;
+    margin-bottom: 25px;
+  }
+
+  .faculty-card {
+    padding: 20px 15px;
+  }
+
+  .faculty-name {
+    font-size: 1rem;
+  }
+
+  .faculty-designation {
+    font-size: 0.75rem;
+  }
+
+  .expertise-tag {
+    font-size: 0.65rem;
+    padding: 4px 8px;
+  }
+
+  .faculty-expertise-tags {
+    gap: 5px;
+  }
+
+  .faculty-image img,
+  .faculty-image-placeholder {
+    width: 70px;
+    height: 70px;
+  }
+
+  .faculty-image-placeholder span {
+    font-size: 1.2rem;
+  }
+
+  .faculty-image {
+    margin-bottom: 10px;
   }
 }

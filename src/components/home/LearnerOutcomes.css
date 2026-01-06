@@ -1,6 +1,6 @@
 /* LEARNER OUTCOMES Section */
 .learner-outcomes {
-  padding: 80px 0;
+  padding: 0;
   background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f0f4f8 100%);
   position: relative;
   overflow: hidden;
@@ -66,7 +66,7 @@
 .outcomes-title {
   font-size: 2.5rem !important;
   font-weight: 800 !important;
-  background: linear-gradient(135deg, #d5842e 0%, #d5842e 40%, rgba(82, 152, 149, 0.95) 70%, #0a9ec7 100%);
+  background: linear-gradient(135deg, #d5842e 25%, rgba(82, 152, 149, 0.95) 50%, #0a9ec7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -81,6 +81,229 @@
   font-weight: 500;
   max-width: 900px;
   line-height: 1.6;
+}
+
+/* Workspace Tiles */
+.workspace-tiles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 70px;
+}
+
+.workspace-tile {
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fc 100%);
+  border-radius: 24px;
+  padding: 36px 28px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 2px 10px rgba(0, 0, 0, 0.04);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(213, 132, 46, 0.15);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Animated gradient border */
+.workspace-tile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #d5842e, rgba(82, 152, 149, 0.95), #0a9ec7, #d5842e);
+  background-size: 200% 100%;
+  animation: gradientShift 3s ease infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glow effect */
+.tile-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(213, 132, 46, 0.15) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.workspace-tile:hover .tile-glow {
+  opacity: 1;
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+/* Floating particles */
+.tile-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.tile-particles span {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(135deg, #d5842e, #f5a623);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.workspace-tile:hover .tile-particles span {
+  opacity: 0.6;
+  animation: floatParticle 3s ease-in-out infinite;
+}
+
+.tile-particles span:nth-child(1) {
+  top: 20%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.tile-particles span:nth-child(2) {
+  top: 60%;
+  right: 20%;
+  animation-delay: 0.5s;
+}
+
+.tile-particles span:nth-child(3) {
+  bottom: 25%;
+  left: 25%;
+  animation-delay: 1s;
+}
+
+@keyframes floatParticle {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-15px) scale(1.2); }
+}
+
+/* Shimmer effect */
+.tile-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+.workspace-tile:hover .tile-shimmer {
+  left: 100%;
+  transition: left 0.8s ease;
+}
+
+.workspace-tile:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow:
+    0 25px 60px rgba(213, 132, 46, 0.2),
+    0 15px 40px rgba(0, 0, 0, 0.1),
+    0 0 30px rgba(213, 132, 46, 0.1);
+  border-color: rgba(213, 132, 46, 0.4);
+}
+
+.workspace-tile:hover::before {
+  opacity: 1;
+}
+
+.workspace-tile .tile-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.workspace-tile:hover .tile-icon {
+  transform: scale(1.15);
+}
+
+.workspace-tile h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 14px 0;
+  color: #000;
+  transition: all 0.3s ease;
+}
+
+.workspace-tile p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Individual tile accent colors - using brand colors only */
+.workspace-tile:nth-child(1) .tile-glow { background: radial-gradient(circle, rgba(213, 132, 46, 0.2) 0%, transparent 60%); }
+.workspace-tile:nth-child(1) .tile-particles span { background: #d5842e; }
+.workspace-tile:nth-child(1)::before { background: linear-gradient(90deg, #d5842e, #e9a254, #d5842e); background-size: 200% 100%; }
+
+.workspace-tile:nth-child(2) .tile-glow { background: radial-gradient(circle, rgba(82, 152, 149, 0.2) 0%, transparent 60%); }
+.workspace-tile:nth-child(2) .tile-particles span { background: rgba(82, 152, 149, 0.95); }
+.workspace-tile:nth-child(2)::before { background: linear-gradient(90deg, rgba(82, 152, 149, 0.95), rgba(102, 172, 169, 0.95), rgba(82, 152, 149, 0.95)); background-size: 200% 100%; }
+
+.workspace-tile:nth-child(3) .tile-glow { background: radial-gradient(circle, rgba(10, 158, 199, 0.2) 0%, transparent 60%); }
+.workspace-tile:nth-child(3) .tile-particles span { background: #0a9ec7; }
+.workspace-tile:nth-child(3)::before { background: linear-gradient(90deg, #0a9ec7, #2db8df, #0a9ec7); background-size: 200% 100%; }
+
+.workspace-tile:nth-child(4) .tile-glow { background: radial-gradient(circle, rgba(213, 132, 46, 0.15) 0%, transparent 60%); }
+.workspace-tile:nth-child(4) .tile-particles span { background: linear-gradient(135deg, #d5842e, rgba(82, 152, 149, 0.95)); }
+.workspace-tile:nth-child(4)::before { background: linear-gradient(90deg, #d5842e, rgba(82, 152, 149, 0.95), #0a9ec7, #d5842e); background-size: 200% 100%; }
+
+/* Dark theme */
+body.dark-theme .workspace-tile {
+  background: linear-gradient(145deg, #1e1e2e 0%, #2a2a3e 100%);
+  border-color: rgba(213, 132, 46, 0.25);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-theme .workspace-tile:hover {
+  box-shadow:
+    0 25px 60px rgba(213, 132, 46, 0.25),
+    0 15px 40px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(213, 132, 46, 0.15);
+}
+
+body.dark-theme .workspace-tile h3 {
+  background: linear-gradient(135deg, #ffffff 0%, #f5a623 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.dark-theme .workspace-tile:hover h3 {
+  background: linear-gradient(135deg, #f5a623 0%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+body.dark-theme .workspace-tile p {
+  color: #b0b0b0;
+}
+
+body.dark-theme .tile-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
 }
 
 /* Dashboard Layout */
@@ -604,6 +827,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 25px;
+  padding-bottom: 40px;
 }
 
 .metric-box {
@@ -671,7 +895,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .learner-outcomes {
-    padding: 60px 0;
+    padding: 0;
   }
 
   .outcomes-title {
@@ -680,6 +904,49 @@
 
   .outcomes-subtitle {
     font-size: 0.85rem;
+  }
+
+  /* Mobile Slider for Workspace Tiles */
+  .workspace-tiles {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 16px !important;
+    margin-bottom: 40px;
+    padding: 10px 20px 20px 20px !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  .workspace-tiles::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .workspace-tile {
+    flex: 0 0 280px !important;
+    min-width: 280px !important;
+    scroll-snap-align: center !important;
+    padding: 24px 18px;
+    border-radius: 18px;
+  }
+
+  .workspace-tile .tile-icon {
+    font-size: 2.5rem;
+    margin-bottom: 14px;
+  }
+
+  .workspace-tile h3 {
+    font-size: 1rem;
+  }
+
+  .workspace-tile p {
+    font-size: 0.85rem;
+  }
+
+  .tile-particles span {
+    width: 5px;
+    height: 5px;
   }
 
   .outcomes-dashboard {
@@ -967,7 +1234,7 @@
 
 @media (max-width: 480px) {
   .outcomes-container {
-    padding: 0 15px;
+    padding: 0 10px;
   }
 
   .outcomes-title {
@@ -976,6 +1243,49 @@
 
   .outcomes-subtitle {
     font-size: 0.5rem !important;
+  }
+
+  /* Mobile Slider for Workspace Tiles */
+  .workspace-tiles {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 12px !important;
+    margin-bottom: 25px;
+    padding: 8px 15px 15px 15px !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  .workspace-tiles::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .workspace-tile {
+    flex: 0 0 240px !important;
+    min-width: 240px !important;
+    scroll-snap-align: center !important;
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+
+  .workspace-tile .tile-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .workspace-tile h3 {
+    font-size: 0.9rem;
+  }
+
+  .workspace-tile p {
+    font-size: 0.75rem;
+  }
+
+  .tile-particles span {
+    width: 4px;
+    height: 4px;
   }
 
   .potential-calculator {
@@ -1205,7 +1515,7 @@
 /* Tablets (max-width: 768px) - From GlobalResponsive */
 @media (max-width: 768px) {
   .learner-outcomes {
-    padding: 1.5rem 0 !important;
+    padding: 0 !important;
     min-height: auto !important;
   }
 

@@ -139,6 +139,15 @@
   z-index: 1;
 }
 
+.leadership-title {
+  text-align: center;
+  margin-bottom: 30px;
+  background: linear-gradient(135deg, #d5842e 25%, rgba(82, 152, 149, 0.95) 50%, #0a9ec7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .leadership-card-compact {
   background: white;
   border-radius: 25px;
@@ -271,10 +280,7 @@
 .leader-header-compact h3 {
   font-size: 2rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #d5842e 0%, #529895 50%, #0a9ec7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #393333;
   margin: 0 0 8px 0;
   letter-spacing: -0.5px;
 }

@@ -1,148 +1,65 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import Loader from '../Loader';
 import './MainNavbar.css';
 
 // Custom SVG Icons
-const GraduationCapIcon = () => (
+const SearchIcon = () => (
   <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-    <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
   </svg>
 );
 
-const UserCircleIcon = () => (
+const GlobeIcon = () => (
   <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
   </svg>
 );
 
-const SignOutIcon = () => (
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-    <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
-  </svg>
-);
-
-const SignInIcon = () => (
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-    <path d="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"/>
-  </svg>
-);
-
-const SendIcon = () => (
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-  </svg>
-);
-
-// Clean navbar without Programs, Masterclass, Forum, Alumni, Resources
 const MainNavbar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [student, setStudent] = useState(null);
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  useEffect(() => {
-    // Check if user is logged in
-    const checkLoginStatus = () => {
-      const token = localStorage.getItem('token');
-      const studentData = localStorage.getItem('student');
-
-      if (token && studentData) {
-        setIsLoggedIn(true);
-        setStudent(JSON.parse(studentData));
-      } else {
-        setIsLoggedIn(false);
-        setStudent(null);
-      }
-    };
-
-    // Check on mount
-    checkLoginStatus();
-
-    // Listen for storage changes (when logging in from another tab/window)
-    window.addEventListener('storage', checkLoginStatus);
-
-    // Listen for custom event (when logging in from same window)
-    window.addEventListener('loginStatusChanged', checkLoginStatus);
-
-    return () => {
-      window.removeEventListener('storage', checkLoginStatus);
-      window.removeEventListener('loginStatusChanged', checkLoginStatus);
-    };
-  }, []);
-
-  // Re-check login status whenever the route changes
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    const studentData = localStorage.getItem('student');
-
-    if (token && studentData) {
-      setIsLoggedIn(true);
-      setStudent(JSON.parse(studentData));
-    } else {
-      setIsLoggedIn(false);
-      setStudent(null);
-    }
-  }, [location]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLoginClick = () => {
-    // Always go directly to courses page
-    navigate('/courses');
+    setIsLoading(true);
+    window.location.href = 'https://aispry.com/login/';
   };
 
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('student');
-    setIsLoggedIn(false);
-    setStudent(null);
-    alert('Logged out successfully');
-  };
-
-
-  const handleApplyClick = () => {
-    navigate('/apply');
-  };
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <nav className="main-navbar">
       <div className="navbar-container">
-        <div className="navbar-logo">
-          <img
-            src="https://aispry.com/pluginfile.php/1/theme_university/logo/1762520057/AiTutor-Logo-w.png"
-            alt="AiTutor Logo"
-            className="logo-image"
-          />
-        </div>
-
-
-
-        <div className="navbar-actions">
-
-          <div className="auth-buttons">
-            {isLoggedIn ? (
-              <div className="user-menu">
-                <span className="welcome-text"><span className="user-icon"><UserCircleIcon /></span> Hi, {student?.firstName}!</span>
-                <button className="dashboard-btn" onClick={handleLoginClick}>
-                  <GraduationCapIcon /> My Courses
-                </button>
-                <button className="logout-btn" onClick={handleLogout}>
-                  <SignOutIcon /> Logout
-                </button>
-              </div>
-            ) : (
-              <>
-                <button className="login-btn" onClick={handleLoginClick}>
-                  <SignInIcon /> Login
-                </button>
-                <button className="apply-btn" onClick={handleApplyClick}>
-                  <SendIcon /> Apply Now
-                </button>
-              </>
-            )}
+        {/* Left Side - Logo and Search */}
+        <div className="navbar-left">
+          <div className="navbar-logo">
+            <img
+              src="https://aispry.com/pluginfile.php/1/theme_university/logo/1762520057/AiTutor-Logo-w.png"
+              alt="AiTutor Logo"
+              className="logo-image"
+            />
+          </div>
+          <div className="navbar-search">
+            <SearchIcon />
+            <input
+              type="text"
+              placeholder="Search..."
+              className="search-input"
+            />
           </div>
         </div>
-      </div>
 
+        {/* Right Side - Navigation Links */}
+        <div className="navbar-right">
+          <button className="pricing-btn">Plans & Pricing</button>
+          <div className="auth-links">
+            <button className="login-btn" onClick={handleLoginClick}>Log in</button>
+            <span className="auth-divider">|</span>
+            <button className="signup-btn" onClick={handleLoginClick}>Sign Up</button>
+          </div>
+          <button className="contact-btn"><GlobeIcon /> Contact</button>
+        </div>
+      </div>
     </nav>
   );
 };

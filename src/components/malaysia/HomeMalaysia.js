@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ScrollingNavbar from './ScrollingNavbar';
 import MainNavbar from './MainNavbar';
-import CourseCard from '../Browse Courses/CourseCard';
+import CourseCard from '../home/CourseCard';
 import './home-courses.css';
-import '../Browse Courses/CourseSlider.css';
 import './leadership-section.css';
 import './TrainingCenters.css';
 import './AlumniSectionMalaysia.css';
@@ -53,32 +52,6 @@ const PythonIcon = () => (
   </svg>
 );
 
-const SecurityIcon = () => (
-  <svg viewBox="0 0 24 24" width="48" height="48">
-    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z" fill="#43a047"/>
-    <path d="M10 17l-3.5-3.5 1.41-1.41L10 14.17l6.09-6.09L17.5 9.5z" fill="#66bb6a"/>
-  </svg>
-);
-
-// Additional SVG icons (not used in main courses but kept for reference)
-const WebDevIcon = () => (
-  <svg viewBox="0 0 24 24" width="40" height="40">
-    <path d="M3 4a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H3zm1 2h16v3H4V6zm0 5h7v7H4v-7zm9 0h7v7h-7v-7z" fill="#5c6bc0"/>
-  </svg>
-);
-
-const UIDesignIcon = () => (
-  <svg viewBox="0 0 24 24" width="40" height="40">
-    <path d="M3 3h18v4H3V3zm0 7h9v11H3V10zm11 0h7v11h-7V10z" fill="#ec407a"/>
-  </svg>
-);
-
-const MarketingIcon = () => (
-  <svg viewBox="0 0 24 24" width="40" height="40">
-    <path d="M3 11v6a2 2 0 0 0 2 2h2v2l4-2h3a2 2 0 0 0 2-2v-2L3 11zM21 5h-6V3h6v2z" fill="#26a69a"/>
-  </svg>
-);
-
 // Feature Icons
 const GraduationCapIcon = () => (
   <svg viewBox="0 0 24 24" width="48" height="48">
@@ -86,21 +59,9 @@ const GraduationCapIcon = () => (
   </svg>
 );
 
-const BriefcaseIcon = () => (
-  <svg viewBox="0 0 24 24" width="48" height="48">
-    <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" fill="#fb8c00"/>
-  </svg>
-);
-
 const TrophyIcon = () => (
   <svg viewBox="0 0 24 24" width="48" height="48">
     <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z" fill="#fdd835"/>
-  </svg>
-);
-
-const LaptopIcon = () => (
-  <svg viewBox="0 0 24 24" width="48" height="48">
-    <path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z" fill="#29b6f6"/>
   </svg>
 );
 
@@ -383,40 +344,24 @@ const HomeMalaysia = () => {
   // Course data
   const courses = [
     {
-      icon: <DataScienceIcon />,
-      name: 'Data Science',
-      description: 'Master Python, Machine Learning, and Statistical Analysis',
-      features: ['6 Months', 'Live Projects', 'Job Assistance']
+      icon: <BusinessIcon />,
+      name: 'Applied Business Analytics (AI-Enabled)',
+      features: ['AI-Powered', 'Business Outcomes', 'Decision Support']
     },
     {
       icon: <AIIcon />,
-      name: 'Artificial Intelligence',
-      description: 'Deep Learning, Neural Networks, and AI Applications',
-      features: ['8 Months', 'Industry Projects', 'Certifications']
+      name: 'Applied GenAI & Agentic AI (AGAI)',
+      features: ['GenAI Systems', 'Agentic Workflows', 'Automation']
     },
     {
-      icon: <BusinessIcon />,
-      name: 'Business Analytics',
-      description: 'Excel, Tableau, Power BI, and Business Intelligence',
-      features: ['4 Months', 'Case Studies', 'Global Certification']
+      icon: <DataScienceIcon />,
+      name: 'Applied Data Science & AI (AI-Enabled)',
+      features: ['Applied AI', 'Problem Solving', 'AI Solutions']
     },
     {
-      icon: <CloudIcon />,
-      name: 'Cloud Computing',
-      description: 'AWS, Azure, Google Cloud Platform and DevOps',
-      features: ['5 Months', 'Hands-on Labs', 'Cloud Certifications']
-    },
-    {
-      icon: <PythonIcon />,
-      name: 'Python Programming',
-      description: 'Full Stack Python Development and Web Applications',
-      features: ['3 Months', 'Portfolio Projects', 'Mentorship']
-    },
-    {
-      icon: <SecurityIcon />,
-      name: 'Cyber Security',
-      description: 'Ethical Hacking, Network Security, and Digital Forensics',
-      features: ['7 Months', 'Lab Simulations', 'Security Certifications']
+      icon: <RocketIcon />,
+      name: 'AI @ Work: Productivity & Automation',
+      features: ['Entry-Level', 'Productivity', 'AI Adoption']
     }
   ];
 
@@ -694,58 +639,6 @@ const HomeMalaysia = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const sendSMS = async (phoneNumber, name) => {
-    try {
-      // SMS message content
-      const message = `Dear ${name},
-
-Thank you for booking a Free Live Class with 360DigiTMG!
-
-What's Next:
-- Check your email for class details
-- Our team will contact you within 24 hours
-- Get ready to transform your career!
-
-About 360DigiTMG:
-- 15,000+ successful placements
-- Industry-expert trainers
-- Global certifications
-- 95% job placement rate
-
-Contact: +91-40-23456789
-Website: www.360digitmg.com
-Email: info@360digitmg.com
-
-We're excited to have you on this journey!
-
-- Team 360DigiTMG`;
-
-      // API endpoint for SMS service
-      const response = await fetch('/api/send-sms', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          phone: phoneNumber,
-          message: message,
-          name: name
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to send SMS message');
-      }
-
-      console.log('SMS message sent successfully to:', phoneNumber);
-      return true;
-    } catch (error) {
-      console.error('Error sending SMS message:', error);
-      // Don't fail the form submission if SMS fails
-      return false;
-    }
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
@@ -924,35 +817,18 @@ We're excited to have you on this journey!
 
       <div className="main-content">
         <header className="hero-heading">
-          <h1>Become the Top 1% in Tech</h1>
+          <h1>Welcome to Your Learning Workspace</h1>
+          <p>Access your courses, continue lessons, track progress, and manage your learning — all in one place.</p>
         </header>
 
         <section className="video-booking-section">
           <aside className="video-aside">
-            <div className="video-container">
-              <video id="background-video" controls loading="lazy" className="course-video">
-					<source src="https://360digit.b-cdn.net/assets/video/thankyou.mp4" type="video/mp4"/>
-					<source src="https://360digit.b-cdn.net/assets/video/thankyou.webm" type="video/webm"/>
-				          </video>
-            </div>
-
-            <div className="video-info">
-              <h3>Unlock Your Potential with an AI-Driven Curriculum</h3>
-
-              <div className="course-features">
-                <ul className="features-list compact">
-                  <li>✓ Master cutting-edge AI & ML with a curriculum designed by industry titans.</li>
-                  <li>✓ Build a portfolio of real-world projects, from predictive modeling to neural networks.</li>
-                  <li>✓ Receive personalized career coaching and land interviews at top-tier tech companies.</li>
-                </ul>
-              </div>
-            </div>
           </aside>
 
           <aside className="booking-aside">
             <div className="booking-form-container">
               <div className="form-header compact">
-                <h2 className="booking-heading">Book Your <br />Free Live Class</h2>
+                <h2 className="booking-heading">Access Your <br />Learning Dashboard</h2>
               </div>
 
               {submitSuccess ? (
@@ -1032,121 +908,69 @@ We're excited to have you on this journey!
         <section className="learner-outcomes">
           <div className="outcomes-container">
             <div className="outcomes-header">
-              <h2 className="section-heading outcomes-title">Transform Your Career, Multiply Your Income</h2>
+              <h2 className="section-heading outcomes-title">What You Can Do Here</h2>
               <p className="outcomes-subtitle">Join 20,000+ professionals who transformed their careers and achieved 3x salary growth. Calculate your future tech salary potential.</p>
             </div>
 
-            <div className="outcomes-dashboard">
-              <div className="dashboard-left">
-                <div className="potential-calculator">
-                  <div className="calculator-header">
-                    <h3>Career Growth Calculator</h3>
-                    <p>See how much you could earn after upskilling</p>
-                  </div>
-                  <div className="calculator-content">
-                    <div className="current-role">
-                      <label>Current Role</label>
-                      <select className="role-select" value={selectedRole} onChange={handleRoleChange}>
-                        <option value="">Select your current role</option>
-                        <option value="Student/Fresher">Student/Fresher</option>
-                        <option value="Software Developer">Software Developer</option>
-                        <option value="Business Analyst">Business Analyst</option>
-                        <option value="Marketing Executive">Marketing Executive</option>
-                        <option value="Sales Representative">Sales Representative</option>
-                        <option value="Teacher">Teacher</option>
-                        <option value="Other">Other</option>
-                      </select>
-                    </div>
-                    <div className="experience-level">
-                      <label>Experience Level</label>
-                      <div className="experience-buttons">
-                        <button
-                          className={`exp-btn ${selectedExperience === '0-2 Years' ? 'active' : ''}`}
-                          onClick={() => handleExperienceChange('0-2 Years')}
-                        >
-                          0-2 Years
-                        </button>
-                        <button
-                          className={`exp-btn ${selectedExperience === '3-5 Years' ? 'active' : ''}`}
-                          onClick={() => handleExperienceChange('3-5 Years')}
-                        >
-                          3-5 Years
-                        </button>
-                        <button
-                          className={`exp-btn ${selectedExperience === '5+ Years' ? 'active' : ''}`}
-                          onClick={() => handleExperienceChange('5+ Years')}
-                        >
-                          5+ Years
-                        </button>
-                      </div>
-                    </div>
-                    <div className="potential-result" key={salaryUpdateKey}>
-                      <div className="result-card">
-                        <div className="result-header">Your Potential Salary Growth</div>
-                        <div className="salary-projection">
-                          <div className="current-salary">
-                            <span className="label">Current Range</span>
-                            <span className="amount">{salaryData.current}</span>
-                          </div>
-                          <div className="arrow-transform">→</div>
-                          <div className="projected-salary">
-                            <span className="label">After Program</span>
-                            <span className="amount highlight">{salaryData.projected}</span>
-                          </div>
-                        </div>
-                        <div className="growth-indicator">
-                          <div className="growth-percentage">{salaryData.growth} Growth Potential</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+            <div className="workspace-tiles">
+              <div className="workspace-tile">
+                <div className="tile-glow"></div>
+                <div className="tile-particles">
+                  <span></span><span></span><span></span>
                 </div>
+                <div className="tile-icon">📘</div>
+                <h3>Continue Your Courses</h3>
+                <p>Pick up where you left off — lessons, recordings, and activities are saved automatically.</p>
+                <div className="tile-shimmer"></div>
               </div>
-
-              <div className="dashboard-right">
-                <div className="career-tracks">
-                  <h3>Recommended Career Tracks</h3>
-
-                  {careerTracks.map((track, index) => (
-                    <div className="track-card" key={index}>
-                      <div className="track-icon">
-                        {track.icon}
-                      </div>
-                      <div className="track-info">
-                        <h4>{track.title}</h4>
-                        <div className="track-details">
-                          <span className="salary">{track.salary}</span>
-                          <span className="timeline">{track.timeline}</span>
-                        </div>
-                        <div className="track-skills">
-                          {track.skills.map((skill, idx) => (
-                            <span key={idx}>{skill}</span>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="track-demand">{track.demand}</div>
-                    </div>
-                  ))}
+              <div className="workspace-tile">
+                <div className="tile-glow"></div>
+                <div className="tile-particles">
+                  <span></span><span></span><span></span>
                 </div>
+                <div className="tile-icon">📊</div>
+                <h3>Track Your Progress</h3>
+                <p>View completion status, upcoming tasks, and certificates in one dashboard.</p>
+                <div className="tile-shimmer"></div>
+              </div>
+              <div className="workspace-tile">
+                <div className="tile-glow"></div>
+                <div className="tile-particles">
+                  <span></span><span></span><span></span>
+                </div>
+                <div className="tile-icon">🧩</div>
+                <h3>Practice & Submit</h3>
+                <p>Access assignments, quizzes, projects, and feedback for each module.</p>
+                <div className="tile-shimmer"></div>
+              </div>
+              <div className="workspace-tile">
+                <div className="tile-glow"></div>
+                <div className="tile-particles">
+                  <span></span><span></span><span></span>
+                </div>
+                <div className="tile-icon">🤝</div>
+                <h3>Get Learning Support</h3>
+                <p>Raise tickets, check announcements, and stay connected with your program team.</p>
+                <div className="tile-shimmer"></div>
               </div>
             </div>
 
             <div className="success-metrics">
               <div className="metric-box">
-                <div className="metric-number">15K+</div>
-                <div className="metric-text">Successful Transitions</div>
+                <div className="metric-number">10K+</div>
+                <div className="metric-text">Active Learners</div>
               </div>
               <div className="metric-box">
-                <div className="metric-number">180%</div>
-                <div className="metric-text">Avg Salary Increase</div>
+                <div className="metric-number">50+</div>
+                <div className="metric-text">Programs Delivered</div>
               </div>
               <div className="metric-box">
-                <div className="metric-number">95%</div>
-                <div className="metric-text">Job Placement Rate</div>
+                <div className="metric-number">100+</div>
+                <div className="metric-text">Enterprise Engagements</div>
               </div>
               <div className="metric-box">
-                <div className="metric-number">500+</div>
-                <div className="metric-text">Hiring Partners</div>
+                <div className="metric-number">25K+</div>
+                <div className="metric-text">Learning Completion Records</div>
               </div>
             </div>
           </div>
@@ -1163,11 +987,11 @@ We're excited to have you on this journey!
                 </div>
 
                 <h2 className="section-heading brochure-headline">
-                  Ready to Launch Your AI & Data Science Career?
+                  Program Resources & Learning Information
                 </h2>
 
                 <p className="brochure-description">
-                  Get instant access to our comprehensive program brochure and discover how you can master in-demand skills, work on real-world projects, and land your dream job in tech.
+                  Access curriculum outlines, learning structure, and program details.
                 </p>
 
                 {/* Key Benefits */}
@@ -1238,7 +1062,7 @@ We're excited to have you on this journey!
                         <path fillRule="evenodd" clipRule="evenodd" d="M6 2C4.34315 2 3 3.34315 3 5V19C3 20.6569 4.34315 22 6 22H18C19.6569 22 21 20.6569 21 19V9C21 5.13401 17.866 2 14 2H6ZM6 4H13V9H19V19C19 19.5523 18.5523 20 18 20H6C5.44772 20 5 19.5523 5 19V5C5 4.44772 5.44772 4 6 4ZM15 4.10002C16.6113 4.4271 17.9413 5.52906 18.584 7H15V4.10002Z" fill="currentColor"/>
                       </svg>
                     </div>
-                    <h3 className="card-title">Download Program Brochure</h3>
+                    <h3 className="card-title">Program Information</h3>
                     <p className="card-subtitle">Complete guide with curriculum details, fee structure, and placement statistics</p>
                   </div>
 
@@ -1263,7 +1087,7 @@ We're excited to have you on this journey!
                     </div>
 
                     <button className="download-btn">
-                      <span className="btn-text">Download Free Brochure</span>
+                      <span className="btn-text">View Program Information</span>
                       <span className="btn-icon-arrow">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M12 4V20M12 20L8 16M12 20L16 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -1280,13 +1104,6 @@ We're excited to have you on this journey!
                   </div>
                 </div>
 
-                {/* Bonus Badge */}
-                <div className="bonus-badge">
-                  <span className="bonus-icon">🎁</span>
-                  <div className="bonus-text">
-                    <strong>Free Bonus:</strong> Career Roadmap Guide included!
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -1295,8 +1112,8 @@ We're excited to have you on this journey!
         <section className="home-courses-section">
           <div className="home-courses-container">
             <div className="home-courses-header">
-              <h2 className="section-heading home-courses-title">Find Your Perfect Program</h2>
-              <p className="home-courses-subtitle">Explore our range of courses designed for every career stage.</p>
+              <h2 className="section-heading home-courses-title">Learning Tracks Available on the Platform</h2>
+              <p className="home-courses-subtitle">Structured programs delivered through live, blended, and self-paced formats.</p>
             </div>
 
             <div className="course-slider-container">
@@ -1312,10 +1129,9 @@ We're excited to have you on this journey!
                   {courses.map((course, index) => (
                     <CourseCard
                       key={index}
-                      variant="slider"
                       course={course}
                       onAction={handleLearnMore}
-                      actionText="Learn More"
+                      actionText="Continue Learning"
                     />
                   ))}
                 </div>
@@ -1336,13 +1152,16 @@ We're excited to have you on this journey!
                 ))}
               </div>
             </div>
+
+            <p className="courses-micro-footer">All programs are designed for working professionals, with AI embedded as capability — not as a standalone tool.</p>
           </div>
         </section>
 
         <section className="alumni-section">
           <div className="alumni-container">
             <div className="alumni-header">
-              <h2 className="section-heading alumni-title">Our Alumni Success Stories</h2>
+              <h2 className="section-heading alumni-title">Learner Experiences</h2>
+              <p className="alumni-subtitle">Feedback from professionals who have completed structured learning programs on the platform.</p>
             </div>
 
             <div className="testimonial-3d-slider">
@@ -1408,6 +1227,7 @@ We're excited to have you on this journey!
         <section className="corporate-section">
           <div className="container">
             <h2 className="corporate-heading" style={{textAlign: 'center', marginBottom: '30px'}}>Companies That Trust Us</h2>
+            <p className="corporate-subtext">Trusted by organisations for structured workforce upskilling and learning delivery.</p>
             <div className="prestco-slider-wrapper">
               <button className="prestco-nav-btn prev" onClick={prevPrestcoSlide} aria-label="Previous testimonial">‹</button>
               <div className="prestco-slider" style={{transform: `translateX(-${prestcoSlide * 100}%)`}}>
@@ -1487,80 +1307,27 @@ We're excited to have you on this journey!
         <section className="features-section">
           <div className="features-container">
             <div className="features-header">
-              <h2 className="section-heading features-title">The 360DigiTMG Advantage</h2>
-              <p className="features-subtitle">Everything You Need to Succeed in One Place</p>
+              <h2 className="section-heading features-title">A Structured Learning Platform, Not Just Courses</h2>
+              <p className="features-subtitle">Built to support continuous learning, progress tracking, and organisational capability development.</p>
             </div>
 
-            <div className="features-slider-wrapper">
-              <button className="slider-nav-btn prev" onClick={prevFeatureSlide} aria-label="Previous feature">
-                ‹
-              </button>
-
-              <div
-                className="features-grid"
-              >
+            <div className="features-grid-simple">
               <div className="feature-card">
-                <div className="feature-icon"><GraduationCapIcon /></div>
-                <h3 className="feature-title">Expert Trainers</h3>
-                <p className="feature-description">Learn from industry professionals with 10+ years of experience in Data Science and AI</p>
-              </div>
-
-              <div className="feature-card">
-                <div className="feature-icon"><BriefcaseIcon /></div>
-                <h3 className="feature-title">100% Job Assistance</h3>
-                <p className="feature-description">Dedicated placement support with 15,000+ successful placements across top companies</p>
+                <div className="feature-icon"><BookIcon /></div>
+                <h3 className="feature-title">Industry-Guided Learning Design</h3>
+                <p className="feature-description">Programs structured by domain experts for real-world applicability.</p>
               </div>
 
               <div className="feature-card">
                 <div className="feature-icon"><TrophyIcon /></div>
-                <h3 className="feature-title">Global Certifications</h3>
-                <p className="feature-description">Earn internationally recognized certifications from Microsoft, IBM, and other tech giants</p>
+                <h3 className="feature-title">Assessments & Progress Tracking</h3>
+                <p className="feature-description">Track learning milestones, completion status, and outcomes.</p>
               </div>
 
               <div className="feature-card">
-                <div className="feature-icon"><LaptopIcon /></div>
-                <h3 className="feature-title">Live Interactive Classes</h3>
-                <p className="feature-description">Real-time learning with live projects, doubt clearing sessions, and peer collaboration</p>
-              </div>
-
-              <div className="feature-card">
-                <div className="feature-icon"><RocketIcon /></div>
-                <h3 className="feature-title">Hands-on Projects</h3>
-                <p className="feature-description">Build real-world projects and create an impressive portfolio that stands out to employers</p>
-              </div>
-
-              <div className="feature-card">
-                <div className="feature-icon"><GlobeIcon /></div>
-                <h3 className="feature-title">Flexible Learning</h3>
-                <p className="feature-description">Choose from weekday, weekend, or self-paced learning options that fit your schedule</p>
-              </div>
-
-              <div className="feature-card">
-                <div className="feature-icon"><BookIcon /></div>
-                <h3 className="feature-title">Comprehensive Curriculum</h3>
-                <p className="feature-description">Updated syllabus covering latest tools and technologies used by industry leaders</p>
-              </div>
-
-              <div className="feature-card">
-                <div className="feature-icon"><HandshakeIcon /></div>
-                <h3 className="feature-title">Lifetime Support</h3>
-                <p className="feature-description">Get continuous support and access to updated materials even after course completion</p>
-              </div>
-              </div>
-
-              <button className="slider-nav-btn next" onClick={nextFeatureSlide} aria-label="Next feature">
-                ›
-              </button>
-
-              <div className="slider-dots">
-                {[0, 1, 2, 3, 4, 5, 6, 7].map((index) => (
-                  <button
-                    key={index}
-                    className={`slider-dot ${index === currentFeatureSlide ? 'active' : ''}`}
-                    onClick={() => goToFeatureSlide(index)}
-                    aria-label={`Go to feature ${index + 1}`}
-                  />
-                ))}
+                <div className="feature-icon"><GraduationCapIcon /></div>
+                <h3 className="feature-title">Recognised Credentials & Records</h3>
+                <p className="feature-description">Digital certifications and learning records for internal and external use.</p>
               </div>
             </div>
           </div>
@@ -1569,8 +1336,8 @@ We're excited to have you on this journey!
         <section className="training-centers-section" aria-label="Training Centers">
           <div className="centers-container">
             <div className="centers-header">
-              <h2 className="section-heading centers-title">Our Training Centers</h2>
-              <p className="centers-subtitle">World-class facilities in Malaysia with state-of-the-art infrastructure</p>
+              <h2 className="section-heading centers-title">Learning Delivery Infrastructure</h2>
+              <p className="centers-subtitle">Centralised platform supporting remote, hybrid, and in-person learning delivery across regions.</p>
             </div>
 
             <div className="centers-slider-wrapper">
@@ -1622,12 +1389,13 @@ We're excited to have you on this journey!
 
         <section className="leadership-section">
           <div className="leadership-container">
+            <h2 className="section-heading leadership-title">Academic Leadership</h2>
             <div className="leadership-card-compact">
               <div className="leader-image-side">
                 <div className="image-wrapper">
                   <a href="https://www.linkedin.com/in/bharanikumardepuru/" target="_blank" rel="noopener noreferrer">
                     <img src={require('../../assets/images/download.jpg')}
-                         alt="Bharani Kumar Depuru"
+                         alt="Bharani Kumar D"
                          className="leader-photo" />
                   </a>
                 </div>
@@ -1635,28 +1403,13 @@ We're excited to have you on this journey!
 
               <div className="leader-details">
                 <div className="leader-header-compact">
-                  <h3>Bharani Kumar Depuru</h3>
-                  <p className="leader-position">CEO & Founder, AiSPRY | Founder & Director, 360DigiTMG</p>
-                </div>
-
-                <div className="leader-badges">
-                  <span className="badge">IIT & ISB Alumni</span>
-                  <span className="badge">Visiting Faculty at ISB</span>
-                  <span className="badge">20+ Years Industry Experience</span>
+                  <h3>Bharani Kumar D</h3>
+                  <p className="leader-position">Founder & Lead Faculty – AI & Data Programs</p>
                 </div>
 
                 <p className="leader-summary">
-                  Visionary entrepreneur and Chief Data Scientist with a proven track record of transforming businesses through AI and data science innovation. Former Senior Consultant at Deloitte and leadership roles at HSBC, Infosys, and ITC Infotech. Founded AiSPRY and 360DigiTMG in 2015, empowering thousands of professionals worldwide with cutting-edge AI and data science education.
+                  Provides academic direction and curriculum oversight across AI, analytics, and enterprise learning initiatives, with a focus on applied outcomes and industry relevance.
                 </p>
-
-                <div className="expertise-compact">
-                  <span>Artificial Intelligence</span>
-                  <span>Generative AI</span>
-                  <span>Data Science</span>
-                  <span>Machine Learning Strategy</span>
-                  <span>AI Solutions</span>
-                  <span>Global Speaker</span>
-                </div>
               </div>
             </div>
           </div>
@@ -1747,7 +1500,7 @@ We're excited to have you on this journey!
             <div className="footer-bottom">
               <div className="footer-bottom-content">
                 <p className="copyright">
-                  © 2024 360DigiTMG. All rights reserved.
+                  © 360DigiTMG. All rights reserved.
                 </p>
                 <div className="footer-bottom-links">
                   <a href="#" className="bottom-link">Privacy Policy</a>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Loader from '../Loader';
 import './MainNavbar.css';
 
 // Custom SVG Icons
@@ -27,18 +28,13 @@ const SignInIcon = () => (
   </svg>
 );
 
-const SendIcon = () => (
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-  </svg>
-);
-
 // Clean navbar without Programs, Masterclass, Forum, Alumni, Resources
 const MainNavbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [student, setStudent] = useState(null);
-  const navigate = useNavigate();
+  const [isRedirecting, setIsRedirecting] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Check if user is logged in
@@ -85,8 +81,11 @@ const MainNavbar = () => {
   }, [location]);
 
   const handleLoginClick = () => {
-    // Always go directly to courses page
-    navigate('/courses');
+    // Show loader and redirect to external login page
+    setIsRedirecting(true);
+    setTimeout(() => {
+      window.location.href = 'https://aispry.com/login/';
+    }, 500);
   };
 
 
@@ -98,10 +97,13 @@ const MainNavbar = () => {
     alert('Logged out successfully');
   };
 
-
-  const handleApplyClick = () => {
-    navigate('/apply');
+  const handleDashboardClick = () => {
+    navigate('/courses');
   };
+
+  if (isRedirecting) {
+    return <Loader />;
+  }
 
   return (
     <nav className="main-navbar">
@@ -134,8 +136,8 @@ const MainNavbar = () => {
                 <button className="login-btn" onClick={handleLoginClick}>
                   <SignInIcon /> Login
                 </button>
-                <button className="apply-btn" onClick={handleApplyClick}>
-                  <SendIcon /> Apply Now
+                <button className="dashboard-btn" onClick={handleDashboardClick}>
+                  <GraduationCapIcon /> Go to Dashboard
                 </button>
               </>
             )}
