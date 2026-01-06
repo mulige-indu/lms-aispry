@@ -547,67 +547,6 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Download Brochure Section */}
-        <section className="download-brochure">
-          <div className="brochure-container">
-            <div className="brochure-content-wrapper">
-              <div className="brochure-left">
-                <h2 className="section-heading brochure-headline">Program Resources & Learning Information</h2>
-                <p className="brochure-description">Access curriculum outlines, learning structure, and program details.</p>
-
-                <div className="brochure-benefits">
-                  {BROCHURE_BENEFITS.map((benefit, index) => (
-                    <div className="benefit-item" key={index}>
-                      <div className="benefit-icon"><Icons.Check /></div>
-                      <div className="benefit-text">
-                        <h4>{benefit.title}</h4>
-                        <p>{benefit.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="trust-indicators">
-                  {TRUST_INDICATORS.map((item, index) => (
-                    <div className="trust-item" key={index}>
-                      <span className="trust-number">{item.number}</span>
-                      <span className="trust-label">{item.label}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="brochure-right">
-                <div className="download-card">
-                  <div className="card-header">
-                    <div className="document-icon"><Icons.Document /></div>
-                    <h3 className="card-title">Program Information</h3>
-                    <p className="card-subtitle">Complete guide with curriculum details, fee structure, and placement statistics</p>
-                  </div>
-                  <div className="card-body">
-                    <div className="brochure-features">
-                      {BROCHURE_FEATURES.map((feature, index) => (
-                        <div className="feature-tag" key={index}>
-                          <span className="tag-icon">{feature.icon}</span>
-                          <span>{feature.text}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <button className="download-btn">
-                      <span className="btn-text">View Program Information</span>
-                      <span className="btn-icon-arrow"><Icons.Download /></span>
-                    </button>
-                    <p className="download-note">
-                      <Icons.Lock />
-                      Your information is safe with us. No spam, ever.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Courses Section */}
         <section className="home-courses-section">
           <div className="home-courses-container">
